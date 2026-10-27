@@ -11,7 +11,7 @@ npm run dev
 
 Open **http://localhost:5263**. `npm run preview` serves the built version on **4263** after `npm run build`. Both ports are strict. No account, runtime backend, model service or API key is used. All models, the Hebrew/Latin font and audio are bundled locally. There is no production deployment.
 
-Start with Enter or the visible button. WASD/arrows move, Space jumps, N opens the notebook, E interacts/sails near the dock, F toggles fullscreen. Pointer/tap selects objects or places previews. Choose an anchor, rotate with R, nudge with arrows and place with Enter. Escape cancels the active interaction. The inspector supports object selection, modifications and carrying; Undo reverses the last action. Touch has direction/jump and placement buttons. No movement/fullscreen shortcuts run while typing. Reading an explanation or inspector pauses locomotion.
+Start with Enter or the visible button. WASD/arrows move, Space jumps, N opens the notebook, E interacts/sails near the dock, F toggles fullscreen. Pointer/tap selects objects or places previews. Choose an anchor, rotate with R, nudge with arrows and place with Enter. Escape cancels the active interaction. The inspector supports object selection, modifications and carrying; Undo reverses the last action. Touch has direction/jump and placement buttons. Replaying mirrors source-object/landmark locations and reverses inspection order; identities and history stay authoritative. No movement/fullscreen shortcuts run while typing. Reading an explanation or inspector pauses locomotion.
 
 ## Nine authored challenges
 
