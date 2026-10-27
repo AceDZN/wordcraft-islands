@@ -1,0 +1,209 @@
+{
+  "mode": "explore",
+  "coordinateSystem": "x east/right, z south/down; y up; metres. gap lies across x at z=0.",
+  "level": "g7-rain",
+  "grade": 7,
+  "stage": "independent",
+  "objective": "Keep both parcels dry. They are too far apart for one ordinary cover.",
+  "player": {
+    "x": -6.5,
+    "z": 0.5,
+    "jump": 0
+  },
+  "world": {
+    "ready": true,
+    "contributors": [
+      "created-3",
+      "created-4"
+    ],
+    "traversable": false,
+    "mass": 1,
+    "covered": 2,
+    "capacity": 0,
+    "force": 0,
+    "reason": "2/2 חבילות נשארות יבשות. לכל חפץ אזור כיסוי אמיתי.",
+    "extras": {
+      "unlocked": false,
+      "illuminated": false
+    }
+  },
+  "zones": [
+    {
+      "id": "parcel-n",
+      "x": 1,
+      "z": -1.65,
+      "label": "North parcel"
+    },
+    {
+      "id": "parcel-s",
+      "x": 1,
+      "z": 1.65,
+      "label": "South parcel"
+    }
+  ],
+  "selected": "created-4",
+  "items": [
+    {
+      "id": "created-3",
+      "phrase": "two umbrellas",
+      "x": 1,
+      "z": -1.65,
+      "rot": 0,
+      "mass": 1,
+      "length": 2,
+      "capacity": 0,
+      "float": false,
+      "force": 0,
+      "evidence": {
+        "article": false,
+        "count": true,
+        "spelling": true,
+        "modifiers": false,
+        "order": false,
+        "family": false,
+        "assisted": false,
+        "shorthand": false
+      }
+    },
+    {
+      "id": "created-4",
+      "phrase": "two umbrellas",
+      "x": 1,
+      "z": 1.65,
+      "rot": 0,
+      "mass": 1,
+      "length": 2,
+      "capacity": 0,
+      "float": false,
+      "force": 0,
+      "evidence": {
+        "article": false,
+        "count": true,
+        "spelling": true,
+        "modifiers": false,
+        "order": false,
+        "family": false,
+        "assisted": false,
+        "shorthand": false
+      }
+    }
+  ],
+  "preview": null,
+  "learning": {
+    "attempts": 1,
+    "hints": 0,
+    "retries": 0,
+    "assisted": false,
+    "events": [
+      {
+        "type": "level-start",
+        "level": "g7-rain",
+        "at": 6.3,
+        "detail": {}
+      },
+      {
+        "type": "level-start",
+        "level": "g7-rain",
+        "at": 6.3,
+        "detail": {}
+      },
+      {
+        "type": "phrase-attempt",
+        "level": "g7-rain",
+        "at": 6.4,
+        "detail": {
+          "raw": "two umbrellas",
+          "result": "accepted",
+          "assisted": false
+        }
+      },
+      {
+        "type": "create-place",
+        "level": "g7-rain",
+        "at": 6.5,
+        "detail": {
+          "id": "created-3",
+          "phrase": "two umbrellas",
+          "x": 1,
+          "z": -1.65,
+          "rot": 0,
+          "evidence": {
+            "article": false,
+            "count": true,
+            "spelling": true,
+            "modifiers": false,
+            "order": false,
+            "family": false,
+            "assisted": false,
+            "shorthand": false
+          }
+        }
+      },
+      {
+        "type": "create-place",
+        "level": "g7-rain",
+        "at": 6.5,
+        "detail": {
+          "id": "created-4",
+          "phrase": "two umbrellas",
+          "x": 1,
+          "z": 1.65,
+          "rot": 0,
+          "evidence": {
+            "article": false,
+            "count": true,
+            "spelling": true,
+            "modifiers": false,
+            "order": false,
+            "family": false,
+            "assisted": false,
+            "shorthand": false
+          }
+        }
+      },
+      {
+        "type": "world-solved",
+        "level": "g7-rain",
+        "at": 6.5,
+        "detail": {
+          "kind": "shelter"
+        }
+      }
+    ]
+  },
+  "completed": [
+    "g7-crossing"
+  ],
+  "audio": {
+    "state": "running",
+    "sampleRate": 22050,
+    "requested": true,
+    "paused": false,
+    "hidden": false,
+    "loaded": 17,
+    "loops": 3,
+    "oneShots": 3,
+    "cueTotal": 15,
+    "lastCue": "confirm",
+    "solved": true,
+    "ducked": false,
+    "gains": {
+      "music": 0.48,
+      "sfx": 0.58,
+      "voice": 0.85,
+      "master": 0.75
+    },
+    "rms": 0.01693,
+    "loadError": ""
+  },
+  "models": {
+    "loaded": [
+      "courier",
+      "boat",
+      "balloon",
+      "lamp",
+      "crate"
+    ],
+    "errors": []
+  }
+}

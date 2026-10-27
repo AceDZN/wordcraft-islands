@@ -1,0 +1,1100 @@
+{
+  "records": [
+    {
+      "name": "keyboard-only-complete",
+      "mode": "complete",
+      "coordinateSystem": "x east/right, z south/down; y up; metres. gap lies across x at z=0.",
+      "level": "g7-crossing",
+      "grade": 7,
+      "stage": "guided",
+      "objective": "Help the courier cross the broken path.",
+      "player": {
+        "x": 5.739999999999996,
+        "z": 0.5,
+        "jump": 0
+      },
+      "world": {
+        "ready": true,
+        "contributors": [
+          "created-1"
+        ],
+        "traversable": true,
+        "mass": 3,
+        "covered": 0,
+        "capacity": 0,
+        "force": 0,
+        "reason": "שני הקצוות נתמכים. אפשר לחצות.",
+        "extras": {
+          "unlocked": false,
+          "illuminated": false
+        }
+      },
+      "zones": [
+        {
+          "id": "crossing",
+          "x": 0,
+          "z": 0,
+          "label": "Crossing · 2.4 m"
+        }
+      ],
+      "selected": "created-1",
+      "items": [
+        {
+          "id": "created-1",
+          "phrase": "a plank",
+          "x": 0,
+          "z": 0,
+          "rot": 0,
+          "mass": 3,
+          "length": 3.3,
+          "capacity": 0,
+          "float": false,
+          "force": 0,
+          "evidence": {
+            "article": true,
+            "count": false,
+            "spelling": true,
+            "modifiers": false,
+            "order": false,
+            "family": false,
+            "assisted": false,
+            "shorthand": false
+          }
+        }
+      ],
+      "preview": null,
+      "learning": {
+        "attempts": 1,
+        "hints": 0,
+        "retries": 0,
+        "rejectedPhrases": 0,
+        "assisted": false,
+        "events": [
+          {
+            "type": "level-start",
+            "level": "g7-crossing",
+            "at": 0,
+            "detail": {}
+          },
+          {
+            "type": "level-start",
+            "level": "g7-crossing",
+            "at": 0.2,
+            "detail": {}
+          },
+          {
+            "type": "phrase-attempt",
+            "level": "g7-crossing",
+            "at": 0.4,
+            "detail": {
+              "raw": "a plank",
+              "number": 1,
+              "unaided": true,
+              "result": "accepted",
+              "assisted": false
+            }
+          },
+          {
+            "type": "create-place",
+            "level": "g7-crossing",
+            "at": 0.4,
+            "detail": {
+              "id": "created-1",
+              "phrase": "a plank",
+              "x": 0,
+              "z": 0,
+              "rot": 0,
+              "evidence": {
+                "article": true,
+                "count": false,
+                "spelling": true,
+                "modifiers": false,
+                "order": false,
+                "family": false,
+                "assisted": false,
+                "shorthand": false
+              }
+            }
+          },
+          {
+            "type": "world-solved",
+            "level": "g7-crossing",
+            "at": 0.4,
+            "detail": {
+              "kind": "bridge"
+            }
+          },
+          {
+            "type": "completion",
+            "level": "g7-crossing",
+            "at": 4,
+            "detail": {
+              "evidence": {
+                "article": true,
+                "count": false,
+                "spelling": true,
+                "modifiers": false,
+                "order": false,
+                "family": false
+              },
+              "unaidedSolution": true,
+              "singlePhraseFirstAttemptUnaided": true,
+              "assisted": false,
+              "hints": 0,
+              "retries": 0,
+              "attempts": 1,
+              "rejectedPhrases": 0
+            }
+          }
+        ]
+      },
+      "completed": [
+        "g7-crossing"
+      ],
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 0,
+        "cueTotal": 5,
+        "lastCue": "success",
+        "solved": true,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0.0177,
+        "loadError": ""
+      },
+      "models": {
+        "loaded": [
+          "courier",
+          "boat",
+          "balloon",
+          "lamp",
+          "crate"
+        ],
+        "errors": []
+      }
+    },
+    {
+      "name": "settings-gains-muted",
+      "mode": "explore",
+      "coordinateSystem": "x east/right, z south/down; y up; metres. gap lies across x at z=0.",
+      "level": "g7-crossing",
+      "grade": 7,
+      "stage": "guided",
+      "objective": "Help the courier cross the broken path.",
+      "player": {
+        "x": -6.5,
+        "z": 0.5,
+        "jump": 0
+      },
+      "world": {
+        "ready": false,
+        "contributors": [],
+        "traversable": false,
+        "mass": 0,
+        "covered": 0,
+        "capacity": 0,
+        "force": 0,
+        "reason": "צריך לכסות את המרווח ועוד 0.3 מ׳ בכל קצה. סובבו את החפץ לאורך ציר המעבר.",
+        "extras": {
+          "unlocked": false,
+          "illuminated": false
+        }
+      },
+      "zones": [
+        {
+          "id": "crossing",
+          "x": 0,
+          "z": 0,
+          "label": "Crossing · 2.4 m"
+        }
+      ],
+      "selected": "",
+      "items": [],
+      "preview": null,
+      "learning": {
+        "attempts": 0,
+        "hints": 0,
+        "retries": 0,
+        "rejectedPhrases": 0,
+        "assisted": true,
+        "events": [
+          {
+            "type": "level-start",
+            "level": "g7-crossing",
+            "at": 0,
+            "detail": {}
+          },
+          {
+            "type": "level-start",
+            "level": "g7-crossing",
+            "at": 0.2,
+            "detail": {}
+          },
+          {
+            "type": "phrase-attempt",
+            "level": "g7-crossing",
+            "at": 0.4,
+            "detail": {
+              "raw": "a plank",
+              "number": 1,
+              "unaided": true,
+              "result": "accepted",
+              "assisted": false
+            }
+          },
+          {
+            "type": "create-place",
+            "level": "g7-crossing",
+            "at": 0.4,
+            "detail": {
+              "id": "created-1",
+              "phrase": "a plank",
+              "x": 0,
+              "z": 0,
+              "rot": 0,
+              "evidence": {
+                "article": true,
+                "count": false,
+                "spelling": true,
+                "modifiers": false,
+                "order": false,
+                "family": false,
+                "assisted": false,
+                "shorthand": false
+              }
+            }
+          },
+          {
+            "type": "world-solved",
+            "level": "g7-crossing",
+            "at": 0.4,
+            "detail": {
+              "kind": "bridge"
+            }
+          },
+          {
+            "type": "completion",
+            "level": "g7-crossing",
+            "at": 4,
+            "detail": {
+              "evidence": {
+                "article": true,
+                "count": false,
+                "spelling": true,
+                "modifiers": false,
+                "order": false,
+                "family": false
+              },
+              "unaidedSolution": true,
+              "singlePhraseFirstAttemptUnaided": true,
+              "assisted": false,
+              "hints": 0,
+              "retries": 0,
+              "attempts": 1,
+              "rejectedPhrases": 0
+            }
+          },
+          {
+            "type": "level-start",
+            "level": "g7-crossing",
+            "at": 4.8,
+            "detail": {}
+          },
+          {
+            "type": "level-start",
+            "level": "g7-crossing",
+            "at": 4.8,
+            "detail": {}
+          },
+          {
+            "type": "teaching-help",
+            "level": "g7-crossing",
+            "at": 4.9,
+            "detail": {}
+          },
+          {
+            "type": "settings",
+            "level": "g7-crossing",
+            "at": 6.2,
+            "detail": {}
+          }
+        ]
+      },
+      "completed": [
+        "g7-crossing"
+      ],
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": true,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 0,
+        "cueTotal": 5,
+        "lastCue": "success",
+        "solved": false,
+        "ducked": false,
+        "gains": {
+          "music": 0.01,
+          "sfx": 0.58,
+          "voice": 0,
+          "master": 0
+        },
+        "rms": 0.00003,
+        "loadError": ""
+      },
+      "models": {
+        "loaded": [
+          "courier",
+          "boat",
+          "balloon",
+          "lamp",
+          "crate"
+        ],
+        "errors": []
+      }
+    },
+    {
+      "name": "blur",
+      "mode": "explore",
+      "coordinateSystem": "x east/right, z south/down; y up; metres. gap lies across x at z=0.",
+      "level": "g7-crossing",
+      "grade": 7,
+      "stage": "guided",
+      "objective": "Help the courier cross the broken path.",
+      "player": {
+        "x": -6.5,
+        "z": 0.5,
+        "jump": 0
+      },
+      "world": {
+        "ready": false,
+        "contributors": [],
+        "traversable": false,
+        "mass": 0,
+        "covered": 0,
+        "capacity": 0,
+        "force": 0,
+        "reason": "צריך לכסות את המרווח ועוד 0.3 מ׳ בכל קצה. סובבו את החפץ לאורך ציר המעבר.",
+        "extras": {
+          "unlocked": false,
+          "illuminated": false
+        }
+      },
+      "zones": [
+        {
+          "id": "crossing",
+          "x": 0,
+          "z": 0,
+          "label": "Crossing · 2.4 m"
+        }
+      ],
+      "selected": "",
+      "items": [],
+      "preview": null,
+      "learning": {
+        "attempts": 0,
+        "hints": 0,
+        "retries": 0,
+        "rejectedPhrases": 0,
+        "assisted": true,
+        "events": [
+          {
+            "type": "level-start",
+            "level": "g7-crossing",
+            "at": 0,
+            "detail": {}
+          },
+          {
+            "type": "level-start",
+            "level": "g7-crossing",
+            "at": 0.2,
+            "detail": {}
+          },
+          {
+            "type": "phrase-attempt",
+            "level": "g7-crossing",
+            "at": 0.4,
+            "detail": {
+              "raw": "a plank",
+              "number": 1,
+              "unaided": true,
+              "result": "accepted",
+              "assisted": false
+            }
+          },
+          {
+            "type": "create-place",
+            "level": "g7-crossing",
+            "at": 0.4,
+            "detail": {
+              "id": "created-1",
+              "phrase": "a plank",
+              "x": 0,
+              "z": 0,
+              "rot": 0,
+              "evidence": {
+                "article": true,
+                "count": false,
+                "spelling": true,
+                "modifiers": false,
+                "order": false,
+                "family": false,
+                "assisted": false,
+                "shorthand": false
+              }
+            }
+          },
+          {
+            "type": "world-solved",
+            "level": "g7-crossing",
+            "at": 0.4,
+            "detail": {
+              "kind": "bridge"
+            }
+          },
+          {
+            "type": "completion",
+            "level": "g7-crossing",
+            "at": 4,
+            "detail": {
+              "evidence": {
+                "article": true,
+                "count": false,
+                "spelling": true,
+                "modifiers": false,
+                "order": false,
+                "family": false
+              },
+              "unaidedSolution": true,
+              "singlePhraseFirstAttemptUnaided": true,
+              "assisted": false,
+              "hints": 0,
+              "retries": 0,
+              "attempts": 1,
+              "rejectedPhrases": 0
+            }
+          },
+          {
+            "type": "level-start",
+            "level": "g7-crossing",
+            "at": 4.8,
+            "detail": {}
+          },
+          {
+            "type": "level-start",
+            "level": "g7-crossing",
+            "at": 4.8,
+            "detail": {}
+          },
+          {
+            "type": "teaching-help",
+            "level": "g7-crossing",
+            "at": 4.9,
+            "detail": {}
+          },
+          {
+            "type": "settings",
+            "level": "g7-crossing",
+            "at": 6.2,
+            "detail": {}
+          },
+          {
+            "type": "pause",
+            "level": "g7-crossing",
+            "at": 6.7,
+            "detail": {}
+          },
+          {
+            "type": "resume",
+            "level": "g7-crossing",
+            "at": 7.3,
+            "detail": {}
+          }
+        ]
+      },
+      "completed": [
+        "g7-crossing"
+      ],
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 0,
+        "cueTotal": 5,
+        "lastCue": "success",
+        "solved": false,
+        "ducked": false,
+        "gains": {
+          "music": 0.01,
+          "sfx": 0.58,
+          "voice": 0,
+          "master": 0
+        },
+        "rms": 0,
+        "loadError": ""
+      },
+      "models": {
+        "loaded": [
+          "courier",
+          "boat",
+          "balloon",
+          "lamp",
+          "crate"
+        ],
+        "errors": []
+      }
+    },
+    {
+      "name": "restart-no-duplicate-audio",
+      "mode": "explore",
+      "coordinateSystem": "x east/right, z south/down; y up; metres. gap lies across x at z=0.",
+      "level": "g7-crossing",
+      "grade": 7,
+      "stage": "guided",
+      "objective": "Help the courier cross the broken path.",
+      "player": {
+        "x": -6.5,
+        "z": 0.5,
+        "jump": 0
+      },
+      "world": {
+        "ready": false,
+        "contributors": [],
+        "traversable": false,
+        "mass": 0,
+        "covered": 0,
+        "capacity": 0,
+        "force": 0,
+        "reason": "צריך לכסות את המרווח ועוד 0.3 מ׳ בכל קצה. סובבו את החפץ לאורך ציר המעבר.",
+        "extras": {
+          "unlocked": false,
+          "illuminated": false
+        }
+      },
+      "zones": [
+        {
+          "id": "crossing",
+          "x": 0,
+          "z": 0,
+          "label": "Crossing · 2.4 m"
+        }
+      ],
+      "selected": "",
+      "items": [],
+      "preview": null,
+      "learning": {
+        "attempts": 0,
+        "hints": 0,
+        "retries": 0,
+        "rejectedPhrases": 0,
+        "assisted": false,
+        "events": [
+          {
+            "type": "level-start",
+            "level": "g7-crossing",
+            "at": 4.8,
+            "detail": {}
+          },
+          {
+            "type": "teaching-help",
+            "level": "g7-crossing",
+            "at": 4.9,
+            "detail": {}
+          },
+          {
+            "type": "settings",
+            "level": "g7-crossing",
+            "at": 6.2,
+            "detail": {}
+          },
+          {
+            "type": "pause",
+            "level": "g7-crossing",
+            "at": 6.7,
+            "detail": {}
+          },
+          {
+            "type": "resume",
+            "level": "g7-crossing",
+            "at": 7.3,
+            "detail": {}
+          },
+          {
+            "type": "phrase-attempt",
+            "level": "g7-crossing",
+            "at": 7.5,
+            "detail": {
+              "raw": "a wooden large crate",
+              "number": 1,
+              "unaided": false,
+              "result": "accepted",
+              "assisted": true
+            }
+          },
+          {
+            "type": "order-help-shown",
+            "level": "g7-crossing",
+            "at": 7.5,
+            "detail": {
+              "feedback": "בצירוף שנלמד כאן הגודל קודם לחומר: a large wooden crate. החפץ ייווצר, אבל סדר התארים לא נספר כהפקה בדגם שנלמד."
+            }
+          },
+          {
+            "type": "phrase-attempt",
+            "level": "g7-crossing",
+            "at": 7.6,
+            "detail": {
+              "raw": "a plank",
+              "number": 2,
+              "unaided": false,
+              "result": "accepted",
+              "assisted": true
+            }
+          },
+          {
+            "type": "phrase-attempt",
+            "level": "g7-crossing",
+            "at": 7.7,
+            "detail": {
+              "raw": "a plank",
+              "number": 3,
+              "unaided": false,
+              "result": "accepted",
+              "assisted": true
+            }
+          },
+          {
+            "type": "pause",
+            "level": "g7-crossing",
+            "at": 7.9,
+            "detail": {}
+          },
+          {
+            "type": "restart",
+            "level": "g7-crossing",
+            "at": 8,
+            "detail": {}
+          },
+          {
+            "type": "level-start",
+            "level": "g7-crossing",
+            "at": 8,
+            "detail": {}
+          }
+        ]
+      },
+      "completed": [
+        "g7-crossing"
+      ],
+      "audio": {
+        "state": "suspended",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 0,
+        "cueTotal": 12,
+        "lastCue": "create",
+        "solved": false,
+        "ducked": false,
+        "gains": {
+          "music": 0.01,
+          "sfx": 0.58,
+          "voice": 0,
+          "master": 0
+        },
+        "rms": 0,
+        "loadError": ""
+      },
+      "models": {
+        "loaded": [
+          "courier",
+          "boat",
+          "balloon",
+          "lamp",
+          "crate"
+        ],
+        "errors": []
+      }
+    },
+    {
+      "name": "fullscreen",
+      "entered": false,
+      "exited": true,
+      "mode": "paused"
+    },
+    {
+      "failure": "TimeoutError: page.goto: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:5263/\", waiting until \"load\"\u001b[22m\n",
+      "state": {
+        "mode": "explore",
+        "coordinateSystem": "x east/right, z south/down; y up; metres. gap lies across x at z=0.",
+        "level": "g7-crossing",
+        "grade": 7,
+        "stage": "guided",
+        "objective": "Help the courier cross the broken path.",
+        "player": {
+          "x": -6.5,
+          "z": 0.5,
+          "jump": 0
+        },
+        "world": {
+          "ready": false,
+          "contributors": [],
+          "traversable": false,
+          "mass": 0,
+          "covered": 0,
+          "capacity": 0,
+          "force": 0,
+          "reason": "צריך לכסות את המרווח ועוד 0.3 מ׳ בכל קצה. סובבו את החפץ לאורך ציר המעבר.",
+          "extras": {
+            "unlocked": false,
+            "illuminated": false
+          }
+        },
+        "zones": [
+          {
+            "id": "crossing",
+            "x": 0,
+            "z": 0,
+            "label": "Crossing · 2.4 m"
+          }
+        ],
+        "selected": "",
+        "items": [],
+        "preview": null,
+        "learning": {
+          "attempts": 0,
+          "hints": 0,
+          "retries": 0,
+          "rejectedPhrases": 0,
+          "assisted": false,
+          "events": [
+            {
+              "type": "settings",
+              "level": "g7-crossing",
+              "at": 6.2,
+              "detail": {}
+            },
+            {
+              "type": "pause",
+              "level": "g7-crossing",
+              "at": 6.7,
+              "detail": {}
+            },
+            {
+              "type": "resume",
+              "level": "g7-crossing",
+              "at": 7.3,
+              "detail": {}
+            },
+            {
+              "type": "phrase-attempt",
+              "level": "g7-crossing",
+              "at": 7.5,
+              "detail": {
+                "raw": "a wooden large crate",
+                "number": 1,
+                "unaided": false,
+                "result": "accepted",
+                "assisted": true
+              }
+            },
+            {
+              "type": "order-help-shown",
+              "level": "g7-crossing",
+              "at": 7.5,
+              "detail": {
+                "feedback": "בצירוף שנלמד כאן הגודל קודם לחומר: a large wooden crate. החפץ ייווצר, אבל סדר התארים לא נספר כהפקה בדגם שנלמד."
+              }
+            },
+            {
+              "type": "phrase-attempt",
+              "level": "g7-crossing",
+              "at": 7.6,
+              "detail": {
+                "raw": "a plank",
+                "number": 2,
+                "unaided": false,
+                "result": "accepted",
+                "assisted": true
+              }
+            },
+            {
+              "type": "phrase-attempt",
+              "level": "g7-crossing",
+              "at": 7.7,
+              "detail": {
+                "raw": "a plank",
+                "number": 3,
+                "unaided": false,
+                "result": "accepted",
+                "assisted": true
+              }
+            },
+            {
+              "type": "pause",
+              "level": "g7-crossing",
+              "at": 7.9,
+              "detail": {}
+            },
+            {
+              "type": "restart",
+              "level": "g7-crossing",
+              "at": 8,
+              "detail": {}
+            },
+            {
+              "type": "level-start",
+              "level": "g7-crossing",
+              "at": 8,
+              "detail": {}
+            },
+            {
+              "type": "pause",
+              "level": "g7-crossing",
+              "at": 9.2,
+              "detail": {}
+            },
+            {
+              "type": "resume",
+              "level": "g7-crossing",
+              "at": 9.3,
+              "detail": {}
+            }
+          ]
+        },
+        "completed": [
+          "g7-crossing"
+        ],
+        "audio": {
+          "state": "running",
+          "sampleRate": 22050,
+          "requested": true,
+          "paused": false,
+          "hidden": false,
+          "loaded": 17,
+          "loops": 3,
+          "oneShots": 0,
+          "cueTotal": 13,
+          "lastCue": "bounce",
+          "solved": false,
+          "ducked": false,
+          "gains": {
+            "music": 0.01,
+            "sfx": 0.58,
+            "voice": 0,
+            "master": 0
+          },
+          "rms": 0,
+          "loadError": ""
+        },
+        "models": {
+          "loaded": [
+            "courier",
+            "boat",
+            "balloon",
+            "lamp",
+            "crate"
+          ],
+          "errors": []
+        }
+      }
+    },
+    {
+      "name": "controls-failure",
+      "mode": "explore",
+      "coordinateSystem": "x east/right, z south/down; y up; metres. gap lies across x at z=0.",
+      "level": "g7-crossing",
+      "grade": 7,
+      "stage": "guided",
+      "objective": "Help the courier cross the broken path.",
+      "player": {
+        "x": -6.5,
+        "z": 0.5,
+        "jump": 0
+      },
+      "world": {
+        "ready": false,
+        "contributors": [],
+        "traversable": false,
+        "mass": 0,
+        "covered": 0,
+        "capacity": 0,
+        "force": 0,
+        "reason": "צריך לכסות את המרווח ועוד 0.3 מ׳ בכל קצה. סובבו את החפץ לאורך ציר המעבר.",
+        "extras": {
+          "unlocked": false,
+          "illuminated": false
+        }
+      },
+      "zones": [
+        {
+          "id": "crossing",
+          "x": 0,
+          "z": 0,
+          "label": "Crossing · 2.4 m"
+        }
+      ],
+      "selected": "",
+      "items": [],
+      "preview": null,
+      "learning": {
+        "attempts": 0,
+        "hints": 0,
+        "retries": 0,
+        "rejectedPhrases": 0,
+        "assisted": false,
+        "events": [
+          {
+            "type": "settings",
+            "level": "g7-crossing",
+            "at": 6.2,
+            "detail": {}
+          },
+          {
+            "type": "pause",
+            "level": "g7-crossing",
+            "at": 6.7,
+            "detail": {}
+          },
+          {
+            "type": "resume",
+            "level": "g7-crossing",
+            "at": 7.3,
+            "detail": {}
+          },
+          {
+            "type": "phrase-attempt",
+            "level": "g7-crossing",
+            "at": 7.5,
+            "detail": {
+              "raw": "a wooden large crate",
+              "number": 1,
+              "unaided": false,
+              "result": "accepted",
+              "assisted": true
+            }
+          },
+          {
+            "type": "order-help-shown",
+            "level": "g7-crossing",
+            "at": 7.5,
+            "detail": {
+              "feedback": "בצירוף שנלמד כאן הגודל קודם לחומר: a large wooden crate. החפץ ייווצר, אבל סדר התארים לא נספר כהפקה בדגם שנלמד."
+            }
+          },
+          {
+            "type": "phrase-attempt",
+            "level": "g7-crossing",
+            "at": 7.6,
+            "detail": {
+              "raw": "a plank",
+              "number": 2,
+              "unaided": false,
+              "result": "accepted",
+              "assisted": true
+            }
+          },
+          {
+            "type": "phrase-attempt",
+            "level": "g7-crossing",
+            "at": 7.7,
+            "detail": {
+              "raw": "a plank",
+              "number": 3,
+              "unaided": false,
+              "result": "accepted",
+              "assisted": true
+            }
+          },
+          {
+            "type": "pause",
+            "level": "g7-crossing",
+            "at": 7.9,
+            "detail": {}
+          },
+          {
+            "type": "restart",
+            "level": "g7-crossing",
+            "at": 8,
+            "detail": {}
+          },
+          {
+            "type": "level-start",
+            "level": "g7-crossing",
+            "at": 8,
+            "detail": {}
+          },
+          {
+            "type": "pause",
+            "level": "g7-crossing",
+            "at": 9.2,
+            "detail": {}
+          },
+          {
+            "type": "resume",
+            "level": "g7-crossing",
+            "at": 9.3,
+            "detail": {}
+          }
+        ]
+      },
+      "completed": [
+        "g7-crossing"
+      ],
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 0,
+        "cueTotal": 13,
+        "lastCue": "bounce",
+        "solved": false,
+        "ducked": false,
+        "gains": {
+          "music": 0.01,
+          "sfx": 0.58,
+          "voice": 0,
+          "master": 0
+        },
+        "rms": 0,
+        "loadError": ""
+      },
+      "models": {
+        "loaded": [
+          "courier",
+          "boat",
+          "balloon",
+          "lamp",
+          "crate"
+        ],
+        "errors": []
+      }
+    }
+  ],
+  "errors": []
+}

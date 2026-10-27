@@ -1,0 +1,235 @@
+{
+  "mode": "explore",
+  "coordinateSystem": "x east/right, z south/down; y up; metres. gap lies across x at z=0.",
+  "level": "g8-history",
+  "grade": 8,
+  "stage": "transfer",
+  "objective": "Use the crate that the helper placed beside the fountain. Make it heavier than the 6 kg counterweight and place it on the plate.",
+  "player": {
+    "x": -6.5,
+    "z": 0.5,
+    "jump": 0
+  },
+  "world": {
+    "ready": true,
+    "contributors": [
+      "garden",
+      "medicine"
+    ],
+    "traversable": true,
+    "mass": 24,
+    "covered": 0,
+    "capacity": 4,
+    "force": 0,
+    "reason": "משקל על הלוח: 24.0 ק״ג. נדרש יותר מ־6, וגם הארגז המזוהה כשיש תיאור.",
+    "extras": {
+      "unlocked": false,
+      "illuminated": false
+    }
+  },
+  "zones": [
+    {
+      "id": "plate",
+      "x": -4,
+      "z": -1.7,
+      "label": "Medicine / pressure plate"
+    }
+  ],
+  "selected": "medicine",
+  "items": [
+    {
+      "id": "garden",
+      "phrase": "a heavy crate",
+      "x": -4,
+      "z": -1.7,
+      "rot": 0,
+      "origin": "The gardener placed this crate beside the tree.",
+      "mass": 12,
+      "length": 1.2,
+      "capacity": 4,
+      "float": true,
+      "force": 0,
+      "evidence": {
+        "article": true,
+        "count": false,
+        "spelling": true,
+        "modifiers": false,
+        "order": false,
+        "family": false,
+        "assisted": false,
+        "shorthand": false
+      }
+    },
+    {
+      "id": "medicine",
+      "phrase": "a heavy crate",
+      "x": -4,
+      "z": -1.7,
+      "rot": 0,
+      "origin": "The helper placed this crate beside the fountain.",
+      "mass": 12,
+      "length": 1.2,
+      "capacity": 4,
+      "float": true,
+      "force": 0,
+      "evidence": {
+        "article": true,
+        "count": false,
+        "spelling": true,
+        "modifiers": false,
+        "order": false,
+        "family": false,
+        "assisted": false,
+        "shorthand": false
+      }
+    }
+  ],
+  "preview": null,
+  "learning": {
+    "attempts": 2,
+    "hints": 0,
+    "retries": 0,
+    "assisted": false,
+    "events": [
+      {
+        "type": "level-start",
+        "level": "g8-history",
+        "at": 27,
+        "detail": {}
+      },
+      {
+        "type": "level-start",
+        "level": "g8-history",
+        "at": 27,
+        "detail": {}
+      },
+      {
+        "type": "inspect",
+        "level": "g8-history",
+        "at": 27.1,
+        "detail": {
+          "id": "garden"
+        }
+      },
+      {
+        "type": "phrase-attempt",
+        "level": "g8-history",
+        "at": 27.2,
+        "detail": {
+          "raw": "a heavy crate",
+          "result": "accepted",
+          "assisted": false
+        }
+      },
+      {
+        "type": "modify-place",
+        "level": "g8-history",
+        "at": 27.2,
+        "detail": {
+          "id": "garden",
+          "phrase": "a heavy crate",
+          "x": -4,
+          "z": -1.7,
+          "rot": 0,
+          "evidence": {
+            "article": true,
+            "count": false,
+            "spelling": true,
+            "modifiers": false,
+            "order": false,
+            "family": false,
+            "assisted": false,
+            "shorthand": false
+          }
+        }
+      },
+      {
+        "type": "inspect",
+        "level": "g8-history",
+        "at": 27.5,
+        "detail": {
+          "id": "medicine"
+        }
+      },
+      {
+        "type": "phrase-attempt",
+        "level": "g8-history",
+        "at": 27.6,
+        "detail": {
+          "raw": "a heavy crate",
+          "result": "accepted",
+          "assisted": false
+        }
+      },
+      {
+        "type": "modify-place",
+        "level": "g8-history",
+        "at": 27.6,
+        "detail": {
+          "id": "medicine",
+          "phrase": "a heavy crate",
+          "x": -4,
+          "z": -1.7,
+          "rot": 0,
+          "evidence": {
+            "article": true,
+            "count": false,
+            "spelling": true,
+            "modifiers": false,
+            "order": false,
+            "family": false,
+            "assisted": false,
+            "shorthand": false
+          }
+        }
+      },
+      {
+        "type": "world-solved",
+        "level": "g8-history",
+        "at": 27.6,
+        "detail": {
+          "kind": "weight"
+        }
+      }
+    ]
+  },
+  "completed": [
+    "g7-crossing",
+    "g7-rain",
+    "g7-inlet",
+    "g8-length",
+    "g8-weight"
+  ],
+  "audio": {
+    "state": "running",
+    "sampleRate": 22050,
+    "requested": true,
+    "paused": false,
+    "hidden": false,
+    "loaded": 17,
+    "loops": 3,
+    "oneShots": 4,
+    "cueTotal": 47,
+    "lastCue": "confirm",
+    "solved": true,
+    "ducked": false,
+    "gains": {
+      "music": 0.48,
+      "sfx": 0.58,
+      "voice": 0.85,
+      "master": 0.75
+    },
+    "rms": 0.01331,
+    "loadError": ""
+  },
+  "models": {
+    "loaded": [
+      "courier",
+      "boat",
+      "balloon",
+      "lamp",
+      "crate"
+    ],
+    "errors": []
+  }
+}

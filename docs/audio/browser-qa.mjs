@@ -1,0 +1,51 @@
+import { chromium } from 'playwright';
+import fs from 'node:fs/promises';
+const baseUrl = process.env.AUDIO_QA_URL || 'http://localhost:5263';
+const headed = process.env.AUDIO_HEADED === '1';
+const reportPath = headed ? 'docs/audio/browser-qa-headed.json' : 'docs/audio/browser-qa.json';
+const browser = await chromium.launch({headless:!headed,args:['--use-angle=swiftshader','--enable-unsafe-swiftshader']});
+const context = await browser.newContext({viewport:{width:1440,height:900}});
+const page = await context.newPage(); const cdp = await context.newCDPSession(page); await cdp.send('Emulation.setFocusEmulationEnabled', {enabled:false}); const errors=[]; const records=[];
+page.on('response', response=>{if(response.status()>=400)errors.push(`${response.status()} ${response.url()}`);});
+page.on('pageerror', e=>errors.push(String(e)));
+page.on('console', msg=>{if(msg.type()==='error')errors.push(`${msg.text()} @ ${JSON.stringify(msg.location())}`);});
+const state = async(label)=>{const s=await page.evaluate(()=>JSON.parse(window.render_game_to_text()));records.push({label,audio:s.audio,mode:s.mode});return s.audio;};
+const assert=(yes,label)=>{if(!yes)throw new Error(label);};
+const delay=ms=>new Promise(r=>setTimeout(r,ms));
+async function gain(name,value){await page.locator(`#gain-${name}`).evaluate((el,v)=>{el.value=String(v);el.dispatchEvent(new Event('input',{bubbles:true}));},value);}
+try {
+ await page.goto(baseUrl,{waitUntil:'networkidle'}); await page.waitForFunction(()=>typeof window.render_game_to_text==='function');
+ assert((await state('before gesture')).state==='locked','audio must be locked before user Start');
+ await page.locator('#start').click();
+ await page.waitForFunction(()=>JSON.parse(window.render_game_to_text()).audio.loaded===17,{},{timeout:60000});
+ await delay(500);
+ let s=await state('after Start'); assert(s.state==='running'&&s.loops===3&&s.loaded===17&&!s.loadError,'start must decode and play 3 loops');
+ let peakRms=0;for(let i=0;i<6;i++){peakRms=Math.max(peakRms,(await state(`playback signal ${i}`)).rms);await delay(180);}assert(peakRms>.0001,'real browser output signal');
+ await page.locator('#book-btn').click();await delay(80);assert((await state('notebook cue')).lastCue==='notebook','notebook sound');
+ await page.locator('#phrase').fill('a plank');await page.locator('#create').click();await delay(100);assert((await state('create cue')).lastCue==='create','creation sound');
+ await page.locator('#place').click();await delay(100);assert(['wood','confirm'].includes((await state('wood placement cue')).lastCue),'wood/physical ready sound');
+ await page.locator('#undo-btn').click();await delay(100);assert((await state('undo cue')).lastCue==='undo','undo sound');
+ await page.locator('#settings-btn').click();await delay(180);assert((await state('settings pauses audio')).state==='suspended','settings must pause audio');
+ await gain('music',0);await gain('sfx',0);await gain('voice',.31);await gain('master',.64);
+ s=await state('independent settings');assert(s.gains.music===0&&s.gains.sfx===0&&s.gains.voice===.31&&s.gains.master===.64,'independent gains match UI');
+ await page.locator('#settings-close').click();await delay(700);s=await state('muted music and SFX');assert(s.state==='running'&&s.rms<.00001,'music and SFX mute output');
+ await page.locator('#settings-btn').click();await gain('music',.48);await gain('sfx',.58);await gain('voice',.85);await gain('master',0);await page.locator('#settings-close').click();await delay(500);assert((await state('master mute')).rms<.00001,'master mute output');
+ await page.locator('#settings-btn').click();await gain('master',.75);await page.locator('#settings-close').click();await delay(400);
+ await page.locator('#pause-btn').click();await delay(180);assert((await state('pause button')).state==='suspended','pause suspends context');
+ await page.locator('#resume').click();await delay(300);assert((await state('resume button')).state==='running','resume running');
+ for(let i=0;i<4;i++){await page.locator('#pause-btn').click();await page.locator('#restart').click();await delay(150);assert((await state(`restart ${i+1}`)).loops===3,'restart cannot duplicate loops');}
+ const second = await context.newPage();await second.goto('about:blank');const secondCdp=await context.newCDPSession(second);await secondCdp.send('Emulation.setFocusEmulationEnabled',{enabled:false});await second.bringToFront();await delay(250);
+ const hidden = await page.evaluate(()=>document.hidden);records.push({label:'actual second-tab visibility',documentHidden:hidden});
+ if(hidden)assert((await state('actual tab background')).state==='suspended','background tab suspends');
+ await page.bringToFront();await delay(300);assert((await state('actual tab foreground')).state==='running','foreground resumes');await second.close();
+ await page.evaluate(()=>window.dispatchEvent(new Event('blur')));await delay(180);assert((await state('synthetic window blur listener')).state==='suspended','blur listener suspends');
+ await page.evaluate(()=>window.dispatchEvent(new Event('focus')));await delay(300);assert((await state('synthetic window focus listener')).state==='running','focus listener resumes');
+ const preview=await page.request.get(`${baseUrl}/audio/mixed-preview.wav`);assert(preview.ok(),'in-game preview link');records.push({label:'preview link',status:preview.status(),bytes:(await preview.body()).length});
+ await page.locator('#settings-btn').click();await gain('music',.37);await page.reload({waitUntil:'networkidle'});s=await state('reload persistence');assert(s.state==='locked'&&s.gains.music===.37,'persist settings without autoplay after reload');
+ await page.locator('#start').click();await page.waitForFunction(()=>JSON.parse(window.render_game_to_text()).audio.loaded===17,{},{timeout:60000});await delay(250);s=await state('fresh Start after reload');assert(s.loops===3&&s.state==='running','fresh session has 3 loops');
+ await page.locator('#settings-btn').click();await gain('music',.48);await page.locator('#settings-close').click();
+ await page.screenshot({path:headed ? 'docs/audio/browser-audio-game-headed.png' : 'docs/audio/browser-audio-game.png',fullPage:true});
+ assert(errors.length===0,`console/page errors: ${errors.join('; ')}`);
+ await fs.writeFile(reportPath,JSON.stringify({passed:true,headed,browser:await browser.version(),peakRms,errors,records},null,2)+'\n');
+ console.log(JSON.stringify({passed:true,peakRms,records:records.length,errors}));
+} catch(e) {await fs.writeFile(reportPath,JSON.stringify({passed:false,error:String(e),errors,records},null,2)+'\n');throw e;} finally {await browser.close();}

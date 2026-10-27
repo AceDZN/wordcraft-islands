@@ -1,0 +1,174 @@
+{
+  "mode": "explore",
+  "coordinateSystem": "x east/right, z south/down; y up; metres. gap lies across x at z=0.",
+  "level": "g7-crossing",
+  "grade": 7,
+  "stage": "guided",
+  "objective": "Help the courier cross the broken path.",
+  "player": {
+    "x": -6.5,
+    "z": 0.5,
+    "jump": 0
+  },
+  "world": {
+    "ready": false,
+    "contributors": [],
+    "traversable": false,
+    "mass": 0,
+    "covered": 0,
+    "capacity": 0,
+    "force": 0,
+    "reason": "צריך לכסות את המרווח ועוד 0.3 מ׳ בכל קצה. סובבו את החפץ לאורך ציר המעבר.",
+    "extras": {
+      "unlocked": false,
+      "illuminated": false
+    }
+  },
+  "zones": [
+    {
+      "id": "crossing",
+      "x": 0,
+      "z": 0,
+      "label": "Crossing · 2.4 m"
+    }
+  ],
+  "selected": "",
+  "items": [],
+  "preview": null,
+  "learning": {
+    "attempts": 0,
+    "hints": 0,
+    "retries": 0,
+    "rejectedPhrases": 0,
+    "assisted": false,
+    "events": [
+      {
+        "type": "level-start",
+        "level": "g7-crossing",
+        "at": 4.8,
+        "detail": {}
+      },
+      {
+        "type": "teaching-help",
+        "level": "g7-crossing",
+        "at": 4.9,
+        "detail": {}
+      },
+      {
+        "type": "settings",
+        "level": "g7-crossing",
+        "at": 6.2,
+        "detail": {}
+      },
+      {
+        "type": "pause",
+        "level": "g7-crossing",
+        "at": 6.7,
+        "detail": {}
+      },
+      {
+        "type": "resume",
+        "level": "g7-crossing",
+        "at": 7.3,
+        "detail": {}
+      },
+      {
+        "type": "phrase-attempt",
+        "level": "g7-crossing",
+        "at": 7.5,
+        "detail": {
+          "raw": "a wooden large crate",
+          "number": 1,
+          "unaided": false,
+          "result": "accepted",
+          "assisted": true
+        }
+      },
+      {
+        "type": "order-help-shown",
+        "level": "g7-crossing",
+        "at": 7.5,
+        "detail": {
+          "feedback": "בצירוף שנלמד כאן הגודל קודם לחומר: a large wooden crate. החפץ ייווצר, אבל סדר התארים לא נספר כהפקה בדגם שנלמד."
+        }
+      },
+      {
+        "type": "phrase-attempt",
+        "level": "g7-crossing",
+        "at": 7.6,
+        "detail": {
+          "raw": "a plank",
+          "number": 2,
+          "unaided": false,
+          "result": "accepted",
+          "assisted": true
+        }
+      },
+      {
+        "type": "phrase-attempt",
+        "level": "g7-crossing",
+        "at": 7.7,
+        "detail": {
+          "raw": "a plank",
+          "number": 3,
+          "unaided": false,
+          "result": "accepted",
+          "assisted": true
+        }
+      },
+      {
+        "type": "pause",
+        "level": "g7-crossing",
+        "at": 7.9,
+        "detail": {}
+      },
+      {
+        "type": "restart",
+        "level": "g7-crossing",
+        "at": 8,
+        "detail": {}
+      },
+      {
+        "type": "level-start",
+        "level": "g7-crossing",
+        "at": 8,
+        "detail": {}
+      }
+    ]
+  },
+  "completed": [
+    "g7-crossing"
+  ],
+  "audio": {
+    "state": "suspended",
+    "sampleRate": 22050,
+    "requested": true,
+    "paused": false,
+    "hidden": false,
+    "loaded": 17,
+    "loops": 3,
+    "oneShots": 0,
+    "cueTotal": 12,
+    "lastCue": "create",
+    "solved": false,
+    "ducked": false,
+    "gains": {
+      "music": 0.01,
+      "sfx": 0.58,
+      "voice": 0,
+      "master": 0
+    },
+    "rms": 0,
+    "loadError": ""
+  },
+  "models": {
+    "loaded": [
+      "courier",
+      "boat",
+      "balloon",
+      "lamp",
+      "crate"
+    ],
+    "errors": []
+  }
+}

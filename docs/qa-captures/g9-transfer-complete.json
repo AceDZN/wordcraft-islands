@@ -1,0 +1,292 @@
+{
+  "mode": "complete",
+  "coordinateSystem": "x east/right, z south/down; y up; metres. gap lies across x at z=0.",
+  "level": "g9-storm",
+  "grade": 9,
+  "stage": "transfer",
+  "objective": "The supply raft, which is tied at the pier, needs a floating container for 8 parcels. Use the fan that the helper left beside the tree to push the sail with at least 8 N.",
+  "player": {
+    "x": 5.879999999999999,
+    "z": 0,
+    "jump": 0
+  },
+  "world": {
+    "ready": true,
+    "contributors": [
+      "created-12",
+      "tree-fan"
+    ],
+    "traversable": false,
+    "mass": 6.5,
+    "covered": 0,
+    "capacity": 30,
+    "force": 12,
+    "reason": "מטען צף: כן. המאוורר המתואר דוחף: כן. שני התנאים נחוצים.",
+    "extras": {
+      "unlocked": false,
+      "illuminated": false
+    }
+  },
+  "zones": [
+    {
+      "id": "cargo",
+      "x": 0,
+      "z": 0.4,
+      "label": "Supply raft · 8 parcels"
+    },
+    {
+      "id": "wind",
+      "x": -3.8,
+      "z": -2,
+      "label": "Wind dock · aim →"
+    }
+  ],
+  "selected": "tree-fan",
+  "items": [
+    {
+      "id": "fountain-fan",
+      "phrase": "a powerless fan",
+      "x": -7,
+      "z": -2.2,
+      "rot": 0,
+      "origin": "The helper left this fan beside the fountain.",
+      "mass": 4,
+      "length": 1.2,
+      "capacity": 0,
+      "float": false,
+      "force": 0,
+      "evidence": {
+        "article": true,
+        "count": false,
+        "spelling": true,
+        "modifiers": false,
+        "order": false,
+        "family": true,
+        "assisted": false,
+        "shorthand": false
+      }
+    },
+    {
+      "id": "created-12",
+      "phrase": "a large wooden boat",
+      "x": 0,
+      "z": 0.4,
+      "rot": 0,
+      "mass": 6.5,
+      "length": 4.800000000000001,
+      "capacity": 30,
+      "float": true,
+      "force": 0,
+      "evidence": {
+        "article": true,
+        "count": false,
+        "spelling": true,
+        "modifiers": true,
+        "order": true,
+        "family": false,
+        "assisted": false,
+        "shorthand": false
+      }
+    },
+    {
+      "id": "tree-fan",
+      "phrase": "a powerful fan",
+      "x": -3.8,
+      "z": -2,
+      "rot": 0,
+      "origin": "The helper left this fan beside the tree.",
+      "mass": 4,
+      "length": 1.2,
+      "capacity": 0,
+      "float": false,
+      "force": 12,
+      "evidence": {
+        "article": true,
+        "count": false,
+        "spelling": true,
+        "modifiers": false,
+        "order": false,
+        "family": true,
+        "assisted": false,
+        "shorthand": false
+      }
+    }
+  ],
+  "preview": null,
+  "learning": {
+    "attempts": 2,
+    "hints": 0,
+    "retries": 0,
+    "assisted": false,
+    "events": [
+      {
+        "type": "level-start",
+        "level": "g9-storm",
+        "at": 46.7,
+        "detail": {}
+      },
+      {
+        "type": "level-start",
+        "level": "g9-storm",
+        "at": 46.7,
+        "detail": {}
+      },
+      {
+        "type": "phrase-attempt",
+        "level": "g9-storm",
+        "at": 46.8,
+        "detail": {
+          "raw": "a large wooden boat",
+          "result": "accepted",
+          "assisted": false
+        }
+      },
+      {
+        "type": "create-place",
+        "level": "g9-storm",
+        "at": 46.8,
+        "detail": {
+          "id": "created-12",
+          "phrase": "a large wooden boat",
+          "x": 0,
+          "z": 0.4,
+          "rot": 0,
+          "evidence": {
+            "article": true,
+            "count": false,
+            "spelling": true,
+            "modifiers": true,
+            "order": true,
+            "family": false,
+            "assisted": false,
+            "shorthand": false
+          }
+        }
+      },
+      {
+        "type": "inspect",
+        "level": "g9-storm",
+        "at": 46.9,
+        "detail": {
+          "id": "tree-fan"
+        }
+      },
+      {
+        "type": "phrase-attempt",
+        "level": "g9-storm",
+        "at": 47,
+        "detail": {
+          "raw": "a powerful fan",
+          "result": "accepted",
+          "assisted": false
+        }
+      },
+      {
+        "type": "modify-place",
+        "level": "g9-storm",
+        "at": 47,
+        "detail": {
+          "id": "tree-fan",
+          "phrase": "a powerful fan",
+          "x": -3.8,
+          "z": -2,
+          "rot": 0,
+          "evidence": {
+            "article": true,
+            "count": false,
+            "spelling": true,
+            "modifiers": false,
+            "order": false,
+            "family": true,
+            "assisted": false,
+            "shorthand": false
+          }
+        }
+      },
+      {
+        "type": "world-solved",
+        "level": "g9-storm",
+        "at": 47,
+        "detail": {
+          "kind": "storm"
+        }
+      },
+      {
+        "type": "use",
+        "level": "g9-storm",
+        "at": 48.4,
+        "detail": {
+          "ready": true,
+          "player": {
+            "x": -2.9300000000000015,
+            "z": 0.5,
+            "jump": 0
+          }
+        }
+      },
+      {
+        "type": "completion",
+        "level": "g9-storm",
+        "at": 53.2,
+        "detail": {
+          "evidence": {
+            "article": true,
+            "count": false,
+            "spelling": true,
+            "modifiers": true,
+            "order": true,
+            "family": true
+          },
+          "firstAttemptUnaided": false,
+          "assisted": false,
+          "hints": 0,
+          "retries": 0,
+          "attempts": 2
+        }
+      }
+    ]
+  },
+  "completed": [
+    "g7-crossing",
+    "g7-rain",
+    "g7-inlet",
+    "g8-length",
+    "g8-weight",
+    "g8-history",
+    "g9-cargo",
+    "g9-power",
+    "g9-storm"
+  ],
+  "audio": {
+    "state": "running",
+    "sampleRate": 22050,
+    "requested": true,
+    "paused": false,
+    "hidden": false,
+    "loaded": 17,
+    "loops": 3,
+    "oneShots": 1,
+    "cueTotal": 77,
+    "lastCue": "success",
+    "solved": true,
+    "ducked": false,
+    "gains": {
+      "music": 0.48,
+      "sfx": 0.58,
+      "voice": 0.85,
+      "master": 0.75
+    },
+    "rms": 0.03132,
+    "loadError": ""
+  },
+  "models": {
+    "loaded": [
+      "courier",
+      "boat",
+      "balloon",
+      "lamp",
+      "crate"
+    ],
+    "errors": []
+  }
+}

@@ -1,0 +1,161 @@
+{
+  "balloon.glb": {
+    "bytes": 819528,
+    "sha256": "87f0c8064f2d295bbc99bd30b2fbaa51433dde4e0880dd097c75c0bb89cd1d68",
+    "extensions": [
+      "EXT_texture_webp"
+    ],
+    "meshes": 1,
+    "materials": 1,
+    "triangles": 18986,
+    "skins": [],
+    "animations": [],
+    "position_bounds": [
+      {
+        "min": [
+          -0.2966919243335724,
+          0,
+          -0.2970276176929474
+        ],
+        "max": [
+          0.2966919243335724,
+          1,
+          0.2970276176929474
+        ]
+      }
+    ]
+  },
+  "lamp.glb": {
+    "bytes": 586004,
+    "sha256": "64d76119944d93d214640ad210e831459919834faecbb61e6265603769e186fa",
+    "extensions": [
+      "EXT_texture_webp"
+    ],
+    "meshes": 1,
+    "materials": 1,
+    "triangles": 19450,
+    "skins": [],
+    "animations": [],
+    "position_bounds": [
+      {
+        "min": [
+          -0.49090585112571716,
+          0,
+          -0.4271545708179474
+        ],
+        "max": [
+          0.49090585112571716,
+          1,
+          0.4271545708179474
+        ]
+      }
+    ]
+  },
+  "boat.glb": {
+    "bytes": 245256,
+    "sha256": "08ae2c1260638b41a90b9f2cee4c644c831f038c4c26b520d6628f850df80a5a",
+    "extensions": [
+      "EXT_meshopt_compression",
+      "EXT_texture_webp",
+      "KHR_mesh_quantization"
+    ],
+    "meshes": 1,
+    "materials": 1,
+    "triangles": 13387,
+    "skins": [],
+    "animations": [],
+    "position_bounds": [
+      {
+        "min": [
+          -32767,
+          -27503,
+          -14581
+        ],
+        "max": [
+          32767,
+          27503,
+          14581
+        ]
+      }
+    ]
+  },
+  "courier.glb": {
+    "bytes": 1294924,
+    "sha256": "391f136e4e3dc638f93ba15a7e5cfaf2a0887592a0ab80c22ccdddcd2c505e95",
+    "extensions": [
+      "EXT_texture_webp"
+    ],
+    "meshes": 1,
+    "materials": 1,
+    "triangles": 19093,
+    "skins": [
+      {
+        "joints": 65
+      }
+    ],
+    "animations": [
+      {
+        "name": "idle",
+        "channels": 195,
+        "duration": 15.333333015441895
+      },
+      {
+        "name": "run",
+        "channels": 195,
+        "duration": 1.25
+      },
+      {
+        "name": "jump_down",
+        "channels": 195,
+        "duration": 3.7083332538604736
+      },
+      {
+        "name": "jump",
+        "channels": 195,
+        "duration": 2.2083332538604736
+      }
+    ],
+    "position_bounds": [
+      {
+        "min": [
+          -0.4815978407859802,
+          -1.0409555528667624e-07,
+          -0.1501006782054901
+        ],
+        "max": [
+          0.4815979599952698,
+          1.0000003576278687,
+          0.1501007080078125
+        ]
+      }
+    ]
+  },
+  "crate.glb": {
+    "bytes": 206804,
+    "sha256": "318ceb8efe87339ea0b726061802eb19abc0416777386a24027c94dc974fb94a",
+    "extensions": [
+      "EXT_meshopt_compression",
+      "EXT_texture_webp",
+      "KHR_mesh_quantization"
+    ],
+    "meshes": 1,
+    "materials": 1,
+    "triangles": 5079,
+    "skins": [],
+    "animations": [],
+    "position_bounds": [
+      {
+        "min": [
+          -25171,
+          -20314,
+          -32767
+        ],
+        "max": [
+          25171,
+          20314,
+          32767
+        ]
+      }
+    ]
+  }
+}

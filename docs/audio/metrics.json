@@ -1,0 +1,46 @@
+{
+  "island-score": {
+    "seconds": 83.47827664399092,
+    "peak": 0.17609727015490048,
+    "peak_dBFS": -15.084947527542859,
+    "RMS": 0.03347116762333329,
+    "boundary_delta": 0.0,
+    "bytes": 1141053,
+    "decoded_seconds": 83.47832199546485,
+    "decoded_peak": 0.17815127968788147,
+    "decoded_RMS": 0.0334802083671093,
+    "decoded_boundary_delta": 1.5105460988706909e-05
+  },
+  "hopeful-stem": {
+    "seconds": 83.47827664399092,
+    "peak": 0.09954506201893314,
+    "peak_dBFS": -20.03960556981202,
+    "RMS": 0.020684578605582246,
+    "boundary_delta": 0.0,
+    "bytes": 1460255,
+    "decoded_seconds": 83.47832199546485,
+    "decoded_peak": 0.09973147511482239,
+    "decoded_RMS": 0.020681966096162796,
+    "decoded_boundary_delta": 2.3265964046004228e-05
+  },
+  "water-breeze": {
+    "seconds": 83.47827664399092,
+    "peak": 0.10623203898728226,
+    "peak_dBFS": -19.474889654370525,
+    "RMS": 0.016037442449577912,
+    "boundary_delta": 0.0,
+    "bytes": 900735,
+    "decoded_seconds": 83.47832199546485,
+    "decoded_peak": 0.10496018826961517,
+    "decoded_RMS": 0.016048578545451164,
+    "decoded_boundary_delta": 0.00037839982542209327
+  },
+  "mixed-preview": {
+    "seconds": 26.0,
+    "peak": 0.18303999258030884,
+    "peak_dBFS": -14.749080209831757,
+    "RMS": 0.022906682295642154,
+    "boundary_delta": 0.0,
+    "bytes": 2293244
+  }
+}

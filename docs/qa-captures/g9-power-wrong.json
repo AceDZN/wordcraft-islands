@@ -1,0 +1,186 @@
+{
+  "mode": "explore",
+  "coordinateSystem": "x east/right, z south/down; y up; metres. gap lies across x at z=0.",
+  "level": "g9-power",
+  "grade": 9,
+  "stage": "independent",
+  "objective": "Fan A, which the helper repaired, is on the brass dock. Restore Fan A and aim it at the sail. The sail needs at least 8 N.",
+  "player": {
+    "x": -6.5,
+    "z": 0.5,
+    "jump": 0
+  },
+  "world": {
+    "ready": false,
+    "contributors": [],
+    "traversable": false,
+    "mass": 4,
+    "covered": 0,
+    "capacity": 0,
+    "force": 12,
+    "reason": "המאוורר עובד, אבל צריך לשקם את Fan A שכבר זוהה בשם.",
+    "extras": {
+      "unlocked": false,
+      "illuminated": false
+    }
+  },
+  "zones": [
+    {
+      "id": "wind",
+      "x": -3.4,
+      "z": -1.3,
+      "label": "Sail dock · aim →"
+    }
+  ],
+  "selected": "fan-b",
+  "items": [
+    {
+      "id": "fan-a",
+      "phrase": "a powerless fan",
+      "x": -6,
+      "z": -1.5,
+      "rot": 0,
+      "origin": "Fan A — brass dock. The helper repaired it.",
+      "mass": 4,
+      "length": 1.2,
+      "capacity": 0,
+      "float": false,
+      "force": 0,
+      "evidence": {
+        "article": true,
+        "count": false,
+        "spelling": true,
+        "modifiers": false,
+        "order": false,
+        "family": true,
+        "assisted": false,
+        "shorthand": false
+      }
+    },
+    {
+      "id": "fan-b",
+      "phrase": "a powerful fan",
+      "x": -3.4,
+      "z": -1.3,
+      "rot": 0,
+      "origin": "Fan B — garden dock. The helper repaired it too.",
+      "mass": 4,
+      "length": 1.2,
+      "capacity": 0,
+      "float": false,
+      "force": 12,
+      "evidence": {
+        "article": true,
+        "count": false,
+        "spelling": true,
+        "modifiers": false,
+        "order": false,
+        "family": true,
+        "assisted": false,
+        "shorthand": false
+      }
+    }
+  ],
+  "preview": null,
+  "learning": {
+    "attempts": 1,
+    "hints": 0,
+    "retries": 0,
+    "assisted": false,
+    "events": [
+      {
+        "type": "level-start",
+        "level": "g9-power",
+        "at": 39.2,
+        "detail": {}
+      },
+      {
+        "type": "level-start",
+        "level": "g9-power",
+        "at": 39.2,
+        "detail": {}
+      },
+      {
+        "type": "inspect",
+        "level": "g9-power",
+        "at": 39.3,
+        "detail": {
+          "id": "fan-b"
+        }
+      },
+      {
+        "type": "phrase-attempt",
+        "level": "g9-power",
+        "at": 39.4,
+        "detail": {
+          "raw": "a powerful fan",
+          "result": "accepted",
+          "assisted": false
+        }
+      },
+      {
+        "type": "modify-place",
+        "level": "g9-power",
+        "at": 39.4,
+        "detail": {
+          "id": "fan-b",
+          "phrase": "a powerful fan",
+          "x": -3.4,
+          "z": -1.3,
+          "rot": 0,
+          "evidence": {
+            "article": true,
+            "count": false,
+            "spelling": true,
+            "modifiers": false,
+            "order": false,
+            "family": true,
+            "assisted": false,
+            "shorthand": false
+          }
+        }
+      }
+    ]
+  },
+  "completed": [
+    "g7-crossing",
+    "g7-rain",
+    "g7-inlet",
+    "g8-length",
+    "g8-weight",
+    "g8-history",
+    "g9-cargo"
+  ],
+  "audio": {
+    "state": "running",
+    "sampleRate": 22050,
+    "requested": true,
+    "paused": false,
+    "hidden": false,
+    "loaded": 17,
+    "loops": 3,
+    "oneShots": 3,
+    "cueTotal": 61,
+    "lastCue": "fan",
+    "solved": false,
+    "ducked": false,
+    "gains": {
+      "music": 0.48,
+      "sfx": 0.58,
+      "voice": 0.85,
+      "master": 0.75
+    },
+    "rms": 0.01813,
+    "loadError": ""
+  },
+  "models": {
+    "loaded": [
+      "courier",
+      "boat",
+      "balloon",
+      "lamp",
+      "crate"
+    ],
+    "errors": []
+  }
+}

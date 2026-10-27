@@ -1,0 +1,107 @@
+{
+  "description": "Uncompressed bundled initial payload estimate; actual HTTP caching/compression varies. Preview WAV is fetched only on demand.",
+  "bytes": 8105194,
+  "megabytes": 8.105194,
+  "files": [
+    {
+      "file": "public/models/balloon.glb",
+      "bytes": 819528
+    },
+    {
+      "file": "public/models/boat.glb",
+      "bytes": 245256
+    },
+    {
+      "file": "public/models/courier.glb",
+      "bytes": 1294924
+    },
+    {
+      "file": "public/models/crate.glb",
+      "bytes": 206804
+    },
+    {
+      "file": "public/models/lamp.glb",
+      "bytes": 586004
+    },
+    {
+      "file": "public/fonts/Rubik-Variable.ttf",
+      "bytes": 359804
+    },
+    {
+      "file": "public/audio/bounce.wav",
+      "bytes": 13274
+    },
+    {
+      "file": "public/audio/confirm.wav",
+      "bytes": 9746
+    },
+    {
+      "file": "public/audio/create.wav",
+      "bytes": 44144
+    },
+    {
+      "file": "public/audio/fan.wav",
+      "bytes": 39734
+    },
+    {
+      "file": "public/audio/hopeful-stem.ogg",
+      "bytes": 1460255
+    },
+    {
+      "file": "public/audio/island-score.ogg",
+      "bytes": 1141053
+    },
+    {
+      "file": "public/audio/metal.wav",
+      "bytes": 39734
+    },
+    {
+      "file": "public/audio/mistake.wav",
+      "bytes": 27386
+    },
+    {
+      "file": "public/audio/notebook.wav",
+      "bytes": 12392
+    },
+    {
+      "file": "public/audio/page.wav",
+      "bytes": 9746
+    },
+    {
+      "file": "public/audio/rotate.wav",
+      "bytes": 4454
+    },
+    {
+      "file": "public/audio/splash.wav",
+      "bytes": 31796
+    },
+    {
+      "file": "public/audio/success.wav",
+      "bytes": 79424
+    },
+    {
+      "file": "public/audio/umbrella.wav",
+      "bytes": 22976
+    },
+    {
+      "file": "public/audio/undo.wav",
+      "bytes": 21212
+    },
+    {
+      "file": "public/audio/water-breeze.ogg",
+      "bytes": 900735
+    },
+    {
+      "file": "public/audio/wood.wav",
+      "bytes": 14156
+    },
+    {
+      "file": "dist/assets/index-DpG91GV6.js",
+      "bytes": 711949
+    },
+    {
+      "file": "dist/assets/index-x1McRap4.css",
+      "bytes": 8708
+    }
+  ]
+}

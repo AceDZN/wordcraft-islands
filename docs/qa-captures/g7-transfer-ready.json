@@ -1,0 +1,159 @@
+{
+  "mode": "explore",
+  "coordinateSystem": "x east/right, z south/down; y up; metres. gap lies across x at z=0.",
+  "level": "g7-inlet",
+  "grade": 7,
+  "stage": "transfer",
+  "objective": "Reach the far dock. The inlet is wider than the old crossing. What can carry you on water?",
+  "player": {
+    "x": -6.5,
+    "z": 0.5,
+    "jump": 0
+  },
+  "world": {
+    "ready": true,
+    "contributors": [
+      "created-5"
+    ],
+    "traversable": false,
+    "mass": 5,
+    "covered": 0,
+    "capacity": 12,
+    "force": 0,
+    "reason": "המעבורת צפה — E ליד הרציף, או חצו על הגשר.",
+    "extras": {
+      "unlocked": false,
+      "illuminated": false
+    }
+  },
+  "zones": [
+    {
+      "id": "ferry",
+      "x": 0,
+      "z": 0,
+      "label": "Mooring buoy"
+    }
+  ],
+  "selected": "created-5",
+  "items": [
+    {
+      "id": "created-5",
+      "phrase": "a boat",
+      "x": 0,
+      "z": 0,
+      "rot": 0,
+      "mass": 5,
+      "length": 3,
+      "capacity": 12,
+      "float": true,
+      "force": 0,
+      "evidence": {
+        "article": true,
+        "count": false,
+        "spelling": true,
+        "modifiers": false,
+        "order": false,
+        "family": false,
+        "assisted": false,
+        "shorthand": false
+      }
+    }
+  ],
+  "preview": null,
+  "learning": {
+    "attempts": 1,
+    "hints": 0,
+    "retries": 0,
+    "assisted": false,
+    "events": [
+      {
+        "type": "level-start",
+        "level": "g7-inlet",
+        "at": 10.9,
+        "detail": {}
+      },
+      {
+        "type": "level-start",
+        "level": "g7-inlet",
+        "at": 10.9,
+        "detail": {}
+      },
+      {
+        "type": "phrase-attempt",
+        "level": "g7-inlet",
+        "at": 11,
+        "detail": {
+          "raw": "a boat",
+          "result": "accepted",
+          "assisted": false
+        }
+      },
+      {
+        "type": "create-place",
+        "level": "g7-inlet",
+        "at": 11,
+        "detail": {
+          "id": "created-5",
+          "phrase": "a boat",
+          "x": 0,
+          "z": 0,
+          "rot": 0,
+          "evidence": {
+            "article": true,
+            "count": false,
+            "spelling": true,
+            "modifiers": false,
+            "order": false,
+            "family": false,
+            "assisted": false,
+            "shorthand": false
+          }
+        }
+      },
+      {
+        "type": "world-solved",
+        "level": "g7-inlet",
+        "at": 11,
+        "detail": {
+          "kind": "ferry"
+        }
+      }
+    ]
+  },
+  "completed": [
+    "g7-crossing",
+    "g7-rain"
+  ],
+  "audio": {
+    "state": "running",
+    "sampleRate": 22050,
+    "requested": true,
+    "paused": false,
+    "hidden": false,
+    "loaded": 17,
+    "loops": 3,
+    "oneShots": 5,
+    "cueTotal": 20,
+    "lastCue": "confirm",
+    "solved": true,
+    "ducked": false,
+    "gains": {
+      "music": 0.48,
+      "sfx": 0.58,
+      "voice": 0.85,
+      "master": 0.75
+    },
+    "rms": 0.02298,
+    "loadError": ""
+  },
+  "models": {
+    "loaded": [
+      "courier",
+      "boat",
+      "balloon",
+      "lamp",
+      "crate"
+    ],
+    "errors": []
+  }
+}

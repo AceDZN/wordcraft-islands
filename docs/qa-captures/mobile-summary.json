@@ -1,0 +1,1050 @@
+{
+  "records": [
+    {
+      "name": "mobile-touch-portrait",
+      "mode": "explore",
+      "coordinateSystem": "x east/right, z south/down; y up; metres. gap lies across x at z=0.",
+      "level": "g7-rain",
+      "grade": 7,
+      "stage": "independent",
+      "layoutVariant": 0,
+      "objective": "Keep both parcels dry. They are too far apart for one ordinary cover.",
+      "player": {
+        "x": -3.542000000000002,
+        "z": 0.5,
+        "jump": 0
+      },
+      "world": {
+        "ready": true,
+        "contributors": [
+          "created-1",
+          "created-2"
+        ],
+        "traversable": false,
+        "mass": 1,
+        "covered": 2,
+        "capacity": 0,
+        "force": 0,
+        "reason": "2/2 חבילות נשארות יבשות. לכל חפץ אזור כיסוי אמיתי.",
+        "extras": {
+          "unlocked": false,
+          "illuminated": false
+        }
+      },
+      "zones": [
+        {
+          "id": "parcel-n",
+          "x": 1,
+          "z": -1.65,
+          "label": "North parcel"
+        },
+        {
+          "id": "parcel-s",
+          "x": 1,
+          "z": 1.65,
+          "label": "South parcel"
+        }
+      ],
+      "selected": "created-2",
+      "items": [
+        {
+          "id": "created-1",
+          "phrase": "two umbrellas",
+          "x": 1,
+          "z": -1.65,
+          "rot": 0,
+          "mass": 1,
+          "length": 2,
+          "capacity": 0,
+          "float": false,
+          "force": 0,
+          "evidence": {
+            "article": false,
+            "count": true,
+            "spelling": true,
+            "modifiers": false,
+            "order": false,
+            "family": false,
+            "assisted": false,
+            "shorthand": false
+          }
+        },
+        {
+          "id": "created-2",
+          "phrase": "two umbrellas",
+          "x": 1,
+          "z": 1.65,
+          "rot": 0,
+          "mass": 1,
+          "length": 2,
+          "capacity": 0,
+          "float": false,
+          "force": 0,
+          "evidence": {
+            "article": false,
+            "count": true,
+            "spelling": true,
+            "modifiers": false,
+            "order": false,
+            "family": false,
+            "assisted": false,
+            "shorthand": false
+          }
+        }
+      ],
+      "preview": null,
+      "learning": {
+        "attempts": 1,
+        "hints": 0,
+        "retries": 0,
+        "rejectedPhrases": 0,
+        "assisted": false,
+        "events": [
+          {
+            "type": "level-start",
+            "level": "g7-rain",
+            "at": 0.4,
+            "detail": {}
+          },
+          {
+            "type": "phrase-attempt",
+            "level": "g7-rain",
+            "at": 1,
+            "detail": {
+              "raw": "two umbrellas",
+              "number": 1,
+              "unaided": true,
+              "result": "accepted",
+              "assisted": false
+            }
+          },
+          {
+            "type": "create-place",
+            "level": "g7-rain",
+            "at": 1.2,
+            "detail": {
+              "id": "created-1",
+              "phrase": "two umbrellas",
+              "x": 1,
+              "z": -1.65,
+              "rot": 0,
+              "evidence": {
+                "article": false,
+                "count": true,
+                "spelling": true,
+                "modifiers": false,
+                "order": false,
+                "family": false,
+                "assisted": false,
+                "shorthand": false
+              }
+            }
+          },
+          {
+            "type": "create-place",
+            "level": "g7-rain",
+            "at": 1.6,
+            "detail": {
+              "id": "created-2",
+              "phrase": "two umbrellas",
+              "x": 1,
+              "z": 1.65,
+              "rot": 0,
+              "evidence": {
+                "article": false,
+                "count": true,
+                "spelling": true,
+                "modifiers": false,
+                "order": false,
+                "family": false,
+                "assisted": false,
+                "shorthand": false
+              }
+            }
+          },
+          {
+            "type": "world-solved",
+            "level": "g7-rain",
+            "at": 1.6,
+            "detail": {
+              "kind": "shelter"
+            }
+          }
+        ]
+      },
+      "completed": [],
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 0,
+        "cueTotal": 5,
+        "lastCue": "confirm",
+        "solved": true,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0.01997,
+        "loadError": ""
+      },
+      "models": {
+        "loaded": [
+          "courier",
+          "boat",
+          "balloon",
+          "lamp",
+          "crate"
+        ],
+        "errors": []
+      }
+    },
+    {
+      "name": "mobile-touch-landscape",
+      "mode": "explore",
+      "coordinateSystem": "x east/right, z south/down; y up; metres. gap lies across x at z=0.",
+      "level": "g7-rain",
+      "grade": 7,
+      "stage": "independent",
+      "layoutVariant": 0,
+      "objective": "Keep both parcels dry. They are too far apart for one ordinary cover.",
+      "player": {
+        "x": -3.542000000000002,
+        "z": 0.5,
+        "jump": 0
+      },
+      "world": {
+        "ready": true,
+        "contributors": [
+          "created-1",
+          "created-2"
+        ],
+        "traversable": false,
+        "mass": 1,
+        "covered": 2,
+        "capacity": 0,
+        "force": 0,
+        "reason": "2/2 חבילות נשארות יבשות. לכל חפץ אזור כיסוי אמיתי.",
+        "extras": {
+          "unlocked": false,
+          "illuminated": false
+        }
+      },
+      "zones": [
+        {
+          "id": "parcel-n",
+          "x": 1,
+          "z": -1.65,
+          "label": "North parcel"
+        },
+        {
+          "id": "parcel-s",
+          "x": 1,
+          "z": 1.65,
+          "label": "South parcel"
+        }
+      ],
+      "selected": "created-2",
+      "items": [
+        {
+          "id": "created-1",
+          "phrase": "two umbrellas",
+          "x": 1,
+          "z": -1.65,
+          "rot": 0,
+          "mass": 1,
+          "length": 2,
+          "capacity": 0,
+          "float": false,
+          "force": 0,
+          "evidence": {
+            "article": false,
+            "count": true,
+            "spelling": true,
+            "modifiers": false,
+            "order": false,
+            "family": false,
+            "assisted": false,
+            "shorthand": false
+          }
+        },
+        {
+          "id": "created-2",
+          "phrase": "two umbrellas",
+          "x": 1,
+          "z": 1.65,
+          "rot": 0,
+          "mass": 1,
+          "length": 2,
+          "capacity": 0,
+          "float": false,
+          "force": 0,
+          "evidence": {
+            "article": false,
+            "count": true,
+            "spelling": true,
+            "modifiers": false,
+            "order": false,
+            "family": false,
+            "assisted": false,
+            "shorthand": false
+          }
+        }
+      ],
+      "preview": null,
+      "learning": {
+        "attempts": 1,
+        "hints": 0,
+        "retries": 0,
+        "rejectedPhrases": 0,
+        "assisted": false,
+        "events": [
+          {
+            "type": "level-start",
+            "level": "g7-rain",
+            "at": 0.4,
+            "detail": {}
+          },
+          {
+            "type": "phrase-attempt",
+            "level": "g7-rain",
+            "at": 1,
+            "detail": {
+              "raw": "two umbrellas",
+              "number": 1,
+              "unaided": true,
+              "result": "accepted",
+              "assisted": false
+            }
+          },
+          {
+            "type": "create-place",
+            "level": "g7-rain",
+            "at": 1.2,
+            "detail": {
+              "id": "created-1",
+              "phrase": "two umbrellas",
+              "x": 1,
+              "z": -1.65,
+              "rot": 0,
+              "evidence": {
+                "article": false,
+                "count": true,
+                "spelling": true,
+                "modifiers": false,
+                "order": false,
+                "family": false,
+                "assisted": false,
+                "shorthand": false
+              }
+            }
+          },
+          {
+            "type": "create-place",
+            "level": "g7-rain",
+            "at": 1.6,
+            "detail": {
+              "id": "created-2",
+              "phrase": "two umbrellas",
+              "x": 1,
+              "z": 1.65,
+              "rot": 0,
+              "evidence": {
+                "article": false,
+                "count": true,
+                "spelling": true,
+                "modifiers": false,
+                "order": false,
+                "family": false,
+                "assisted": false,
+                "shorthand": false
+              }
+            }
+          },
+          {
+            "type": "world-solved",
+            "level": "g7-rain",
+            "at": 1.6,
+            "detail": {
+              "kind": "shelter"
+            }
+          }
+        ]
+      },
+      "completed": [],
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 0,
+        "cueTotal": 5,
+        "lastCue": "confirm",
+        "solved": true,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0.01288,
+        "loadError": ""
+      },
+      "models": {
+        "loaded": [
+          "courier",
+          "boat",
+          "balloon",
+          "lamp",
+          "crate"
+        ],
+        "errors": []
+      }
+    },
+    {
+      "name": "mobile-ferry-complete",
+      "mode": "complete",
+      "coordinateSystem": "x east/right, z south/down; y up; metres. gap lies across x at z=0.",
+      "level": "g7-inlet",
+      "grade": 7,
+      "stage": "transfer",
+      "layoutVariant": 0,
+      "objective": "Reach the far dock. The inlet is wider than the old crossing. What can carry you on water?",
+      "player": {
+        "x": 5.866666666666666,
+        "z": 0,
+        "jump": 0
+      },
+      "world": {
+        "ready": true,
+        "contributors": [
+          "created-3"
+        ],
+        "traversable": false,
+        "mass": 5,
+        "covered": 0,
+        "capacity": 12,
+        "force": 0,
+        "reason": "המעבורת צפה — E ליד הרציף, או חצו על הגשר.",
+        "extras": {
+          "unlocked": false,
+          "illuminated": false
+        }
+      },
+      "zones": [
+        {
+          "id": "ferry",
+          "x": 0,
+          "z": 0,
+          "label": "Mooring buoy"
+        }
+      ],
+      "selected": "created-3",
+      "items": [
+        {
+          "id": "created-3",
+          "phrase": "a boat",
+          "x": 0,
+          "z": 0,
+          "rot": 0,
+          "mass": 5,
+          "length": 3,
+          "capacity": 12,
+          "float": true,
+          "force": 0,
+          "evidence": {
+            "article": true,
+            "count": false,
+            "spelling": true,
+            "modifiers": false,
+            "order": false,
+            "family": false,
+            "assisted": false,
+            "shorthand": false
+          }
+        }
+      ],
+      "preview": null,
+      "learning": {
+        "attempts": 1,
+        "hints": 0,
+        "retries": 0,
+        "rejectedPhrases": 0,
+        "assisted": false,
+        "events": [
+          {
+            "type": "level-start",
+            "level": "g7-inlet",
+            "at": 3.8,
+            "detail": {}
+          },
+          {
+            "type": "phrase-attempt",
+            "level": "g7-inlet",
+            "at": 4.1,
+            "detail": {
+              "raw": "a boat",
+              "number": 1,
+              "unaided": true,
+              "result": "accepted",
+              "assisted": false
+            }
+          },
+          {
+            "type": "create-place",
+            "level": "g7-inlet",
+            "at": 4.2,
+            "detail": {
+              "id": "created-3",
+              "phrase": "a boat",
+              "x": 0,
+              "z": 0,
+              "rot": 0,
+              "evidence": {
+                "article": true,
+                "count": false,
+                "spelling": true,
+                "modifiers": false,
+                "order": false,
+                "family": false,
+                "assisted": false,
+                "shorthand": false
+              }
+            }
+          },
+          {
+            "type": "world-solved",
+            "level": "g7-inlet",
+            "at": 4.2,
+            "detail": {
+              "kind": "ferry"
+            }
+          },
+          {
+            "type": "use",
+            "level": "g7-inlet",
+            "at": 5.7,
+            "detail": {
+              "ready": true,
+              "player": {
+                "x": -2.834119999999999,
+                "z": 0.5,
+                "jump": 0
+              }
+            }
+          },
+          {
+            "type": "completion",
+            "level": "g7-inlet",
+            "at": 10.6,
+            "detail": {
+              "evidence": {
+                "article": true,
+                "count": false,
+                "spelling": true,
+                "modifiers": false,
+                "order": false,
+                "family": false
+              },
+              "unaidedSolution": true,
+              "singlePhraseFirstAttemptUnaided": true,
+              "assisted": false,
+              "hints": 0,
+              "retries": 0,
+              "attempts": 1,
+              "rejectedPhrases": 0
+            }
+          }
+        ]
+      },
+      "completed": [
+        "g7-inlet"
+      ],
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 1,
+        "cueTotal": 11,
+        "lastCue": "success",
+        "solved": true,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0.04131,
+        "loadError": ""
+      },
+      "models": {
+        "loaded": [
+          "courier",
+          "boat",
+          "balloon",
+          "lamp",
+          "crate"
+        ],
+        "errors": []
+      }
+    },
+    {
+      "name": "fullscreen-settled",
+      "entered": true,
+      "exited": false,
+      "mode": "paused"
+    },
+    {
+      "name": "manual-retyped-suggestion-assisted",
+      "mode": "explore",
+      "coordinateSystem": "x east/right, z south/down; y up; metres. gap lies across x at z=0.",
+      "level": "g7-crossing",
+      "grade": 7,
+      "stage": "guided",
+      "layoutVariant": 0,
+      "objective": "Help the courier cross the broken path.",
+      "player": {
+        "x": -6.5,
+        "z": 0.5,
+        "jump": 0
+      },
+      "world": {
+        "ready": true,
+        "contributors": [
+          "created-1"
+        ],
+        "traversable": true,
+        "mass": 3,
+        "covered": 0,
+        "capacity": 0,
+        "force": 0,
+        "reason": "שני הקצוות נתמכים. אפשר לחצות.",
+        "extras": {
+          "unlocked": false,
+          "illuminated": false
+        }
+      },
+      "zones": [
+        {
+          "id": "crossing",
+          "x": 0,
+          "z": 0,
+          "label": "Crossing · 2.4 m"
+        }
+      ],
+      "selected": "created-1",
+      "items": [
+        {
+          "id": "created-1",
+          "phrase": "a plank",
+          "x": 0,
+          "z": 0,
+          "rot": 0,
+          "mass": 3,
+          "length": 3.3,
+          "capacity": 0,
+          "float": false,
+          "force": 0,
+          "evidence": {
+            "article": false,
+            "count": false,
+            "spelling": false,
+            "modifiers": false,
+            "order": false,
+            "family": false,
+            "assisted": true,
+            "shorthand": false
+          }
+        }
+      ],
+      "preview": null,
+      "learning": {
+        "attempts": 2,
+        "hints": 0,
+        "retries": 0,
+        "rejectedPhrases": 1,
+        "assisted": true,
+        "events": [
+          {
+            "type": "level-start",
+            "level": "g7-crossing",
+            "at": 0,
+            "detail": {}
+          },
+          {
+            "type": "level-start",
+            "level": "g7-crossing",
+            "at": 0.3,
+            "detail": {}
+          },
+          {
+            "type": "pause",
+            "level": "g7-crossing",
+            "at": 0.4,
+            "detail": {}
+          },
+          {
+            "type": "resume",
+            "level": "g7-crossing",
+            "at": 0.5,
+            "detail": {}
+          },
+          {
+            "type": "phrase-attempt",
+            "level": "g7-crossing",
+            "at": 0.6,
+            "detail": {
+              "raw": "a plnak",
+              "number": 1,
+              "unaided": true,
+              "result": "unsupported-or-form",
+              "assisted": false
+            }
+          },
+          {
+            "type": "spelling-help-shown",
+            "level": "g7-crossing",
+            "at": 0.6,
+            "detail": {
+              "suggestion": "a plank"
+            }
+          },
+          {
+            "type": "phrase-attempt",
+            "level": "g7-crossing",
+            "at": 0.6,
+            "detail": {
+              "raw": "a plank",
+              "number": 2,
+              "unaided": false,
+              "result": "accepted",
+              "assisted": true
+            }
+          },
+          {
+            "type": "create-place",
+            "level": "g7-crossing",
+            "at": 0.6,
+            "detail": {
+              "id": "created-1",
+              "phrase": "a plank",
+              "x": 0,
+              "z": 0,
+              "rot": 0,
+              "evidence": {
+                "article": false,
+                "count": false,
+                "spelling": false,
+                "modifiers": false,
+                "order": false,
+                "family": false,
+                "assisted": true,
+                "shorthand": false
+              }
+            }
+          },
+          {
+            "type": "world-solved",
+            "level": "g7-crossing",
+            "at": 0.6,
+            "detail": {
+              "kind": "bridge"
+            }
+          }
+        ]
+      },
+      "completed": [],
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 5,
+        "cueTotal": 5,
+        "lastCue": "confirm",
+        "solved": true,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0.0254,
+        "loadError": ""
+      },
+      "models": {
+        "loaded": [
+          "courier",
+          "boat",
+          "balloon",
+          "lamp",
+          "crate"
+        ],
+        "errors": []
+      }
+    },
+    {
+      "name": "retyped-order-warning-assisted",
+      "mode": "explore",
+      "coordinateSystem": "x east/right, z south/down; y up; metres. gap lies across x at z=0.",
+      "level": "g7-crossing",
+      "grade": 7,
+      "stage": "guided",
+      "layoutVariant": 1,
+      "objective": "Help the courier cross the broken path.",
+      "player": {
+        "x": -6.5,
+        "z": 0.5,
+        "jump": 0
+      },
+      "world": {
+        "ready": false,
+        "contributors": [],
+        "traversable": false,
+        "mass": 5.2,
+        "covered": 0,
+        "capacity": 10,
+        "force": 0,
+        "reason": "צריך לכסות את המרווח ועוד 0.3 מ׳ בכל קצה. סובבו את החפץ לאורך ציר המעבר.",
+        "extras": {
+          "unlocked": false,
+          "illuminated": false
+        }
+      },
+      "zones": [
+        {
+          "id": "crossing",
+          "x": 0,
+          "z": 0,
+          "label": "Crossing · 2.4 m"
+        }
+      ],
+      "selected": "created-2",
+      "items": [
+        {
+          "id": "created-2",
+          "phrase": "a large wooden crate",
+          "x": 0,
+          "z": 0,
+          "rot": 0,
+          "mass": 5.2,
+          "length": 1.92,
+          "capacity": 10,
+          "float": true,
+          "force": 0,
+          "evidence": {
+            "article": false,
+            "count": false,
+            "spelling": false,
+            "modifiers": false,
+            "order": false,
+            "family": false,
+            "assisted": true,
+            "shorthand": false
+          }
+        }
+      ],
+      "preview": null,
+      "learning": {
+        "attempts": 2,
+        "hints": 0,
+        "retries": 0,
+        "rejectedPhrases": 0,
+        "assisted": true,
+        "events": [
+          {
+            "type": "pause",
+            "level": "g7-crossing",
+            "at": 0.4,
+            "detail": {}
+          },
+          {
+            "type": "resume",
+            "level": "g7-crossing",
+            "at": 0.5,
+            "detail": {}
+          },
+          {
+            "type": "phrase-attempt",
+            "level": "g7-crossing",
+            "at": 0.6,
+            "detail": {
+              "raw": "a plnak",
+              "number": 1,
+              "unaided": true,
+              "result": "unsupported-or-form",
+              "assisted": false
+            }
+          },
+          {
+            "type": "spelling-help-shown",
+            "level": "g7-crossing",
+            "at": 0.6,
+            "detail": {
+              "suggestion": "a plank"
+            }
+          },
+          {
+            "type": "phrase-attempt",
+            "level": "g7-crossing",
+            "at": 0.6,
+            "detail": {
+              "raw": "a plank",
+              "number": 2,
+              "unaided": false,
+              "result": "accepted",
+              "assisted": true
+            }
+          },
+          {
+            "type": "create-place",
+            "level": "g7-crossing",
+            "at": 0.6,
+            "detail": {
+              "id": "created-1",
+              "phrase": "a plank",
+              "x": 0,
+              "z": 0,
+              "rot": 0,
+              "evidence": {
+                "article": false,
+                "count": false,
+                "spelling": false,
+                "modifiers": false,
+                "order": false,
+                "family": false,
+                "assisted": true,
+                "shorthand": false
+              }
+            }
+          },
+          {
+            "type": "world-solved",
+            "level": "g7-crossing",
+            "at": 0.6,
+            "detail": {
+              "kind": "bridge"
+            }
+          },
+          {
+            "type": "level-start",
+            "level": "g7-crossing",
+            "at": 0.6,
+            "detail": {}
+          },
+          {
+            "type": "phrase-attempt",
+            "level": "g7-crossing",
+            "at": 0.7,
+            "detail": {
+              "raw": "a wooden large crate",
+              "number": 1,
+              "unaided": true,
+              "result": "accepted",
+              "assisted": false
+            }
+          },
+          {
+            "type": "order-help-shown",
+            "level": "g7-crossing",
+            "at": 0.7,
+            "detail": {
+              "feedback": "בצירוף שנלמד כאן הגודל קודם לחומר: a large wooden crate. החפץ ייווצר, אבל סדר התארים לא נספר כהפקה בדגם שנלמד."
+            }
+          },
+          {
+            "type": "phrase-attempt",
+            "level": "g7-crossing",
+            "at": 0.8,
+            "detail": {
+              "raw": "a large wooden crate",
+              "number": 2,
+              "unaided": false,
+              "result": "accepted",
+              "assisted": true
+            }
+          },
+          {
+            "type": "create-place",
+            "level": "g7-crossing",
+            "at": 0.8,
+            "detail": {
+              "id": "created-2",
+              "phrase": "a large wooden crate",
+              "x": 0,
+              "z": 0,
+              "rot": 0,
+              "evidence": {
+                "article": false,
+                "count": false,
+                "spelling": false,
+                "modifiers": false,
+                "order": false,
+                "family": false,
+                "assisted": true,
+                "shorthand": false
+              }
+            }
+          }
+        ]
+      },
+      "completed": [],
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 7,
+        "cueTotal": 10,
+        "lastCue": "wood",
+        "solved": false,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0.07322,
+        "loadError": ""
+      },
+      "models": {
+        "loaded": [
+          "courier",
+          "boat",
+          "balloon",
+          "lamp",
+          "crate"
+        ],
+        "errors": []
+      }
+    },
+    {
+      "result": "all mobile and assistance assertions passed"
+    }
+  ],
+  "errors": []
+}

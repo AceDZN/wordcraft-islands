@@ -1,0 +1,191 @@
+{
+  "passed": true,
+  "records": [
+    {
+      "label": "bridge physically ready",
+      "mode": "explore",
+      "player": {
+        "x": -6.5,
+        "z": 0.5,
+        "jump": 0
+      },
+      "world": {
+        "ready": true,
+        "contributors": [
+          "created-1"
+        ],
+        "traversable": true,
+        "mass": 3,
+        "covered": 0,
+        "capacity": 0,
+        "force": 0,
+        "reason": "שני הקצוות נתמכים. אפשר לחצות.",
+        "extras": {
+          "unlocked": false,
+          "illuminated": false
+        }
+      },
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 2,
+        "cueTotal": 4,
+        "lastCue": "confirm",
+        "solved": true,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0.01377,
+        "loadError": ""
+      }
+    },
+    {
+      "label": "completion flourish audible",
+      "mode": "complete",
+      "player": {
+        "x": 5.739999999999996,
+        "z": 0.5,
+        "jump": 0
+      },
+      "world": {
+        "ready": true,
+        "contributors": [
+          "created-1"
+        ],
+        "traversable": true,
+        "mass": 3,
+        "covered": 0,
+        "capacity": 0,
+        "force": 0,
+        "reason": "שני הקצוות נתמכים. אפשר לחצות.",
+        "extras": {
+          "unlocked": false,
+          "illuminated": false
+        }
+      },
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 1,
+        "cueTotal": 5,
+        "lastCue": "success",
+        "solved": true,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0.0113,
+        "loadError": ""
+      }
+    },
+    {
+      "label": "flourish ended naturally",
+      "mode": "complete",
+      "player": {
+        "x": 5.739999999999996,
+        "z": 0.5,
+        "jump": 0
+      },
+      "world": {
+        "ready": true,
+        "contributors": [
+          "created-1"
+        ],
+        "traversable": true,
+        "mass": 3,
+        "covered": 0,
+        "capacity": 0,
+        "force": 0,
+        "reason": "שני הקצוות נתמכים. אפשר לחצות.",
+        "extras": {
+          "unlocked": false,
+          "illuminated": false
+        }
+      },
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 0,
+        "cueTotal": 5,
+        "lastCue": "success",
+        "solved": true,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0.00667,
+        "loadError": ""
+      }
+    },
+    {
+      "label": "next island clears hopeful stem",
+      "mode": "explore",
+      "player": {
+        "x": -6.5,
+        "z": 0.5,
+        "jump": 0
+      },
+      "world": {
+        "ready": false,
+        "contributors": [],
+        "traversable": false,
+        "mass": 0,
+        "covered": 0,
+        "capacity": 0,
+        "force": 0,
+        "reason": "0/2 חבילות נשארות יבשות. לכל חפץ אזור כיסוי אמיתי.",
+        "extras": {
+          "unlocked": false,
+          "illuminated": false
+        }
+      },
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 0,
+        "cueTotal": 5,
+        "lastCue": "success",
+        "solved": false,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0.00955,
+        "loadError": ""
+      }
+    }
+  ]
+}

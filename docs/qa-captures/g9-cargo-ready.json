@@ -1,0 +1,207 @@
+{
+  "mode": "explore",
+  "coordinateSystem": "x east/right, z south/down; y up; metres. gap lies across x at z=0.",
+  "level": "g9-cargo",
+  "grade": 9,
+  "stage": "guided",
+  "objective": "Carry 8 parcels across the inlet in one floating container. Describe both its size and material.",
+  "player": {
+    "x": -6.5,
+    "z": 0.5,
+    "jump": 0
+  },
+  "world": {
+    "ready": true,
+    "contributors": [
+      "created-11"
+    ],
+    "traversable": false,
+    "mass": 5.2,
+    "covered": 0,
+    "capacity": 10,
+    "force": 0,
+    "reason": "המטען צף בכלי שמכיל לפחות 8 חבילות. E להפלגה.",
+    "extras": {
+      "unlocked": false,
+      "illuminated": false
+    }
+  },
+  "zones": [
+    {
+      "id": "cargo",
+      "x": 0,
+      "z": 0,
+      "label": "Cargo berth · 8 parcels"
+    }
+  ],
+  "selected": "created-11",
+  "items": [
+    {
+      "id": "created-11",
+      "phrase": "a large wooden crate",
+      "x": 0,
+      "z": 0,
+      "rot": 0,
+      "mass": 5.2,
+      "length": 1.92,
+      "capacity": 10,
+      "float": true,
+      "force": 0,
+      "evidence": {
+        "article": true,
+        "count": false,
+        "spelling": true,
+        "modifiers": true,
+        "order": true,
+        "family": false,
+        "assisted": false,
+        "shorthand": false
+      }
+    }
+  ],
+  "preview": null,
+  "learning": {
+    "attempts": 2,
+    "hints": 0,
+    "retries": 1,
+    "assisted": false,
+    "events": [
+      {
+        "type": "level-start",
+        "level": "g9-cargo",
+        "at": 32,
+        "detail": {}
+      },
+      {
+        "type": "level-start",
+        "level": "g9-cargo",
+        "at": 32,
+        "detail": {}
+      },
+      {
+        "type": "level-start",
+        "level": "g9-cargo",
+        "at": 32,
+        "detail": {}
+      },
+      {
+        "type": "phrase-attempt",
+        "level": "g9-cargo",
+        "at": 32.1,
+        "detail": {
+          "raw": "a large metal crate",
+          "result": "accepted",
+          "assisted": false
+        }
+      },
+      {
+        "type": "create-place",
+        "level": "g9-cargo",
+        "at": 32.1,
+        "detail": {
+          "id": "created-10",
+          "phrase": "a large metal crate",
+          "x": 0,
+          "z": 0,
+          "rot": 0,
+          "evidence": {
+            "article": true,
+            "count": false,
+            "spelling": true,
+            "modifiers": true,
+            "order": true,
+            "family": false,
+            "assisted": false,
+            "shorthand": false
+          }
+        }
+      },
+      {
+        "type": "undo",
+        "level": "g9-cargo",
+        "at": 32.4,
+        "detail": {}
+      },
+      {
+        "type": "phrase-attempt",
+        "level": "g9-cargo",
+        "at": 32.4,
+        "detail": {
+          "raw": "a large wooden crate",
+          "result": "accepted",
+          "assisted": false
+        }
+      },
+      {
+        "type": "create-place",
+        "level": "g9-cargo",
+        "at": 32.4,
+        "detail": {
+          "id": "created-11",
+          "phrase": "a large wooden crate",
+          "x": 0,
+          "z": 0,
+          "rot": 0,
+          "evidence": {
+            "article": true,
+            "count": false,
+            "spelling": true,
+            "modifiers": true,
+            "order": true,
+            "family": false,
+            "assisted": false,
+            "shorthand": false
+          }
+        }
+      },
+      {
+        "type": "world-solved",
+        "level": "g9-cargo",
+        "at": 32.4,
+        "detail": {
+          "kind": "cargo"
+        }
+      }
+    ]
+  },
+  "completed": [
+    "g7-crossing",
+    "g7-rain",
+    "g7-inlet",
+    "g8-length",
+    "g8-weight",
+    "g8-history"
+  ],
+  "audio": {
+    "state": "running",
+    "sampleRate": 22050,
+    "requested": true,
+    "paused": false,
+    "hidden": false,
+    "loaded": 17,
+    "loops": 3,
+    "oneShots": 4,
+    "cueTotal": 56,
+    "lastCue": "confirm",
+    "solved": true,
+    "ducked": false,
+    "gains": {
+      "music": 0.48,
+      "sfx": 0.58,
+      "voice": 0.85,
+      "master": 0.75
+    },
+    "rms": 0.01433,
+    "loadError": ""
+  },
+  "models": {
+    "loaded": [
+      "courier",
+      "boat",
+      "balloon",
+      "lamp",
+      "crate"
+    ],
+    "errors": []
+  }
+}

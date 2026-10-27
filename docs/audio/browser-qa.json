@@ -1,0 +1,719 @@
+{
+  "passed": true,
+  "browser": "156.0.8078.4",
+  "peakRms": 0.028,
+  "errors": [],
+  "records": [
+    {
+      "label": "before gesture",
+      "audio": {
+        "state": "locked",
+        "sampleRate": 0,
+        "requested": false,
+        "paused": true,
+        "hidden": false,
+        "loaded": 0,
+        "loops": 0,
+        "oneShots": 0,
+        "cueTotal": 0,
+        "lastCue": "",
+        "solved": false,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0,
+        "loadError": ""
+      },
+      "mode": "welcome"
+    },
+    {
+      "label": "after Start",
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 0,
+        "cueTotal": 0,
+        "lastCue": "",
+        "solved": false,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0.00913,
+        "loadError": ""
+      },
+      "mode": "explore"
+    },
+    {
+      "label": "playback signal 0",
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 0,
+        "cueTotal": 0,
+        "lastCue": "",
+        "solved": false,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0.00913,
+        "loadError": ""
+      },
+      "mode": "explore"
+    },
+    {
+      "label": "playback signal 1",
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 0,
+        "cueTotal": 0,
+        "lastCue": "",
+        "solved": false,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0.00562,
+        "loadError": ""
+      },
+      "mode": "explore"
+    },
+    {
+      "label": "playback signal 2",
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 0,
+        "cueTotal": 0,
+        "lastCue": "",
+        "solved": false,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0.01632,
+        "loadError": ""
+      },
+      "mode": "explore"
+    },
+    {
+      "label": "playback signal 3",
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 0,
+        "cueTotal": 0,
+        "lastCue": "",
+        "solved": false,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0.01602,
+        "loadError": ""
+      },
+      "mode": "explore"
+    },
+    {
+      "label": "playback signal 4",
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 0,
+        "cueTotal": 0,
+        "lastCue": "",
+        "solved": false,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0.028,
+        "loadError": ""
+      },
+      "mode": "explore"
+    },
+    {
+      "label": "playback signal 5",
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 0,
+        "cueTotal": 0,
+        "lastCue": "",
+        "solved": false,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0.01514,
+        "loadError": ""
+      },
+      "mode": "explore"
+    },
+    {
+      "label": "notebook cue",
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 1,
+        "cueTotal": 1,
+        "lastCue": "notebook",
+        "solved": false,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0.02446,
+        "loadError": ""
+      },
+      "mode": "notebook"
+    },
+    {
+      "label": "create cue",
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 1,
+        "cueTotal": 2,
+        "lastCue": "create",
+        "solved": false,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0.00912,
+        "loadError": ""
+      },
+      "mode": "placement"
+    },
+    {
+      "label": "wood placement cue",
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 2,
+        "cueTotal": 4,
+        "lastCue": "confirm",
+        "solved": true,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0.05417,
+        "loadError": ""
+      },
+      "mode": "explore"
+    },
+    {
+      "label": "undo cue",
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 1,
+        "cueTotal": 5,
+        "lastCue": "undo",
+        "solved": false,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0.03511,
+        "loadError": ""
+      },
+      "mode": "explore"
+    },
+    {
+      "label": "settings pauses audio",
+      "audio": {
+        "state": "suspended",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": true,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 0,
+        "cueTotal": 5,
+        "lastCue": "undo",
+        "solved": false,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0,
+        "loadError": ""
+      },
+      "mode": "explore"
+    },
+    {
+      "label": "independent settings",
+      "audio": {
+        "state": "suspended",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": true,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 0,
+        "cueTotal": 5,
+        "lastCue": "undo",
+        "solved": false,
+        "ducked": false,
+        "gains": {
+          "music": 0,
+          "sfx": 0,
+          "voice": 0.31,
+          "master": 0.64
+        },
+        "rms": 0,
+        "loadError": ""
+      },
+      "mode": "explore"
+    },
+    {
+      "label": "muted music and SFX",
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 0,
+        "cueTotal": 5,
+        "lastCue": "undo",
+        "solved": false,
+        "ducked": false,
+        "gains": {
+          "music": 0,
+          "sfx": 0,
+          "voice": 0.31,
+          "master": 0.64
+        },
+        "rms": 0,
+        "loadError": ""
+      },
+      "mode": "explore"
+    },
+    {
+      "label": "master mute",
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 0,
+        "cueTotal": 5,
+        "lastCue": "undo",
+        "solved": false,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0
+        },
+        "rms": 0,
+        "loadError": ""
+      },
+      "mode": "explore"
+    },
+    {
+      "label": "pause button",
+      "audio": {
+        "state": "suspended",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": true,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 0,
+        "cueTotal": 5,
+        "lastCue": "undo",
+        "solved": false,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0,
+        "loadError": ""
+      },
+      "mode": "paused"
+    },
+    {
+      "label": "resume button",
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 0,
+        "cueTotal": 5,
+        "lastCue": "undo",
+        "solved": false,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0.00909,
+        "loadError": ""
+      },
+      "mode": "explore"
+    },
+    {
+      "label": "restart 1",
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 0,
+        "cueTotal": 5,
+        "lastCue": "undo",
+        "solved": false,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0.0126,
+        "loadError": ""
+      },
+      "mode": "explore"
+    },
+    {
+      "label": "restart 2",
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 0,
+        "cueTotal": 5,
+        "lastCue": "undo",
+        "solved": false,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0.01153,
+        "loadError": ""
+      },
+      "mode": "explore"
+    },
+    {
+      "label": "restart 3",
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 0,
+        "cueTotal": 5,
+        "lastCue": "undo",
+        "solved": false,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0.00518,
+        "loadError": ""
+      },
+      "mode": "explore"
+    },
+    {
+      "label": "restart 4",
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 0,
+        "cueTotal": 5,
+        "lastCue": "undo",
+        "solved": false,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0.02246,
+        "loadError": ""
+      },
+      "mode": "explore"
+    },
+    {
+      "label": "actual second-tab visibility",
+      "documentHidden": false
+    },
+    {
+      "label": "actual tab foreground",
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 0,
+        "cueTotal": 5,
+        "lastCue": "undo",
+        "solved": false,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0.0124,
+        "loadError": ""
+      },
+      "mode": "explore"
+    },
+    {
+      "label": "synthetic window blur listener",
+      "audio": {
+        "state": "suspended",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": true,
+        "hidden": true,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 0,
+        "cueTotal": 5,
+        "lastCue": "undo",
+        "solved": false,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0,
+        "loadError": ""
+      },
+      "mode": "explore"
+    },
+    {
+      "label": "synthetic window focus listener",
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 0,
+        "cueTotal": 5,
+        "lastCue": "undo",
+        "solved": false,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0.01852,
+        "loadError": ""
+      },
+      "mode": "explore"
+    },
+    {
+      "label": "preview link",
+      "status": 200,
+      "bytes": 2293244
+    },
+    {
+      "label": "reload persistence",
+      "audio": {
+        "state": "locked",
+        "sampleRate": 0,
+        "requested": false,
+        "paused": true,
+        "hidden": false,
+        "loaded": 0,
+        "loops": 0,
+        "oneShots": 0,
+        "cueTotal": 0,
+        "lastCue": "",
+        "solved": false,
+        "ducked": false,
+        "gains": {
+          "music": 0.37,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0,
+        "loadError": ""
+      },
+      "mode": "welcome"
+    },
+    {
+      "label": "fresh Start after reload",
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 0,
+        "cueTotal": 0,
+        "lastCue": "",
+        "solved": false,
+        "ducked": false,
+        "gains": {
+          "music": 0.37,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0.01556,
+        "loadError": ""
+      },
+      "mode": "explore"
+    }
+  ]
+}

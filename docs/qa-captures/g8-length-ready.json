@@ -1,0 +1,204 @@
+{
+  "mode": "explore",
+  "coordinateSystem": "x east/right, z south/down; y up; metres. gap lies across x at z=0.",
+  "level": "g8-length",
+  "grade": 8,
+  "stage": "guided",
+  "objective": "Build a crossing longer than the 4.2 m gap. The short sample is only 1.8 m.",
+  "player": {
+    "x": -6.5,
+    "z": 0.5,
+    "jump": 0
+  },
+  "world": {
+    "ready": true,
+    "contributors": [
+      "created-7"
+    ],
+    "traversable": true,
+    "mass": 4,
+    "covered": 0,
+    "capacity": 0,
+    "force": 0,
+    "reason": "שני הקצוות נתמכים. אפשר לחצות.",
+    "extras": {
+      "unlocked": false,
+      "illuminated": false
+    }
+  },
+  "zones": [
+    {
+      "id": "crossing",
+      "x": 0,
+      "z": 0,
+      "label": "Crossing · 4.2 m"
+    }
+  ],
+  "selected": "created-7",
+  "items": [
+    {
+      "id": "created-7",
+      "phrase": "a long ladder",
+      "x": 0,
+      "z": 0,
+      "rot": 0,
+      "mass": 4,
+      "length": 6.8,
+      "capacity": 0,
+      "float": false,
+      "force": 0,
+      "evidence": {
+        "article": true,
+        "count": false,
+        "spelling": true,
+        "modifiers": false,
+        "order": false,
+        "family": false,
+        "assisted": false,
+        "shorthand": false
+      }
+    }
+  ],
+  "preview": null,
+  "learning": {
+    "attempts": 2,
+    "hints": 0,
+    "retries": 1,
+    "assisted": false,
+    "events": [
+      {
+        "type": "level-start",
+        "level": "g8-length",
+        "at": 17.8,
+        "detail": {}
+      },
+      {
+        "type": "level-start",
+        "level": "g8-length",
+        "at": 17.8,
+        "detail": {}
+      },
+      {
+        "type": "level-start",
+        "level": "g8-length",
+        "at": 17.8,
+        "detail": {}
+      },
+      {
+        "type": "phrase-attempt",
+        "level": "g8-length",
+        "at": 17.9,
+        "detail": {
+          "raw": "a short plank",
+          "result": "accepted",
+          "assisted": false
+        }
+      },
+      {
+        "type": "create-place",
+        "level": "g8-length",
+        "at": 17.9,
+        "detail": {
+          "id": "created-6",
+          "phrase": "a short plank",
+          "x": 0,
+          "z": 0,
+          "rot": 0,
+          "evidence": {
+            "article": true,
+            "count": false,
+            "spelling": true,
+            "modifiers": false,
+            "order": false,
+            "family": false,
+            "assisted": false,
+            "shorthand": false
+          }
+        }
+      },
+      {
+        "type": "undo",
+        "level": "g8-length",
+        "at": 18,
+        "detail": {}
+      },
+      {
+        "type": "phrase-attempt",
+        "level": "g8-length",
+        "at": 18.1,
+        "detail": {
+          "raw": "a long ladder",
+          "result": "accepted",
+          "assisted": false
+        }
+      },
+      {
+        "type": "create-place",
+        "level": "g8-length",
+        "at": 18.1,
+        "detail": {
+          "id": "created-7",
+          "phrase": "a long ladder",
+          "x": 0,
+          "z": 0,
+          "rot": 0,
+          "evidence": {
+            "article": true,
+            "count": false,
+            "spelling": true,
+            "modifiers": false,
+            "order": false,
+            "family": false,
+            "assisted": false,
+            "shorthand": false
+          }
+        }
+      },
+      {
+        "type": "world-solved",
+        "level": "g8-length",
+        "at": 18.1,
+        "detail": {
+          "kind": "bridge"
+        }
+      }
+    ]
+  },
+  "completed": [
+    "g7-crossing",
+    "g7-rain",
+    "g7-inlet"
+  ],
+  "audio": {
+    "state": "running",
+    "sampleRate": 22050,
+    "requested": true,
+    "paused": false,
+    "hidden": false,
+    "loaded": 17,
+    "loops": 3,
+    "oneShots": 4,
+    "cueTotal": 30,
+    "lastCue": "confirm",
+    "solved": true,
+    "ducked": false,
+    "gains": {
+      "music": 0.48,
+      "sfx": 0.58,
+      "voice": 0.85,
+      "master": 0.75
+    },
+    "rms": 0.01657,
+    "loadError": ""
+  },
+  "models": {
+    "loaded": [
+      "courier",
+      "boat",
+      "balloon",
+      "lamp",
+      "crate"
+    ],
+    "errors": []
+  }
+}

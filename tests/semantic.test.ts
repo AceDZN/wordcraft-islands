@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { parsePhrase, makeItem, evaluatePlacement, type Item, type Level } from '../src/rules';
+import { parsePhrase, makeItem, evaluatePlacement, evaluateExtras, supportsBothBanks, supportsPoint, modeledPhrase, type Item, type Level } from '../src/rules';
 import { levels } from '../src/levels';
 
 const level = (id:string):Level => { const found=levels.find(l=>l.id===id); assert.ok(found,id); return found; };
@@ -187,4 +187,53 @@ test('G9 transfer combines cargo and identified force with multiple valid contai
  assert.equal(ready(l.id,[itemAt(l,'a large wooden crate')]),false);
  assert.equal(ready(l.id,[itemAt(l,'a large wooden crate'),itemAt(l,'a powerful fan','fountain-fan',1)]),false);
  assert.equal(ready(l.id,[itemAt(l,'a large metal crate'),f]),false);
+});
+
+
+test('only relevant solved objects contribute evidence, not a parked vocabulary display',()=>{
+ const l=level('g9-cargo');const vessel=itemAt(l,'a boat','vessel');const distractor=makeItem('a large powerful fan','unrelated',-7,3);
+ const result=evaluatePlacement(l,[vessel,distractor]);assert.ok(result.ready);assert.deepEqual(result.contributors,['vessel']);
+ assert.equal(vessel.spec.evidence.modifiers,false);assert.equal(vessel.spec.evidence.family,false);
+});
+
+test('optional key and lamp have location/property consequences',()=>{
+ assert.deepEqual(evaluateExtras([]),{unlocked:false,illuminated:false});
+ assert.equal(evaluateExtras([makeItem('a key','k',4.5,2.6)]).unlocked,true);
+ assert.equal(evaluateExtras([makeItem('a key','k',0,0)]).unlocked,false);
+ assert.equal(evaluateExtras([makeItem('an unlit lamp','l',7,2.5)]).illuminated,false);
+ assert.equal(evaluateExtras([makeItem('a bright lamp','l',7,2.5)]).illuminated,true);
+ assert.equal(evaluateExtras([makeItem('a bright lamp','l',-7,2.5)]).illuminated,false);
+});
+
+
+test('bridge endpoints both reach bank supports even when object center is shifted',()=>{
+ const l=level('g7-crossing');const ordinary=makeItem('a plank','p',.5,0);
+ assert.equal(supportsBothBanks(l,ordinary),false);assert.equal(evaluatePlacement(l,[ordinary]).ready,false);
+ ordinary.x=.15;assert.ok(supportsBothBanks(l,ordinary));
+ const long=makeItem('a long plank','long',1.5,0);assert.ok(supportsBothBanks(l,long));assert.ok(evaluatePlacement(l,[long]).ready);
+});
+
+test('traversal support follows actual narrow rope and wider plank rectangles',()=>{
+ const l=level('g7-crossing'),rope=makeItem('a rope'),plank=makeItem('a plank');
+ assert.ok(supportsPoint(l,[rope],0,0));assert.equal(supportsPoint(l,[rope],0,.5),false);
+ assert.ok(supportsPoint(l,[plank],0,.5));assert.equal(supportsPoint(l,[plank],0,.6),false);
+ assert.equal(supportsPoint(l,[plank],2.5,0),false);
+ const rotated=makeItem('a long plank');rotated.rot=.3;assert.ok(supportsPoint(l,[rotated],0,0));
+ assert.equal(supportsPoint(l,[rotated],0,1),false);
+});
+
+
+test('editor full-phrase model follows supported sound/count while shorthand earns no article/count credit',()=>{
+ for(const [raw,modeled] of [['plank','a plank'],['umbrella','an umbrella'],['large umbrella','a large umbrella'],['unlit lamp','an unlit lamp'],['umbrellas','two umbrellas']]){
+  const value=spec(raw);assert.equal(modeledPhrase(value),modeled);assert.equal(value.evidence.article,false);assert.equal(value.evidence.count,false);
+ }
+});
+
+
+test('modifier evidence requires distinct meanings rather than repeated or synonymous words',()=>{
+ assert.equal(spec('a large large crate').evidence.modifiers,false);
+ assert.equal(spec('a large big crate').evidence.modifiers,false);
+ assert.equal(spec('a wooden wooden crate').evidence.modifiers,false);
+ assert.equal(spec('a large wooden crate').evidence.modifiers,true);
+ assert.equal(spec('a heavy powerful fan').evidence.modifiers,true);
 });

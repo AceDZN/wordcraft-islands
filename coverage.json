@@ -1,0 +1,255 @@
+{
+  "schemaVersion": 1,
+  "game": "Wordcraft Islands",
+  "date": "2026-10-27",
+  "scope": "Selected rules only; three grade tracks and three authored challenges each.",
+  "entries": [
+    {
+      "grade": 7,
+      "chapter": 11,
+      "module": "nouns-plurals-and-articles",
+      "url": "https://english.workbook.co.il/grade-7/chapter-11/nouns-plurals-and-articles",
+      "challengeIds": [
+        "g7-crossing",
+        "g7-rain",
+        "g7-inlet"
+      ],
+      "skill": "Produce reviewed singular/plural noun phrases and a/an according to the following sound.",
+      "evidenceRule": "Explicit determiner or numeral in an accepted causal phrase, without shown solutions or corrections.",
+      "assistanceConditions": [
+        "shown teaching or hint",
+        "dictionary/translation opened",
+        "shown spelling suggestion or order model",
+        "explicit article/count/family correction",
+        "platform read-aloud requested"
+      ],
+      "tests": [
+        "article follows the next spoken sound in the supported vocabulary",
+        "singular and plural count agreement creates actual quantities"
+      ],
+      "browserEvidence": "docs/qa-captures/summary.json",
+      "status": "verified"
+    },
+    {
+      "grade": 7,
+      "chapter": 12,
+      "module": "vocabulary-and-spelling-guide",
+      "url": "https://english.workbook.co.il/grade-7/chapter-12/vocabulary-and-spelling-guide",
+      "challengeIds": [
+        "g7-crossing",
+        "g7-rain",
+        "g7-inlet"
+      ],
+      "skill": "Retrieve and spell the small contextual object vocabulary, revise after consequences.",
+      "evidenceRule": "Typed accepted noun in an object contributing to the solution; dictionary and shown spelling suggestion or order models are assisted.",
+      "assistanceConditions": [
+        "shown teaching or hint",
+        "dictionary/translation opened",
+        "shown spelling suggestion or order model",
+        "explicit article/count/family correction",
+        "platform read-aloud requested"
+      ],
+      "tests": [
+        "near-spelling is proposed, never silently accepted as unaided spelling",
+        "transfer ferry permits a boat or physically long alternate bridge"
+      ],
+      "browserEvidence": "docs/qa-captures/summary.json",
+      "status": "verified"
+    },
+    {
+      "grade": 8,
+      "chapter": 11,
+      "module": "adjectives-and-comparison",
+      "url": "https://english.workbook.co.il/grade-8/chapter-11/adjectives-and-comparison",
+      "challengeIds": [
+        "g8-length",
+        "g8-weight",
+        "g8-history"
+      ],
+      "skill": "Interpret longer than and heavier than against actual measured quantities.",
+      "evidenceRule": "Successful span end support or strict mass comparison, then physical traversal. No comparative-form production claim.",
+      "assistanceConditions": [
+        "shown teaching or hint",
+        "dictionary/translation opened",
+        "shown spelling suggestion or order model",
+        "explicit article/count/family correction",
+        "platform read-aloud requested"
+      ],
+      "tests": [
+        "same-looking crossing with longer gap changes valid property action",
+        "strict heavier-than boundary respects the comparison reference"
+      ],
+      "browserEvidence": "docs/qa-captures/summary.json",
+      "status": "verified"
+    },
+    {
+      "grade": 8,
+      "chapter": 11,
+      "module": "relative-clauses-reference",
+      "url": "https://english.workbook.co.il/grade-8/chapter-11/relative-clauses-reference",
+      "challengeIds": [
+        "g8-history"
+      ],
+      "skill": "Identify one of two matching crates from persistent actor/location history.",
+      "evidenceRule": "Medicine crate itself exceeds reference mass and occupies the pressure plate; garden crate cannot substitute.",
+      "assistanceConditions": [
+        "shown teaching or hint",
+        "dictionary/translation opened",
+        "shown spelling suggestion or order model",
+        "explicit article/count/family correction",
+        "platform read-aloud requested"
+      ],
+      "tests": [
+        "history changes the valid crate while preserving identical visible noun",
+        "unrelated weight cannot substitute for making the identified medicine crate heavier"
+      ],
+      "browserEvidence": "docs/qa-captures/summary.json",
+      "status": "verified"
+    },
+    {
+      "grade": 8,
+      "chapter": 12,
+      "module": "vocabulary-context-and-word-choice",
+      "url": "https://english.workbook.co.il/grade-8/chapter-12/vocabulary-context-and-word-choice",
+      "challengeIds": [
+        "g8-length",
+        "g8-weight",
+        "g8-history"
+      ],
+      "skill": "Choose physical descriptors according to the stated need.",
+      "evidenceRule": "Selected property changes length/mass and resulting available route.",
+      "assistanceConditions": [
+        "shown teaching or hint",
+        "dictionary/translation opened",
+        "shown spelling suggestion or order model",
+        "explicit article/count/family correction",
+        "platform read-aloud requested"
+      ],
+      "tests": [
+        "weight comparative uses real mass rather than size or noun password"
+      ],
+      "browserEvidence": "docs/qa-captures/summary.json",
+      "status": "verified"
+    },
+    {
+      "grade": 9,
+      "chapter": 11,
+      "module": "nouns-and-noun-modifiers-reference",
+      "url": "https://english.workbook.co.il/grade-9/chapter-11/nouns-and-noun-modifiers-reference",
+      "challengeIds": [
+        "g9-cargo",
+        "g9-storm"
+      ],
+      "skill": "Combine size and material in reviewed noun phrases.",
+      "evidenceRule": "At least two distinct modifier categories in the taught order on a causal object, without assistance. Alternatives still win without falsely earning this evidence.",
+      "assistanceConditions": [
+        "shown teaching or hint",
+        "dictionary/translation opened",
+        "shown spelling suggestion or order model",
+        "explicit article/count/family correction",
+        "platform read-aloud requested"
+      ],
+      "tests": [
+        "size and material independently change cargo capacity/floatability",
+        "order production needs two modifiers, not a vacuous one-word check"
+      ],
+      "browserEvidence": "docs/qa-captures/summary.json",
+      "status": "verified"
+    },
+    {
+      "grade": 9,
+      "chapter": 11,
+      "module": "relative-clauses-reference",
+      "url": "https://english.workbook.co.il/grade-9/chapter-11/relative-clauses-reference",
+      "challengeIds": [
+        "g9-power",
+        "g9-storm"
+      ],
+      "skill": "Distinguish a named known fan from a fan identified by actor/location.",
+      "evidenceRule": "Fan A identity remains stable despite shared additional information; tree fan selected for defining description. No independent score for non-defining-clause comprehension or clause production.",
+      "assistanceConditions": [
+        "shown teaching or hint",
+        "dictionary/translation opened",
+        "shown spelling suggestion or order model",
+        "explicit article/count/family correction",
+        "platform read-aloud requested"
+      ],
+      "tests": [
+        "Fan A is the known referent even when both fans match additional information",
+        "G9 transfer combines cargo and identified force with multiple valid containers"
+      ],
+      "browserEvidence": "docs/qa-captures/summary.json",
+      "status": "verified"
+    },
+    {
+      "grade": 9,
+      "chapter": 12,
+      "module": "word-formation-and-spelling-reference",
+      "url": "https://english.workbook.co.il/grade-9/chapter-12/word-formation-and-spelling-reference",
+      "challengeIds": [
+        "g9-power",
+        "g9-storm"
+      ],
+      "skill": "Use powerful/powerless as reviewed members of the power family.",
+      "evidenceRule": "Typed family adjective on the identified causal fan; 12 N versus 0 N and actual sail movement.",
+      "assistanceConditions": [
+        "shown teaching or hint",
+        "dictionary/translation opened",
+        "shown spelling suggestion or order model",
+        "explicit article/count/family correction",
+        "platform read-aloud requested"
+      ],
+      "tests": [
+        "power is distinguished from powerful/powerless with observable force",
+        "fan force needs correct direction as well as word family choice"
+      ],
+      "browserEvidence": "docs/qa-captures/summary.json",
+      "status": "verified"
+    },
+    {
+      "grade": 9,
+      "chapter": 12,
+      "module": "vocabulary-in-context-reference",
+      "url": "https://english.workbook.co.il/grade-9/chapter-12/vocabulary-in-context-reference",
+      "challengeIds": [
+        "g9-cargo",
+        "g9-power",
+        "g9-storm"
+      ],
+      "skill": "Choose size/material/force descriptors for cargo and sail constraints.",
+      "evidenceRule": "Both capacity/buoyancy and identified directional force constraints satisfied in changed context.",
+      "assistanceConditions": [
+        "shown teaching or hint",
+        "dictionary/translation opened",
+        "shown spelling suggestion or order model",
+        "explicit article/count/family correction",
+        "platform read-aloud requested"
+      ],
+      "tests": [
+        "G9 transfer combines cargo and identified force with multiple valid containers"
+      ],
+      "browserEvidence": "docs/qa-captures/summary.json",
+      "status": "verified"
+    }
+  ],
+  "excluded": [
+    "All chapter-10 tense coverage; complementary games own it",
+    "whole chapter completion",
+    "broad vocabulary acquisition from twelve nouns",
+    "speaking/pronunciation/listening assessment",
+    "extended writing and literature",
+    "retained mastery or learning gains",
+    "independent non-defining-clause comprehension assessment"
+  ],
+  "verification": {
+    "unitCommand": "npm test",
+    "buildCommand": "npm run build",
+    "browserCommand": "node docs/qa-browser.mjs",
+    "campaign": "All nine actual UI paths completed, including mistakes/recovery and all three transfer routes; see individual state JSON/captures.",
+    "limitations": "Automated functional evidence only; see PLAYTEST.md for controls and audio/browser limitations.",
+    "semanticTestsPassed": 32,
+    "finalRegression": "docs/playable-loop/regression.mjs passed fullscreen exit, nested Escape, replay variation and accurate two-component unaided reporting with zero page errors.",
+    "mobileEvidence": "docs/qa-captures/mobile-summary.json — all touch and assistance assertions passed"
+  },
+  "runtimeInitialPayloadBytes": 8105194
+}

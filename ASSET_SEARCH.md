@@ -13,7 +13,7 @@ Search performed in the human's signed-in Chrome through `mcp__cua_repl`, in thi
 
 ## Owned library search
 
-Visited [My Assets](https://studio.tripo3d.ai/assets) before making any generation decision. Read the loaded library and scrolled to earlier entries: rigged courier/young boy, glider, rabbit/tortoise/deer, robot arm/washer, garden robot, raccoon, clockwork automaton/bird, wooden notice board, terracotta lamps, steampunk balloon and other prior commissioned objects were visible. The avatar account menu explicitly showed **Pro** on27October. The visible balance was6,125; no credit operation was started, and balance changes elsewhere are not attributed to this crew.
+Visited [My Assets](https://studio.tripo3d.ai/assets) before making any generation decision. Read the loaded library and scrolled to earlier entries: rigged courier/young boy, glider, rabbit/tortoise/deer, robot arm/washer, garden robot, raccoon, clockwork automaton/bird, wooden notice board, terracotta lamps, steampunk balloon and other prior commissioned objects were visible. The avatar account menu explicitly showed **Pro** on27October. No credit operation was started by this crew.
 
 Read the prior repositories' ASSETS.md ledgers before copying assets. The locally available commissioned boat, balloon, banker's lamp and fruit crate provide four catalog meshes; courier provides a real existing65-joint explorer rig. Prior repos remain read-only. Their normal UI exports and original prompts are documented in ASSETS.md here. Four props + courier total3,152,516bytes. Every model is below3MB.
 

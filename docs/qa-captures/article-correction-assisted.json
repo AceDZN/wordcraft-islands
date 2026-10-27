@@ -1,0 +1,270 @@
+{
+  "mode": "explore",
+  "coordinateSystem": "x east/right, z south/down; y up; metres. gap lies across x at z=0.",
+  "level": "g7-rain",
+  "grade": 7,
+  "stage": "independent",
+  "objective": "Keep both parcels dry. They are too far apart for one ordinary cover.",
+  "player": {
+    "x": -6.5,
+    "z": 0.5,
+    "jump": 0
+  },
+  "world": {
+    "ready": false,
+    "contributors": [
+      "created-14"
+    ],
+    "traversable": false,
+    "mass": 1,
+    "covered": 1,
+    "capacity": 0,
+    "force": 0,
+    "reason": "1/2 חבילות נשארות יבשות. לכל חפץ אזור כיסוי אמיתי.",
+    "extras": {
+      "unlocked": false,
+      "illuminated": false
+    }
+  },
+  "zones": [
+    {
+      "id": "parcel-n",
+      "x": 1,
+      "z": -1.65,
+      "label": "North parcel"
+    },
+    {
+      "id": "parcel-s",
+      "x": 1,
+      "z": 1.65,
+      "label": "South parcel"
+    }
+  ],
+  "selected": "created-14",
+  "items": [
+    {
+      "id": "created-14",
+      "phrase": "an umbrella",
+      "x": 1,
+      "z": -1.65,
+      "rot": 0,
+      "mass": 1,
+      "length": 2,
+      "capacity": 0,
+      "float": false,
+      "force": 0,
+      "evidence": {
+        "article": false,
+        "count": false,
+        "spelling": false,
+        "modifiers": false,
+        "order": false,
+        "family": false,
+        "assisted": true,
+        "shorthand": false
+      }
+    }
+  ],
+  "preview": null,
+  "learning": {
+    "attempts": 2,
+    "hints": 0,
+    "retries": 0,
+    "assisted": true,
+    "events": [
+      {
+        "type": "level-start",
+        "level": "g7-rain",
+        "at": 6.3,
+        "detail": {}
+      },
+      {
+        "type": "level-start",
+        "level": "g7-rain",
+        "at": 6.3,
+        "detail": {}
+      },
+      {
+        "type": "phrase-attempt",
+        "level": "g7-rain",
+        "at": 6.4,
+        "detail": {
+          "raw": "two umbrellas",
+          "result": "accepted",
+          "assisted": false
+        }
+      },
+      {
+        "type": "create-place",
+        "level": "g7-rain",
+        "at": 6.5,
+        "detail": {
+          "id": "created-3",
+          "phrase": "two umbrellas",
+          "x": 1,
+          "z": -1.65,
+          "rot": 0,
+          "evidence": {
+            "article": false,
+            "count": true,
+            "spelling": true,
+            "modifiers": false,
+            "order": false,
+            "family": false,
+            "assisted": false,
+            "shorthand": false
+          }
+        }
+      },
+      {
+        "type": "create-place",
+        "level": "g7-rain",
+        "at": 6.5,
+        "detail": {
+          "id": "created-4",
+          "phrase": "two umbrellas",
+          "x": 1,
+          "z": 1.65,
+          "rot": 0,
+          "evidence": {
+            "article": false,
+            "count": true,
+            "spelling": true,
+            "modifiers": false,
+            "order": false,
+            "family": false,
+            "assisted": false,
+            "shorthand": false
+          }
+        }
+      },
+      {
+        "type": "world-solved",
+        "level": "g7-rain",
+        "at": 6.5,
+        "detail": {
+          "kind": "shelter"
+        }
+      },
+      {
+        "type": "completion",
+        "level": "g7-rain",
+        "at": 10.5,
+        "detail": {
+          "evidence": {
+            "article": false,
+            "count": true,
+            "spelling": true,
+            "modifiers": false,
+            "order": false,
+            "family": false
+          },
+          "firstAttemptUnaided": true,
+          "assisted": false,
+          "hints": 0,
+          "retries": 0,
+          "attempts": 1
+        }
+      },
+      {
+        "type": "level-start",
+        "level": "g7-rain",
+        "at": 54.5,
+        "detail": {}
+      },
+      {
+        "type": "phrase-attempt",
+        "level": "g7-rain",
+        "at": 54.6,
+        "detail": {
+          "raw": "a umbrella",
+          "result": "unsupported-or-form",
+          "assisted": false
+        }
+      },
+      {
+        "type": "form-help",
+        "level": "g7-rain",
+        "at": 54.6,
+        "detail": {
+          "feedback": "a/an נקבעות לפי הצליל של המילה הבאה: an umbrella, אבל a large umbrella."
+        }
+      },
+      {
+        "type": "phrase-attempt",
+        "level": "g7-rain",
+        "at": 54.6,
+        "detail": {
+          "raw": "an umbrella",
+          "result": "accepted",
+          "assisted": true
+        }
+      },
+      {
+        "type": "create-place",
+        "level": "g7-rain",
+        "at": 54.6,
+        "detail": {
+          "id": "created-14",
+          "phrase": "an umbrella",
+          "x": 1,
+          "z": -1.65,
+          "rot": 0,
+          "evidence": {
+            "article": false,
+            "count": false,
+            "spelling": false,
+            "modifiers": false,
+            "order": false,
+            "family": false,
+            "assisted": true,
+            "shorthand": false
+          }
+        }
+      }
+    ]
+  },
+  "completed": [
+    "g7-crossing",
+    "g7-rain",
+    "g7-inlet",
+    "g8-length",
+    "g8-weight",
+    "g8-history",
+    "g9-cargo",
+    "g9-power",
+    "g9-storm"
+  ],
+  "audio": {
+    "state": "running",
+    "sampleRate": 22050,
+    "requested": true,
+    "paused": false,
+    "hidden": false,
+    "loaded": 17,
+    "loops": 3,
+    "oneShots": 4,
+    "cueTotal": 87,
+    "lastCue": "umbrella",
+    "solved": false,
+    "ducked": false,
+    "gains": {
+      "music": 0.48,
+      "sfx": 0.58,
+      "voice": 0.85,
+      "master": 0.75
+    },
+    "rms": 0.02365,
+    "loadError": ""
+  },
+  "models": {
+    "loaded": [
+      "courier",
+      "boat",
+      "balloon",
+      "lamp",
+      "crate"
+    ],
+    "errors": []
+  }
+}

@@ -1,0 +1,199 @@
+{
+  "mode": "explore",
+  "coordinateSystem": "x east/right, z south/down; y up; metres. gap lies across x at z=0.",
+  "level": "g8-weight",
+  "grade": 8,
+  "stage": "independent",
+  "objective": "Hold the plate with something heavier than the 6 kg counterweight. Cross while it stays down.",
+  "player": {
+    "x": -6.5,
+    "z": 0.5,
+    "jump": 0
+  },
+  "world": {
+    "ready": true,
+    "contributors": [
+      "created-9"
+    ],
+    "traversable": true,
+    "mass": 12,
+    "covered": 1,
+    "capacity": 0,
+    "force": 0,
+    "reason": "משקל על הלוח: 12.0 ק״ג. נדרש יותר מ־6, וגם הארגז המזוהה כשיש תיאור.",
+    "extras": {
+      "unlocked": false,
+      "illuminated": false
+    }
+  },
+  "zones": [
+    {
+      "id": "plate",
+      "x": -4,
+      "z": -1.7,
+      "label": "Pressure plate · >6 kg"
+    }
+  ],
+  "selected": "created-9",
+  "items": [
+    {
+      "id": "created-9",
+      "phrase": "a heavy bucket",
+      "x": -4,
+      "z": -1.7,
+      "rot": 0,
+      "mass": 12,
+      "length": 1,
+      "capacity": 0,
+      "float": false,
+      "force": 0,
+      "evidence": {
+        "article": true,
+        "count": false,
+        "spelling": true,
+        "modifiers": false,
+        "order": false,
+        "family": false,
+        "assisted": false,
+        "shorthand": false
+      }
+    }
+  ],
+  "preview": null,
+  "learning": {
+    "attempts": 2,
+    "hints": 0,
+    "retries": 1,
+    "assisted": false,
+    "events": [
+      {
+        "type": "level-start",
+        "level": "g8-weight",
+        "at": 22.4,
+        "detail": {}
+      },
+      {
+        "type": "level-start",
+        "level": "g8-weight",
+        "at": 22.4,
+        "detail": {}
+      },
+      {
+        "type": "phrase-attempt",
+        "level": "g8-weight",
+        "at": 22.5,
+        "detail": {
+          "raw": "a large crate",
+          "result": "accepted",
+          "assisted": false
+        }
+      },
+      {
+        "type": "create-place",
+        "level": "g8-weight",
+        "at": 22.5,
+        "detail": {
+          "id": "created-8",
+          "phrase": "a large crate",
+          "x": -4,
+          "z": -1.7,
+          "rot": 0,
+          "evidence": {
+            "article": true,
+            "count": false,
+            "spelling": true,
+            "modifiers": false,
+            "order": false,
+            "family": false,
+            "assisted": false,
+            "shorthand": false
+          }
+        }
+      },
+      {
+        "type": "undo",
+        "level": "g8-weight",
+        "at": 22.6,
+        "detail": {}
+      },
+      {
+        "type": "phrase-attempt",
+        "level": "g8-weight",
+        "at": 22.7,
+        "detail": {
+          "raw": "a heavy bucket",
+          "result": "accepted",
+          "assisted": false
+        }
+      },
+      {
+        "type": "create-place",
+        "level": "g8-weight",
+        "at": 22.7,
+        "detail": {
+          "id": "created-9",
+          "phrase": "a heavy bucket",
+          "x": -4,
+          "z": -1.7,
+          "rot": 0,
+          "evidence": {
+            "article": true,
+            "count": false,
+            "spelling": true,
+            "modifiers": false,
+            "order": false,
+            "family": false,
+            "assisted": false,
+            "shorthand": false
+          }
+        }
+      },
+      {
+        "type": "world-solved",
+        "level": "g8-weight",
+        "at": 22.7,
+        "detail": {
+          "kind": "weight"
+        }
+      }
+    ]
+  },
+  "completed": [
+    "g7-crossing",
+    "g7-rain",
+    "g7-inlet",
+    "g8-length"
+  ],
+  "audio": {
+    "state": "running",
+    "sampleRate": 22050,
+    "requested": true,
+    "paused": false,
+    "hidden": false,
+    "loaded": 17,
+    "loops": 3,
+    "oneShots": 4,
+    "cueTotal": 39,
+    "lastCue": "confirm",
+    "solved": true,
+    "ducked": false,
+    "gains": {
+      "music": 0.48,
+      "sfx": 0.58,
+      "voice": 0.85,
+      "master": 0.75
+    },
+    "rms": 0.01445,
+    "loadError": ""
+  },
+  "models": {
+    "loaded": [
+      "courier",
+      "boat",
+      "balloon",
+      "lamp",
+      "crate"
+    ],
+    "errors": []
+  }
+}

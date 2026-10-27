@@ -1,0 +1,102 @@
+{
+  "passed": [
+    "physical-KeyN-with-Hebrew-key-value",
+    "no-shortcuts-during-input",
+    "physical-KeyD-movement-and-release"
+  ],
+  "method": "Synthetic Hebrew key values with physical codes through actual registered handlers; no physical keyboard hardware claim.",
+  "errors": [],
+  "state": {
+    "mode": "explore",
+    "coordinateSystem": "x east/right, z south/down; y up; metres. gap lies across x at z=0.",
+    "level": "g7-crossing",
+    "grade": 7,
+    "stage": "guided",
+    "layoutVariant": 0,
+    "objective": "Help the courier cross the broken path.",
+    "player": {
+      "x": -5.140000000000001,
+      "z": 0.5,
+      "jump": 0
+    },
+    "world": {
+      "ready": false,
+      "contributors": [],
+      "traversable": false,
+      "mass": 0,
+      "covered": 0,
+      "capacity": 0,
+      "force": 0,
+      "reason": "צריך לכסות את המרווח ועוד 0.3 מ׳ בכל קצה. סובבו את החפץ לאורך ציר המעבר.",
+      "extras": {
+        "unlocked": false,
+        "illuminated": false
+      }
+    },
+    "zones": [
+      {
+        "id": "crossing",
+        "x": 0,
+        "z": 0,
+        "label": "Crossing · 2.4 m"
+      }
+    ],
+    "selected": "",
+    "items": [],
+    "preview": null,
+    "learning": {
+      "attempts": 0,
+      "hints": 0,
+      "retries": 0,
+      "rejectedPhrases": 0,
+      "assisted": false,
+      "events": [
+        {
+          "type": "level-start",
+          "level": "g7-crossing",
+          "at": 0,
+          "detail": {}
+        },
+        {
+          "type": "level-start",
+          "level": "g7-crossing",
+          "at": 0.2,
+          "detail": {}
+        }
+      ]
+    },
+    "completed": [],
+    "audio": {
+      "state": "running",
+      "sampleRate": 22050,
+      "requested": true,
+      "paused": false,
+      "hidden": false,
+      "loaded": 17,
+      "loops": 3,
+      "oneShots": 1,
+      "cueTotal": 1,
+      "lastCue": "notebook",
+      "solved": false,
+      "ducked": false,
+      "gains": {
+        "music": 0.48,
+        "sfx": 0.58,
+        "voice": 0.85,
+        "master": 0.75
+      },
+      "rms": 0.01657,
+      "loadError": ""
+    },
+    "models": {
+      "loaded": [
+        "courier",
+        "boat",
+        "balloon",
+        "lamp",
+        "crate"
+      ],
+      "errors": []
+    }
+  }
+}
