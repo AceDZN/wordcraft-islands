@@ -54,3 +54,7 @@ GLB parsing independently verified bytes, hashes, mesh/material/triangle counts,
 An independent art UI pass loaded all5 models with no page/loader errors, created and placed all four catalog prop meshes, and observed the courier grounded on the path. It also placed a long wooden plank across the gap and saw the supported-world result. Actual captures are `docs/art/gameplay-{courier,catalog,placement,bridge}.png`; procedure/findings/remaining corrections in `docs/art/REVIEW.md`. `docs/art/prop-proof.png` is a static Blender PBR proof of the four props, explicitly not gameplay. Read the lead's final VISUAL_REVIEW.md for later changes and target comparison.
 
 Lead rechecked the current official Tripo terms on 27 October 2026: §5.2.2 lists paid users' own-output modification/distribution rights, subject to its stated conditions. Source: https://www.tripo3d.ai/terms . This ledger relies on the commissioned-output provenance above; it does not grant rights in public gallery creators' work.
+
+## Play-feel revision
+
+The source courier GLB is unchanged. `src/character.ts` derives aligned idle/upright jog/single-hop skeletal clips, correcting a measured ~0.93m idle/run root-origin mismatch and the earlier jump_down selection. All motion remains on the original65-joint skin. Offline audit and browser-check boundaries are in docs/art/MOTION_REVIEW.md. No additional models, generations, credits or rig jobs were used.

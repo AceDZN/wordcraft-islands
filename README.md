@@ -11,7 +11,7 @@ npm run dev
 
 Open **http://localhost:5263**. `npm run preview` serves the built version on **4263** after `npm run build`. Both ports are strict. No account, runtime backend, model service or API key is used. All models, the Hebrew/Latin font and audio are bundled locally. There is no production deployment.
 
-Start with Enter or the visible button. WASD/arrows move, Space jumps, N opens the notebook, E interacts/sails near the dock, F toggles fullscreen. Pointer/tap selects objects or places previews. Choose an anchor, rotate with R, nudge with arrows and place with Enter. Escape cancels the active interaction. The inspector supports object selection, modifications and carrying; Undo reverses the last action. Touch has direction/jump and placement buttons. Replaying mirrors source-object/landmark locations and reverses inspection order; identities and history stay authoritative. No movement/fullscreen shortcuts run while typing. Reading an explanation or inspector pauses locomotion.
+Start with Enter or the visible button. The first guided notebook opens with a marked assisted model. Type a noun phrase, create its preview, choose a location and press Place. The preview stays snapped when the pointer moves. Once the physical solution works, the current-action button tries the route to the lighthouse: the courier really walks across the supported object or approaches and boards the ferry. You can also click/tap the ground to walk, or use WASD/arrows relative to the screen. Click an object to inspect or modify it; edits keep the existing phrase. Supplied noun/article text earns no production evidence. Movement intentionally leaves a nonmodal inspector/help panel. N opens the notebook, E invokes the current action, Space hops and F toggles fullscreen. Escape exits the active interaction. Free placement, rotation, camera orbit and learning records are available on demand. Replaying mirrors source-object/landmark locations and reverses inspection order; identities/history stay authoritative. No movement/fullscreen shortcut runs while typing.
 
 ## Nine authored challenges
 
@@ -29,7 +29,7 @@ Bare nouns are editor shorthand. Inferred articles/counts, dictionary/translatio
 
 - `npm test`: pure semantic fixtures, alternatives and property predicates.
 - `npm run build`: TypeScript and static Vite build.
-- `docs/qa-browser.mjs`: UI-driven campaign/controls playtest.
+- `docs/qa-browser.mjs`: historical first-release campaign test. The play-feel revision is reviewed in docs/UX_REVIEW.md with revised tests under tests/ux*. Earlier captures predate this rewrite.
 - `window.render_game_to_text()` exposes visible objectives, quantities, item histories, assistance and audio state. `advanceTime(ms)` steps the same simulation without injecting a win.
 - [PLAYTEST.md](PLAYTEST.md), [CURRICULUM.md](CURRICULUM.md), [coverage.json](coverage.json), [VISUAL_REVIEW.md](VISUAL_REVIEW.md).
 - [Generated design target](docs/visual-targets/gameplay-target.png) is a mockup. Actual gameplay is under docs/qa-captures, docs/art and docs/playable-loop.
@@ -39,4 +39,4 @@ Bare nouns are editor shorthand. Inferred articles/counts, dictionary/translatio
 
 Selected chapter-11/12 rules are covered, not all curriculum chapters. Chapter 10 belongs to the complementary games; there is no tense-assessment claim here. No speaking assessment, broad lexical mastery or retained-learning claim. The editor is not a complete English grammar checker. Article sound rules cover the disclosed words, not every English exception. Object mass/buoyancy are explicit toy-world parameters. Movement/collision use bounded deterministic surfaces rather than a general physics solver. Browser speech availability varies; text remains visible. No human musical-quality/learning-gain claim is inferred from automated checks.
 
-Models reuse the user's owned Tripo outputs; four catalog meshes plus a rigged courier total ~3.15MB. No new Tripo models or credits. Scene terrain and exact functional props are procedural. The courier has a real 65-joint skin and idle/run/jump clips. See provenance and inherited reuse limitations in ASSETS.md.
+Models reuse the user's owned Tripo outputs; four catalog meshes plus a rigged courier total ~3.15MB. No new Tripo models or credits. Scene terrain and exact functional props are procedural. The courier has a real 65-joint skin. Derived aligned idle/jog/single-hop clips correct the original source root mismatch and posture; source GLB stays unchanged. See docs/art/MOTION_REVIEW.md. See provenance and inherited reuse limitations in ASSETS.md.

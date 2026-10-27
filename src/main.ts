@@ -1,86 +1,376 @@
 import './style.css';
-import {World} from './world';
-import {levels} from './levels';
-import {catalog,parsePhrase,makeItem,evaluatePlacement,evaluateExtras,supportsPoint,modeledPhrase, type Item, type Spec, type Evidence} from './rules';
-import {audio} from './audio';
+import { World } from './world';
+import { levels } from './levels';
+import { catalog, parsePhrase, makeItem, evaluatePlacement, evaluateExtras, supportsPoint, modeledPhrase, type Item, type Spec, type Evidence } from './rules';
+import { nextAction, screenDirection, walkingRoute, type Point } from './flow';
+import { audio } from './audio';
 
-declare global {interface Window {render_game_to_text:()=>string;advanceTime:(ms:number)=>void;}}
-const $=<T extends HTMLElement=HTMLElement>(s:string)=>document.querySelector<T>(s)!;
-const app=$('#app');
-app.innerHTML=`<canvas id="world" aria-label="עולם תלת ממדי של איים, חפצים ומצופי הנחה" tabindex="0"></canvas>
-<header><div class="brand"><span class="brand-mark">W</span><div>WORDCRAFT <small>ISLANDS / איים של מילים</small></div></div><nav aria-label="בחירת מסלול"><label>כיתה <select id="grade"><option value="7">ז׳ · 7</option><option value="8">ח׳ · 8</option><option value="9">ט׳ · 9</option></select></label><select id="mission-select" aria-label="בחירת אי"></select><button id="settings-btn" title="הגדרות שמע">♫</button><button id="pause-btn">Ⅱ <span>השהיה</span></button></nav></header>
-<section id="objective"><div class="eyebrow"><span id="stage"></span><span id="counter"></span></div><h1 id="title" dir="ltr"></h1><p id="mission" dir="ltr"></p><p id="mission-he" dir="rtl"></p><div class="objective-actions"><button id="teach-btn">הסבר</button><button id="hint-btn">רמז</button><button id="read-btn">Read aloud</button></div><p id="teaching" dir="rtl" hidden></p></section>
-<div id="feedback" role="status" aria-live="polite"></div>
-<aside id="inspect" hidden><button id="close-inspect" class="close" aria-label="סגירת בדיקה">×</button><div class="eyebrow">OBJECT INSPECTOR / בדיקה</div><select id="object-list" aria-label="בחירת חפץ"></select><div id="object-info" dir="rtl"></div><div class="row"><button id="modify">שינוי מילים</button><button id="carry">הזזה</button></div></aside>
-<aside id="notebook" hidden><button id="close-book" class="close" aria-label="סגירת המחברת">×</button><div class="eyebrow">THE CREATION NOTEBOOK</div><h2>מילים משנות עולם.</h2><p id="book-mode" dir="rtl"></p><form id="create-form"><label for="phrase">Write an English noun phrase</label><input id="phrase" dir="ltr" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="a …" maxlength="85"><div id="phrase-feedback" role="alert" dir="rtl"></div><button id="suggestion" type="button" hidden></button><button class="primary" id="create" type="submit">Create / יצירה ↗</button></form><details id="dictionary"><summary>המילון של הסדנה · 12 שמות</summary><p dir="rtl">זהו קטלוג סגור ללא AI. מילים אחרות אינן בהכרח שגויות. עיון במילון נרשם כעזרה.</p><div id="words"></div><p dir="ltr">Properties: long / short · large / small · heavy / light · wooden / metal · bright / unlit · powerful / powerless</p><p dir="rtl">הצירופים המתאימים מופיעים בשימושי החפצים. הכמות one/two/three מוגבלת לשלושה חפצים בכל יצירה.</p></details></aside>
-<section id="placement" hidden><b>PLACEMENT / הנחה</b><span id="preview-label" dir="ltr"></span><div class="row"><button id="target-prev" aria-label="מצוף קודם">◁</button><button id="target-next">מצוף הבא ▷</button><button id="rotate">↻ סיבוב R</button><button id="place" class="primary">הנחה ↵</button><button id="cancel-place">ביטול Esc</button></div><small>הצביעו בעולם או בחרו מצוף. חצים מזיזים; Enter מניח.</small></section>
-<footer><button id="book-btn" class="primary">▤ מחברת <kbd>N</kbd></button><button id="use-btn">✧ שימוש / הפלגה <kbd>E</kbd></button><button id="inspect-btn">⌕ חפצים</button><button id="undo-btn">↶ ביטול פעולה</button><button id="orbit-left" aria-label="סיבוב מצלמה שמאלה">↶</button><button id="orbit-right" aria-label="סיבוב מצלמה ימינה">↷</button><span class="control-note">WASD / חצים · תנועה &nbsp; Space · קפיצה &nbsp; F · מסך מלא</span></footer>
-<div id="touch"><div class="touch-pad"><button data-key="arrowup">↑</button><div><button data-key="arrowleft">←</button><button data-key="arrowdown">↓</button><button data-key="arrowright">→</button></div></div><button data-key=" ">קפיצה</button></div>
-<div id="overlay" class="veil"><section id="welcome" class="modal"><div class="eyebrow">AN OFFLINE WORD ADVENTURE</div><h2>דמיינו. כתבו. צרו.</h2><p dir="rtl">טיילו בין איים, פתרו בעיה בעזרת חפץ וגלו איך המילים משנות את תכונותיו.</p><ol dir="rtl"><li>תנועה בחצים / WASD. לחצו N למחברת.</li><li>כתבו שם ותיאור באנגלית, ואז Create.</li><li>בחרו מצוף או הצביעו בעולם, הניחו, בדקו ושפרו.</li></ol><p dir="rtl">תשעה איים בכיתות ז׳–ט׳. בזמן קריאה וכתיבה התנועה נעצרת. אין לחץ זמן.</p><button class="primary" id="start">לצאת לאיים →</button><small>Original world · inspired by the Scribblenauts creation loop</small></section>
-<section id="pause" class="modal" hidden><div class="eyebrow">TAKE A BREATH</div><h2>האי מחכה לכם.</h2><button id="resume" class="primary">המשך</button><button id="restart">התחלה מחדש של האי</button><button id="pause-close">סגירה</button></section>
-<section id="settings" class="modal" hidden><button id="settings-close" class="close" aria-label="סגירת הגדרות">×</button><div class="eyebrow">THE ISLAND SOUNDTRACK</div><h2>שמע וקצב משלכם</h2><div id="gains"></div><p dir="rtl">מנגינה מקורית, מים ורוח; צלילי עץ, מתכת, דפים ויצירה. קריאה בקול תלויה בקולות המכשיר.</p><a href="./audio/mixed-preview.wav" target="_blank">Mixed audio preview ↗</a></section>
-<section id="complete" class="modal" hidden><div class="eyebrow">A NEW WAY THROUGH</div><h2>המילים שינו את הדרך.</h2><p id="complete-detail" dir="rtl"></p><div id="evidence" dir="rtl"></div><button id="next" class="primary">לאי הבא →</button><button id="replay">נסו פתרון אחר ↶</button></section></div>`;
-const world=new World($('#world'));
-let index=0,level=levels[0],items:Item[]=[],selected='',started=false,paused=false,book=false,edit=false,assisted=false,attempts=0,hints=0,retries=0,rejectedPhrases=0,won=false,zoneIndex=0,serial=0;
-let pending:Spec|undefined,pendingCount=0,pendingId='',placement={x:0,z:0,rot:0};let ferry=0,clock=0,jumpT=0;const player={x:-6.5,z:.5,jump:0};const keys=new Set<string>();
-type Event={type:string;level:string;at:number;detail:unknown};let events:Event[]=[];let history:{items:Item[];selected:string}[]=[];let layoutVariant=0;const visits=new Map<string,number>();const completions=new Set<string>(JSON.parse(localStorage.getItem('wordcraft-completed')??'[]'));
-const clone=<T>(v:T):T=>JSON.parse(JSON.stringify(v));
-function event(type:string,detail:unknown){events.push({type,level:level.id,at:Math.round(clock*10)/10,detail});}
-function feedback(text:string,tone=''){const el=$('#feedback');el.textContent=text;el.dataset.tone=tone;}
-function isBlocked(){return !started||paused||book||won||!$('#overlay').hidden||!$('#inspect').hidden||!$('#teaching').hidden||document.hidden;}
+declare global { interface Window { render_game_to_text:()=>string; advanceTime:(ms:number)=>void; } }
+const $ = <T extends HTMLElement=HTMLElement>(selector:string)=>document.querySelector<T>(selector)!;
+$('#app').innerHTML = `
+<canvas id="world" aria-label="הקישו על הקרקע כדי ללכת, או על חפץ כדי לשנות אותו" tabindex="0"></canvas>
+<header><div class="brand"><span class="brand-mark">W</span><div>WORDCRAFT<small>איים של מילים</small></div></div><nav>
+<label class="grade-label">כיתה <select id="grade" aria-label="כיתה"><option value="7">ז׳</option><option value="8">ח׳</option><option value="9">ט׳</option></select></label>
+<details id="islands-menu"><summary>האיים ▾</summary><label>בחירת אי<select id="mission-select" aria-label="בחירת אי"></select></label></details>
+<button id="settings-btn" aria-label="הגדרות ושמע">♫</button><button id="pause-btn" aria-label="השהיה">Ⅱ</button></nav></header>
+<section id="objective"><div class="eyebrow"><span id="stage"></span><span id="counter"></span></div><h1 id="title" dir="ltr"></h1><p id="mission" dir="ltr"></p><div id="next-instruction" dir="rtl"></div><div class="step-track" aria-label="שלבי הפתרון"><span data-step="write">1 · כותבים</span><i></i><span data-step="place">2 · מניחים</span><i></i><span data-step="try">3 · מנסים</span></div><details id="help-details"><summary>עזרה והמשימה בעברית</summary><p id="mission-he" dir="rtl"></p><div class="row"><button id="teach-btn">הסבר קצר</button><button id="hint-btn">רמז לרעיון</button><button id="read-btn">Read aloud</button></div><p id="teaching" dir="rtl" hidden></p></details></section>
+<div id="feedback" role="status" aria-live="polite" hidden></div>
+<aside id="inspect" hidden><button id="close-inspect" class="close" aria-label="חזרה לאי">×</button><span class="eyebrow">בחרו חפץ וקראו את הסיפור שלו</span><div id="object-choices"></div><select id="object-list" aria-label="בחירת חפץ" hidden></select><div id="object-info" dir="rtl"></div><div class="row"><button id="modify" class="primary">✎ שינוי מילים</button><button id="carry">העברה למקום אחר</button></div><p class="panel-note">לחיצה על הקרקע חוזרת לטיול באי.</p></aside>
+<aside id="notebook" hidden><button id="close-book" class="close" aria-label="סגירת המחברת">×</button><span class="eyebrow">מחברת היצירה</span><h2 id="book-title">מה ניצור?</h2><p id="book-mode" dir="rtl"></p><div id="guided-example" hidden></div><form id="create-form"><label for="phrase">כתבו באנגלית</label><input id="phrase" dir="ltr" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Your idea…" maxlength="85"><div id="phrase-feedback" role="alert" dir="rtl"></div><button id="suggestion" type="button" hidden></button><button id="create" type="submit" class="primary">צרו את החפץ ✦</button></form><details id="dictionary"><summary>צריכים מילה? פתחו את המילון</summary><p>בסדנה יש 12 שמות עצם ותכונות מסוימות. מילים אחרות אינן בהכרח שגויות.</p><div id="words"></div><p class="property-words" dir="ltr">long / short · large / small · heavy / light<br>wooden / metal · bright / unlit<br>powerful / powerless</p></details></aside>
+<section id="placement" hidden><div class="eyebrow">בחרו מקום לחפץ</div><h2 id="preview-label" dir="ltr"></h2><p id="placement-help" dir="rtl"></p><div id="target-choices" class="target-choices"></div><button id="place" class="primary">הניחו כאן ↓</button><div class="placement-secondary"><button id="cancel-place">ביטול</button><details id="placement-tools"><summary>סיבוב ומיקום חופשי</summary><div class="row"><button id="rotate">↻ סיבוב</button><button id="free-place">מיקום חופשי</button></div><small>אפשר גם להזיז בחצים. Enter מניח, Esc מבטל.</small></details></div><button id="target-prev" hidden>מצוף קודם</button><button id="target-next" hidden>מצוף הבא</button></section>
+<footer><div class="primary-dock"><button id="use-btn" class="primary"></button><span id="walk-help">הקישו על הקרקע כדי ללכת · אפשר גם בחצים</span></div><div class="tools"><button id="book-btn" aria-label="פתיחת מחברת">▤ <span>מחברת</span></button><button id="inspect-btn">⌕ <span>חפצים</span></button><button id="undo-btn">↶ <span>ביטול פעולה</span></button><button id="controls-btn">? <span>תנועה</span></button></div></footer>
+<div id="touch"><div class="touch-pad"><button data-key="arrowup" aria-label="למעלה">↑</button><div><button data-key="arrowleft" aria-label="שמאלה">←</button><button data-key="arrowdown" aria-label="למטה">↓</button><button data-key="arrowright" aria-label="ימינה">→</button></div></div></div>
+<div id="overlay" class="veil"><section id="welcome" class="modal"><span class="eyebrow">איים של מילים</span><h2>דרך חדשה מתחילה במילה.</h2><p>הדוור צריך להגיע למגדלור.<br>כתבו חפץ במחברת, צרו אותו ונסו את הרעיון שלכם.</p><button id="start" class="primary">בואו ניצור דרך →</button><small>לחיצה על הקרקע מזיזה את הדוור. השאר נלמד תוך כדי.</small></section>
+<section id="pause" class="modal" hidden><span class="eyebrow">הפסקה קטנה</span><h2>האי מחכה לכם.</h2><button id="resume" class="primary">חזרה למשחק</button><button id="restart">התחלת האי מחדש</button><button id="pause-close" hidden>סגירה</button></section>
+<section id="settings" class="modal" hidden><button id="settings-close" class="close" aria-label="סגירת הגדרות">×</button><h2>צלילי האי</h2><div id="gains"></div><a href="./audio/mixed-preview.wav" target="_blank">האזנה לדוגמה ↗</a></section>
+<section id="controls" class="modal" hidden><button id="controls-close" class="close" aria-label="סגירת עזרה">×</button><h2>בוחרים דרך.</h2><p>לחצו או הקישו על הקרקע כדי ללכת.<br>חצים או WASD מזיזים לפי הכיוון על המסך.</p><p>לחצו על חפץ כדי לשנות או להעביר אותו.<br>במחברת כותבים; בתצוגה המקדימה בוחרים מקום ומניחים.</p><p class="panel-note">N מחברת · E פעולה נוכחית · Space קפיצה<br>F מסך מלא · Esc חזרה</p><div class="row"><button id="orbit-left">סיבוב מצלמה ↶</button><button id="orbit-right">↷ סיבוב מצלמה</button></div></section>
+<section id="complete" class="modal" hidden><span class="eyebrow">עוד דרך גיליתם</span><div class="win-star">✦</div><h2 id="win-title">הרעיון שלכם עבד!</h2><p id="win-story"></p><button id="next" class="primary">לאי הבא →</button><button id="replay">לנסות רעיון אחר</button><details id="learning-details"><summary>מה תרגלנו?</summary><p id="complete-detail"></p><div id="evidence"></div></details></section></div>`;
+
+const world = new World($('#world'));
+const keys = new Set<string>();
+const player = { x:-3.7, z:0, jump:0, vx:0, vz:0, facing:Math.PI/2 };
+let index=0, level=levels[0], items:Item[]=[], selected='';
+let started=false, paused=false, book=false, edit=false, won=false;
+let assisted=false, attempts=0, hints=0, retries=0, rejectedPhrases=0;
+let pending:Spec|undefined, pendingCount=0, pendingId='', zoneIndex=0, freePlacement=false;
+let placement={x:0,z:0,rot:0}, ferry=0, clock=0, jumpT=0, serial=0, layoutVariant=0;
+let route:Point[]=[], travelAfterApproach=false, activeTravel=false, moving=false, blockedAtEdge=false;
+let lastReady=false, feedbackUntil=0, uiSignature='';
+let motionDt=0,vesselX=0,ferryOriginX=0;let onVessel=false;
+type Event={type:string;level:string;at:number;detail:unknown};
+const events:Event[]=[];
+let history:{items:Item[];selected:string}[]=[];
+const visits=new Map<string,number>(), guidedShown=new Set<string>();
+let completions=new Set<string>();
+try { completions=new Set(JSON.parse(localStorage.getItem('wordcraft-completed')??'[]')); } catch { /* optional local progress */ }
+const clone=<T>(value:T):T=>JSON.parse(JSON.stringify(value));
+const event=(type:string,detail:unknown)=>events.push({type,level:level.id,at:Math.round(clock*10)/10,detail});
+function stopMotion(){keys.clear();route=[];player.vx=player.vz=0;moving=false;activeTravel=false;travelAfterApproach=false;}
+function feedback(text:string,tone='',seconds=5){$('#feedback').textContent=text;$('#feedback').dataset.tone=tone;$('#feedback').hidden=false;feedbackUntil=clock+seconds;}
+function modalOpen(){return !$('#overlay').hidden;}
+function isBlocked(){return !started||paused||book||won||modalOpen()||!$('#inspect').hidden||$<HTMLDetailsElement>('#help-details').open||document.hidden;}
 function snapshot(){history.push({items:clone(items),selected});if(history.length>35)history.shift();}
-function levelMenu(){const grade=level.grade;$('#grade').setAttribute('value',String(grade));($<HTMLSelectElement>('#grade')).value=String(grade);$('#mission-select').innerHTML=levels.filter(l=>l.grade===grade).map(l=>`<option value="${l.id}">${completions.has(l.id)?'✓ ':''}${l.title}</option>`).join('');($<HTMLSelectElement>('#mission-select')).value=level.id;}
-function loadLevel(i:number){index=i;level=levels[i];const visit=visits.get(level.id)??0;layoutVariant=visit%2;if(started)visits.set(level.id,visit+1);items=(level.seeds??[]).map(s=>makeItem(s.phrase,s.id,s.x,s.z*(layoutVariant?-1:1),s.origin));selected='';pending=undefined;history=[];won=false;paused=false;book=false;edit=false;assisted=false;attempts=0;hints=0;retries=0;rejectedPhrases=0;ferry=0;zoneIndex=0;lastReady=false;player.x=-6.5;player.z=.5;player.jump=0;keys.clear();world.build(level,layoutVariant);world.setItems(items);world.setPreview();world.showBridge(false);audio.setSolved(false);$('#title').textContent=level.title;$('#mission').textContent=level.mission;$('#mission-he').textContent=level.he;$('#stage').textContent=`GRADE ${level.grade} / ${level.stage.toUpperCase()}`;$('#counter').textContent=`${i%3+1} / 3`;$('#teaching').textContent=level.teach;$('#teaching').hidden=true;$('#notebook').hidden=true;$('#placement').hidden=true;$('#inspect').hidden=true;hideOverlay();levelMenu();feedback(level.stage==='guided'?'פתחו ״הסבר״ להדגמה קצרה, ואז צרו פתרון משלכם.':'קראו את הבעיה ובחרו דרך משלכם.');event('level-start',{});}
-function showOverlay(id:string){keys.clear();$('#overlay').hidden=false;for(const el of document.querySelectorAll<HTMLElement>('#overlay > section'))el.hidden=el.id!==id;if(id!=='complete')audio.pause(true);}
-function hideOverlay(){ $('#overlay').hidden=true;for(const el of document.querySelectorAll<HTMLElement>('#overlay > section'))el.hidden=true;if(started&&!paused)audio.pause(false);}
-function openBook(modify=false){if(!started||won||paused)return;cancelPlacement(false);$('#inspect').hidden=true;$('#teaching').hidden=true;book=true;edit=modify&&!!selected;keys.clear();$('#notebook').hidden=false;$('#book-mode').textContent=edit?'שינוי החפץ שנבחר שומר על זהותו וההיסטוריה שלו. כתבו אותו שם עצם עם תכונות חדשות.':'כתבו מהזיכרון, או פתחו את המילון לעזרה. שם עצם לבדו מתקבל כקיצור עורך; אינו מעיד על הפקת תווית.';$('#phrase-feedback').textContent='';$('#suggestion').hidden=true;($<HTMLInputElement>('#phrase')).value='';audio.cue('notebook');setTimeout(()=>$<HTMLInputElement>('#phrase').focus(),20);}
-function closeBook(){book=false;$('#notebook').hidden=true;keys.clear();($('#world') as HTMLCanvasElement).focus();}
-function renderInventory(){const el=$<HTMLSelectElement>('#object-list');el.innerHTML='<option value="">בחרו חפץ לבדיקה</option>'+(layoutVariant?[...items].reverse():items).map((o,i)=>`<option value="${o.id}">${i+1}. ${o.id.startsWith('fan-')?o.id.toUpperCase()+' · ':''}${o.spec.phrase}</option>`).join('');el.value=selected;const o=items.find(o=>o.id===selected);$('#object-info').innerHTML=o?`<p dir="ltr"><strong>${o.spec.phrase}</strong></p><p dir="ltr">${o.origin??'Created in your notebook.'}</p><p>אורך ${o.spec.length.toFixed(1)} מ׳ · משקל ${o.spec.mass.toFixed(1)} ק״ג · קיבולת ${o.spec.capacity} · כוח ${o.spec.force} N<br>ציפה: ${o.spec.float?'כן':'לא'} · רדיוס כיסוי: ${o.spec.rain.toFixed(1)} מ׳ · חומר: ${o.spec.material}</p>`:'<p>אפשר לבחור גם בהקשה על חפץ בעולם. ההיסטוריה מתארת מקום ומי הניח אותו; אינה משתנה עם ההזזה.</p>';$('#modify').toggleAttribute('disabled',!o);$('#carry').toggleAttribute('disabled',!o);}
-function select(id:string){selected=id;$('#inspect').hidden=false;renderInventory();event('inspect',{id});}
-function previewLabel(spec:Spec,count:number){return `${spec.phrase} · ${count} remaining${spec.evidence.shorthand?' · Editor model: '+modeledPhrase(spec)+' (article/count supplied; assisted)':''}`;}
-function beginPlacement(spec:Spec,count:number,id=''){$('#inspect').hidden=true;pending=spec;pendingCount=count;pendingId=id;zoneIndex=0;placement={...level.zones[0],rot:0};$('#placement').hidden=false;$('#preview-label').textContent=previewLabel(spec,pendingCount);if(spec.evidence.shorthand){assisted=true;event('shorthand-model-shown',{model:modeledPhrase(spec),articleEvidence:false});}world.setPreview(spec,placement.x,placement.z,placement.rot);feedback('הניחו על מצוף או הקישו בעולם. אפשר לשנות מיקום, לסובב ולבטל.');}
-function create(){const raw=$<HTMLInputElement>('#phrase').value;attempts++;const result=parsePhrase(raw,assisted);event('phrase-attempt',{raw,number:attempts,unaided:!assisted,result:result.ok?'accepted':'unsupported-or-form',assisted});if(!result.ok){rejectedPhrases++;if(/^(a\/an|two|power)/.test(result.message)){assisted=true;event('form-help',{feedback:result.message});}$('#phrase-feedback').textContent=result.message;audio.cue('mistake');if(result.suggestion){assisted=true;event('spelling-help-shown',{suggestion:result.suggestion});const b=$('#suggestion');b.hidden=false;b.textContent=`עזרת איות: ${result.suggestion}`;b.onclick=()=>{assisted=true;event('spelling-help',{from:raw,to:result.suggestion});$<HTMLInputElement>('#phrase').value=result.suggestion!;b.hidden=true;};}return;}
- const old=items.find(o=>o.id===selected);if(edit&&old?.spec.noun!==result.spec.noun){$('#phrase-feedback').textContent='לשינוי זהות קיימת השתמשו באותו שם עצם. ליצירת חפץ אחר פתחו מחברת חדשה.';return;}
- if(items.length+result.spec.count>18&&!edit){$('#phrase-feedback').textContent='האי מכיל עד 18 חפצים. השתמשו בביטול פעולה או התחילו מחדש.';return;}
- snapshot();if(edit&&old){items=items.filter(o=>o.id!==old.id);result.spec.count=1;}closeBook();audio.cue('create');if(result.warning)feedback(result.warning);beginPlacement(result.spec,result.spec.count,edit?selected:'');if(result.warning){assisted=true;event('order-help-shown',{feedback:result.warning});feedback(result.warning);}world.setItems(items);}
-function place(){if(!pending)return;const old=history.at(-1)?.items.find(o=>o.id===pendingId);const id=pendingId||`created-${++serial}`;const spec=clone(pending);spec.count=1;const item:Item={id,spec,x:placement.x,z:placement.z,rot:placement.rot,placed:true,origin:old?.origin};items.push(item);selected=id;event(pendingId?'modify-place':'create-place',{id,phrase:spec.phrase,x:item.x,z:item.z,rot:item.rot,evidence:spec.evidence});audio.cue(spec.noun==='umbrella'?'umbrella':spec.noun==='fan'?'fan':spec.material==='metal'?'metal':'wood');world.setItems(items);pendingCount--;if(pendingCount>0){pendingId='';zoneIndex=(zoneIndex+1)%level.zones.length;Object.assign(placement,level.zones[zoneIndex]);world.setPreview(pending,placement.x,placement.z,placement.rot);$('#preview-label').textContent=previewLabel(pending,pendingCount);}else{pending=undefined;pendingId='';world.setPreview();$('#placement').hidden=true;}
- renderInventory();updateOutcome(true);}
-function cancelPlacement(restore=true){if(pending&&restore){const h=history.pop();if(h){items=h.items;selected=h.selected;world.setItems(items);}}pending=undefined;pendingId='';pendingCount=0;world.setPreview();$('#placement').hidden=true;}
-function undo(){if(book)closeBook();if(pending){cancelPlacement();}else {const h=history.pop();if(!h){feedback('אין פעולה לביטול.');return;}items=h.items;selected=h.selected;world.setItems(items);}retries++;won=false;event('undo',{});audio.cue('undo');updateOutcome(true);renderInventory();}
-function target(delta:number){if(!pending)return;zoneIndex=(zoneIndex+delta+level.zones.length)%level.zones.length;Object.assign(placement,level.zones[zoneIndex]);world.setPreview(pending,placement.x,placement.z,placement.rot);audio.cue('rotate');}
-function rotate(){if(pending){placement.rot=(placement.rot+Math.PI/2)%(Math.PI*2);world.setPreview(pending,placement.x,placement.z,placement.rot);audio.cue('rotate');}}
-let lastReady=false;function updateOutcome(announce=false){const state=evaluatePlacement(level,items);if(announce)feedback(state.reason,state.ready?'good':'');if(level.kind==='weight')world.showBridge(state.traversable);if(state.ready&&!lastReady){audio.setSolved(true);audio.cue('confirm');feedback(state.reason+' גשו לכוכב, או E להפלגה.', 'good');event('world-solved',{kind:level.kind});}if(!state.ready&&lastReady)audio.setSolved(false);lastReady=state.ready;return state;}
-function use(){if(isBlocked()||pending)return;const state=updateOutcome(true);event('use',{ready:state.ready,player:{...player}});if(state.ready&&['ferry','cargo','wind','storm'].includes(level.kind)&&!state.traversable){if(player.x>0){feedback('כבר הגעתם לגדה. גשו אל הכוכב.');return;}if(player.x<-level.gap/2-1.7||Math.abs(player.z)>1.3){feedback('גשו לקצה הרציף ליד המעבר במרכז האי ואז לחצו E להפלגה.');return;}ferry=3.6;player.z=0;audio.cue('splash');feedback('החפץ נושא אתכם אל הגדה.');return;}
- const nearest=items.slice().sort((a,b)=>Math.hypot(a.x-player.x,a.z-player.z)-Math.hypot(b.x-player.x,b.z-player.z))[0];if(nearest)select(nearest.id);}
-function win(){if(won)return;won=true;completions.add(level.id);localStorage.setItem('wordcraft-completed',JSON.stringify([...completions]));audio.cue('success');const contributors=evaluatePlacement(level,items).contributors;const validItems=items.filter(o=>contributors.includes(o.id)&&(o.id.startsWith('created')||events.some(e=>e.level===level.id&&e.type==='modify-place'&&(e.detail as {id:string}).id===o.id)));const evidence={article:false,count:false,spelling:false,modifiers:false,order:false,family:false} as Omit<Evidence,'assisted'|'shorthand'>;for(const o of validItems)for(const key of Object.keys(evidence) as (keyof typeof evidence)[])evidence[key] ||= o.spec.evidence[key];const unaidedSolution=hints===0&&!assisted;const first=attempts===1&&unaidedSolution&&retries===0&&rejectedPhrases===0;event('completion',{evidence,unaidedSolution,singlePhraseFirstAttemptUnaided:first,assisted,hints,retries,attempts,rejectedPhrases});$('#complete-detail').textContent=`${level.title}: הפתרון שינה את העולם והגעתם למגדלור. ${attempts} צירופים, ${hints} רמזים, ${retries} ביטולי פעולה, ${rejectedPhrases} ניסיונות עורך שלא התקבלו. ${unaidedSolution?'ללא עזרה גלויה.':'נעשה שימוש בעזרה.'}`;$('#evidence').innerHTML=`<p>עדות מקומית: ${Object.entries(evidence).filter(([,v])=>v).map(([k])=>({article:'תווית שנכתבה',count:'צורת מספר',spelling:'איות ללא תיקון',modifiers:'שני תיאורים',order:'סדר תארים',family:'תואר ממשפחת power'}[k])).join(' · ')||'פתרון פיזי תקף; אין הפקה עצמאית לשיוך'}</p><small>הצלחה אחת אינה הוכחה לשליטה או לזכירה לאורך זמן. השוואות נבדקות כקריאה, לא כהפקת צורת comparative. מידע נוסף בפסיקים נלמד; אין ציון נפרד להבנתו.</small>`;$('#next').textContent=index===8?'חזרה למסלול ז׳ →':'לאי הבא →';showOverlay('complete');levelMenu();}
+function levelMenu(){
+ $<HTMLSelectElement>('#grade').value=String(level.grade);
+ $('#mission-select').innerHTML=levels.filter(l=>l.grade===level.grade).map(l=>`<option value="${l.id}">${completions.has(l.id)?'✓ ':''}${l.title}</option>`).join('');
+ $<HTMLSelectElement>('#mission-select').value=level.id;
+}
+function showOverlay(id:string){stopMotion();$('#overlay').hidden=false;for(const el of document.querySelectorAll<HTMLElement>('#overlay > section'))el.hidden=el.id!==id;if(id!=='complete')audio.pause(true);}
+function hideOverlay(){ $('#overlay').hidden=true;for(const el of document.querySelectorAll<HTMLElement>('#overlay > section'))el.hidden=true;if(started&&!paused)audio.pause(false); }
+function loadLevel(i:number){
+ index=i;level=levels[i];const visit=visits.get(level.id)??0;layoutVariant=visit%2;if(started)visits.set(level.id,visit+1);
+ items=(level.seeds??[]).map(s=>makeItem(s.phrase,s.id,s.x,s.z*(layoutVariant?-1:1),s.origin));
+ selected='';pending=undefined;pendingCount=0;history=[];won=false;paused=false;book=false;edit=false;
+ assisted=false;attempts=0;hints=0;retries=0;rejectedPhrases=0;ferry=0;onVessel=false;jumpT=0;zoneIndex=0;lastReady=false;uiSignature='';
+ stopMotion();player.x=-Math.max(3.7,level.gap/2+1.2);player.z=0;player.jump=0;player.facing=Math.PI/2;
+ world.build(level,layoutVariant);world.setItems(items);world.setPreview();world.showBridge(false);audio.setSolved(false);
+ $('#title').textContent=level.title;$('#mission').textContent=level.mission;$('#mission-he').textContent=level.he;
+ $('#stage').textContent=level.stage==='guided'?'מגלים ביחד':level.stage==='independent'?'הרעיון שלכם':'אי חדש · נסו מהזיכרון';
+ $('#counter').textContent=`${i%3+1} / 3`;
+ $('#teaching').textContent=level.teach;$('#teaching').hidden=true;
+ $<HTMLDetailsElement>('#help-details').open=false;$<HTMLDetailsElement>('#islands-menu').open=false;
+ $<HTMLDetailsElement>('#dictionary').open=false;
+ $('#notebook').hidden=$('#placement').hidden=$('#inspect').hidden=true;$('#feedback').hidden=true;
+ hideOverlay();levelMenu();$('#world').focus();event('level-start',{layoutVariant});updateFlow();
+ if(started&&level.stage==='guided'&&!guidedShown.has(level.id)){
+  guidedShown.add(level.id);const id=level.id;
+  setTimeout(()=>{if(level.id===id&&!modalOpen()&&!won&&!book&&!pending)openBook(false,true);},350);
+ }
+}
+function guidePhrase(){return level.grade===7?'a plank':level.grade===8?'a long plank':'a large wooden crate';}
+function openBook(modify=false,guided=false){
+ if(!started||won||paused)return;
+ if(pending)cancelPlacement();
+ stopMotion();$('#inspect').hidden=true;$<HTMLDetailsElement>('#help-details').open=false;$('#teaching').hidden=true;book=true;edit=modify&&!!selected;
+ const old=items.find(o=>o.id===selected);
+ $('#book-title').textContent=edit?'איזו מילה תשנה את החפץ?':'מה ניצור?';
+ $('#book-mode').textContent=edit?'שנו תיאור בצירוף. אותו חפץ יקבל תכונות חדשות.':level.stage==='transfer'?'איזה חפץ יתאים כאן? נסו רעיון מהזיכרון.':'כתבו חפץ שיעזור לפתור את הבעיה באי.';
+ $('#guided-example').hidden=!guided;
+ if(guided){assisted=true;event('guided-model-shown',{phrase:guidePhrase()});$('#guided-example').innerHTML=`<span>${level.grade===7?'קרש יכול להפוך לגשר. נסו לכתוב:':level.grade===8?'המרווח גדל. תיאור האורך ישנה את הקרש:':'צריך גם גודל מתאים וגם חומר שצף:'}</span><code dir="ltr">${guidePhrase()}</code>`;}
+ $('#phrase-feedback').textContent='';$('#suggestion').hidden=true;
+ const input=$<HTMLInputElement>('#phrase');input.value=edit&&old?old.spec.phrase:'';
+ $('#create').textContent=edit?'שנו את החפץ ✦':'צרו את החפץ ✦';
+ $('#notebook').hidden=false;audio.cue('notebook');updateFlow();
+ setTimeout(()=>{input.focus();if(edit)input.select();},30);
+}
+function closeBook(){book=false;$('#notebook').hidden=true;keys.clear();$('#world').focus();updateFlow();}
+const nounIcon:Record<string,string>={plank:'▰',ladder:'▥',crate:'▣',umbrella:'☂',fan:'✺',boat:'⛵',balloon:'♧',lamp:'☀',rope:'〰',bucket:'♜',sponge:'▧',key:'⚿'};
+function renderInventory(){
+ const list=layoutVariant?[...items].reverse():items;
+ $('#object-list').innerHTML='<option value="">בחרו חפץ</option>'+list.map(o=>`<option value="${o.id}">${o.spec.phrase}</option>`).join('');
+ $<HTMLSelectElement>('#object-list').value=selected;
+ const choices=$('#object-choices');choices.innerHTML='';
+ for(const item of list){const button=document.createElement('button');button.className='object-choice';button.dataset.selected=String(item.id===selected);button.dataset.itemId=item.id;
+  const icon=document.createElement('span');icon.className='object-icon';icon.textContent=nounIcon[item.spec.noun];
+  const name=document.createElement('span');name.dir='ltr';name.textContent=item.spec.phrase;
+  button.append(icon,name);if(item.origin){const origin=document.createElement('small');origin.dir='ltr';origin.textContent=item.origin;button.append(origin);}button.onclick=()=>select(item.id);choices.append(button);
+ }
+ const item=items.find(o=>o.id===selected);
+ if(!item){$('#object-info').innerHTML='<p>בחרו חפץ כדי לשנות אותו. קראו את הסיפור כדי לדעת איזה מהם מתאים למשימה.</p>';}
+ else {
+  const stat=level.kind==='weight'?`משקל: ${item.spec.mass.toFixed(1)} ק״ג`:item.spec.noun==='fan'?`כוח: ${item.spec.force} N`:item.spec.span?`אורך: ${item.spec.length.toFixed(1)} מ׳`:item.spec.rain?`טווח כיסוי: ${item.spec.rain.toFixed(1)} מ׳`:`מקום ל־${item.spec.capacity} חבילות · ${item.spec.float?'צף':'לא צף'}`;
+  $('#object-info').innerHTML=`<h3 dir="ltr">${item.spec.phrase}</h3><p class="object-stat">${stat}</p><p dir="ltr">${item.origin??'Created in your notebook.'}</p>`;
+ }
+ $('#modify').toggleAttribute('disabled',!item);$('#carry').toggleAttribute('disabled',!item);
+}
+function select(id:string){if(!items.some(o=>o.id===id))return;stopMotion();selected=id;$('#inspect').hidden=false;renderInventory();event('inspect',{id});updateFlow();}
+function showInventory(){stopMotion();$('#inspect').hidden=false;renderInventory();updateFlow();}
+function hideInspector(){$('#inspect').hidden=true;keys.clear();$('#world').focus();updateFlow();}
+function zoneName(i:number){const id=level.zones[i].id;return id==='parcel-n'?'החבילה הראשונה':id==='parcel-s'?'החבילה השנייה':id==='plate'?'לוח המשקל':id==='wind'?'רציף הרוח':id==='cargo'?'רציף המטען':id==='ferry'?'ליד הרציף':'מעל המעבר';}
+function updatePreview(){if(pending){world.setPreview(pending,placement.x,placement.z,placement.rot);renderTargets();}}
+function renderTargets(){
+ const choices=$('#target-choices');choices.innerHTML='';
+ level.zones.forEach((z,i)=>{const b=document.createElement('button');b.textContent=zoneName(i);b.dataset.active=String(i===zoneIndex&&!freePlacement);b.onclick=()=>setTarget(i);choices.append(b);});
+ $('#free-place').textContent=freePlacement?'חזרה להצמדה למצוף':'מיקום חופשי';
+ $('#placement-help').textContent=freePlacement?'הקישו בעולם למיקום, או גררו את התצוגה המקדימה.':'התצוגה נשארת במקום שבחרתם. לחצו ״הניחו כאן״ כדי לאשר.';
+}
+function previewLabel(spec:Spec){return spec.phrase+(spec.evidence.shorthand?` · דוגמה מלאה: ${modeledPhrase(spec)}`:'');}
+function beginPlacement(spec:Spec,count:number,id=''){
+ stopMotion();$('#inspect').hidden=true;pending=spec;pendingCount=count;pendingId=id;freePlacement=false;
+ zoneIndex=level.kind==='storm'&&spec.noun==='fan'?1:0;
+ if(level.kind==='shelter'){const firstUncovered=level.zones.findIndex(z=>!items.some(o=>o.spec.rain>0&&Math.hypot(o.x-z.x,o.z-z.z)<o.spec.rain));if(firstUncovered>=0)zoneIndex=firstUncovered;}
+ placement={x:level.zones[zoneIndex].x,z:level.zones[zoneIndex].z,rot:0};
+ $('#preview-label').textContent=previewLabel(spec);$('#placement').hidden=false;
+ $<HTMLDetailsElement>('#placement-tools').open=false;
+ if(spec.evidence.shorthand){assisted=true;event('shorthand-model-shown',{model:modeledPhrase(spec),articleEvidence:false});}
+ $('#feedback').hidden=true;updatePreview();updateFlow();
+}
+function create(){
+ const raw=$<HTMLInputElement>('#phrase').value;attempts++;const result=parsePhrase(raw,assisted);
+ event('phrase-attempt',{raw,number:attempts,unaided:!assisted,result:result.ok?'accepted':'unsupported-or-form',assisted});
+ if(!result.ok){
+  rejectedPhrases++;if(/^(a\/an|two|power)/.test(result.message)){assisted=true;event('form-help',{feedback:result.message});audio.cue('mistake');}else audio.cue('page');
+  $('#phrase-feedback').textContent=result.message;
+  if(result.suggestion){assisted=true;event('spelling-help-shown',{suggestion:result.suggestion});const b=$('#suggestion');b.hidden=false;b.textContent=`אולי התכוונתם ל־${result.suggestion}?`;b.onclick=()=>{event('spelling-help',{from:raw,to:result.suggestion});$<HTMLInputElement>('#phrase').value=result.suggestion!;b.hidden=true;$<HTMLInputElement>('#phrase').focus();};}return;
+ }
+ const old=items.find(o=>o.id===selected);
+ if(edit&&old?.spec.noun!==result.spec.noun){$('#phrase-feedback').textContent='כאן משנים את החפץ שנבחר. לחפץ אחר, סגרו ופתחו מחברת חדשה.';return;}
+ if(items.length+result.spec.count>18&&!edit){$('#phrase-feedback').textContent='האי מלא. אפשר לבטל פעולה או להתחיל את האי מחדש.';return;}
+ snapshot();
+ if(edit&&old){items=items.filter(o=>o.id!==old.id);result.spec.count=1;result.spec.evidence.article=false;result.spec.evidence.count=false;result.spec.evidence.spelling=false;}
+ closeBook();audio.cue('create');beginPlacement(result.spec,result.spec.count,edit?selected:'');world.setItems(items);
+ if(result.warning){assisted=true;event('order-help-shown',{feedback:result.warning});feedback(result.warning,'',9);}
+}
+function place(){
+ if(!pending||paused||modalOpen())return;
+ const old=history.at(-1)?.items.find(o=>o.id===pendingId),id=pendingId||`created-${++serial}`;
+ const spec=clone(pending);spec.count=1;
+ const item:Item={id,spec,x:placement.x,z:placement.z,rot:placement.rot,placed:true,origin:old?.origin};items.push(item);selected=id;
+ event(pendingId?'modify-place':'create-place',{id,phrase:spec.phrase,x:item.x,z:item.z,rot:item.rot,evidence:spec.evidence});
+ world.setItems(items);world.popItem(id);audio.cue(spec.noun==='umbrella'?'umbrella':spec.noun==='fan'?'fan':spec.material==='metal'?'metal':'wood');
+ pendingCount--;
+ if(pendingCount>0){pendingId='';zoneIndex=(zoneIndex+1)%level.zones.length;placement={x:level.zones[zoneIndex].x,z:level.zones[zoneIndex].z,rot:0};$('#preview-label').textContent=`${pending.phrase} · עוד ${pendingCount} להנחה`;updatePreview();}
+ else{pending=undefined;pendingId='';world.setPreview();$('#placement').hidden=true;}
+ const outcome=updateOutcome(true);
+ if(!outcome.ready&&!pending){world.reactToPlacement(item);if(level.kind==='bridge'&&spec.span)feedback(`האורך ${spec.length.toFixed(1)} מ׳ לא נתמך בשני הקצוות. אפשר לשנות את המילים ולנסות שוב.`,'try');else if(spec.material==='metal'&&['cargo','ferry','storm'].includes(level.kind))audio.cue('splash');}
+ renderInventory();updateFlow();$('#world').focus();
+}
+function cancelPlacement(){
+ if(pending){const previous=history.pop();if(previous){items=previous.items;selected=previous.selected;world.setItems(items);}}
+ pending=undefined;pendingId='';pendingCount=0;world.setPreview();$('#placement').hidden=true;updateOutcome();updateFlow();
+}
+function undo(){
+ if(book)closeBook();stopMotion();hideInspector();
+ if(pending)cancelPlacement();else{const previous=history.pop();if(!previous){feedback('עוד אין פעולה לביטול.');return;}items=previous.items;selected=previous.selected;world.setItems(items);}
+ retries++;won=false;event('undo',{});audio.cue('undo');updateOutcome(true);updateFlow();
+}
+function setTarget(i:number){if(!pending)return;zoneIndex=(i+level.zones.length)%level.zones.length;freePlacement=false;placement.x=level.zones[zoneIndex].x;placement.z=level.zones[zoneIndex].z;updatePreview();}
+function rotate(){if(pending){placement.rot=(placement.rot+Math.PI/2)%(Math.PI*2);updatePreview();audio.cue('rotate');}}
+function updateOutcome(announce=false){
+ const state=evaluatePlacement(level,items);if(level.kind==='weight')world.showBridge(state.traversable);
+ if(announce)feedback(state.reason,state.ready?'good':'try');
+ if(state.ready&&!lastReady){audio.setSolved(true);audio.cue('confirm');world.goalReady(true);feedback('הרעיון עובד! עכשיו אפשר לנסות את הדרך למגדלור.','good');event('world-solved',{kind:level.kind});}
+ if(!state.ready&&lastReady){audio.setSolved(false);world.goalReady(false);}lastReady=state.ready;return state;
+}
+function updateFlow(){
+ const state=evaluatePlacement(level,items),action=nextAction(level,items,selected);
+ const phase=pending?'place':state.ready?'try':'write';
+ document.body.dataset.mode=!started?'welcome':won?'complete':book?'notebook':pending?'placement':!$('#inspect').hidden?'inspect':'explore';
+ const signature=`${phase}/${action.kind}/${action.label}/${items.length}/${selected}/${pendingCount}/${book}/${won}/${$('#inspect').hidden}/${activeTravel}/${ferry>0}`;
+ if(signature===uiSignature)return;uiSignature=signature;
+ $('#next-instruction').textContent=pending?pendingCount>1?`בחרו מקום לחפץ הראשון. אחריו נניח את הבא.`:'המקום מוכן. הניחו את החפץ.':action.instruction;
+ $('#use-btn').textContent=activeTravel?(ferry>0?'מפליגים למגדלור…':'הדוור בדרך למגדלור…'):action.label;$('#use-btn').toggleAttribute('disabled',activeTravel);$('#use-btn').dataset.action=action.kind;
+ for(const step of document.querySelectorAll<HTMLElement>('[data-step]'))step.dataset.active=String(step.dataset.step===phase);
+ $('#inspect-btn').hidden=items.length===0;$('#undo-btn').hidden=history.length===0&&!pending;
+ $('#walk-help').textContent=activeTravel?'הדוור בדרך… לחצו על הקרקע או על חץ כדי לשנות כיוון.':'הקישו על הקרקע כדי ללכת · אפשר גם בחצים';
+}
+function prepareMovement(){
+ if(!started||paused||book||won||modalOpen()||pending)return false;
+ if(!$('#inspect').hidden)hideInspector();$<HTMLDetailsElement>('#help-details').open=false;$('#teaching').hidden=true;keys.clear();return true;
+}
+function walkTo(to:Point,tryGoal=false){
+ if(!prepareMovement())return;
+ const state=evaluatePlacement(level,items);travelAfterApproach=false;activeTravel=tryGoal;
+ if(tryGoal&&state.ready&&!state.traversable&&['ferry','cargo','wind','storm'].includes(level.kind)&&player.x<0){route=[{x:-level.gap/2-.65,z:0}];travelAfterApproach=true;}
+ else route=walkingRoute(level,items,player,to);
+ if(!state.ready&&level.gap>0&&player.x*to.x<0)feedback('הדרך עוד לא פתוחה. איזה חפץ יוכל לעזור?');
+ world.markDestination(route.at(-1)!);event('walk-request',{to,tryGoal});updateFlow();
+}
+function trySolution(){
+ const state=evaluatePlacement(level,items);
+ if(!state.ready){feedback(state.reason,'try');return;}
+ hideInspector();walkTo({x:6.7,z:.5},true);feedback(level.kind==='shelter'?'החבילות מוגנות! הדוור ממשיך למגדלור.':state.traversable?'בואו נבדוק את הדרך שיצרתם.':'הדוור ייגש לרציף ויעלה למעבורת.','good');
+}
+function use(){
+ if(!started||paused||won||book||pending||modalOpen()||activeTravel)return;
+ const action=nextAction(level,items,selected);
+ event('context-action',{kind:action.kind});
+ if(action.kind==='travel')trySolution();else if(action.kind==='select')showInventory();else if(action.kind==='revise')openBook(true);else openBook();
+}
+function startFerry(){ferry=3;ferryOriginX=player.x;vesselX=-level.gap/2+.35;player.jump=0;player.z=0;player.vx=player.vz=0;route=[];travelAfterApproach=false;audio.cue('splash');feedback('צפים אל הגדה השנייה.','good');event('board-ferry',{});}
+function win(){
+ if(won)return;won=true;stopMotion();world.celebrate();completions.add(level.id);
+ try{localStorage.setItem('wordcraft-completed',JSON.stringify([...completions]));}catch{/* optional persistence */}
+ audio.cue('success');
+ const contributors=evaluatePlacement(level,items).contributors;
+ const relevant=items.filter(o=>contributors.includes(o.id)&&(o.id.startsWith('created')||events.some(e=>e.level===level.id&&e.type==='modify-place'&&(e.detail as {id:string}).id===o.id)));
+ const evidence={article:false,count:false,spelling:false,modifiers:false,order:false,family:false} as Omit<Evidence,'assisted'|'shorthand'>;
+ for(const item of relevant)for(const key of Object.keys(evidence) as (keyof typeof evidence)[])evidence[key] ||= item.spec.evidence[key];
+ const unaidedSolution=hints===0&&!assisted;
+ event('completion',{evidence,unaidedSolution,singlePhraseFirstAttemptUnaided:attempts===1&&unaidedSolution&&retries===0&&rejectedPhrases===0,assisted,hints,retries,attempts,rejectedPhrases});
+ $('#win-title').textContent=level.kind==='shelter'?'שתי חבילות יבשות!':level.kind==='wind'||level.kind==='storm'?'המילים נתנו כוח לרוח!':'פתחתם דרך חדשה!';
+ $('#win-story').textContent=level.kind==='shelter'?'הדואר מוגן מהגשם, והדוור הגיע למגדלור.':'החפץ שיצרתם שינה את האי. הדוור הגיע למגדלור.';
+ $('#complete-detail').textContent=`${attempts} צירופים · ${hints} רמזים · ${retries} ביטולי פעולה · ${rejectedPhrases} ניסיונות עורך שלא התקבלו. ${unaidedSolution?'ללא עזרה גלויה.':'נעשה שימוש בעזרה.'}`;
+ $('#evidence').textContent=Object.entries(evidence).filter(([,v])=>v).map(([k])=>({article:'תווית שנכתבה',count:'מספר פריטים',spelling:'איות ללא תיקון',modifiers:'שתי תכונות',order:'סדר תארים',family:'משפחת power'}[k])).join(' · ')||'פתרון פיזי תקף. אין עדות להפקה עצמאית של הכלל.';
+ $('#next').textContent=index===8?'חזרה למסלול ז׳ →':'לאי הבא →';
+ $<HTMLDetailsElement>('#learning-details').open=false;showOverlay('complete');levelMenu();updateFlow();
+}
 
-$('#words').innerHTML=catalog.map(c=>`<div class="dictionary-entry"><strong dir="ltr">${c.noun}</strong> <span>${c.he}</span><small dir="ltr">${c.use}</small></div>`).join('');
-$('#dictionary').addEventListener('toggle',()=>{if(($<HTMLDetailsElement>('#dictionary')).open){assisted=true;event('dictionary-help',{});}});
-$('#start').onclick=async()=>{started=true;await audio.start();hideOverlay();loadLevel(index);};$('#book-btn').onclick=()=>book?closeBook():openBook();$('#close-book').onclick=closeBook;$('#create-form').onsubmit=e=>{e.preventDefault();create();};
-$('#grade').onchange=()=>{loadLevel(levels.findIndex(l=>String(l.grade)===$<HTMLSelectElement>('#grade').value));};$('#mission-select').onchange=()=>loadLevel(levels.findIndex(l=>l.id===$<HTMLSelectElement>('#mission-select').value));
-$('#hint-btn').onclick=()=>{hints++;assisted=true;event('hint',{});feedback(level.hint);audio.cue('page');};$('#teach-btn').onclick=()=>{const t=$('#teaching');t.hidden=!t.hidden;if(!t.hidden){assisted=true;event('teaching-help',{});}keys.clear();};$('#read-btn').onclick=()=>{assisted=true;event('voice-help',{});audio.speak?.(level.mission);};
-$('#close-inspect').onclick=()=>{$('#inspect').hidden=true;keys.clear();};$('#inspect-btn').onclick=()=>{const el=$('#inspect');el.hidden=!el.hidden;renderInventory();keys.clear();};$('#object-list').onchange=()=>select($<HTMLSelectElement>('#object-list').value);$('#modify').onclick=()=>openBook(true);$('#carry').onclick=()=>{const o=items.find(o=>o.id===selected);if(!o)return;snapshot();items=items.filter(i=>i.id!==o.id);world.setItems(items);beginPlacement(o.spec,1,o.id);};
-$('#place').onclick=place;$('#cancel-place').onclick=()=>cancelPlacement();$('#target-prev').onclick=()=>target(-1);$('#target-next').onclick=()=>target(1);$('#rotate').onclick=rotate;$('#undo-btn').onclick=undo;$('#use-btn').onclick=use;$('#orbit-left').onclick=()=>world.orbit(-.2);$('#orbit-right').onclick=()=>world.orbit(.2);
-function pauseGame(){if(!started)return;paused=true;showOverlay('pause');event('pause',{});}function resume(){paused=false;hideOverlay();event('resume',{});}
-$('#pause-btn').onclick=pauseGame;$('#resume').onclick=resume;$('#pause-close').onclick=resume;$('#restart').onclick=()=>{event('restart',{});loadLevel(index);};$('#next').onclick=()=>loadLevel((index+1)%levels.length);$('#replay').onclick=()=>loadLevel(index);
-$('#settings-btn').onclick=()=>{if(!started)return;showOverlay('settings');event('settings',{});};$('#settings-close').onclick=hideOverlay;
-for(const [channel,label] of [['master','ראשי'],['music','מוזיקה ואווירה'],['sfx','צלילי פעולה'],['voice','קריאה בקול']] as const){const wrap=document.createElement('label');wrap.className='gain';wrap.innerHTML=`<span>${label}</span><input id="gain-${channel}" aria-label="${label}" type="range" min="0" max="1" step=".01" value="${(audio.getState() as any).gains?.[channel]??.6}"><output></output>`;$('#gains').append(wrap);const input=wrap.querySelector('input')!;const output=wrap.querySelector('output')!;output.textContent=`${Math.round(Number(input.value)*100)}%`;input.oninput=()=>{audio.setGain(channel,Number(input.value));output.textContent=`${Math.round(Number(input.value)*100)}%`;};}
-const canvas=$<HTMLCanvasElement>('#world');let down:{x:number;y:number}|undefined;
-canvas.addEventListener('pointermove',e=>{if(pending&&!book&&!paused){const p=world.groundPoint(e.clientX,e.clientY);placement.x=Math.max(-8.5,Math.min(8.5,p.x));placement.z=Math.max(-3.7,Math.min(3.7,p.z));world.setPreview(pending,placement.x,placement.z,placement.rot);}});
-canvas.addEventListener('pointerdown',e=>{down={x:e.clientX,y:e.clientY};});canvas.addEventListener('pointerup',e=>{if(!started||paused||won||book||!down)return;if(down&&Math.hypot(e.clientX-down.x,e.clientY-down.y)>12)return;if(pending){const p=world.groundPoint(e.clientX,e.clientY);placement.x=p.x;placement.z=p.z;place();}else{const id=world.pick(e.clientX,e.clientY);if(id)select(id);}down=undefined;});canvas.addEventListener('pointercancel',()=>{down=undefined;});
+// UI actions: one current action, with secondary tools available on demand.
+$('#words').innerHTML=catalog.map(c=>`<div class="dictionary-entry"><span class="word-icon">${nounIcon[c.noun]}</span><strong dir="ltr">${c.noun}</strong><span>${c.he}</span><small dir="ltr">${c.use}</small></div>`).join('');
+$('#help-details').addEventListener('toggle',()=>{if($<HTMLDetailsElement>('#help-details').open){stopMotion();assisted=true;event('translation-help',{});}});
+$('#dictionary').addEventListener('toggle',()=>{if($<HTMLDetailsElement>('#dictionary').open){assisted=true;event('dictionary-help',{});}});
+$('#start').onclick=()=>{if(started)return;started=true;void audio.start().then(()=>audio.pause(paused||modalOpen()));hideOverlay();loadLevel(index);};
+$('#book-btn').onclick=()=>book?closeBook():openBook();$('#close-book').onclick=closeBook;
+$('#create-form').onsubmit=e=>{e.preventDefault();create();};
+$('#grade').onchange=()=>loadLevel(levels.findIndex(l=>String(l.grade)===$<HTMLSelectElement>('#grade').value));
+$('#mission-select').onchange=()=>loadLevel(levels.findIndex(l=>l.id===$<HTMLSelectElement>('#mission-select').value));
+$('#hint-btn').onclick=()=>{hints++;assisted=true;event('hint',{});feedback(level.hint,'',10);audio.cue('page');};
+$('#teach-btn').onclick=()=>{const el=$('#teaching');el.hidden=!el.hidden;if(!el.hidden){assisted=true;event('teaching-help',{});}stopMotion();};
+$('#read-btn').onclick=()=>{assisted=true;event('voice-help',{});audio.speak?.(level.mission);};
+$('#close-inspect').onclick=hideInspector;$('#inspect-btn').onclick=()=>$('#inspect').hidden?showInventory():hideInspector();
+$('#object-list').onchange=()=>select($<HTMLSelectElement>('#object-list').value);
+$('#modify').onclick=()=>openBook(true);
+$('#carry').onclick=()=>{const item=items.find(o=>o.id===selected);if(!item)return;snapshot();items=items.filter(o=>o.id!==item.id);world.setItems(items);beginPlacement(item.spec,1,item.id);};
+$('#place').onclick=place;$('#cancel-place').onclick=cancelPlacement;
+$('#target-prev').onclick=()=>setTarget(zoneIndex-1);$('#target-next').onclick=()=>setTarget(zoneIndex+1);
+$('#rotate').onclick=rotate;$('#free-place').onclick=()=>{freePlacement=!freePlacement;renderTargets();};
+$('#undo-btn').onclick=undo;$('#use-btn').onclick=use;
+function pauseGame(){if(!started||won)return;paused=true;showOverlay('pause');event('pause',{});}function resume(){paused=false;hideOverlay();event('resume',{});updateFlow();}
+$('#pause-btn').onclick=pauseGame;$('#resume').onclick=resume;$('#pause-close').onclick=resume;
+$('#restart').onclick=()=>{event('restart',{});loadLevel(index);};$('#next').onclick=()=>loadLevel((index+1)%levels.length);$('#replay').onclick=()=>loadLevel(index);
+$('#settings-btn').onclick=()=>{if(started)showOverlay('settings');};$('#settings-close').onclick=hideOverlay;
+$('#controls-btn').onclick=()=>{if(started)showOverlay('controls');};$('#controls-close').onclick=hideOverlay;
+$('#orbit-left').onclick=()=>world.orbit(-.2);$('#orbit-right').onclick=()=>world.orbit(.2);
+for(const [channel,label] of [['master','ראשי'],['music','מוזיקה ואווירה'],['sfx','צלילי פעולה'],['voice','קריאה בקול']] as const){
+ const wrap=document.createElement('label');wrap.className='gain';wrap.innerHTML=`<span>${label}</span><input id="gain-${channel}" aria-label="${label}" type="range" min="0" max="1" step=".01" value="${audio.getState().gains[channel]}"><output></output>`;$('#gains').append(wrap);
+ const input=wrap.querySelector('input')!,output=wrap.querySelector('output')!;output.textContent=`${Math.round(Number(input.value)*100)}%`;
+ input.oninput=()=>{audio.setGain(channel,Number(input.value));output.textContent=`${Math.round(Number(input.value)*100)}%`;};
+}
+
+const canvas=$<HTMLCanvasElement>('#world');
+let down:{x:number;y:number;dragging:boolean}|undefined;
+canvas.addEventListener('pointerdown',e=>{if(e.button!==0)return;down={x:e.clientX,y:e.clientY,dragging:false};if(pending&&freePlacement)canvas.setPointerCapture(e.pointerId);});
+canvas.addEventListener('pointermove',e=>{
+ if(!down||!pending||!freePlacement||book||paused)return;
+ down.dragging ||= Math.hypot(e.clientX-down.x,e.clientY-down.y)>8;
+ const p=world.groundPoint(e.clientX,e.clientY);placement.x=Math.max(-8.3,Math.min(8.3,p.x));placement.z=Math.max(-3.5,Math.min(3.5,p.z));world.setPreview(pending,placement.x,placement.z,placement.rot);
+});
+canvas.addEventListener('pointerup',e=>{
+ const gesture=down;down=undefined;if(!gesture||!started||paused||won||book||modalOpen())return;
+ if(Math.hypot(e.clientX-gesture.x,e.clientY-gesture.y)>12){return;}
+ const point=world.groundPoint(e.clientX,e.clientY);
+ if(pending){
+  if(freePlacement){placement.x=Math.max(-8.3,Math.min(8.3,point.x));placement.z=Math.max(-3.5,Math.min(3.5,point.z));updatePreview();}
+  else {const nearest=level.zones.map((z,i)=>({i,d:Math.hypot(z.x-point.x,z.z-point.z)})).sort((a,b)=>a.d-b.d)[0];if(nearest.d<2)setTarget(nearest.i);}
+  return;
+ }
+ const id=world.pick(e.clientX,e.clientY);if(id)select(id);else walkTo({x:Math.max(-8.2,Math.min(8.2,point.x)),z:Math.max(-3.3,Math.min(3.3,point.z))},point.x>5.3&&Math.abs(point.z)<1.6);
+});
+canvas.addEventListener('pointercancel',()=>{down=undefined;});
 const physicalKeys:Record<string,string>={KeyW:'w',KeyA:'a',KeyS:'s',KeyD:'d',KeyN:'n',KeyE:'e',KeyR:'r',KeyF:'f',KeyZ:'z',Space:' '};
 function typing(){return document.activeElement instanceof HTMLInputElement||document.activeElement instanceof HTMLTextAreaElement||document.activeElement instanceof HTMLSelectElement;}
-document.addEventListener('keydown',e=>{let key=e.key.toLowerCase();if(key==='escape'&&document.fullscreenElement){e.preventDefault();void document.exitFullscreen();return;}if(key==='escape'&&!$('#overlay').hidden&&started&&!won){e.preventDefault();resume();return;}if(!started&&key==='enter'){e.preventDefault();$('#start').click();return;}if(typing()){if(key==='escape'&&book){e.preventDefault();closeBook();}return;}key=physicalKeys[e.code]??key;if(key==='escape'){if(book)closeBook();else if(pending)cancelPlacement();else if(!$('#overlay').hidden){if(won)return;resume();}else if(!$('#inspect').hidden)$('#inspect').hidden=true;else if(!$('#teaching').hidden)$('#teaching').hidden=true;else pauseGame();return;}if(isBlocked())return;if(pending){if(['arrowleft','arrowright','arrowup','arrowdown'].includes(key)){e.preventDefault();placement.x+=key==='arrowright'?.2:key==='arrowleft'?-.2:0;placement.z+=key==='arrowdown'?.2:key==='arrowup'?-.2:0;world.setPreview(pending,placement.x,placement.z,placement.rot);}if(key==='enter')place();if(key==='r')rotate();if(key==='tab')target(e.shiftKey?-1:1);return;}
- if(key==='n'){e.preventDefault();openBook();}else if(key==='e'){e.preventDefault();use();}else if(key==='f'){if(!document.fullscreenElement)document.documentElement.requestFullscreen?.();else document.exitFullscreen?.();}else if(key==='z'&&(e.ctrlKey||e.metaKey)){e.preventDefault();undo();}else if(['w','a','s','d','arrowleft','arrowright','arrowup','arrowdown',' '].includes(key)){e.preventDefault();keys.add(key);}});
-document.addEventListener('keyup',e=>keys.delete(physicalKeys[e.code]??e.key.toLowerCase()));for(const b of document.querySelectorAll<HTMLElement>('[data-key]')){b.addEventListener('pointerdown',e=>{e.preventDefault();b.setPointerCapture(e.pointerId);keys.add(b.dataset.key!);});for(const type of ['pointerup','pointercancel','lostpointercapture'])b.addEventListener(type,()=>keys.delete(b.dataset.key!));}
-window.addEventListener('blur',()=>{keys.clear();audio.pause(true);});window.addEventListener('focus',()=>{if(started&&!paused&&$('#overlay').hidden)audio.pause(false);});document.addEventListener('visibilitychange',()=>{keys.clear();audio.pause(document.hidden||paused||!$('#overlay').hidden);});
-let visualReady=false;function step(dt:number,draw=true){clock+=dt;const state=updateOutcome();let moving=false;const blocked=isBlocked();if(!blocked&&!pending){if(ferry>0){ferry-=dt;player.x=Math.min(level.gap/2+1,player.x+dt*(level.gap+8)/3.6);if(ferry<=0)player.x=level.gap/2+1;moving=true;}else{let dx=Number(keys.has('d')||keys.has('arrowright'))-Number(keys.has('a')||keys.has('arrowleft'));let dz=Number(keys.has('s')||keys.has('arrowdown'))-Number(keys.has('w')||keys.has('arrowup'));const len=Math.hypot(dx,dz)||1;dx=dx/len*dt*3.4;dz=dz/len*dt*3.4;let nx=player.x+dx,nz=player.z+dz;
- if(level.gap>0&&Math.abs(nx)<level.gap/2&&!(state.traversable&&supportsPoint(level,items,nx,nz))){if(Math.abs(player.x)>=level.gap/2)nx=player.x;else nx=-level.gap/2-.2;if(dx||dz){feedback('המים עמוקים. בנו תמיכה או השתמשו בחפץ צף.');}}
- player.x=Math.max(-8.4,Math.min(8.4,nx));player.z=Math.max(-3.5,Math.min(3.5,nz));moving=!!(dx||dz);if(keys.has(' ')&&jumpT<=0){jumpT=.65;audio.cue('bounce');}if(jumpT>0){jumpT-=dt;player.jump=Math.max(0,Math.sin((.65-jumpT)/.65*Math.PI)*.7);}else player.jump=0;}
- if(state.ready&&Math.hypot(player.x-6.7,player.z-.5)<1)win();
+document.addEventListener('keydown',e=>{
+ let key=e.key.toLowerCase();
+ if(key==='escape'&&document.fullscreenElement){e.preventDefault();void document.exitFullscreen();return;}
+ if(key==='escape'&&modalOpen()&&started&&!won){e.preventDefault();resume();return;}
+ if(!started&&key==='enter'){e.preventDefault();$('#start').click();return;}
+ if(typing()){if(key==='escape'&&book){e.preventDefault();closeBook();}return;}
+ key=physicalKeys[e.code]??key;
+ if(key==='escape'){if(book)closeBook();else if(pending)cancelPlacement();else if(!$('#inspect').hidden)hideInspector();else if(route.length)stopMotion();else pauseGame();return;}
+ if(!started||paused||won||modalOpen())return;
+ if(pending){
+  if(['arrowleft','arrowright','arrowup','arrowdown'].includes(key)){e.preventDefault();freePlacement=true;const right=Number(key==='arrowright')-Number(key==='arrowleft'),down=Number(key==='arrowdown')-Number(key==='arrowup');const delta=screenDirection(right,down,world.angle);placement.x+=delta.x*.2;placement.z+=delta.z*.2;updatePreview();}
+  if(key==='enter')place();if(key==='r')rotate();return;
  }
- visualReady=state.ready;world.setExtras(evaluateExtras(items));if(draw){world.sailProgress(ferry>0?player.x:undefined,visualReady);world.render(dt,player,moving,visualReady,blocked);}}
-let last=performance.now();function frame(now:number){const dt=Math.min(.045,(now-last)/1000);last=now;step(dt);requestAnimationFrame(frame);}requestAnimationFrame(frame);
-window.advanceTime=(ms:number)=>{for(let n=0;n<Math.max(1,Math.round(ms/16.667));n++)step(1/60,false);step(0,true);};
-window.render_game_to_text=()=>JSON.stringify({mode:!started?'welcome':won?'complete':paused?'paused':book?'notebook':pending?'placement':'explore',coordinateSystem:'x east/right, z south/down; y up; metres. gap lies across x at z=0.',level:level.id,grade:level.grade,stage:level.stage,layoutVariant,objective:level.mission,player,world:{...evaluatePlacement(level,items),extras:evaluateExtras(items)},zones:level.zones,selected,items:items.map(o=>({id:o.id,phrase:o.spec.phrase,x:o.x,z:o.z,rot:o.rot,origin:o.origin,mass:o.spec.mass,length:o.spec.length,capacity:o.spec.capacity,float:o.spec.float,force:o.spec.force,evidence:o.spec.evidence})),preview:pending?{phrase:pending.phrase,...placement,remaining:pendingCount}:null,learning:{attempts,hints,retries,rejectedPhrases,assisted,events:events.filter(e=>e.level===level.id).slice(-12)},completed:[...completions],audio:audio.getState(),models:{loaded:world.loaded,errors:world.errors}});
+ if(key==='n'){e.preventDefault();openBook();}
+ else if(key==='e'){e.preventDefault();use();}
+ else if(key==='f'){void document.documentElement.requestFullscreen?.();}
+ else if(key==='z'&&(e.ctrlKey||e.metaKey)){e.preventDefault();undo();}
+ else if(['w','a','s','d','arrowleft','arrowright','arrowup','arrowdown',' '].includes(key)){
+  e.preventDefault();if(!$('#inspect').hidden)hideInspector();$<HTMLDetailsElement>('#help-details').open=false;$('#teaching').hidden=true;
+  route=[];activeTravel=false;travelAfterApproach=false;world.clearDestination();keys.add(key);
+ }
+});
+document.addEventListener('keyup',e=>keys.delete(physicalKeys[e.code]??e.key.toLowerCase()));
+for(const button of document.querySelectorAll<HTMLElement>('[data-key]')){
+ button.addEventListener('pointerdown',e=>{e.preventDefault();if(!prepareMovement())return;route=[];activeTravel=false;travelAfterApproach=false;button.setPointerCapture(e.pointerId);keys.add(button.dataset.key!);});
+ for(const type of ['pointerup','pointercancel','lostpointercapture'])button.addEventListener(type,()=>keys.delete(button.dataset.key!));
+}
+window.addEventListener('blur',()=>{stopMotion();audio.pause(true);});
+window.addEventListener('focus',()=>{if(started&&!paused&&!modalOpen())audio.pause(false);});
+document.addEventListener('visibilitychange',()=>{stopMotion();audio.pause(document.hidden||paused||modalOpen());});
+
+function simulate(dt:number){
+ clock+=dt;motionDt+=dt;
+ const state=updateOutcome();const blocked=isBlocked();moving=false;blockedAtEdge=false;
+ if(!blocked&&!pending){
+  if(ferry>0){
+   const before=ferry;ferry=Math.max(0,ferry-dt);const elapsed=3-ferry,left=-level.gap/2+.35,right=level.gap/2-.35;onVessel=elapsed>=.3&&elapsed<=2.7;vesselX=left+(right-left)*Math.max(0,Math.min(1,(elapsed-.3)/2.4));player.x=elapsed<.3?ferryOriginX+(left-ferryOriginX)*(elapsed/.3):elapsed>2.7?right+(level.gap/2+.65-right)*((elapsed-2.7)/.3):vesselX;player.jump=elapsed<.3?-.34*elapsed/.3:elapsed>2.7?-.34*(1-(elapsed-2.7)/.3):-.34;player.z=0;player.vx=player.vz=0;player.facing=Math.PI/2;
+   if(before>0&&ferry===0){onVessel=false;player.jump=0;route=[{x:6.7,z:.5}];world.markDestination(route[0]);} // stand still aboard; walk after disembarking
+  }else{
+   let right=Number(keys.has('d')||keys.has('arrowright'))-Number(keys.has('a')||keys.has('arrowleft'));
+   let down=Number(keys.has('s')||keys.has('arrowdown'))-Number(keys.has('w')||keys.has('arrowup'));
+   let desired=screenDirection(right,down,world.angle),speed=2.9;
+   if(!right&&!down&&route.length){const point=route[0],dx=point.x-player.x,dz=point.z-player.z,distance=Math.hypot(dx,dz);
+    if(distance<.12){player.x=point.x;player.z=point.z;route.shift();if(!route.length){player.vx=player.vz=0;if(travelAfterApproach){startFerry();}else{activeTravel=false;world.clearDestination();}}}
+    if(route.length){const aim=route[0],dx=aim.x-player.x,dz=aim.z-player.z,d=Math.hypot(dx,dz)||1;desired={x:dx/d,z:dz/d};speed=Math.min(2.9,Math.max(.7,d*8));}else desired={x:0,z:0};
+   }
+   if(ferry===0){
+    const damping=1-Math.exp(-dt*(right||down||route.length?18:24));
+    player.vx+=(desired.x*speed-player.vx)*damping;player.vz+=(desired.z*speed-player.vz)*damping;
+    if(Math.hypot(player.vx,player.vz)<.025)player.vx=player.vz=0;
+    let nx=Math.max(-8.3,Math.min(8.3,player.x+player.vx*dt)),nz=Math.max(-3.4,Math.min(3.4,player.z+player.vz*dt));
+    if(level.gap>0&&Math.abs(nx)<level.gap/2&&!(state.traversable&&supportsPoint(level,items,nx,nz))){nx=player.x;blockedAtEdge=true;}
+    const dx=nx-player.x,dz=nz-player.z;player.x=nx;player.z=nz;
+    player.vx=dt>0?dx/dt:0;player.vz=dt>0?dz/dt:0;
+    moving=Math.hypot(dx,dz)>dt*.08;
+    if(moving)player.facing=Math.atan2(player.vx,player.vz);
+    if(blockedAtEdge&&route.length){route=[];activeTravel=false;travelAfterApproach=false;world.clearDestination();feedback('כאן חסרה דרך. פתחו את המחברת וצרו פתרון.');}
+    if(keys.has(' ')&&jumpT<=0){jumpT=.65;keys.delete(' ');audio.cue('bounce');}
+    if(jumpT>0){jumpT=Math.max(0,jumpT-dt);player.jump=Math.sin((.65-jumpT)/.65*Math.PI)*.65;}else player.jump=0;
+   }
+  }
+  if(state.ready&&Math.hypot(player.x-6.7,player.z-.5)<.85)win();
+ }
+ if(blocked||pending){player.vx=player.vz=0;moving=false;}
+ if(!$('#feedback').hidden&&clock>feedbackUntil)$('#feedback').hidden=true;
+ updateFlow();
+}
+function draw(){const dt=motionDt;motionDt=0;world.setExtras(evaluateExtras(items));world.sailProgress(ferry>0?vesselX:undefined,lastReady);world.render(dt,player,moving,lastReady,isBlocked()&&!won,ferry>0);}
+let last=performance.now();
+function frame(now:number){const dt=Math.min(.25,(now-last)/1000);last=now;const steps=Math.max(1,Math.ceil(dt/(1/60)));for(let i=0;i<steps;i++)simulate(dt/steps);draw();requestAnimationFrame(frame);}
+requestAnimationFrame(frame);
+window.advanceTime=(ms:number)=>{const steps=Math.max(1,Math.round(ms/16.667));for(let i=0;i<steps;i++)simulate(ms/1000/steps);draw();};
+window.render_game_to_text=()=>JSON.stringify({
+ mode:!started?'welcome':won?'complete':paused?'paused':book?'notebook':pending?'placement':!$('#inspect').hidden?'inspect':'explore',
+ coordinateSystem:'x east, z south, y up; keyboard directions relative to camera screen. Click ground to walk.',
+ level:level.id,grade:level.grade,stage:level.stage,layoutVariant,objective:level.mission,nextAction:nextAction(level,items,selected),player,
+ motion:{moving,blockedAtEdge,carried:ferry>0,onVessel,vesselX,route,activeTravel,clip:world.anim,facing:world.player.rotation.y,speed:Math.hypot(player.vx,player.vz)},
+ world:{...evaluatePlacement(level,items),extras:evaluateExtras(items)},zones:level.zones,selected,
+ items:items.map(o=>({id:o.id,phrase:o.spec.phrase,x:o.x,z:o.z,rot:o.rot,origin:o.origin,mass:o.spec.mass,length:o.spec.length,capacity:o.spec.capacity,float:o.spec.float,force:o.spec.force,evidence:o.spec.evidence})),
+ preview:pending?{phrase:pending.phrase,...placement,remaining:pendingCount,snapped:!freePlacement,zoneIndex}:null,
+ learning:{attempts,hints,retries,rejectedPhrases,assisted,events:events.filter(e=>e.level===level.id).slice(-14)},
+ completed:[...completions],audio:audio.getState(),models:{loaded:world.loaded,errors:world.errors},renderStats:{calls:world.renderer.info.render.calls,triangles:world.renderer.info.render.triangles,geometries:world.renderer.info.memory.geometries}
+});
 loadLevel(0);showOverlay('welcome');
