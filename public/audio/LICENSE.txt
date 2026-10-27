@@ -1,0 +1,4 @@
+Wordcraft Islands original audio (2026)
+All audio in this directory was generated from the original score and synthesis code in docs/audio/score.py; no external recordings or samples are used.
+The creators dedicate these project-generated audio assets to the public domain under CC0 1.0 Universal.
+https://creativecommons.org/publicdomain/zero/1.0/
