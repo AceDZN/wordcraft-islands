@@ -1,3 +1,5 @@
+> Current Wordcraft override,27 October: the user replaced selectable grade packs with one 50-level progressive campaign. Grade labels below describe source provenance, never player access. See docs/CAMPAIGN_CONTENT.md and src/campaign-levels.ts. Other historical requirements remain applicable.
+
 # Planned rule coverage — grades 7, 8 and 9
 
 27 October 2026. This is the **planned coverage contract**, not a statement that a build or student has completed a chapter. The human specifically selected rules chapters 10, 11 and 12 in all three grades. All nine overviews and the exact modules below were retrieved from Workbook. Each game gets a grade selector with three real packs. Minimum three challenges per grade: short guided demonstration, independent variant, changed-context transfer. A grade flag without different English fixtures, semantic tests and feedback is not support.

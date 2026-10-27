@@ -1,3 +1,5 @@
+> Current campaign map and new physical target review: docs/CAMPAIGN_VISUAL.md. Actual campaign captures/66-second recording: docs/campaign. The original imagegen target and earlier scene comparison below remain design/provenance evidence.
+
 # Visual review — design target versus working game
 
 The built-in image_gen target at docs/visual-targets/gameplay-target.png was generated and visually inspected before gameplay implementation. Exact prompt: docs/visual-targets/prompt.txt. It is a mockup, never presented as a working-game capture.

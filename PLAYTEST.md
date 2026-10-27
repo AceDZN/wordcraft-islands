@@ -1,3 +1,5 @@
+> The current50-level campaign is reviewed in docs/CAMPAIGN_PLAYTEST.md. This file preserves earlier nine-puzzle implementation and play-feel evidence; its grade-selector steps are historical.
+
 # First-release QA log (historical)
 
 The human subsequently rejected the play feel and controls. These functional results did not establish usability or enjoyment. The current revision is reviewed in docs/UX_REVIEW.md; earlier screenshots and runner assumptions remain historical evidence, not a claim that the user experience was good.

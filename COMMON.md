@@ -1,3 +1,5 @@
+> Current Wordcraft override,27 October: the user replaced selectable grade packs with one 50-level progressive campaign. Grade labels below describe source provenance, never player access. See docs/CAMPAIGN_CONTENT.md and src/campaign-levels.ts. Other historical requirements remain applicable.
+
 # English clones — three independent builder crews
 
 27 October 2026. Read this and your own BUILD_HANDOFF.md. The human asked to create three more **actual known-game clones**, with fun gameplay, real educational work, logical controls, good 3D assets, background music and SFX. They explicitly requested one separate chat for each builder team. Their original requirements persist: web-playable real 3D, Hebrew-speaking Israeli learners in grades 7, 8 and 9, Workbook curriculum, imagegen gameplay targets before implementation, Chrome/Tripo assets and character rigs, standalone public AceDZN repo with main commits. Begin the build now; no kickoff approval is needed.

@@ -1,8 +1,8 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "game": "Wordcraft Islands",
   "date": "2026-10-27",
-  "scope": "Selected rules only; three grade tracks and three authored challenges each.",
+  "scope": "Selected English rules in one ordered 50-level campaign, with no grade selection or grade-based access limits. Source grades are internal provenance.",
   "entries": [
     {
       "grade": 7,
@@ -29,8 +29,9 @@
         "article follows the next spoken sound in the supported vocabulary",
         "singular and plural count agreement creates actual quantities"
       ],
-      "browserEvidence": "tests/ux-captures/regression-all-nine.json",
-      "status": "verified"
+      "browserEvidence": "docs/CAMPAIGN_PLAYTEST.md",
+      "status": "verified",
+      "historicalEvidence": "tests/ux-captures/regression-all-nine.json"
     },
     {
       "grade": 7,
@@ -57,8 +58,9 @@
         "near-spelling is proposed, never silently accepted as unaided spelling",
         "transfer ferry permits a boat or physically long alternate bridge"
       ],
-      "browserEvidence": "tests/ux-captures/regression-all-nine.json",
-      "status": "verified"
+      "browserEvidence": "docs/CAMPAIGN_PLAYTEST.md",
+      "status": "verified",
+      "historicalEvidence": "tests/ux-captures/regression-all-nine.json"
     },
     {
       "grade": 8,
@@ -85,8 +87,9 @@
         "same-looking crossing with longer gap changes valid property action",
         "strict heavier-than boundary respects the comparison reference"
       ],
-      "browserEvidence": "tests/ux-captures/regression-all-nine.json",
-      "status": "verified"
+      "browserEvidence": "docs/CAMPAIGN_PLAYTEST.md",
+      "status": "verified",
+      "historicalEvidence": "tests/ux-captures/regression-all-nine.json"
     },
     {
       "grade": 8,
@@ -111,8 +114,9 @@
         "history changes the valid crate while preserving identical visible noun",
         "unrelated weight cannot substitute for making the identified medicine crate heavier"
       ],
-      "browserEvidence": "tests/ux-captures/regression-all-nine.json",
-      "status": "verified"
+      "browserEvidence": "docs/CAMPAIGN_PLAYTEST.md",
+      "status": "verified",
+      "historicalEvidence": "tests/ux-captures/regression-all-nine.json"
     },
     {
       "grade": 8,
@@ -138,8 +142,9 @@
       "tests": [
         "weight comparative uses real mass rather than size or noun password"
       ],
-      "browserEvidence": "tests/ux-captures/regression-all-nine.json",
-      "status": "verified"
+      "browserEvidence": "docs/CAMPAIGN_PLAYTEST.md",
+      "status": "verified",
+      "historicalEvidence": "tests/ux-captures/regression-all-nine.json"
     },
     {
       "grade": 9,
@@ -165,8 +170,9 @@
         "size and material independently change cargo capacity/floatability",
         "order production needs two modifiers, not a vacuous one-word check"
       ],
-      "browserEvidence": "tests/ux-captures/regression-all-nine.json",
-      "status": "verified"
+      "browserEvidence": "docs/CAMPAIGN_PLAYTEST.md",
+      "status": "verified",
+      "historicalEvidence": "tests/ux-captures/regression-all-nine.json"
     },
     {
       "grade": 9,
@@ -192,8 +198,9 @@
         "Fan A is the known referent even when both fans match additional information",
         "G9 transfer combines cargo and identified force with multiple valid containers"
       ],
-      "browserEvidence": "tests/ux-captures/regression-all-nine.json",
-      "status": "verified"
+      "browserEvidence": "docs/CAMPAIGN_PLAYTEST.md",
+      "status": "verified",
+      "historicalEvidence": "tests/ux-captures/regression-all-nine.json"
     },
     {
       "grade": 9,
@@ -219,8 +226,9 @@
         "power is distinguished from powerful/powerless with observable force",
         "fan force needs correct direction as well as word family choice"
       ],
-      "browserEvidence": "tests/ux-captures/regression-all-nine.json",
-      "status": "verified"
+      "browserEvidence": "docs/CAMPAIGN_PLAYTEST.md",
+      "status": "verified",
+      "historicalEvidence": "tests/ux-captures/regression-all-nine.json"
     },
     {
       "grade": 9,
@@ -246,8 +254,9 @@
       "tests": [
         "G9 transfer combines cargo and identified force with multiple valid containers"
       ],
-      "browserEvidence": "tests/ux-captures/regression-all-nine.json",
-      "status": "verified"
+      "browserEvidence": "docs/CAMPAIGN_PLAYTEST.md",
+      "status": "verified",
+      "historicalEvidence": "tests/ux-captures/regression-all-nine.json"
     }
   ],
   "excluded": [
@@ -262,15 +271,624 @@
   "verification": {
     "unitCommand": "npm test",
     "buildCommand": "npm run build",
-    "browserCommand": "node tests/ux-browser.mjs",
-    "campaign": "All nine actual UI paths completed, including mistakes/recovery and all three transfer routes; see individual state JSON/captures.",
-    "limitations": "Automated functional evidence only; see PLAYTEST.md for controls and audio/browser limitations.",
-    "semanticTestsPassed": 43,
-    "finalRegression": "All9 current campaign routes completed. Separate current controls-only run and native headed landscape checks documented in docs/UX_REVIEW.md. Root carrier/recovery checks cover final visual transport and safe undo.",
-    "mobileEvidence": "docs/qa-captures/mobile-summary.json — all touch and assistance assertions passed",
-    "browserEvidence": "tests/ux-captures/regression-all-nine.json",
-    "flowReview": "docs/UX_REVIEW.md — headed ordinary-pointer G7 and native landscape routes, plus current control/assistance checks.",
-    "currentControls": "UX_HEADED=1 node tests/ux-browser.mjs --controls-only passed all control/mobile assertions with zero errors; see tests/ux-captures/controls-summary.json"
+    "browserCommand": "npx tsx tests/campaign-browser.mjs",
+    "campaign": "All 50 authored levels completed through real UI actions: fresh 1–28, then 29–50 resumed from the exact earned checkpoint after fixing adjacent-pad placement. No player position or win state was injected. Final Next opens the map without wrapping.",
+    "semanticTestsPassed": 69,
+    "limitations": "Automated mechanical/semantic/browser evidence only. No retained mastery, subjective fun, native handheld or human musical-audition claim.",
+    "browserEvidence": "docs/CAMPAIGN_PLAYTEST.md",
+    "visualEvidence": "docs/CAMPAIGN_VISUAL.md",
+    "observedControls": "Fresh desktop/phone map and locked nodes; keyboard/focus/Escape/touch; earned replay and reload at 10 wins; plural creation; wrong-property and wrong-identity recovery; original audio retained 17 decoded buffers and 3 loops throughout all 50.",
+    "finalVisual": "docs/campaign/pad-visibility.json and PNGs: separate restored-profile visual/control fixture against final static build; two actual fans 8 N and three sponges 12; 0 page errors.",
+    "remainingLimits": "Final extra post-campaign gain/mute/restart/migration/touch repetition hit startup/actionability timeouts; unobserved checks are not passed. Earlier current map QA, 15 pure progression checks and earlier audio evidence remain separate. No human enjoyment, retained mastery, native device or musical-audition claim.",
+    "finalBuiltSmoke": "Final existing skill client, headed at http://127.0.0.1:4263, passed; screenshot inspected; models5/noerrors,17 decoded audio buffers/3loops, campaign50/frontier1."
   },
-  "runtimeInitialPayloadBytes": 8132546
+  "runtimeInitialPayloadBytes": 8189058,
+  "campaign": {
+    "total": 50,
+    "chapters": [
+      {
+        "number": 1,
+        "title": "המכתבים הראשונים",
+        "from": 1,
+        "to": 10
+      },
+      {
+        "number": 2,
+        "title": "מילים משנות דברים",
+        "from": 11,
+        "to": 20
+      },
+      {
+        "number": 3,
+        "title": "משווים ובוחרים",
+        "from": 21,
+        "to": 30
+      },
+      {
+        "number": 4,
+        "title": "מתארים בדיוק",
+        "from": 31,
+        "to": 40
+      },
+      {
+        "number": 5,
+        "title": "הדרך לחגיגה",
+        "from": 41,
+        "to": 50
+      }
+    ],
+    "progression": "Complete an island to unlock the next. Replay earned islands; resume saved currentId; explicit final campaign map. Sparse legacy wins do not fabricate intervening completions.",
+    "content": "docs/CAMPAIGN_CONTENT.md",
+    "levels": [
+      {
+        "id": "g7-crossing",
+        "number": 1,
+        "chapter": 1,
+        "kind": "bridge",
+        "sourceGrade": 7,
+        "concept": "שם עצם הופך לחפץ",
+        "goals": {}
+      },
+      {
+        "id": "wc-02-first-cover",
+        "number": 2,
+        "chapter": 1,
+        "kind": "shelter",
+        "sourceGrade": 7,
+        "concept": "an לפני צליל תנועה",
+        "goals": {}
+      },
+      {
+        "id": "g7-rain",
+        "number": 3,
+        "chapter": 1,
+        "kind": "shelter",
+        "sourceGrade": 7,
+        "concept": "שני פריטים ושני אזורי כיסוי",
+        "goals": {}
+      },
+      {
+        "id": "wc-04-rope-anchors",
+        "number": 4,
+        "chapter": 1,
+        "kind": "bridge",
+        "sourceGrade": 7,
+        "concept": "מילה אחרת, פתרון פיזי אחר",
+        "goals": {}
+      },
+      {
+        "id": "wc-05-three-stops",
+        "number": 5,
+        "chapter": 1,
+        "kind": "shelter",
+        "sourceGrade": 7,
+        "concept": "שלושה פריטים ורבים",
+        "goals": {}
+      },
+      {
+        "id": "g7-inlet",
+        "number": 6,
+        "chapter": 1,
+        "kind": "ferry",
+        "sourceGrade": 7,
+        "concept": "חפץ צף במקום גשר",
+        "goals": {}
+      },
+      {
+        "id": "wc-07-hold-the-dock",
+        "number": 7,
+        "chapter": 1,
+        "kind": "weight",
+        "sourceGrade": 7,
+        "concept": "שם עצם בהקשר של משקל",
+        "goals": {}
+      },
+      {
+        "id": "wc-08-first-sponge",
+        "number": 8,
+        "chapter": 1,
+        "kind": "workshop",
+        "sourceGrade": 7,
+        "concept": "שם עצם משנה מצב של מים",
+        "goals": {
+          "minAbsorb": 4
+        }
+      },
+      {
+        "id": "wc-09-keepers-key",
+        "number": 9,
+        "chapter": 1,
+        "kind": "workshop",
+        "sourceGrade": 7,
+        "concept": "מפתח ושימוש בחפץ",
+        "goals": {
+          "unlock": true
+        }
+      },
+      {
+        "id": "wc-10-sealed-ferry",
+        "number": 10,
+        "chapter": 1,
+        "kind": "ferry",
+        "sourceGrade": 7,
+        "concept": "העברה: שני שימושים מוכרים",
+        "goals": {
+          "unlock": true,
+          "minCapacity": 1
+        }
+      },
+      {
+        "id": "g8-length",
+        "number": 11,
+        "chapter": 2,
+        "kind": "bridge",
+        "sourceGrade": 8,
+        "concept": "תיאור אורך והשוואה",
+        "goals": {}
+      },
+      {
+        "id": "wc-12-wide-roof",
+        "number": 12,
+        "chapter": 2,
+        "kind": "shelter",
+        "sourceGrade": 8,
+        "concept": "גודל משנה טווח כיסוי",
+        "goals": {}
+      },
+      {
+        "id": "wc-13-light-dock",
+        "number": 13,
+        "chapter": 2,
+        "kind": "weight",
+        "sourceGrade": 8,
+        "concept": "light משנה משקל",
+        "goals": {
+          "maxMass": 6
+        }
+      },
+      {
+        "id": "g8-weight",
+        "number": 14,
+        "chapter": 2,
+        "kind": "weight",
+        "sourceGrade": 8,
+        "concept": "heavier than מתייחס למשקל",
+        "goals": {}
+      },
+      {
+        "id": "wc-15-six-parcels",
+        "number": 15,
+        "chapter": 2,
+        "kind": "cargo",
+        "sourceGrade": 8,
+        "concept": "גודל וקיבולת שונים ממשקל",
+        "goals": {
+          "minCapacity": 6
+        }
+      },
+      {
+        "id": "wc-16-timber-carrier",
+        "number": 16,
+        "chapter": 2,
+        "kind": "cargo",
+        "sourceGrade": 8,
+        "concept": "חומר משנה ציפה",
+        "goals": {
+          "minCapacity": 6,
+          "requiredMaterial": "wooden"
+        }
+      },
+      {
+        "id": "wc-17-fog-light",
+        "number": 17,
+        "chapter": 2,
+        "kind": "workshop",
+        "sourceGrade": 8,
+        "concept": "bright לעומת unlit",
+        "goals": {
+          "illuminate": true
+        }
+      },
+      {
+        "id": "wc-18-narrow-berth",
+        "number": 18,
+        "chapter": 2,
+        "kind": "ferry",
+        "sourceGrade": 8,
+        "concept": "small משנה רוחב",
+        "goals": {
+          "minCapacity": 1,
+          "maxWidth": 1.3
+        }
+      },
+      {
+        "id": "wc-19-four-at-narrow-dock",
+        "number": 19,
+        "chapter": 2,
+        "kind": "cargo",
+        "sourceGrade": 8,
+        "concept": "שני תנאים על אותו כלי",
+        "goals": {
+          "minCapacity": 4,
+          "maxWidth": 1.3
+        }
+      },
+      {
+        "id": "wc-20-rain-beacon",
+        "number": 20,
+        "chapter": 2,
+        "kind": "shelter",
+        "sourceGrade": 8,
+        "concept": "העברה: כיסוי ואור",
+        "goals": {
+          "illuminate": true
+        }
+      },
+      {
+        "id": "wc-21-more-than-sample",
+        "number": 21,
+        "chapter": 3,
+        "kind": "weight",
+        "sourceGrade": 8,
+        "concept": "השוואה נבדקת מול נתון",
+        "goals": {}
+      },
+      {
+        "id": "wc-22-between-marks",
+        "number": 22,
+        "chapter": 3,
+        "kind": "weight",
+        "sourceGrade": 8,
+        "concept": "גבול תחתון ועליון",
+        "goals": {
+          "maxMass": 10
+        }
+      },
+      {
+        "id": "wc-23-light-long-bridge",
+        "number": 23,
+        "chapter": 3,
+        "kind": "bridge",
+        "sourceGrade": 8,
+        "concept": "אורך ומשקל הם תכונות נפרדות",
+        "goals": {
+          "maxMass": 4
+        }
+      },
+      {
+        "id": "wc-24-cart-deck",
+        "number": 24,
+        "chapter": 3,
+        "kind": "bridge",
+        "sourceGrade": 8,
+        "concept": "רוחב אינו אורך",
+        "goals": {
+          "minWidth": 1.5,
+          "maxMass": 6
+        }
+      },
+      {
+        "id": "wc-25-gentle-breeze",
+        "number": 25,
+        "chapter": 3,
+        "kind": "wind",
+        "sourceGrade": 8,
+        "concept": "גודל אינו כוח",
+        "goals": {
+          "minForce": 4,
+          "maxForce": 6
+        }
+      },
+      {
+        "id": "wc-26-gardeners-crate",
+        "number": 26,
+        "chapter": 3,
+        "kind": "weight",
+        "sourceGrade": 8,
+        "concept": "פסוקית מזהה וגבולות משקל",
+        "goals": {
+          "maxMass": 6
+        }
+      },
+      {
+        "id": "g8-history",
+        "number": 27,
+        "chapter": 3,
+        "kind": "weight",
+        "sourceGrade": 8,
+        "concept": "העברה: זיהוי לפי היסטוריה",
+        "goals": {}
+      },
+      {
+        "id": "wc-28-light-lift",
+        "number": 28,
+        "chapter": 3,
+        "kind": "cargo",
+        "sourceGrade": 8,
+        "concept": "קיבולת, רוחב ומשקל יחד",
+        "goals": {
+          "minCapacity": 8,
+          "maxWidth": 2.1,
+          "maxMass": 6
+        }
+      },
+      {
+        "id": "wc-29-two-fans",
+        "number": 29,
+        "chapter": 3,
+        "kind": "wind",
+        "sourceGrade": 8,
+        "concept": "מספר פריטים משנה כוח כולל",
+        "goals": {
+          "minForce": 8,
+          "maxForce": 10
+        }
+      },
+      {
+        "id": "wc-30-narrow-harbour",
+        "number": 30,
+        "chapter": 3,
+        "kind": "storm",
+        "sourceGrade": 8,
+        "concept": "העברה: כלי צר וכוח מדויק",
+        "goals": {
+          "minCapacity": 4,
+          "maxWidth": 1.3,
+          "minForce": 8,
+          "maxForce": 10
+        }
+      },
+      {
+        "id": "g9-cargo",
+        "number": 31,
+        "chapter": 4,
+        "kind": "cargo",
+        "sourceGrade": 9,
+        "concept": "צירוף גודל וחומר",
+        "goals": {}
+      },
+      {
+        "id": "wc-32-timber-bulk-mail",
+        "number": 32,
+        "chapter": 4,
+        "kind": "cargo",
+        "sourceGrade": 9,
+        "concept": "גודל וחומר בהקשר חדש",
+        "goals": {
+          "minCapacity": 14,
+          "maxMass": 8,
+          "requiredMaterial": "wooden"
+        }
+      },
+      {
+        "id": "wc-33-rope-restrictions",
+        "number": 33,
+        "chapter": 4,
+        "kind": "bridge",
+        "sourceGrade": 9,
+        "concept": "שילוב אורך, רוחב ומשקל",
+        "goals": {
+          "maxWidth": 1,
+          "maxMass": 2
+        }
+      },
+      {
+        "id": "wc-34-light-wooden-load",
+        "number": 34,
+        "chapter": 4,
+        "kind": "cargo",
+        "sourceGrade": 9,
+        "concept": "שתי תכונות בעלות תפקיד שונה",
+        "goals": {
+          "minCapacity": 8,
+          "maxMass": 2,
+          "requiredMaterial": "wooden"
+        }
+      },
+      {
+        "id": "wc-35-from-power",
+        "number": 35,
+        "chapter": 4,
+        "kind": "wind",
+        "sourceGrade": 9,
+        "concept": "משפחת power ותפקיד התואר",
+        "goals": {
+          "minForce": 8
+        }
+      },
+      {
+        "id": "g9-power",
+        "number": 36,
+        "chapter": 4,
+        "kind": "wind",
+        "sourceGrade": 9,
+        "concept": "מידע נוסף על עצם שכבר זוהה",
+        "goals": {}
+      },
+      {
+        "id": "wc-37-quiet-nest",
+        "number": 37,
+        "chapter": 4,
+        "kind": "wind",
+        "sourceGrade": 9,
+        "concept": "powerless הוא אפס כוח",
+        "goals": {
+          "minForce": 0,
+          "maxForce": 0
+        }
+      },
+      {
+        "id": "wc-38-three-sponges",
+        "number": 38,
+        "chapter": 4,
+        "kind": "workshop",
+        "sourceGrade": 9,
+        "concept": "רבים וכמות ספיגה",
+        "goals": {
+          "minAbsorb": 12,
+          "requiredMaterial": "soft"
+        }
+      },
+      {
+        "id": "wc-39-wet-lock",
+        "number": 39,
+        "chapter": 4,
+        "kind": "workshop",
+        "sourceGrade": 9,
+        "concept": "שתי פעולות שונות באותה תחנה",
+        "goals": {
+          "minAbsorb": 8,
+          "unlock": true
+        }
+      },
+      {
+        "id": "wc-40-quiet-cargo",
+        "number": 40,
+        "chapter": 4,
+        "kind": "storm",
+        "sourceGrade": 9,
+        "concept": "העברה: תיאור חיובי ושלילי",
+        "goals": {
+          "minCapacity": 8,
+          "maxMass": 2,
+          "requiredMaterial": "wooden",
+          "minForce": 0,
+          "maxForce": 0
+        }
+      },
+      {
+        "id": "wc-41-air-invitation",
+        "number": 41,
+        "chapter": 5,
+        "kind": "ferry",
+        "sourceGrade": 9,
+        "concept": "חפץ חדש עם כמה מגבלות",
+        "goals": {
+          "minCapacity": 3,
+          "maxWidth": 1.5,
+          "maxMass": 0.5
+        }
+      },
+      {
+        "id": "wc-42-harbour-boat",
+        "number": 42,
+        "chapter": 5,
+        "kind": "cargo",
+        "sourceGrade": 9,
+        "concept": "פסוקית מזהה על כלי הובלה",
+        "goals": {
+          "minCapacity": 20,
+          "maxMass": 7,
+          "requiredMaterial": "wooden"
+        }
+      },
+      {
+        "id": "wc-43-light-wind",
+        "number": 43,
+        "chapter": 5,
+        "kind": "wind",
+        "sourceGrade": 9,
+        "concept": "כוח ומשקל אינם אותה תכונה",
+        "goals": {
+          "minForce": 8,
+          "maxMass": 2
+        }
+      },
+      {
+        "id": "wc-44-metal-returns",
+        "number": 44,
+        "chapter": 5,
+        "kind": "weight",
+        "sourceGrade": 9,
+        "concept": "חומר וטווח משקל כולל",
+        "goals": {
+          "minMass": 7,
+          "maxMass": 9,
+          "requiredMaterial": "metal"
+        }
+      },
+      {
+        "id": "g9-storm",
+        "number": 45,
+        "chapter": 5,
+        "kind": "storm",
+        "sourceGrade": 9,
+        "concept": "העברה: מידע מוסגר ומידע מזהה",
+        "goals": {}
+      },
+      {
+        "id": "wc-46-flooded-archive",
+        "number": 46,
+        "chapter": 5,
+        "kind": "workshop",
+        "sourceGrade": 9,
+        "concept": "כמות ספיגה ואור בהקשר העברה",
+        "goals": {
+          "minAbsorb": 16,
+          "illuminate": true
+        }
+      },
+      {
+        "id": "wc-47-light-bulk-signal",
+        "number": 47,
+        "chapter": 5,
+        "kind": "storm",
+        "sourceGrade": 9,
+        "concept": "מספר, גודל ומשקל יחד",
+        "goals": {
+          "minCapacity": 14,
+          "maxMass": 2,
+          "requiredMaterial": "wooden",
+          "minForce": 8,
+          "maxForce": 10
+        }
+      },
+      {
+        "id": "wc-48-original-rope",
+        "number": 48,
+        "chapter": 5,
+        "kind": "bridge",
+        "sourceGrade": 9,
+        "concept": "זהות נשמרת לאחר תיאור חדש",
+        "goals": {
+          "maxWidth": 1,
+          "maxMass": 2
+        }
+      },
+      {
+        "id": "wc-49-night-mail",
+        "number": 49,
+        "chapter": 5,
+        "kind": "cargo",
+        "sourceGrade": 9,
+        "concept": "דיוק בכמה פעולות ללא ערבוב תכונות",
+        "goals": {
+          "minCapacity": 14,
+          "maxMass": 7,
+          "requiredMaterial": "wooden",
+          "unlock": true,
+          "illuminate": true
+        }
+      },
+      {
+        "id": "wc-50-festival-lights",
+        "number": 50,
+        "chapter": 5,
+        "kind": "storm",
+        "sourceGrade": 9,
+        "concept": "משימת סיום: תיאור מדויק ויחסים",
+        "goals": {
+          "minCapacity": 20,
+          "maxMass": 2,
+          "maxWidth": 3,
+          "requiredMaterial": "wooden",
+          "minForce": 12,
+          "maxForce": 16,
+          "unlock": true,
+          "illuminate": true
+        }
+      }
+    ]
+  },
+  "staticDistributionBytes": 10487035
 }

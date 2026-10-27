@@ -8,7 +8,7 @@ const spec = (phrase:string,assisted=false) => {const r=parsePhrase(phrase,assis
 const itemAt = (l:Level,phrase:string,id='created',zone=0):Item => makeItem(phrase,id,l.zones[zone].x,l.zones[zone].z);
 const ready = (id:string,objects:Item[]) => evaluatePlacement(level(id),objects).ready;
 
-test('each grade has guided, independent and changed-context transfer fixtures',()=>{
+test('historical curriculum fixtures retain their IDs and contrasts for regression/migration',()=>{
  for(const grade of [7,8,9]) assert.deepEqual(levels.filter(l=>l.grade===grade).map(l=>l.stage),['guided','independent','transfer']);
  assert.equal(new Set(levels.map(l=>l.id)).size,9);
  assert.notEqual(level('g7-crossing').kind,level('g7-inlet').kind);

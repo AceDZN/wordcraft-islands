@@ -32,7 +32,7 @@ test('supported alternative solutions share a contextual try action',()=>{
 
 test('wrong length offers revision; one protected parcel offers a second cover',()=>{
  const short=makeItem('a short plank','created-short');assert.equal(nextAction(level('g8-length'),[short],short.id).kind,'revise');
- const rain=level('g7-rain'),cover=at(rain,'an umbrella');const n=nextAction(rain,[cover],cover.id);assert.equal(n.kind,'create');assert.match(n.label,/השנייה/);
+ const rain=level('g7-rain'),cover=at(rain,'an umbrella');const n=nextAction(rain,[cover],cover.id);assert.equal(n.kind,'create');assert.match(n.label,/נותרו/);
 });
 
 test('referent tasks ask for inspection, then property revision without revealing target ID',()=>{

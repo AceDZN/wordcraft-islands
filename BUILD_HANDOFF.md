@@ -1,3 +1,5 @@
+> Current Wordcraft override,27 October: the user replaced selectable grade packs with one 50-level progressive campaign. Grade labels below describe source provenance, never player access. See docs/CAMPAIGN_CONTENT.md and src/campaign-levels.ts. Other historical requirements remain applicable.
+
 # Wordcraft Islands — איים של מילים
 
 Read COMMON.md, COVERAGE.md and GRADES.md. Your new standalone repo: `/Users/acedzn/dev/AceDZN-exp/wordcraft-islands`, public `https://github.com/AceDZN/wordcraft-islands`, dev/preview 5263/4263. Initialize/push main first. Lead the art/assets, audio and independent English/QA helpers.

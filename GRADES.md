@@ -1,6 +1,6 @@
-# Wordcraft grade tracks
+# Wordcraft curriculum provenance
 
-All three tracks required. Three authored puzzles per grade, final puzzle changed-context transfer. Source snapshots in docs/curriculum.
+The current human request supersedes the original selectable tracks: all players follow one 50-level campaign, with no grade choice or grade cap. The table below maps internal source metadata to English concepts. Source snapshots remain in docs/curriculum; level order and actual challenges are in docs/CAMPAIGN_CONTENT.md.
 
 | Grade | Chapter 11 | Chapter 12 | Actual new reasoning |
 |---|---|---|---|

@@ -1,0 +1,1176 @@
+{
+  "scope": "Restored earned-50 visual/control fixture after genuine campaign completion. No new played-win claim.",
+  "samples": [
+    {
+      "name": "fan-target-selected",
+      "mode": "placement",
+      "coordinateSystem": "x east, z south, y up; keyboard directions relative to camera screen. Click ground to walk.",
+      "level": "wc-29-two-fans",
+      "campaign": {
+        "number": 29,
+        "total": 50,
+        "chapter": 3,
+        "unlockedThrough": 50,
+        "currentId": "wc-29-two-fans",
+        "finished": true,
+        "mapOpen": false
+      },
+      "stage": "guided",
+      "layoutVariant": 0,
+      "objective": "Provide between 8 and 10 N. Do not push the sail with 12 N.",
+      "nextAction": {
+        "kind": "create",
+        "label": "פתחו מחברת וצרו פתרון",
+        "instruction": "איזה חפץ יעזור כאן? כתבו אותו במחברת."
+      },
+      "player": {
+        "x": -3.7,
+        "z": 0,
+        "jump": 0,
+        "vx": 0,
+        "vz": 0,
+        "facing": 1.5707963267948966
+      },
+      "motion": {
+        "moving": false,
+        "blockedAtEdge": false,
+        "carried": false,
+        "onVessel": false,
+        "vesselX": 0,
+        "route": [],
+        "activeTravel": false,
+        "clip": "idle",
+        "facing": 1.5707963267948966,
+        "speed": 0
+      },
+      "world": {
+        "ready": false,
+        "primaryReady": false,
+        "contributors": [],
+        "traversable": false,
+        "mass": 0,
+        "covered": 0,
+        "capacity": 0,
+        "force": 0,
+        "absorbed": 0,
+        "checks": [],
+        "extras": {
+          "unlocked": false,
+          "illuminated": false
+        },
+        "reason": "כוח בכיוון החץ: 0 N. צריך 8–10 N."
+      },
+      "zones": [
+        {
+          "id": "wind",
+          "x": -3.8,
+          "z": -1.3,
+          "label": "רציף הרוח"
+        },
+        {
+          "id": "wind-b",
+          "x": -3.8,
+          "z": -0.25,
+          "label": "עמדת מאוורר נוספת"
+        }
+      ],
+      "selected": "",
+      "items": [],
+      "preview": {
+        "phrase": "two fans",
+        "x": -3.8,
+        "z": -1.3,
+        "rot": 0,
+        "remaining": 2,
+        "snapped": true,
+        "zoneIndex": 0
+      },
+      "learning": {
+        "attempts": 1,
+        "hints": 0,
+        "retries": 0,
+        "rejectedPhrases": 0,
+        "assisted": false,
+        "events": [
+          {
+            "type": "level-start",
+            "level": "wc-29-two-fans",
+            "at": 0,
+            "detail": {
+              "layoutVariant": 0
+            }
+          },
+          {
+            "type": "level-start",
+            "level": "wc-29-two-fans",
+            "at": 1.2,
+            "detail": {
+              "layoutVariant": 0
+            }
+          },
+          {
+            "type": "phrase-attempt",
+            "level": "wc-29-two-fans",
+            "at": 3.7,
+            "detail": {
+              "raw": "two fans",
+              "number": 1,
+              "unaided": true,
+              "result": "accepted",
+              "assisted": false
+            }
+          }
+        ]
+      },
+      "completed": [
+        "g7-crossing",
+        "wc-02-first-cover",
+        "g7-rain",
+        "wc-04-rope-anchors",
+        "wc-05-three-stops",
+        "g7-inlet",
+        "wc-07-hold-the-dock",
+        "wc-08-first-sponge",
+        "wc-09-keepers-key",
+        "wc-10-sealed-ferry",
+        "g8-length",
+        "wc-12-wide-roof",
+        "wc-13-light-dock",
+        "g8-weight",
+        "wc-15-six-parcels",
+        "wc-16-timber-carrier",
+        "wc-17-fog-light",
+        "wc-18-narrow-berth",
+        "wc-19-four-at-narrow-dock",
+        "wc-20-rain-beacon",
+        "wc-21-more-than-sample",
+        "wc-22-between-marks",
+        "wc-23-light-long-bridge",
+        "wc-24-cart-deck",
+        "wc-25-gentle-breeze",
+        "wc-26-gardeners-crate",
+        "g8-history",
+        "wc-28-light-lift",
+        "wc-29-two-fans",
+        "wc-30-narrow-harbour",
+        "g9-cargo",
+        "wc-32-timber-bulk-mail",
+        "wc-33-rope-restrictions",
+        "wc-34-light-wooden-load",
+        "wc-35-from-power",
+        "g9-power",
+        "wc-37-quiet-nest",
+        "wc-38-three-sponges",
+        "wc-39-wet-lock",
+        "wc-40-quiet-cargo",
+        "wc-41-air-invitation",
+        "wc-42-harbour-boat",
+        "wc-43-light-wind",
+        "wc-44-metal-returns",
+        "g9-storm",
+        "wc-46-flooded-archive",
+        "wc-47-light-bulk-signal",
+        "wc-48-original-rope",
+        "wc-49-night-mail",
+        "wc-50-festival-lights"
+      ],
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 14,
+        "loops": 0,
+        "oneShots": 1,
+        "cueTotal": 2,
+        "lastCue": "create",
+        "solved": false,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0.05486,
+        "loadError": ""
+      },
+      "models": {
+        "loaded": [
+          "courier",
+          "boat",
+          "balloon",
+          "lamp",
+          "crate"
+        ],
+        "errors": []
+      },
+      "renderStats": {
+        "calls": 63,
+        "triangles": 31778,
+        "geometries": 61
+      }
+    },
+    {
+      "name": "two-fans-visible",
+      "mode": "explore",
+      "coordinateSystem": "x east, z south, y up; keyboard directions relative to camera screen. Click ground to walk.",
+      "level": "wc-29-two-fans",
+      "campaign": {
+        "number": 29,
+        "total": 50,
+        "chapter": 3,
+        "unlockedThrough": 50,
+        "currentId": "wc-29-two-fans",
+        "finished": true,
+        "mapOpen": false
+      },
+      "stage": "guided",
+      "layoutVariant": 0,
+      "objective": "Provide between 8 and 10 N. Do not push the sail with 12 N.",
+      "nextAction": {
+        "kind": "travel",
+        "label": "עלו למעבורת →",
+        "instruction": "הפתרון עובד! לחצו כדי לנסות אותו ולהגיע למגדלור."
+      },
+      "player": {
+        "x": -3.7,
+        "z": 0,
+        "jump": 0,
+        "vx": 0,
+        "vz": 0,
+        "facing": 1.5707963267948966
+      },
+      "motion": {
+        "moving": false,
+        "blockedAtEdge": false,
+        "carried": false,
+        "onVessel": false,
+        "vesselX": 0,
+        "route": [],
+        "activeTravel": false,
+        "clip": "idle",
+        "facing": 1.5707963267948966,
+        "speed": 0
+      },
+      "world": {
+        "ready": true,
+        "primaryReady": true,
+        "contributors": [
+          "created-1",
+          "created-2"
+        ],
+        "traversable": false,
+        "mass": 8,
+        "covered": 0,
+        "capacity": 0,
+        "force": 8,
+        "absorbed": 0,
+        "checks": [],
+        "extras": {
+          "unlocked": false,
+          "illuminated": false
+        },
+        "reason": "כוח בכיוון החץ: 8 N. צריך 8–10 N."
+      },
+      "zones": [
+        {
+          "id": "wind",
+          "x": -3.8,
+          "z": -1.3,
+          "label": "רציף הרוח"
+        },
+        {
+          "id": "wind-b",
+          "x": -3.8,
+          "z": -0.25,
+          "label": "עמדת מאוורר נוספת"
+        }
+      ],
+      "selected": "created-2",
+      "items": [
+        {
+          "id": "created-1",
+          "phrase": "two fans",
+          "x": -3.8,
+          "z": -1.3,
+          "visualX": -3.8,
+          "visualZ": -1.3,
+          "rot": 0,
+          "mass": 4,
+          "length": 1.2,
+          "capacity": 0,
+          "float": false,
+          "force": 4,
+          "width": 1,
+          "material": "metal",
+          "light": 0,
+          "absorb": 0,
+          "rain": 0,
+          "evidence": {
+            "article": false,
+            "count": true,
+            "spelling": true,
+            "modifiers": false,
+            "order": false,
+            "family": false,
+            "assisted": false,
+            "shorthand": false
+          }
+        },
+        {
+          "id": "created-2",
+          "phrase": "two fans",
+          "x": -3.8,
+          "z": -0.25,
+          "visualX": -3.8,
+          "visualZ": -0.25,
+          "rot": 0,
+          "mass": 4,
+          "length": 1.2,
+          "capacity": 0,
+          "float": false,
+          "force": 4,
+          "width": 1,
+          "material": "metal",
+          "light": 0,
+          "absorb": 0,
+          "rain": 0,
+          "evidence": {
+            "article": false,
+            "count": true,
+            "spelling": true,
+            "modifiers": false,
+            "order": false,
+            "family": false,
+            "assisted": false,
+            "shorthand": false
+          }
+        }
+      ],
+      "preview": null,
+      "learning": {
+        "attempts": 1,
+        "hints": 0,
+        "retries": 0,
+        "rejectedPhrases": 0,
+        "assisted": false,
+        "events": [
+          {
+            "type": "level-start",
+            "level": "wc-29-two-fans",
+            "at": 0,
+            "detail": {
+              "layoutVariant": 0
+            }
+          },
+          {
+            "type": "level-start",
+            "level": "wc-29-two-fans",
+            "at": 1.2,
+            "detail": {
+              "layoutVariant": 0
+            }
+          },
+          {
+            "type": "phrase-attempt",
+            "level": "wc-29-two-fans",
+            "at": 3.7,
+            "detail": {
+              "raw": "two fans",
+              "number": 1,
+              "unaided": true,
+              "result": "accepted",
+              "assisted": false
+            }
+          },
+          {
+            "type": "create-place",
+            "level": "wc-29-two-fans",
+            "at": 5.8,
+            "detail": {
+              "id": "created-1",
+              "phrase": "two fans",
+              "x": -3.8,
+              "z": -1.3,
+              "rot": 0,
+              "evidence": {
+                "article": false,
+                "count": true,
+                "spelling": true,
+                "modifiers": false,
+                "order": false,
+                "family": false,
+                "assisted": false,
+                "shorthand": false
+              }
+            }
+          },
+          {
+            "type": "create-place",
+            "level": "wc-29-two-fans",
+            "at": 6,
+            "detail": {
+              "id": "created-2",
+              "phrase": "two fans",
+              "x": -3.8,
+              "z": -0.25,
+              "rot": 0,
+              "evidence": {
+                "article": false,
+                "count": true,
+                "spelling": true,
+                "modifiers": false,
+                "order": false,
+                "family": false,
+                "assisted": false,
+                "shorthand": false
+              }
+            }
+          },
+          {
+            "type": "world-solved",
+            "level": "wc-29-two-fans",
+            "at": 6,
+            "detail": {
+              "kind": "wind"
+            }
+          }
+        ]
+      },
+      "completed": [
+        "g7-crossing",
+        "wc-02-first-cover",
+        "g7-rain",
+        "wc-04-rope-anchors",
+        "wc-05-three-stops",
+        "g7-inlet",
+        "wc-07-hold-the-dock",
+        "wc-08-first-sponge",
+        "wc-09-keepers-key",
+        "wc-10-sealed-ferry",
+        "g8-length",
+        "wc-12-wide-roof",
+        "wc-13-light-dock",
+        "g8-weight",
+        "wc-15-six-parcels",
+        "wc-16-timber-carrier",
+        "wc-17-fog-light",
+        "wc-18-narrow-berth",
+        "wc-19-four-at-narrow-dock",
+        "wc-20-rain-beacon",
+        "wc-21-more-than-sample",
+        "wc-22-between-marks",
+        "wc-23-light-long-bridge",
+        "wc-24-cart-deck",
+        "wc-25-gentle-breeze",
+        "wc-26-gardeners-crate",
+        "g8-history",
+        "wc-28-light-lift",
+        "wc-29-two-fans",
+        "wc-30-narrow-harbour",
+        "g9-cargo",
+        "wc-32-timber-bulk-mail",
+        "wc-33-rope-restrictions",
+        "wc-34-light-wooden-load",
+        "wc-35-from-power",
+        "g9-power",
+        "wc-37-quiet-nest",
+        "wc-38-three-sponges",
+        "wc-39-wet-lock",
+        "wc-40-quiet-cargo",
+        "wc-41-air-invitation",
+        "wc-42-harbour-boat",
+        "wc-43-light-wind",
+        "wc-44-metal-returns",
+        "g9-storm",
+        "wc-46-flooded-archive",
+        "wc-47-light-bulk-signal",
+        "wc-48-original-rope",
+        "wc-49-night-mail",
+        "wc-50-festival-lights"
+      ],
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 2,
+        "cueTotal": 5,
+        "lastCue": "confirm",
+        "solved": true,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0.01695,
+        "loadError": ""
+      },
+      "models": {
+        "loaded": [
+          "courier",
+          "boat",
+          "balloon",
+          "lamp",
+          "crate"
+        ],
+        "errors": []
+      },
+      "renderStats": {
+        "calls": 76,
+        "triangles": 32804,
+        "geometries": 75
+      }
+    },
+    {
+      "name": "partial-absorption",
+      "mode": "placement",
+      "coordinateSystem": "x east, z south, y up; keyboard directions relative to camera screen. Click ground to walk.",
+      "level": "wc-38-three-sponges",
+      "campaign": {
+        "number": 38,
+        "total": 50,
+        "chapter": 4,
+        "unlockedThrough": 50,
+        "currentId": "wc-38-three-sponges",
+        "finished": true,
+        "mapOpen": false
+      },
+      "stage": "independent",
+      "layoutVariant": 0,
+      "objective": "Absorb at least 12 litres before the paper arrives.",
+      "nextAction": {
+        "kind": "create",
+        "label": "השלימו את הספיגה",
+        "instruction": "נספגו 4.0 מתוך 12 יחידות מים. פתחו את המחברת כדי להוסיף את החלק החסר."
+      },
+      "player": {
+        "x": -3.7,
+        "z": 0,
+        "jump": 0,
+        "vx": 0,
+        "vz": 0,
+        "facing": 1.5707963267948966
+      },
+      "motion": {
+        "moving": false,
+        "blockedAtEdge": false,
+        "carried": false,
+        "onVessel": false,
+        "vesselX": 0,
+        "route": [],
+        "activeTravel": false,
+        "clip": "idle",
+        "facing": 1.5707963267948966,
+        "speed": 0
+      },
+      "world": {
+        "ready": false,
+        "primaryReady": true,
+        "contributors": [
+          "created-3"
+        ],
+        "traversable": true,
+        "mass": 0.4,
+        "covered": 0,
+        "capacity": 0,
+        "force": 0,
+        "absorbed": 4,
+        "checks": [
+          {
+            "id": "absorb",
+            "ready": false,
+            "reason": "נספגו 4.0 מתוך 12 יחידות מים."
+          }
+        ],
+        "extras": {
+          "unlocked": false,
+          "illuminated": false
+        },
+        "reason": "בדקו את תחנות העבודה המתוארות. נספגו 4.0 מתוך 12 יחידות מים."
+      },
+      "zones": [
+        {
+          "id": "spill",
+          "x": 0,
+          "z": 0,
+          "label": "השלולית"
+        },
+        {
+          "id": "spill-b",
+          "x": 1.05,
+          "z": 0,
+          "label": "עמדת ספיגה נוספת"
+        },
+        {
+          "id": "spill-c",
+          "x": 0,
+          "z": 1.05,
+          "label": "עמדת ספיגה שלישית"
+        }
+      ],
+      "selected": "created-3",
+      "items": [
+        {
+          "id": "created-3",
+          "phrase": "three sponges",
+          "x": 0,
+          "z": 0,
+          "visualX": 0,
+          "visualZ": 0,
+          "rot": 0,
+          "mass": 0.4,
+          "length": 1,
+          "capacity": 0,
+          "float": false,
+          "force": 0,
+          "width": 1,
+          "material": "soft",
+          "light": 0,
+          "absorb": 4,
+          "rain": 0.9,
+          "evidence": {
+            "article": false,
+            "count": true,
+            "spelling": true,
+            "modifiers": false,
+            "order": false,
+            "family": false,
+            "assisted": false,
+            "shorthand": false
+          }
+        }
+      ],
+      "preview": {
+        "phrase": "three sponges",
+        "x": 1.05,
+        "z": 0,
+        "rot": 0,
+        "remaining": 2,
+        "snapped": true,
+        "zoneIndex": 1
+      },
+      "learning": {
+        "attempts": 1,
+        "hints": 0,
+        "retries": 0,
+        "rejectedPhrases": 0,
+        "assisted": false,
+        "events": [
+          {
+            "type": "level-start",
+            "level": "wc-38-three-sponges",
+            "at": 7.6,
+            "detail": {
+              "layoutVariant": 0
+            }
+          },
+          {
+            "type": "phrase-attempt",
+            "level": "wc-38-three-sponges",
+            "at": 8.9,
+            "detail": {
+              "raw": "three sponges",
+              "number": 1,
+              "unaided": true,
+              "result": "accepted",
+              "assisted": false
+            }
+          },
+          {
+            "type": "create-place",
+            "level": "wc-38-three-sponges",
+            "at": 9.2,
+            "detail": {
+              "id": "created-3",
+              "phrase": "three sponges",
+              "x": 0,
+              "z": 0,
+              "rot": 0,
+              "evidence": {
+                "article": false,
+                "count": true,
+                "spelling": true,
+                "modifiers": false,
+                "order": false,
+                "family": false,
+                "assisted": false,
+                "shorthand": false
+              }
+            }
+          }
+        ]
+      },
+      "completed": [
+        "g7-crossing",
+        "wc-02-first-cover",
+        "g7-rain",
+        "wc-04-rope-anchors",
+        "wc-05-three-stops",
+        "g7-inlet",
+        "wc-07-hold-the-dock",
+        "wc-08-first-sponge",
+        "wc-09-keepers-key",
+        "wc-10-sealed-ferry",
+        "g8-length",
+        "wc-12-wide-roof",
+        "wc-13-light-dock",
+        "g8-weight",
+        "wc-15-six-parcels",
+        "wc-16-timber-carrier",
+        "wc-17-fog-light",
+        "wc-18-narrow-berth",
+        "wc-19-four-at-narrow-dock",
+        "wc-20-rain-beacon",
+        "wc-21-more-than-sample",
+        "wc-22-between-marks",
+        "wc-23-light-long-bridge",
+        "wc-24-cart-deck",
+        "wc-25-gentle-breeze",
+        "wc-26-gardeners-crate",
+        "g8-history",
+        "wc-28-light-lift",
+        "wc-29-two-fans",
+        "wc-30-narrow-harbour",
+        "g9-cargo",
+        "wc-32-timber-bulk-mail",
+        "wc-33-rope-restrictions",
+        "wc-34-light-wooden-load",
+        "wc-35-from-power",
+        "g9-power",
+        "wc-37-quiet-nest",
+        "wc-38-three-sponges",
+        "wc-39-wet-lock",
+        "wc-40-quiet-cargo",
+        "wc-41-air-invitation",
+        "wc-42-harbour-boat",
+        "wc-43-light-wind",
+        "wc-44-metal-returns",
+        "g9-storm",
+        "wc-46-flooded-archive",
+        "wc-47-light-bulk-signal",
+        "wc-48-original-rope",
+        "wc-49-night-mail",
+        "wc-50-festival-lights"
+      ],
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 2,
+        "cueTotal": 8,
+        "lastCue": "wood",
+        "solved": false,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0.05995,
+        "loadError": ""
+      },
+      "models": {
+        "loaded": [
+          "courier",
+          "boat",
+          "balloon",
+          "lamp",
+          "crate"
+        ],
+        "errors": []
+      },
+      "renderStats": {
+        "calls": 103,
+        "triangles": 33489,
+        "geometries": 102
+      }
+    },
+    {
+      "name": "three-sponges-visible",
+      "mode": "explore",
+      "coordinateSystem": "x east, z south, y up; keyboard directions relative to camera screen. Click ground to walk.",
+      "level": "wc-38-three-sponges",
+      "campaign": {
+        "number": 38,
+        "total": 50,
+        "chapter": 4,
+        "unlockedThrough": 50,
+        "currentId": "wc-38-three-sponges",
+        "finished": true,
+        "mapOpen": false
+      },
+      "stage": "independent",
+      "layoutVariant": 0,
+      "objective": "Absorb at least 12 litres before the paper arrives.",
+      "nextAction": {
+        "kind": "travel",
+        "label": "לכו למגדלור →",
+        "instruction": "הפתרון עובד! לחצו כדי לנסות אותו ולהגיע למגדלור."
+      },
+      "player": {
+        "x": -3.7,
+        "z": 0,
+        "jump": 0,
+        "vx": 0,
+        "vz": 0,
+        "facing": 1.5707963267948966
+      },
+      "motion": {
+        "moving": false,
+        "blockedAtEdge": false,
+        "carried": false,
+        "onVessel": false,
+        "vesselX": 0,
+        "route": [],
+        "activeTravel": false,
+        "clip": "idle",
+        "facing": 1.5707963267948966,
+        "speed": 0
+      },
+      "world": {
+        "ready": true,
+        "primaryReady": true,
+        "contributors": [
+          "created-3",
+          "created-4",
+          "created-5"
+        ],
+        "traversable": true,
+        "mass": 1.2000000000000002,
+        "covered": 2,
+        "capacity": 0,
+        "force": 0,
+        "absorbed": 12,
+        "checks": [
+          {
+            "id": "absorb",
+            "ready": true,
+            "reason": "נספגו 12.0 מתוך 12 יחידות מים."
+          }
+        ],
+        "extras": {
+          "unlocked": false,
+          "illuminated": false
+        },
+        "reason": "בדקו את תחנות העבודה המתוארות. נספגו 12.0 מתוך 12 יחידות מים."
+      },
+      "zones": [
+        {
+          "id": "spill",
+          "x": 0,
+          "z": 0,
+          "label": "השלולית"
+        },
+        {
+          "id": "spill-b",
+          "x": 1.05,
+          "z": 0,
+          "label": "עמדת ספיגה נוספת"
+        },
+        {
+          "id": "spill-c",
+          "x": 0,
+          "z": 1.05,
+          "label": "עמדת ספיגה שלישית"
+        }
+      ],
+      "selected": "created-5",
+      "items": [
+        {
+          "id": "created-3",
+          "phrase": "three sponges",
+          "x": 0,
+          "z": 0,
+          "visualX": 0,
+          "visualZ": 0,
+          "rot": 0,
+          "mass": 0.4,
+          "length": 1,
+          "capacity": 0,
+          "float": false,
+          "force": 0,
+          "width": 1,
+          "material": "soft",
+          "light": 0,
+          "absorb": 4,
+          "rain": 0.9,
+          "evidence": {
+            "article": false,
+            "count": true,
+            "spelling": true,
+            "modifiers": false,
+            "order": false,
+            "family": false,
+            "assisted": false,
+            "shorthand": false
+          }
+        },
+        {
+          "id": "created-4",
+          "phrase": "three sponges",
+          "x": 1.05,
+          "z": 0,
+          "visualX": 1.05,
+          "visualZ": 0,
+          "rot": 0,
+          "mass": 0.4,
+          "length": 1,
+          "capacity": 0,
+          "float": false,
+          "force": 0,
+          "width": 1,
+          "material": "soft",
+          "light": 0,
+          "absorb": 4,
+          "rain": 0.9,
+          "evidence": {
+            "article": false,
+            "count": true,
+            "spelling": true,
+            "modifiers": false,
+            "order": false,
+            "family": false,
+            "assisted": false,
+            "shorthand": false
+          }
+        },
+        {
+          "id": "created-5",
+          "phrase": "three sponges",
+          "x": 0,
+          "z": 1.05,
+          "visualX": 0,
+          "visualZ": 1.05,
+          "rot": 0,
+          "mass": 0.4,
+          "length": 1,
+          "capacity": 0,
+          "float": false,
+          "force": 0,
+          "width": 1,
+          "material": "soft",
+          "light": 0,
+          "absorb": 4,
+          "rain": 0.9,
+          "evidence": {
+            "article": false,
+            "count": true,
+            "spelling": true,
+            "modifiers": false,
+            "order": false,
+            "family": false,
+            "assisted": false,
+            "shorthand": false
+          }
+        }
+      ],
+      "preview": null,
+      "learning": {
+        "attempts": 1,
+        "hints": 0,
+        "retries": 0,
+        "rejectedPhrases": 0,
+        "assisted": false,
+        "events": [
+          {
+            "type": "level-start",
+            "level": "wc-38-three-sponges",
+            "at": 7.6,
+            "detail": {
+              "layoutVariant": 0
+            }
+          },
+          {
+            "type": "phrase-attempt",
+            "level": "wc-38-three-sponges",
+            "at": 8.9,
+            "detail": {
+              "raw": "three sponges",
+              "number": 1,
+              "unaided": true,
+              "result": "accepted",
+              "assisted": false
+            }
+          },
+          {
+            "type": "create-place",
+            "level": "wc-38-three-sponges",
+            "at": 9.2,
+            "detail": {
+              "id": "created-3",
+              "phrase": "three sponges",
+              "x": 0,
+              "z": 0,
+              "rot": 0,
+              "evidence": {
+                "article": false,
+                "count": true,
+                "spelling": true,
+                "modifiers": false,
+                "order": false,
+                "family": false,
+                "assisted": false,
+                "shorthand": false
+              }
+            }
+          },
+          {
+            "type": "create-place",
+            "level": "wc-38-three-sponges",
+            "at": 10.1,
+            "detail": {
+              "id": "created-4",
+              "phrase": "three sponges",
+              "x": 1.05,
+              "z": 0,
+              "rot": 0,
+              "evidence": {
+                "article": false,
+                "count": true,
+                "spelling": true,
+                "modifiers": false,
+                "order": false,
+                "family": false,
+                "assisted": false,
+                "shorthand": false
+              }
+            }
+          },
+          {
+            "type": "create-place",
+            "level": "wc-38-three-sponges",
+            "at": 10.4,
+            "detail": {
+              "id": "created-5",
+              "phrase": "three sponges",
+              "x": 0,
+              "z": 1.05,
+              "rot": 0,
+              "evidence": {
+                "article": false,
+                "count": true,
+                "spelling": true,
+                "modifiers": false,
+                "order": false,
+                "family": false,
+                "assisted": false,
+                "shorthand": false
+              }
+            }
+          },
+          {
+            "type": "world-solved",
+            "level": "wc-38-three-sponges",
+            "at": 10.4,
+            "detail": {
+              "kind": "workshop"
+            }
+          }
+        ]
+      },
+      "completed": [
+        "g7-crossing",
+        "wc-02-first-cover",
+        "g7-rain",
+        "wc-04-rope-anchors",
+        "wc-05-three-stops",
+        "g7-inlet",
+        "wc-07-hold-the-dock",
+        "wc-08-first-sponge",
+        "wc-09-keepers-key",
+        "wc-10-sealed-ferry",
+        "g8-length",
+        "wc-12-wide-roof",
+        "wc-13-light-dock",
+        "g8-weight",
+        "wc-15-six-parcels",
+        "wc-16-timber-carrier",
+        "wc-17-fog-light",
+        "wc-18-narrow-berth",
+        "wc-19-four-at-narrow-dock",
+        "wc-20-rain-beacon",
+        "wc-21-more-than-sample",
+        "wc-22-between-marks",
+        "wc-23-light-long-bridge",
+        "wc-24-cart-deck",
+        "wc-25-gentle-breeze",
+        "wc-26-gardeners-crate",
+        "g8-history",
+        "wc-28-light-lift",
+        "wc-29-two-fans",
+        "wc-30-narrow-harbour",
+        "g9-cargo",
+        "wc-32-timber-bulk-mail",
+        "wc-33-rope-restrictions",
+        "wc-34-light-wooden-load",
+        "wc-35-from-power",
+        "g9-power",
+        "wc-37-quiet-nest",
+        "wc-38-three-sponges",
+        "wc-39-wet-lock",
+        "wc-40-quiet-cargo",
+        "wc-41-air-invitation",
+        "wc-42-harbour-boat",
+        "wc-43-light-wind",
+        "wc-44-metal-returns",
+        "g9-storm",
+        "wc-46-flooded-archive",
+        "wc-47-light-bulk-signal",
+        "wc-48-original-rope",
+        "wc-49-night-mail",
+        "wc-50-festival-lights"
+      ],
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 0,
+        "cueTotal": 11,
+        "lastCue": "confirm",
+        "solved": true,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0.00447,
+        "loadError": ""
+      },
+      "models": {
+        "loaded": [
+          "courier",
+          "boat",
+          "balloon",
+          "lamp",
+          "crate"
+        ],
+        "errors": []
+      },
+      "renderStats": {
+        "calls": 133,
+        "triangles": 34579,
+        "geometries": 133
+      }
+    }
+  ],
+  "errors": []
+}
