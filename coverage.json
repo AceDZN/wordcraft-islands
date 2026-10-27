@@ -21,13 +21,15 @@
         "dictionary/translation opened",
         "shown spelling suggestion or order model",
         "explicit article/count/family correction",
-        "platform read-aloud requested"
+        "platform read-aloud requested",
+        "automatically shown guided model",
+        "prefilled noun/article/count parts are not independent production"
       ],
       "tests": [
         "article follows the next spoken sound in the supported vocabulary",
         "singular and plural count agreement creates actual quantities"
       ],
-      "browserEvidence": "docs/qa-captures/summary.json",
+      "browserEvidence": "tests/ux-captures/regression-all-nine.json",
       "status": "verified"
     },
     {
@@ -47,13 +49,15 @@
         "dictionary/translation opened",
         "shown spelling suggestion or order model",
         "explicit article/count/family correction",
-        "platform read-aloud requested"
+        "platform read-aloud requested",
+        "automatically shown guided model",
+        "prefilled noun/article/count parts are not independent production"
       ],
       "tests": [
         "near-spelling is proposed, never silently accepted as unaided spelling",
         "transfer ferry permits a boat or physically long alternate bridge"
       ],
-      "browserEvidence": "docs/qa-captures/summary.json",
+      "browserEvidence": "tests/ux-captures/regression-all-nine.json",
       "status": "verified"
     },
     {
@@ -73,13 +77,15 @@
         "dictionary/translation opened",
         "shown spelling suggestion or order model",
         "explicit article/count/family correction",
-        "platform read-aloud requested"
+        "platform read-aloud requested",
+        "automatically shown guided model",
+        "prefilled noun/article/count parts are not independent production"
       ],
       "tests": [
         "same-looking crossing with longer gap changes valid property action",
         "strict heavier-than boundary respects the comparison reference"
       ],
-      "browserEvidence": "docs/qa-captures/summary.json",
+      "browserEvidence": "tests/ux-captures/regression-all-nine.json",
       "status": "verified"
     },
     {
@@ -97,13 +103,15 @@
         "dictionary/translation opened",
         "shown spelling suggestion or order model",
         "explicit article/count/family correction",
-        "platform read-aloud requested"
+        "platform read-aloud requested",
+        "automatically shown guided model",
+        "prefilled noun/article/count parts are not independent production"
       ],
       "tests": [
         "history changes the valid crate while preserving identical visible noun",
         "unrelated weight cannot substitute for making the identified medicine crate heavier"
       ],
-      "browserEvidence": "docs/qa-captures/summary.json",
+      "browserEvidence": "tests/ux-captures/regression-all-nine.json",
       "status": "verified"
     },
     {
@@ -123,12 +131,14 @@
         "dictionary/translation opened",
         "shown spelling suggestion or order model",
         "explicit article/count/family correction",
-        "platform read-aloud requested"
+        "platform read-aloud requested",
+        "automatically shown guided model",
+        "prefilled noun/article/count parts are not independent production"
       ],
       "tests": [
         "weight comparative uses real mass rather than size or noun password"
       ],
-      "browserEvidence": "docs/qa-captures/summary.json",
+      "browserEvidence": "tests/ux-captures/regression-all-nine.json",
       "status": "verified"
     },
     {
@@ -147,13 +157,15 @@
         "dictionary/translation opened",
         "shown spelling suggestion or order model",
         "explicit article/count/family correction",
-        "platform read-aloud requested"
+        "platform read-aloud requested",
+        "automatically shown guided model",
+        "prefilled noun/article/count parts are not independent production"
       ],
       "tests": [
         "size and material independently change cargo capacity/floatability",
         "order production needs two modifiers, not a vacuous one-word check"
       ],
-      "browserEvidence": "docs/qa-captures/summary.json",
+      "browserEvidence": "tests/ux-captures/regression-all-nine.json",
       "status": "verified"
     },
     {
@@ -172,13 +184,15 @@
         "dictionary/translation opened",
         "shown spelling suggestion or order model",
         "explicit article/count/family correction",
-        "platform read-aloud requested"
+        "platform read-aloud requested",
+        "automatically shown guided model",
+        "prefilled noun/article/count parts are not independent production"
       ],
       "tests": [
         "Fan A is the known referent even when both fans match additional information",
         "G9 transfer combines cargo and identified force with multiple valid containers"
       ],
-      "browserEvidence": "docs/qa-captures/summary.json",
+      "browserEvidence": "tests/ux-captures/regression-all-nine.json",
       "status": "verified"
     },
     {
@@ -197,13 +211,15 @@
         "dictionary/translation opened",
         "shown spelling suggestion or order model",
         "explicit article/count/family correction",
-        "platform read-aloud requested"
+        "platform read-aloud requested",
+        "automatically shown guided model",
+        "prefilled noun/article/count parts are not independent production"
       ],
       "tests": [
         "power is distinguished from powerful/powerless with observable force",
         "fan force needs correct direction as well as word family choice"
       ],
-      "browserEvidence": "docs/qa-captures/summary.json",
+      "browserEvidence": "tests/ux-captures/regression-all-nine.json",
       "status": "verified"
     },
     {
@@ -223,12 +239,14 @@
         "dictionary/translation opened",
         "shown spelling suggestion or order model",
         "explicit article/count/family correction",
-        "platform read-aloud requested"
+        "platform read-aloud requested",
+        "automatically shown guided model",
+        "prefilled noun/article/count parts are not independent production"
       ],
       "tests": [
         "G9 transfer combines cargo and identified force with multiple valid containers"
       ],
-      "browserEvidence": "docs/qa-captures/summary.json",
+      "browserEvidence": "tests/ux-captures/regression-all-nine.json",
       "status": "verified"
     }
   ],
@@ -244,12 +262,15 @@
   "verification": {
     "unitCommand": "npm test",
     "buildCommand": "npm run build",
-    "browserCommand": "node docs/qa-browser.mjs",
+    "browserCommand": "node tests/ux-browser.mjs",
     "campaign": "All nine actual UI paths completed, including mistakes/recovery and all three transfer routes; see individual state JSON/captures.",
     "limitations": "Automated functional evidence only; see PLAYTEST.md for controls and audio/browser limitations.",
-    "semanticTestsPassed": 32,
-    "finalRegression": "docs/playable-loop/regression.mjs passed fullscreen exit, nested Escape, replay variation and accurate two-component unaided reporting with zero page errors.",
-    "mobileEvidence": "docs/qa-captures/mobile-summary.json — all touch and assistance assertions passed"
+    "semanticTestsPassed": 43,
+    "finalRegression": "All9 current campaign routes completed. Separate current controls-only run and native headed landscape checks documented in docs/UX_REVIEW.md. Root carrier/recovery checks cover final visual transport and safe undo.",
+    "mobileEvidence": "docs/qa-captures/mobile-summary.json — all touch and assistance assertions passed",
+    "browserEvidence": "tests/ux-captures/regression-all-nine.json",
+    "flowReview": "docs/UX_REVIEW.md — headed ordinary-pointer G7 and native landscape routes, plus current control/assistance checks.",
+    "currentControls": "UX_HEADED=1 node tests/ux-browser.mjs --controls-only passed all control/mobile assertions with zero errors; see tests/ux-captures/controls-summary.json"
   },
-  "runtimeInitialPayloadBytes": 8105194
+  "runtimeInitialPayloadBytes": 8132546
 }

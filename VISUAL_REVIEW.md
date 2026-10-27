@@ -19,3 +19,7 @@ Real browser captures are under docs/qa-captures, docs/art and docs/playable-loo
 The final scene is a compact stylized diorama with simpler low-poly vegetation and terrain. It does not reach the target's dense illustrated rock arches, botanical detail, photorealistic water caustics or hero design. The finite slice prioritizes measurable object geometry, clear supports and readable manipulation over rendering every background flourish. The acquired open crate contains visible lemons, and the balloon is a hot-air basket model; both are disclosed in ASSETS.md.
 
 This review records visible implementation details. Automated screenshots do not establish artistic quality, learner enjoyment or learning gains. See PLAYTEST.md for tested paths and AUDIO.md for separate audio checks and listening limits.
+
+## Play-feel revision
+
+The current notebook and snapped placement/primary action are shown in docs/ux; older images above remain historical. Default controls/text were reduced, the first guided model is explicit, and completion foregrounds the physical payoff. Scene materials and owned models remain; static scenery is batched and the flat-water grid is removed. Derived real skeletal clips correct the root shift/lean/jump selection; character facing uses actual movement and rests aboard vehicles. Created boats/balloons now travel visibly as carriers, and transient location signs hide during travel so they do not cover the actor. The current real-time recording was visually inspected during the new first-two-island flow.

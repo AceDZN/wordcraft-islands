@@ -1,4 +1,6 @@
-# Independent QA log
+# First-release QA log (historical)
+
+The human subsequently rejected the play feel and controls. These functional results did not establish usability or enjoyment. The current revision is reviewed in docs/UX_REVIEW.md; earlier screenshots and runner assumptions remain historical evidence, not a claim that the user experience was good.
 
 Date: 27 October 2026. Reviewer: English/QA helper. This log distinguishes unit simulation, actual browser input and listening. No learning gains or subjective fun claims are inferred from automated tests.
 

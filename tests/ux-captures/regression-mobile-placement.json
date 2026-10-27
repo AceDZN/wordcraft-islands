@@ -1,0 +1,150 @@
+{
+  "mode": "placement",
+  "coordinateSystem": "x east, z south, y up; keyboard directions relative to camera screen. Click ground to walk.",
+  "level": "g7-crossing",
+  "grade": 7,
+  "stage": "guided",
+  "layoutVariant": 0,
+  "objective": "Help the courier cross the broken path.",
+  "nextAction": {
+    "kind": "create",
+    "label": "פתחו מחברת וצרו פתרון",
+    "instruction": "איזה חפץ יעזור כאן? כתבו אותו במחברת."
+  },
+  "player": {
+    "x": -3.7,
+    "z": 0,
+    "jump": 0,
+    "vx": 0,
+    "vz": 0,
+    "facing": 1.5707963267948966
+  },
+  "motion": {
+    "moving": false,
+    "blockedAtEdge": false,
+    "carried": false,
+    "onVessel": false,
+    "vesselX": 0,
+    "route": [],
+    "activeTravel": false,
+    "clip": "idle",
+    "facing": 1.5707963267948966,
+    "speed": 0
+  },
+  "world": {
+    "ready": false,
+    "contributors": [],
+    "traversable": false,
+    "mass": 0,
+    "covered": 0,
+    "capacity": 0,
+    "force": 0,
+    "reason": "צריך לכסות את המרווח ועוד 0.3 מ׳ בכל קצה. סובבו את החפץ לאורך ציר המעבר.",
+    "extras": {
+      "unlocked": false,
+      "illuminated": false
+    }
+  },
+  "zones": [
+    {
+      "id": "crossing",
+      "x": 0,
+      "z": 0,
+      "label": "Crossing · 2.4 m"
+    }
+  ],
+  "selected": "",
+  "items": [],
+  "preview": {
+    "phrase": "a plank",
+    "x": 0,
+    "z": 0,
+    "rot": 0,
+    "remaining": 1,
+    "snapped": true,
+    "zoneIndex": 0
+  },
+  "learning": {
+    "attempts": 1,
+    "hints": 0,
+    "retries": 0,
+    "rejectedPhrases": 0,
+    "assisted": true,
+    "events": [
+      {
+        "type": "level-start",
+        "level": "g7-crossing",
+        "at": 0,
+        "detail": {
+          "layoutVariant": 0
+        }
+      },
+      {
+        "type": "level-start",
+        "level": "g7-crossing",
+        "at": 0.8,
+        "detail": {
+          "layoutVariant": 0
+        }
+      },
+      {
+        "type": "guided-model-shown",
+        "level": "g7-crossing",
+        "at": 1.3,
+        "detail": {
+          "phrase": "a plank"
+        }
+      },
+      {
+        "type": "phrase-attempt",
+        "level": "g7-crossing",
+        "at": 2.4,
+        "detail": {
+          "raw": "a plank",
+          "number": 1,
+          "unaided": false,
+          "result": "accepted",
+          "assisted": true
+        }
+      }
+    ]
+  },
+  "completed": [],
+  "audio": {
+    "state": "running",
+    "sampleRate": 22050,
+    "requested": true,
+    "paused": false,
+    "hidden": false,
+    "loaded": 16,
+    "loops": 0,
+    "oneShots": 1,
+    "cueTotal": 2,
+    "lastCue": "create",
+    "solved": false,
+    "ducked": false,
+    "gains": {
+      "music": 0.48,
+      "sfx": 0.58,
+      "voice": 0.85,
+      "master": 0.75
+    },
+    "rms": 0.0379,
+    "loadError": ""
+  },
+  "models": {
+    "loaded": [
+      "courier",
+      "boat",
+      "balloon",
+      "lamp",
+      "crate"
+    ],
+    "errors": []
+  },
+  "renderStats": {
+    "calls": 38,
+    "triangles": 29607,
+    "geometries": 73
+  }
+}

@@ -1,0 +1,2697 @@
+[
+  {
+    "mode": "explore",
+    "coordinateSystem": "x east, z south, y up; keyboard directions relative to camera screen. Click ground to walk.",
+    "level": "g7-crossing",
+    "grade": 7,
+    "stage": "guided",
+    "layoutVariant": 0,
+    "objective": "Help the courier cross the broken path.",
+    "nextAction": {
+      "kind": "travel",
+      "label": "לכו למגדלור →",
+      "instruction": "הפתרון עובד! לחצו כדי לנסות אותו ולהגיע למגדלור."
+    },
+    "player": {
+      "x": -2.4436573273008886,
+      "z": 0,
+      "jump": 0,
+      "vx": 2.89951661120181,
+      "vz": 0,
+      "facing": 1.5707963267948966
+    },
+    "motion": {
+      "moving": true,
+      "blockedAtEdge": false,
+      "carried": false,
+      "route": [
+        {
+          "x": -1.65,
+          "z": 0
+        },
+        {
+          "x": 1.65,
+          "z": 0
+        },
+        {
+          "x": 6.7,
+          "z": 0.5
+        }
+      ],
+      "activeTravel": true,
+      "clip": "walk",
+      "facing": 1.5707963267948966,
+      "speed": 2.89951661120181
+    },
+    "world": {
+      "ready": true,
+      "contributors": [
+        "created-1"
+      ],
+      "traversable": true,
+      "mass": 3,
+      "covered": 0,
+      "capacity": 0,
+      "force": 0,
+      "reason": "שני הקצוות נתמכים. אפשר לחצות.",
+      "extras": {
+        "unlocked": false,
+        "illuminated": false
+      }
+    },
+    "zones": [
+      {
+        "id": "crossing",
+        "x": 0,
+        "z": 0,
+        "label": "Crossing · 2.4 m"
+      }
+    ],
+    "selected": "created-1",
+    "items": [
+      {
+        "id": "created-1",
+        "phrase": "a plank",
+        "x": 0,
+        "z": 0,
+        "rot": 0,
+        "mass": 3,
+        "length": 3.3,
+        "capacity": 0,
+        "float": false,
+        "force": 0,
+        "evidence": {
+          "article": false,
+          "count": false,
+          "spelling": false,
+          "modifiers": false,
+          "order": false,
+          "family": false,
+          "assisted": true,
+          "shorthand": false
+        }
+      }
+    ],
+    "preview": null,
+    "learning": {
+      "attempts": 1,
+      "hints": 0,
+      "retries": 0,
+      "rejectedPhrases": 0,
+      "assisted": true,
+      "events": [
+        {
+          "type": "level-start",
+          "level": "g7-crossing",
+          "at": 0,
+          "detail": {
+            "layoutVariant": 0
+          }
+        },
+        {
+          "type": "level-start",
+          "level": "g7-crossing",
+          "at": 14,
+          "detail": {
+            "layoutVariant": 0
+          }
+        },
+        {
+          "type": "guided-model-shown",
+          "level": "g7-crossing",
+          "at": 14.5,
+          "detail": {
+            "phrase": "a plank"
+          }
+        },
+        {
+          "type": "phrase-attempt",
+          "level": "g7-crossing",
+          "at": 26.2,
+          "detail": {
+            "raw": "a plank",
+            "number": 1,
+            "unaided": false,
+            "result": "accepted",
+            "assisted": true
+          }
+        },
+        {
+          "type": "create-place",
+          "level": "g7-crossing",
+          "at": 35.7,
+          "detail": {
+            "id": "created-1",
+            "phrase": "a plank",
+            "x": 0,
+            "z": 0,
+            "rot": 0,
+            "evidence": {
+              "article": false,
+              "count": false,
+              "spelling": false,
+              "modifiers": false,
+              "order": false,
+              "family": false,
+              "assisted": true,
+              "shorthand": false
+            }
+          }
+        },
+        {
+          "type": "world-solved",
+          "level": "g7-crossing",
+          "at": 35.7,
+          "detail": {
+            "kind": "bridge"
+          }
+        },
+        {
+          "type": "context-action",
+          "level": "g7-crossing",
+          "at": 46.8,
+          "detail": {
+            "kind": "travel"
+          }
+        },
+        {
+          "type": "walk-request",
+          "level": "g7-crossing",
+          "at": 46.8,
+          "detail": {
+            "to": {
+              "x": 6.7,
+              "z": 0.5
+            },
+            "tryGoal": true
+          }
+        }
+      ]
+    },
+    "completed": [],
+    "audio": {
+      "state": "running",
+      "sampleRate": 22050,
+      "requested": true,
+      "paused": false,
+      "hidden": false,
+      "loaded": 17,
+      "loops": 3,
+      "oneShots": 0,
+      "cueTotal": 4,
+      "lastCue": "confirm",
+      "solved": true,
+      "ducked": false,
+      "gains": {
+        "music": 0.48,
+        "sfx": 0.58,
+        "voice": 0.85,
+        "master": 0.75
+      },
+      "rms": 0.01396,
+      "loadError": ""
+    },
+    "models": {
+      "loaded": [
+        "courier",
+        "boat",
+        "balloon",
+        "lamp",
+        "crate"
+      ],
+      "errors": []
+    }
+  },
+  {
+    "mode": "explore",
+    "coordinateSystem": "x east, z south, y up; keyboard directions relative to camera screen. Click ground to walk.",
+    "level": "g7-crossing",
+    "grade": 7,
+    "stage": "guided",
+    "layoutVariant": 0,
+    "objective": "Help the courier cross the broken path.",
+    "nextAction": {
+      "kind": "travel",
+      "label": "לכו למגדלור →",
+      "instruction": "הפתרון עובד! לחצו כדי לנסות אותו ולהגיע למגדלור."
+    },
+    "player": {
+      "x": -1.2434724736199831,
+      "z": 0,
+      "jump": 0,
+      "vx": 2.8375481255602013,
+      "vz": 0,
+      "facing": 1.5707963267948966
+    },
+    "motion": {
+      "moving": true,
+      "blockedAtEdge": false,
+      "carried": false,
+      "route": [
+        {
+          "x": 1.65,
+          "z": 0
+        },
+        {
+          "x": 6.7,
+          "z": 0.5
+        }
+      ],
+      "activeTravel": true,
+      "clip": "walk",
+      "facing": 1.5707963267948966,
+      "speed": 2.8375481255602013
+    },
+    "world": {
+      "ready": true,
+      "contributors": [
+        "created-1"
+      ],
+      "traversable": true,
+      "mass": 3,
+      "covered": 0,
+      "capacity": 0,
+      "force": 0,
+      "reason": "שני הקצוות נתמכים. אפשר לחצות.",
+      "extras": {
+        "unlocked": false,
+        "illuminated": false
+      }
+    },
+    "zones": [
+      {
+        "id": "crossing",
+        "x": 0,
+        "z": 0,
+        "label": "Crossing · 2.4 m"
+      }
+    ],
+    "selected": "created-1",
+    "items": [
+      {
+        "id": "created-1",
+        "phrase": "a plank",
+        "x": 0,
+        "z": 0,
+        "rot": 0,
+        "mass": 3,
+        "length": 3.3,
+        "capacity": 0,
+        "float": false,
+        "force": 0,
+        "evidence": {
+          "article": false,
+          "count": false,
+          "spelling": false,
+          "modifiers": false,
+          "order": false,
+          "family": false,
+          "assisted": true,
+          "shorthand": false
+        }
+      }
+    ],
+    "preview": null,
+    "learning": {
+      "attempts": 1,
+      "hints": 0,
+      "retries": 0,
+      "rejectedPhrases": 0,
+      "assisted": true,
+      "events": [
+        {
+          "type": "level-start",
+          "level": "g7-crossing",
+          "at": 0,
+          "detail": {
+            "layoutVariant": 0
+          }
+        },
+        {
+          "type": "level-start",
+          "level": "g7-crossing",
+          "at": 14,
+          "detail": {
+            "layoutVariant": 0
+          }
+        },
+        {
+          "type": "guided-model-shown",
+          "level": "g7-crossing",
+          "at": 14.5,
+          "detail": {
+            "phrase": "a plank"
+          }
+        },
+        {
+          "type": "phrase-attempt",
+          "level": "g7-crossing",
+          "at": 26.2,
+          "detail": {
+            "raw": "a plank",
+            "number": 1,
+            "unaided": false,
+            "result": "accepted",
+            "assisted": true
+          }
+        },
+        {
+          "type": "create-place",
+          "level": "g7-crossing",
+          "at": 35.7,
+          "detail": {
+            "id": "created-1",
+            "phrase": "a plank",
+            "x": 0,
+            "z": 0,
+            "rot": 0,
+            "evidence": {
+              "article": false,
+              "count": false,
+              "spelling": false,
+              "modifiers": false,
+              "order": false,
+              "family": false,
+              "assisted": true,
+              "shorthand": false
+            }
+          }
+        },
+        {
+          "type": "world-solved",
+          "level": "g7-crossing",
+          "at": 35.7,
+          "detail": {
+            "kind": "bridge"
+          }
+        },
+        {
+          "type": "context-action",
+          "level": "g7-crossing",
+          "at": 46.8,
+          "detail": {
+            "kind": "travel"
+          }
+        },
+        {
+          "type": "walk-request",
+          "level": "g7-crossing",
+          "at": 46.8,
+          "detail": {
+            "to": {
+              "x": 6.7,
+              "z": 0.5
+            },
+            "tryGoal": true
+          }
+        }
+      ]
+    },
+    "completed": [],
+    "audio": {
+      "state": "running",
+      "sampleRate": 22050,
+      "requested": true,
+      "paused": false,
+      "hidden": false,
+      "loaded": 17,
+      "loops": 3,
+      "oneShots": 0,
+      "cueTotal": 4,
+      "lastCue": "confirm",
+      "solved": true,
+      "ducked": false,
+      "gains": {
+        "music": 0.48,
+        "sfx": 0.58,
+        "voice": 0.85,
+        "master": 0.75
+      },
+      "rms": 0.00658,
+      "loadError": ""
+    },
+    "models": {
+      "loaded": [
+        "courier",
+        "boat",
+        "balloon",
+        "lamp",
+        "crate"
+      ],
+      "errors": []
+    }
+  },
+  {
+    "mode": "explore",
+    "coordinateSystem": "x east, z south, y up; keyboard directions relative to camera screen. Click ground to walk.",
+    "level": "g7-crossing",
+    "grade": 7,
+    "stage": "guided",
+    "layoutVariant": 0,
+    "objective": "Help the courier cross the broken path.",
+    "nextAction": {
+      "kind": "travel",
+      "label": "לכו למגדלור →",
+      "instruction": "הפתרון עובד! לחצו כדי לנסות אותו ולהגיע למגדלור."
+    },
+    "player": {
+      "x": -0.0637762099397404,
+      "z": 0,
+      "jump": 0,
+      "vx": 2.8999595546560677,
+      "vz": 0,
+      "facing": 1.5707963267948966
+    },
+    "motion": {
+      "moving": true,
+      "blockedAtEdge": false,
+      "carried": false,
+      "route": [
+        {
+          "x": 1.65,
+          "z": 0
+        },
+        {
+          "x": 6.7,
+          "z": 0.5
+        }
+      ],
+      "activeTravel": true,
+      "clip": "walk",
+      "facing": 1.5707963267948966,
+      "speed": 2.8999595546560677
+    },
+    "world": {
+      "ready": true,
+      "contributors": [
+        "created-1"
+      ],
+      "traversable": true,
+      "mass": 3,
+      "covered": 0,
+      "capacity": 0,
+      "force": 0,
+      "reason": "שני הקצוות נתמכים. אפשר לחצות.",
+      "extras": {
+        "unlocked": false,
+        "illuminated": false
+      }
+    },
+    "zones": [
+      {
+        "id": "crossing",
+        "x": 0,
+        "z": 0,
+        "label": "Crossing · 2.4 m"
+      }
+    ],
+    "selected": "created-1",
+    "items": [
+      {
+        "id": "created-1",
+        "phrase": "a plank",
+        "x": 0,
+        "z": 0,
+        "rot": 0,
+        "mass": 3,
+        "length": 3.3,
+        "capacity": 0,
+        "float": false,
+        "force": 0,
+        "evidence": {
+          "article": false,
+          "count": false,
+          "spelling": false,
+          "modifiers": false,
+          "order": false,
+          "family": false,
+          "assisted": true,
+          "shorthand": false
+        }
+      }
+    ],
+    "preview": null,
+    "learning": {
+      "attempts": 1,
+      "hints": 0,
+      "retries": 0,
+      "rejectedPhrases": 0,
+      "assisted": true,
+      "events": [
+        {
+          "type": "level-start",
+          "level": "g7-crossing",
+          "at": 0,
+          "detail": {
+            "layoutVariant": 0
+          }
+        },
+        {
+          "type": "level-start",
+          "level": "g7-crossing",
+          "at": 14,
+          "detail": {
+            "layoutVariant": 0
+          }
+        },
+        {
+          "type": "guided-model-shown",
+          "level": "g7-crossing",
+          "at": 14.5,
+          "detail": {
+            "phrase": "a plank"
+          }
+        },
+        {
+          "type": "phrase-attempt",
+          "level": "g7-crossing",
+          "at": 26.2,
+          "detail": {
+            "raw": "a plank",
+            "number": 1,
+            "unaided": false,
+            "result": "accepted",
+            "assisted": true
+          }
+        },
+        {
+          "type": "create-place",
+          "level": "g7-crossing",
+          "at": 35.7,
+          "detail": {
+            "id": "created-1",
+            "phrase": "a plank",
+            "x": 0,
+            "z": 0,
+            "rot": 0,
+            "evidence": {
+              "article": false,
+              "count": false,
+              "spelling": false,
+              "modifiers": false,
+              "order": false,
+              "family": false,
+              "assisted": true,
+              "shorthand": false
+            }
+          }
+        },
+        {
+          "type": "world-solved",
+          "level": "g7-crossing",
+          "at": 35.7,
+          "detail": {
+            "kind": "bridge"
+          }
+        },
+        {
+          "type": "context-action",
+          "level": "g7-crossing",
+          "at": 46.8,
+          "detail": {
+            "kind": "travel"
+          }
+        },
+        {
+          "type": "walk-request",
+          "level": "g7-crossing",
+          "at": 46.8,
+          "detail": {
+            "to": {
+              "x": 6.7,
+              "z": 0.5
+            },
+            "tryGoal": true
+          }
+        }
+      ]
+    },
+    "completed": [],
+    "audio": {
+      "state": "running",
+      "sampleRate": 22050,
+      "requested": true,
+      "paused": false,
+      "hidden": false,
+      "loaded": 17,
+      "loops": 3,
+      "oneShots": 0,
+      "cueTotal": 4,
+      "lastCue": "confirm",
+      "solved": true,
+      "ducked": false,
+      "gains": {
+        "music": 0.48,
+        "sfx": 0.58,
+        "voice": 0.85,
+        "master": 0.75
+      },
+      "rms": 0.01964,
+      "loadError": ""
+    },
+    "models": {
+      "loaded": [
+        "courier",
+        "boat",
+        "balloon",
+        "lamp",
+        "crate"
+      ],
+      "errors": []
+    }
+  },
+  {
+    "mode": "explore",
+    "coordinateSystem": "x east, z south, y up; keyboard directions relative to camera screen. Click ground to walk.",
+    "level": "g7-crossing",
+    "grade": 7,
+    "stage": "guided",
+    "layoutVariant": 0,
+    "objective": "Help the courier cross the broken path.",
+    "nextAction": {
+      "kind": "travel",
+      "label": "לכו למגדלור →",
+      "instruction": "הפתרון עובד! לחצו כדי לנסות אותו ולהגיע למגדלור."
+    },
+    "player": {
+      "x": 1.097671710206977,
+      "z": 0,
+      "jump": 0,
+      "vx": 2.8999999700746373,
+      "vz": 0,
+      "facing": 1.5707963267948966
+    },
+    "motion": {
+      "moving": true,
+      "blockedAtEdge": false,
+      "carried": false,
+      "route": [
+        {
+          "x": 1.65,
+          "z": 0
+        },
+        {
+          "x": 6.7,
+          "z": 0.5
+        }
+      ],
+      "activeTravel": true,
+      "clip": "walk",
+      "facing": 1.5707963267948966,
+      "speed": 2.8999999700746373
+    },
+    "world": {
+      "ready": true,
+      "contributors": [
+        "created-1"
+      ],
+      "traversable": true,
+      "mass": 3,
+      "covered": 0,
+      "capacity": 0,
+      "force": 0,
+      "reason": "שני הקצוות נתמכים. אפשר לחצות.",
+      "extras": {
+        "unlocked": false,
+        "illuminated": false
+      }
+    },
+    "zones": [
+      {
+        "id": "crossing",
+        "x": 0,
+        "z": 0,
+        "label": "Crossing · 2.4 m"
+      }
+    ],
+    "selected": "created-1",
+    "items": [
+      {
+        "id": "created-1",
+        "phrase": "a plank",
+        "x": 0,
+        "z": 0,
+        "rot": 0,
+        "mass": 3,
+        "length": 3.3,
+        "capacity": 0,
+        "float": false,
+        "force": 0,
+        "evidence": {
+          "article": false,
+          "count": false,
+          "spelling": false,
+          "modifiers": false,
+          "order": false,
+          "family": false,
+          "assisted": true,
+          "shorthand": false
+        }
+      }
+    ],
+    "preview": null,
+    "learning": {
+      "attempts": 1,
+      "hints": 0,
+      "retries": 0,
+      "rejectedPhrases": 0,
+      "assisted": true,
+      "events": [
+        {
+          "type": "level-start",
+          "level": "g7-crossing",
+          "at": 0,
+          "detail": {
+            "layoutVariant": 0
+          }
+        },
+        {
+          "type": "level-start",
+          "level": "g7-crossing",
+          "at": 14,
+          "detail": {
+            "layoutVariant": 0
+          }
+        },
+        {
+          "type": "guided-model-shown",
+          "level": "g7-crossing",
+          "at": 14.5,
+          "detail": {
+            "phrase": "a plank"
+          }
+        },
+        {
+          "type": "phrase-attempt",
+          "level": "g7-crossing",
+          "at": 26.2,
+          "detail": {
+            "raw": "a plank",
+            "number": 1,
+            "unaided": false,
+            "result": "accepted",
+            "assisted": true
+          }
+        },
+        {
+          "type": "create-place",
+          "level": "g7-crossing",
+          "at": 35.7,
+          "detail": {
+            "id": "created-1",
+            "phrase": "a plank",
+            "x": 0,
+            "z": 0,
+            "rot": 0,
+            "evidence": {
+              "article": false,
+              "count": false,
+              "spelling": false,
+              "modifiers": false,
+              "order": false,
+              "family": false,
+              "assisted": true,
+              "shorthand": false
+            }
+          }
+        },
+        {
+          "type": "world-solved",
+          "level": "g7-crossing",
+          "at": 35.7,
+          "detail": {
+            "kind": "bridge"
+          }
+        },
+        {
+          "type": "context-action",
+          "level": "g7-crossing",
+          "at": 46.8,
+          "detail": {
+            "kind": "travel"
+          }
+        },
+        {
+          "type": "walk-request",
+          "level": "g7-crossing",
+          "at": 46.8,
+          "detail": {
+            "to": {
+              "x": 6.7,
+              "z": 0.5
+            },
+            "tryGoal": true
+          }
+        }
+      ]
+    },
+    "completed": [],
+    "audio": {
+      "state": "running",
+      "sampleRate": 22050,
+      "requested": true,
+      "paused": false,
+      "hidden": false,
+      "loaded": 17,
+      "loops": 3,
+      "oneShots": 0,
+      "cueTotal": 4,
+      "lastCue": "confirm",
+      "solved": true,
+      "ducked": false,
+      "gains": {
+        "music": 0.48,
+        "sfx": 0.58,
+        "voice": 0.85,
+        "master": 0.75
+      },
+      "rms": 0.007,
+      "loadError": ""
+    },
+    "models": {
+      "loaded": [
+        "courier",
+        "boat",
+        "balloon",
+        "lamp",
+        "crate"
+      ],
+      "errors": []
+    }
+  },
+  {
+    "mode": "explore",
+    "coordinateSystem": "x east, z south, y up; keyboard directions relative to camera screen. Click ground to walk.",
+    "level": "g7-crossing",
+    "grade": 7,
+    "stage": "guided",
+    "layoutVariant": 0,
+    "objective": "Help the courier cross the broken path.",
+    "nextAction": {
+      "kind": "travel",
+      "label": "לכו למגדלור →",
+      "instruction": "הפתרון עובד! לחצו כדי לנסות אותו ולהגיע למגדלור."
+    },
+    "player": {
+      "x": 2.293257974040175,
+      "z": 0.05524325169403432,
+      "jump": 0,
+      "vx": 2.8716770475737023,
+      "vz": 0.28715143656536063,
+      "facing": 1.4711332832665702
+    },
+    "motion": {
+      "moving": true,
+      "blockedAtEdge": false,
+      "carried": false,
+      "route": [
+        {
+          "x": 6.7,
+          "z": 0.5
+        }
+      ],
+      "activeTravel": true,
+      "clip": "walk",
+      "facing": 1.4753729542016096,
+      "speed": 2.8859980965141276
+    },
+    "world": {
+      "ready": true,
+      "contributors": [
+        "created-1"
+      ],
+      "traversable": true,
+      "mass": 3,
+      "covered": 0,
+      "capacity": 0,
+      "force": 0,
+      "reason": "שני הקצוות נתמכים. אפשר לחצות.",
+      "extras": {
+        "unlocked": false,
+        "illuminated": false
+      }
+    },
+    "zones": [
+      {
+        "id": "crossing",
+        "x": 0,
+        "z": 0,
+        "label": "Crossing · 2.4 m"
+      }
+    ],
+    "selected": "created-1",
+    "items": [
+      {
+        "id": "created-1",
+        "phrase": "a plank",
+        "x": 0,
+        "z": 0,
+        "rot": 0,
+        "mass": 3,
+        "length": 3.3,
+        "capacity": 0,
+        "float": false,
+        "force": 0,
+        "evidence": {
+          "article": false,
+          "count": false,
+          "spelling": false,
+          "modifiers": false,
+          "order": false,
+          "family": false,
+          "assisted": true,
+          "shorthand": false
+        }
+      }
+    ],
+    "preview": null,
+    "learning": {
+      "attempts": 1,
+      "hints": 0,
+      "retries": 0,
+      "rejectedPhrases": 0,
+      "assisted": true,
+      "events": [
+        {
+          "type": "level-start",
+          "level": "g7-crossing",
+          "at": 0,
+          "detail": {
+            "layoutVariant": 0
+          }
+        },
+        {
+          "type": "level-start",
+          "level": "g7-crossing",
+          "at": 14,
+          "detail": {
+            "layoutVariant": 0
+          }
+        },
+        {
+          "type": "guided-model-shown",
+          "level": "g7-crossing",
+          "at": 14.5,
+          "detail": {
+            "phrase": "a plank"
+          }
+        },
+        {
+          "type": "phrase-attempt",
+          "level": "g7-crossing",
+          "at": 26.2,
+          "detail": {
+            "raw": "a plank",
+            "number": 1,
+            "unaided": false,
+            "result": "accepted",
+            "assisted": true
+          }
+        },
+        {
+          "type": "create-place",
+          "level": "g7-crossing",
+          "at": 35.7,
+          "detail": {
+            "id": "created-1",
+            "phrase": "a plank",
+            "x": 0,
+            "z": 0,
+            "rot": 0,
+            "evidence": {
+              "article": false,
+              "count": false,
+              "spelling": false,
+              "modifiers": false,
+              "order": false,
+              "family": false,
+              "assisted": true,
+              "shorthand": false
+            }
+          }
+        },
+        {
+          "type": "world-solved",
+          "level": "g7-crossing",
+          "at": 35.7,
+          "detail": {
+            "kind": "bridge"
+          }
+        },
+        {
+          "type": "context-action",
+          "level": "g7-crossing",
+          "at": 46.8,
+          "detail": {
+            "kind": "travel"
+          }
+        },
+        {
+          "type": "walk-request",
+          "level": "g7-crossing",
+          "at": 46.8,
+          "detail": {
+            "to": {
+              "x": 6.7,
+              "z": 0.5
+            },
+            "tryGoal": true
+          }
+        }
+      ]
+    },
+    "completed": [],
+    "audio": {
+      "state": "running",
+      "sampleRate": 22050,
+      "requested": true,
+      "paused": false,
+      "hidden": false,
+      "loaded": 17,
+      "loops": 3,
+      "oneShots": 0,
+      "cueTotal": 4,
+      "lastCue": "confirm",
+      "solved": true,
+      "ducked": false,
+      "gains": {
+        "music": 0.48,
+        "sfx": 0.58,
+        "voice": 0.85,
+        "master": 0.75
+      },
+      "rms": 0.01286,
+      "loadError": ""
+    },
+    "models": {
+      "loaded": [
+        "courier",
+        "boat",
+        "balloon",
+        "lamp",
+        "crate"
+      ],
+      "errors": []
+    }
+  },
+  {
+    "mode": "explore",
+    "coordinateSystem": "x east, z south, y up; keyboard directions relative to camera screen. Click ground to walk.",
+    "level": "g7-crossing",
+    "grade": 7,
+    "stage": "guided",
+    "layoutVariant": 0,
+    "objective": "Help the courier cross the broken path.",
+    "nextAction": {
+      "kind": "travel",
+      "label": "לכו למגדלור →",
+      "instruction": "הפתרון עובד! לחצו כדי לנסות אותו ולהגיע למגדלור."
+    },
+    "player": {
+      "x": 3.8316037144484416,
+      "z": 0.21040760377036147,
+      "jump": 0,
+      "vx": 2.8853314740227933,
+      "vz": 0.2913018894061428,
+      "facing": 1.4701776734146796
+    },
+    "motion": {
+      "moving": true,
+      "blockedAtEdge": false,
+      "carried": false,
+      "route": [
+        {
+          "x": 6.7,
+          "z": 0.5
+        }
+      ],
+      "activeTravel": true,
+      "clip": "walk",
+      "facing": 1.4701786140630604,
+      "speed": 2.8999990527167654
+    },
+    "world": {
+      "ready": true,
+      "contributors": [
+        "created-1"
+      ],
+      "traversable": true,
+      "mass": 3,
+      "covered": 0,
+      "capacity": 0,
+      "force": 0,
+      "reason": "שני הקצוות נתמכים. אפשר לחצות.",
+      "extras": {
+        "unlocked": false,
+        "illuminated": false
+      }
+    },
+    "zones": [
+      {
+        "id": "crossing",
+        "x": 0,
+        "z": 0,
+        "label": "Crossing · 2.4 m"
+      }
+    ],
+    "selected": "created-1",
+    "items": [
+      {
+        "id": "created-1",
+        "phrase": "a plank",
+        "x": 0,
+        "z": 0,
+        "rot": 0,
+        "mass": 3,
+        "length": 3.3,
+        "capacity": 0,
+        "float": false,
+        "force": 0,
+        "evidence": {
+          "article": false,
+          "count": false,
+          "spelling": false,
+          "modifiers": false,
+          "order": false,
+          "family": false,
+          "assisted": true,
+          "shorthand": false
+        }
+      }
+    ],
+    "preview": null,
+    "learning": {
+      "attempts": 1,
+      "hints": 0,
+      "retries": 0,
+      "rejectedPhrases": 0,
+      "assisted": true,
+      "events": [
+        {
+          "type": "level-start",
+          "level": "g7-crossing",
+          "at": 0,
+          "detail": {
+            "layoutVariant": 0
+          }
+        },
+        {
+          "type": "level-start",
+          "level": "g7-crossing",
+          "at": 14,
+          "detail": {
+            "layoutVariant": 0
+          }
+        },
+        {
+          "type": "guided-model-shown",
+          "level": "g7-crossing",
+          "at": 14.5,
+          "detail": {
+            "phrase": "a plank"
+          }
+        },
+        {
+          "type": "phrase-attempt",
+          "level": "g7-crossing",
+          "at": 26.2,
+          "detail": {
+            "raw": "a plank",
+            "number": 1,
+            "unaided": false,
+            "result": "accepted",
+            "assisted": true
+          }
+        },
+        {
+          "type": "create-place",
+          "level": "g7-crossing",
+          "at": 35.7,
+          "detail": {
+            "id": "created-1",
+            "phrase": "a plank",
+            "x": 0,
+            "z": 0,
+            "rot": 0,
+            "evidence": {
+              "article": false,
+              "count": false,
+              "spelling": false,
+              "modifiers": false,
+              "order": false,
+              "family": false,
+              "assisted": true,
+              "shorthand": false
+            }
+          }
+        },
+        {
+          "type": "world-solved",
+          "level": "g7-crossing",
+          "at": 35.7,
+          "detail": {
+            "kind": "bridge"
+          }
+        },
+        {
+          "type": "context-action",
+          "level": "g7-crossing",
+          "at": 46.8,
+          "detail": {
+            "kind": "travel"
+          }
+        },
+        {
+          "type": "walk-request",
+          "level": "g7-crossing",
+          "at": 46.8,
+          "detail": {
+            "to": {
+              "x": 6.7,
+              "z": 0.5
+            },
+            "tryGoal": true
+          }
+        }
+      ]
+    },
+    "completed": [],
+    "audio": {
+      "state": "running",
+      "sampleRate": 22050,
+      "requested": true,
+      "paused": false,
+      "hidden": false,
+      "loaded": 17,
+      "loops": 3,
+      "oneShots": 0,
+      "cueTotal": 4,
+      "lastCue": "confirm",
+      "solved": true,
+      "ducked": false,
+      "gains": {
+        "music": 0.48,
+        "sfx": 0.58,
+        "voice": 0.85,
+        "master": 0.75
+      },
+      "rms": 0.01969,
+      "loadError": ""
+    },
+    "models": {
+      "loaded": [
+        "courier",
+        "boat",
+        "balloon",
+        "lamp",
+        "crate"
+      ],
+      "errors": []
+    }
+  },
+  {
+    "mode": "explore",
+    "coordinateSystem": "x east, z south, y up; keyboard directions relative to camera screen. Click ground to walk.",
+    "level": "g7-crossing",
+    "grade": 7,
+    "stage": "guided",
+    "layoutVariant": 0,
+    "objective": "Help the courier cross the broken path.",
+    "nextAction": {
+      "kind": "travel",
+      "label": "לכו למגדלור →",
+      "instruction": "הפתרון עובד! לחצו כדי לנסות אותו ולהגיע למגדלור."
+    },
+    "player": {
+      "x": 5.008242215016886,
+      "z": 0.3292006509859397,
+      "jump": 0,
+      "vx": 2.885332386498566,
+      "vz": 0.2913022757512364,
+      "facing": 1.47017757247199
+    },
+    "motion": {
+      "moving": true,
+      "blockedAtEdge": false,
+      "carried": false,
+      "route": [
+        {
+          "x": 6.7,
+          "z": 0.5
+        }
+      ],
+      "activeTravel": true,
+      "clip": "walk",
+      "facing": 1.4701775736224918,
+      "speed": 2.8999999993854066
+    },
+    "world": {
+      "ready": true,
+      "contributors": [
+        "created-1"
+      ],
+      "traversable": true,
+      "mass": 3,
+      "covered": 0,
+      "capacity": 0,
+      "force": 0,
+      "reason": "שני הקצוות נתמכים. אפשר לחצות.",
+      "extras": {
+        "unlocked": false,
+        "illuminated": false
+      }
+    },
+    "zones": [
+      {
+        "id": "crossing",
+        "x": 0,
+        "z": 0,
+        "label": "Crossing · 2.4 m"
+      }
+    ],
+    "selected": "created-1",
+    "items": [
+      {
+        "id": "created-1",
+        "phrase": "a plank",
+        "x": 0,
+        "z": 0,
+        "rot": 0,
+        "mass": 3,
+        "length": 3.3,
+        "capacity": 0,
+        "float": false,
+        "force": 0,
+        "evidence": {
+          "article": false,
+          "count": false,
+          "spelling": false,
+          "modifiers": false,
+          "order": false,
+          "family": false,
+          "assisted": true,
+          "shorthand": false
+        }
+      }
+    ],
+    "preview": null,
+    "learning": {
+      "attempts": 1,
+      "hints": 0,
+      "retries": 0,
+      "rejectedPhrases": 0,
+      "assisted": true,
+      "events": [
+        {
+          "type": "level-start",
+          "level": "g7-crossing",
+          "at": 0,
+          "detail": {
+            "layoutVariant": 0
+          }
+        },
+        {
+          "type": "level-start",
+          "level": "g7-crossing",
+          "at": 14,
+          "detail": {
+            "layoutVariant": 0
+          }
+        },
+        {
+          "type": "guided-model-shown",
+          "level": "g7-crossing",
+          "at": 14.5,
+          "detail": {
+            "phrase": "a plank"
+          }
+        },
+        {
+          "type": "phrase-attempt",
+          "level": "g7-crossing",
+          "at": 26.2,
+          "detail": {
+            "raw": "a plank",
+            "number": 1,
+            "unaided": false,
+            "result": "accepted",
+            "assisted": true
+          }
+        },
+        {
+          "type": "create-place",
+          "level": "g7-crossing",
+          "at": 35.7,
+          "detail": {
+            "id": "created-1",
+            "phrase": "a plank",
+            "x": 0,
+            "z": 0,
+            "rot": 0,
+            "evidence": {
+              "article": false,
+              "count": false,
+              "spelling": false,
+              "modifiers": false,
+              "order": false,
+              "family": false,
+              "assisted": true,
+              "shorthand": false
+            }
+          }
+        },
+        {
+          "type": "world-solved",
+          "level": "g7-crossing",
+          "at": 35.7,
+          "detail": {
+            "kind": "bridge"
+          }
+        },
+        {
+          "type": "context-action",
+          "level": "g7-crossing",
+          "at": 46.8,
+          "detail": {
+            "kind": "travel"
+          }
+        },
+        {
+          "type": "walk-request",
+          "level": "g7-crossing",
+          "at": 46.8,
+          "detail": {
+            "to": {
+              "x": 6.7,
+              "z": 0.5
+            },
+            "tryGoal": true
+          }
+        }
+      ]
+    },
+    "completed": [],
+    "audio": {
+      "state": "running",
+      "sampleRate": 22050,
+      "requested": true,
+      "paused": false,
+      "hidden": false,
+      "loaded": 17,
+      "loops": 3,
+      "oneShots": 0,
+      "cueTotal": 4,
+      "lastCue": "confirm",
+      "solved": true,
+      "ducked": false,
+      "gains": {
+        "music": 0.48,
+        "sfx": 0.58,
+        "voice": 0.85,
+        "master": 0.75
+      },
+      "rms": 0.01089,
+      "loadError": ""
+    },
+    "models": {
+      "loaded": [
+        "courier",
+        "boat",
+        "balloon",
+        "lamp",
+        "crate"
+      ],
+      "errors": []
+    }
+  },
+  {
+    "mode": "complete",
+    "coordinateSystem": "x east, z south, y up; keyboard directions relative to camera screen. Click ground to walk.",
+    "level": "g7-crossing",
+    "grade": 7,
+    "stage": "guided",
+    "layoutVariant": 0,
+    "objective": "Help the courier cross the broken path.",
+    "nextAction": {
+      "kind": "travel",
+      "label": "לכו למגדלור →",
+      "instruction": "הפתרון עובד! לחצו כדי לנסות אותו ולהגיע למגדלור."
+    },
+    "player": {
+      "x": 5.8749960640652095,
+      "z": 0.41670785471844596,
+      "jump": 0,
+      "vx": 0,
+      "vz": 0,
+      "facing": 1.4701775723564028
+    },
+    "motion": {
+      "moving": false,
+      "blockedAtEdge": false,
+      "carried": false,
+      "route": [],
+      "activeTravel": false,
+      "clip": "idle",
+      "facing": 1.4701775723593724,
+      "speed": 0
+    },
+    "world": {
+      "ready": true,
+      "contributors": [
+        "created-1"
+      ],
+      "traversable": true,
+      "mass": 3,
+      "covered": 0,
+      "capacity": 0,
+      "force": 0,
+      "reason": "שני הקצוות נתמכים. אפשר לחצות.",
+      "extras": {
+        "unlocked": false,
+        "illuminated": false
+      }
+    },
+    "zones": [
+      {
+        "id": "crossing",
+        "x": 0,
+        "z": 0,
+        "label": "Crossing · 2.4 m"
+      }
+    ],
+    "selected": "created-1",
+    "items": [
+      {
+        "id": "created-1",
+        "phrase": "a plank",
+        "x": 0,
+        "z": 0,
+        "rot": 0,
+        "mass": 3,
+        "length": 3.3,
+        "capacity": 0,
+        "float": false,
+        "force": 0,
+        "evidence": {
+          "article": false,
+          "count": false,
+          "spelling": false,
+          "modifiers": false,
+          "order": false,
+          "family": false,
+          "assisted": true,
+          "shorthand": false
+        }
+      }
+    ],
+    "preview": null,
+    "learning": {
+      "attempts": 1,
+      "hints": 0,
+      "retries": 0,
+      "rejectedPhrases": 0,
+      "assisted": true,
+      "events": [
+        {
+          "type": "level-start",
+          "level": "g7-crossing",
+          "at": 0,
+          "detail": {
+            "layoutVariant": 0
+          }
+        },
+        {
+          "type": "level-start",
+          "level": "g7-crossing",
+          "at": 14,
+          "detail": {
+            "layoutVariant": 0
+          }
+        },
+        {
+          "type": "guided-model-shown",
+          "level": "g7-crossing",
+          "at": 14.5,
+          "detail": {
+            "phrase": "a plank"
+          }
+        },
+        {
+          "type": "phrase-attempt",
+          "level": "g7-crossing",
+          "at": 26.2,
+          "detail": {
+            "raw": "a plank",
+            "number": 1,
+            "unaided": false,
+            "result": "accepted",
+            "assisted": true
+          }
+        },
+        {
+          "type": "create-place",
+          "level": "g7-crossing",
+          "at": 35.7,
+          "detail": {
+            "id": "created-1",
+            "phrase": "a plank",
+            "x": 0,
+            "z": 0,
+            "rot": 0,
+            "evidence": {
+              "article": false,
+              "count": false,
+              "spelling": false,
+              "modifiers": false,
+              "order": false,
+              "family": false,
+              "assisted": true,
+              "shorthand": false
+            }
+          }
+        },
+        {
+          "type": "world-solved",
+          "level": "g7-crossing",
+          "at": 35.7,
+          "detail": {
+            "kind": "bridge"
+          }
+        },
+        {
+          "type": "context-action",
+          "level": "g7-crossing",
+          "at": 46.8,
+          "detail": {
+            "kind": "travel"
+          }
+        },
+        {
+          "type": "walk-request",
+          "level": "g7-crossing",
+          "at": 46.8,
+          "detail": {
+            "to": {
+              "x": 6.7,
+              "z": 0.5
+            },
+            "tryGoal": true
+          }
+        },
+        {
+          "type": "completion",
+          "level": "g7-crossing",
+          "at": 50.2,
+          "detail": {
+            "evidence": {
+              "article": false,
+              "count": false,
+              "spelling": false,
+              "modifiers": false,
+              "order": false,
+              "family": false
+            },
+            "unaidedSolution": false,
+            "singlePhraseFirstAttemptUnaided": false,
+            "assisted": true,
+            "hints": 0,
+            "retries": 0,
+            "attempts": 1,
+            "rejectedPhrases": 0
+          }
+        }
+      ]
+    },
+    "completed": [
+      "g7-crossing"
+    ],
+    "audio": {
+      "state": "running",
+      "sampleRate": 22050,
+      "requested": true,
+      "paused": false,
+      "hidden": false,
+      "loaded": 17,
+      "loops": 3,
+      "oneShots": 1,
+      "cueTotal": 5,
+      "lastCue": "success",
+      "solved": true,
+      "ducked": false,
+      "gains": {
+        "music": 0.48,
+        "sfx": 0.58,
+        "voice": 0.85,
+        "master": 0.75
+      },
+      "rms": 0.03029,
+      "loadError": ""
+    },
+    "models": {
+      "loaded": [
+        "courier",
+        "boat",
+        "balloon",
+        "lamp",
+        "crate"
+      ],
+      "errors": []
+    }
+  },
+  {
+    "mode": "complete",
+    "coordinateSystem": "x east, z south, y up; keyboard directions relative to camera screen. Click ground to walk.",
+    "level": "g7-crossing",
+    "grade": 7,
+    "stage": "guided",
+    "layoutVariant": 0,
+    "objective": "Help the courier cross the broken path.",
+    "nextAction": {
+      "kind": "travel",
+      "label": "לכו למגדלור →",
+      "instruction": "הפתרון עובד! לחצו כדי לנסות אותו ולהגיע למגדלור."
+    },
+    "player": {
+      "x": 5.8749960640652095,
+      "z": 0.41670785471844596,
+      "jump": 0,
+      "vx": 0,
+      "vz": 0,
+      "facing": 1.4701775723564028
+    },
+    "motion": {
+      "moving": false,
+      "blockedAtEdge": false,
+      "carried": false,
+      "route": [],
+      "activeTravel": false,
+      "clip": "idle",
+      "facing": 1.4701775723593724,
+      "speed": 0
+    },
+    "world": {
+      "ready": true,
+      "contributors": [
+        "created-1"
+      ],
+      "traversable": true,
+      "mass": 3,
+      "covered": 0,
+      "capacity": 0,
+      "force": 0,
+      "reason": "שני הקצוות נתמכים. אפשר לחצות.",
+      "extras": {
+        "unlocked": false,
+        "illuminated": false
+      }
+    },
+    "zones": [
+      {
+        "id": "crossing",
+        "x": 0,
+        "z": 0,
+        "label": "Crossing · 2.4 m"
+      }
+    ],
+    "selected": "created-1",
+    "items": [
+      {
+        "id": "created-1",
+        "phrase": "a plank",
+        "x": 0,
+        "z": 0,
+        "rot": 0,
+        "mass": 3,
+        "length": 3.3,
+        "capacity": 0,
+        "float": false,
+        "force": 0,
+        "evidence": {
+          "article": false,
+          "count": false,
+          "spelling": false,
+          "modifiers": false,
+          "order": false,
+          "family": false,
+          "assisted": true,
+          "shorthand": false
+        }
+      }
+    ],
+    "preview": null,
+    "learning": {
+      "attempts": 1,
+      "hints": 0,
+      "retries": 0,
+      "rejectedPhrases": 0,
+      "assisted": true,
+      "events": [
+        {
+          "type": "level-start",
+          "level": "g7-crossing",
+          "at": 0,
+          "detail": {
+            "layoutVariant": 0
+          }
+        },
+        {
+          "type": "level-start",
+          "level": "g7-crossing",
+          "at": 14,
+          "detail": {
+            "layoutVariant": 0
+          }
+        },
+        {
+          "type": "guided-model-shown",
+          "level": "g7-crossing",
+          "at": 14.5,
+          "detail": {
+            "phrase": "a plank"
+          }
+        },
+        {
+          "type": "phrase-attempt",
+          "level": "g7-crossing",
+          "at": 26.2,
+          "detail": {
+            "raw": "a plank",
+            "number": 1,
+            "unaided": false,
+            "result": "accepted",
+            "assisted": true
+          }
+        },
+        {
+          "type": "create-place",
+          "level": "g7-crossing",
+          "at": 35.7,
+          "detail": {
+            "id": "created-1",
+            "phrase": "a plank",
+            "x": 0,
+            "z": 0,
+            "rot": 0,
+            "evidence": {
+              "article": false,
+              "count": false,
+              "spelling": false,
+              "modifiers": false,
+              "order": false,
+              "family": false,
+              "assisted": true,
+              "shorthand": false
+            }
+          }
+        },
+        {
+          "type": "world-solved",
+          "level": "g7-crossing",
+          "at": 35.7,
+          "detail": {
+            "kind": "bridge"
+          }
+        },
+        {
+          "type": "context-action",
+          "level": "g7-crossing",
+          "at": 46.8,
+          "detail": {
+            "kind": "travel"
+          }
+        },
+        {
+          "type": "walk-request",
+          "level": "g7-crossing",
+          "at": 46.8,
+          "detail": {
+            "to": {
+              "x": 6.7,
+              "z": 0.5
+            },
+            "tryGoal": true
+          }
+        },
+        {
+          "type": "completion",
+          "level": "g7-crossing",
+          "at": 50.2,
+          "detail": {
+            "evidence": {
+              "article": false,
+              "count": false,
+              "spelling": false,
+              "modifiers": false,
+              "order": false,
+              "family": false
+            },
+            "unaidedSolution": false,
+            "singlePhraseFirstAttemptUnaided": false,
+            "assisted": true,
+            "hints": 0,
+            "retries": 0,
+            "attempts": 1,
+            "rejectedPhrases": 0
+          }
+        }
+      ]
+    },
+    "completed": [
+      "g7-crossing"
+    ],
+    "audio": {
+      "state": "running",
+      "sampleRate": 22050,
+      "requested": true,
+      "paused": false,
+      "hidden": false,
+      "loaded": 17,
+      "loops": 3,
+      "oneShots": 1,
+      "cueTotal": 5,
+      "lastCue": "success",
+      "solved": true,
+      "ducked": false,
+      "gains": {
+        "music": 0.48,
+        "sfx": 0.58,
+        "voice": 0.85,
+        "master": 0.75
+      },
+      "rms": 0.05577,
+      "loadError": ""
+    },
+    "models": {
+      "loaded": [
+        "courier",
+        "boat",
+        "balloon",
+        "lamp",
+        "crate"
+      ],
+      "errors": []
+    }
+  },
+  {
+    "mode": "complete",
+    "coordinateSystem": "x east, z south, y up; keyboard directions relative to camera screen. Click ground to walk.",
+    "level": "g7-crossing",
+    "grade": 7,
+    "stage": "guided",
+    "layoutVariant": 0,
+    "objective": "Help the courier cross the broken path.",
+    "nextAction": {
+      "kind": "travel",
+      "label": "לכו למגדלור →",
+      "instruction": "הפתרון עובד! לחצו כדי לנסות אותו ולהגיע למגדלור."
+    },
+    "player": {
+      "x": 5.8749960640652095,
+      "z": 0.41670785471844596,
+      "jump": 0,
+      "vx": 0,
+      "vz": 0,
+      "facing": 1.4701775723564028
+    },
+    "motion": {
+      "moving": false,
+      "blockedAtEdge": false,
+      "carried": false,
+      "route": [],
+      "activeTravel": false,
+      "clip": "idle",
+      "facing": 1.4701775723564054,
+      "speed": 0
+    },
+    "world": {
+      "ready": true,
+      "contributors": [
+        "created-1"
+      ],
+      "traversable": true,
+      "mass": 3,
+      "covered": 0,
+      "capacity": 0,
+      "force": 0,
+      "reason": "שני הקצוות נתמכים. אפשר לחצות.",
+      "extras": {
+        "unlocked": false,
+        "illuminated": false
+      }
+    },
+    "zones": [
+      {
+        "id": "crossing",
+        "x": 0,
+        "z": 0,
+        "label": "Crossing · 2.4 m"
+      }
+    ],
+    "selected": "created-1",
+    "items": [
+      {
+        "id": "created-1",
+        "phrase": "a plank",
+        "x": 0,
+        "z": 0,
+        "rot": 0,
+        "mass": 3,
+        "length": 3.3,
+        "capacity": 0,
+        "float": false,
+        "force": 0,
+        "evidence": {
+          "article": false,
+          "count": false,
+          "spelling": false,
+          "modifiers": false,
+          "order": false,
+          "family": false,
+          "assisted": true,
+          "shorthand": false
+        }
+      }
+    ],
+    "preview": null,
+    "learning": {
+      "attempts": 1,
+      "hints": 0,
+      "retries": 0,
+      "rejectedPhrases": 0,
+      "assisted": true,
+      "events": [
+        {
+          "type": "level-start",
+          "level": "g7-crossing",
+          "at": 0,
+          "detail": {
+            "layoutVariant": 0
+          }
+        },
+        {
+          "type": "level-start",
+          "level": "g7-crossing",
+          "at": 14,
+          "detail": {
+            "layoutVariant": 0
+          }
+        },
+        {
+          "type": "guided-model-shown",
+          "level": "g7-crossing",
+          "at": 14.5,
+          "detail": {
+            "phrase": "a plank"
+          }
+        },
+        {
+          "type": "phrase-attempt",
+          "level": "g7-crossing",
+          "at": 26.2,
+          "detail": {
+            "raw": "a plank",
+            "number": 1,
+            "unaided": false,
+            "result": "accepted",
+            "assisted": true
+          }
+        },
+        {
+          "type": "create-place",
+          "level": "g7-crossing",
+          "at": 35.7,
+          "detail": {
+            "id": "created-1",
+            "phrase": "a plank",
+            "x": 0,
+            "z": 0,
+            "rot": 0,
+            "evidence": {
+              "article": false,
+              "count": false,
+              "spelling": false,
+              "modifiers": false,
+              "order": false,
+              "family": false,
+              "assisted": true,
+              "shorthand": false
+            }
+          }
+        },
+        {
+          "type": "world-solved",
+          "level": "g7-crossing",
+          "at": 35.7,
+          "detail": {
+            "kind": "bridge"
+          }
+        },
+        {
+          "type": "context-action",
+          "level": "g7-crossing",
+          "at": 46.8,
+          "detail": {
+            "kind": "travel"
+          }
+        },
+        {
+          "type": "walk-request",
+          "level": "g7-crossing",
+          "at": 46.8,
+          "detail": {
+            "to": {
+              "x": 6.7,
+              "z": 0.5
+            },
+            "tryGoal": true
+          }
+        },
+        {
+          "type": "completion",
+          "level": "g7-crossing",
+          "at": 50.2,
+          "detail": {
+            "evidence": {
+              "article": false,
+              "count": false,
+              "spelling": false,
+              "modifiers": false,
+              "order": false,
+              "family": false
+            },
+            "unaidedSolution": false,
+            "singlePhraseFirstAttemptUnaided": false,
+            "assisted": true,
+            "hints": 0,
+            "retries": 0,
+            "attempts": 1,
+            "rejectedPhrases": 0
+          }
+        }
+      ]
+    },
+    "completed": [
+      "g7-crossing"
+    ],
+    "audio": {
+      "state": "running",
+      "sampleRate": 22050,
+      "requested": true,
+      "paused": false,
+      "hidden": false,
+      "loaded": 17,
+      "loops": 3,
+      "oneShots": 1,
+      "cueTotal": 5,
+      "lastCue": "success",
+      "solved": true,
+      "ducked": false,
+      "gains": {
+        "music": 0.48,
+        "sfx": 0.58,
+        "voice": 0.85,
+        "master": 0.75
+      },
+      "rms": 0.02324,
+      "loadError": ""
+    },
+    "models": {
+      "loaded": [
+        "courier",
+        "boat",
+        "balloon",
+        "lamp",
+        "crate"
+      ],
+      "errors": []
+    }
+  },
+  {
+    "mode": "complete",
+    "coordinateSystem": "x east, z south, y up; keyboard directions relative to camera screen. Click ground to walk.",
+    "level": "g7-crossing",
+    "grade": 7,
+    "stage": "guided",
+    "layoutVariant": 0,
+    "objective": "Help the courier cross the broken path.",
+    "nextAction": {
+      "kind": "travel",
+      "label": "לכו למגדלור →",
+      "instruction": "הפתרון עובד! לחצו כדי לנסות אותו ולהגיע למגדלור."
+    },
+    "player": {
+      "x": 5.8749960640652095,
+      "z": 0.41670785471844596,
+      "jump": 0,
+      "vx": 0,
+      "vz": 0,
+      "facing": 1.4701775723564028
+    },
+    "motion": {
+      "moving": false,
+      "blockedAtEdge": false,
+      "carried": false,
+      "route": [],
+      "activeTravel": false,
+      "clip": "idle",
+      "facing": 1.4701775723564035,
+      "speed": 0
+    },
+    "world": {
+      "ready": true,
+      "contributors": [
+        "created-1"
+      ],
+      "traversable": true,
+      "mass": 3,
+      "covered": 0,
+      "capacity": 0,
+      "force": 0,
+      "reason": "שני הקצוות נתמכים. אפשר לחצות.",
+      "extras": {
+        "unlocked": false,
+        "illuminated": false
+      }
+    },
+    "zones": [
+      {
+        "id": "crossing",
+        "x": 0,
+        "z": 0,
+        "label": "Crossing · 2.4 m"
+      }
+    ],
+    "selected": "created-1",
+    "items": [
+      {
+        "id": "created-1",
+        "phrase": "a plank",
+        "x": 0,
+        "z": 0,
+        "rot": 0,
+        "mass": 3,
+        "length": 3.3,
+        "capacity": 0,
+        "float": false,
+        "force": 0,
+        "evidence": {
+          "article": false,
+          "count": false,
+          "spelling": false,
+          "modifiers": false,
+          "order": false,
+          "family": false,
+          "assisted": true,
+          "shorthand": false
+        }
+      }
+    ],
+    "preview": null,
+    "learning": {
+      "attempts": 1,
+      "hints": 0,
+      "retries": 0,
+      "rejectedPhrases": 0,
+      "assisted": true,
+      "events": [
+        {
+          "type": "level-start",
+          "level": "g7-crossing",
+          "at": 0,
+          "detail": {
+            "layoutVariant": 0
+          }
+        },
+        {
+          "type": "level-start",
+          "level": "g7-crossing",
+          "at": 14,
+          "detail": {
+            "layoutVariant": 0
+          }
+        },
+        {
+          "type": "guided-model-shown",
+          "level": "g7-crossing",
+          "at": 14.5,
+          "detail": {
+            "phrase": "a plank"
+          }
+        },
+        {
+          "type": "phrase-attempt",
+          "level": "g7-crossing",
+          "at": 26.2,
+          "detail": {
+            "raw": "a plank",
+            "number": 1,
+            "unaided": false,
+            "result": "accepted",
+            "assisted": true
+          }
+        },
+        {
+          "type": "create-place",
+          "level": "g7-crossing",
+          "at": 35.7,
+          "detail": {
+            "id": "created-1",
+            "phrase": "a plank",
+            "x": 0,
+            "z": 0,
+            "rot": 0,
+            "evidence": {
+              "article": false,
+              "count": false,
+              "spelling": false,
+              "modifiers": false,
+              "order": false,
+              "family": false,
+              "assisted": true,
+              "shorthand": false
+            }
+          }
+        },
+        {
+          "type": "world-solved",
+          "level": "g7-crossing",
+          "at": 35.7,
+          "detail": {
+            "kind": "bridge"
+          }
+        },
+        {
+          "type": "context-action",
+          "level": "g7-crossing",
+          "at": 46.8,
+          "detail": {
+            "kind": "travel"
+          }
+        },
+        {
+          "type": "walk-request",
+          "level": "g7-crossing",
+          "at": 46.8,
+          "detail": {
+            "to": {
+              "x": 6.7,
+              "z": 0.5
+            },
+            "tryGoal": true
+          }
+        },
+        {
+          "type": "completion",
+          "level": "g7-crossing",
+          "at": 50.2,
+          "detail": {
+            "evidence": {
+              "article": false,
+              "count": false,
+              "spelling": false,
+              "modifiers": false,
+              "order": false,
+              "family": false
+            },
+            "unaidedSolution": false,
+            "singlePhraseFirstAttemptUnaided": false,
+            "assisted": true,
+            "hints": 0,
+            "retries": 0,
+            "attempts": 1,
+            "rejectedPhrases": 0
+          }
+        }
+      ]
+    },
+    "completed": [
+      "g7-crossing"
+    ],
+    "audio": {
+      "state": "running",
+      "sampleRate": 22050,
+      "requested": true,
+      "paused": false,
+      "hidden": false,
+      "loaded": 17,
+      "loops": 3,
+      "oneShots": 1,
+      "cueTotal": 5,
+      "lastCue": "success",
+      "solved": true,
+      "ducked": false,
+      "gains": {
+        "music": 0.48,
+        "sfx": 0.58,
+        "voice": 0.85,
+        "master": 0.75
+      },
+      "rms": 0.01418,
+      "loadError": ""
+    },
+    "models": {
+      "loaded": [
+        "courier",
+        "boat",
+        "balloon",
+        "lamp",
+        "crate"
+      ],
+      "errors": []
+    }
+  },
+  {
+    "mode": "complete",
+    "coordinateSystem": "x east, z south, y up; keyboard directions relative to camera screen. Click ground to walk.",
+    "level": "g7-crossing",
+    "grade": 7,
+    "stage": "guided",
+    "layoutVariant": 0,
+    "objective": "Help the courier cross the broken path.",
+    "nextAction": {
+      "kind": "travel",
+      "label": "לכו למגדלור →",
+      "instruction": "הפתרון עובד! לחצו כדי לנסות אותו ולהגיע למגדלור."
+    },
+    "player": {
+      "x": 5.8749960640652095,
+      "z": 0.41670785471844596,
+      "jump": 0,
+      "vx": 0,
+      "vz": 0,
+      "facing": 1.4701775723564028
+    },
+    "motion": {
+      "moving": false,
+      "blockedAtEdge": false,
+      "carried": false,
+      "route": [],
+      "activeTravel": false,
+      "clip": "idle",
+      "facing": 1.470177572356403,
+      "speed": 0
+    },
+    "world": {
+      "ready": true,
+      "contributors": [
+        "created-1"
+      ],
+      "traversable": true,
+      "mass": 3,
+      "covered": 0,
+      "capacity": 0,
+      "force": 0,
+      "reason": "שני הקצוות נתמכים. אפשר לחצות.",
+      "extras": {
+        "unlocked": false,
+        "illuminated": false
+      }
+    },
+    "zones": [
+      {
+        "id": "crossing",
+        "x": 0,
+        "z": 0,
+        "label": "Crossing · 2.4 m"
+      }
+    ],
+    "selected": "created-1",
+    "items": [
+      {
+        "id": "created-1",
+        "phrase": "a plank",
+        "x": 0,
+        "z": 0,
+        "rot": 0,
+        "mass": 3,
+        "length": 3.3,
+        "capacity": 0,
+        "float": false,
+        "force": 0,
+        "evidence": {
+          "article": false,
+          "count": false,
+          "spelling": false,
+          "modifiers": false,
+          "order": false,
+          "family": false,
+          "assisted": true,
+          "shorthand": false
+        }
+      }
+    ],
+    "preview": null,
+    "learning": {
+      "attempts": 1,
+      "hints": 0,
+      "retries": 0,
+      "rejectedPhrases": 0,
+      "assisted": true,
+      "events": [
+        {
+          "type": "level-start",
+          "level": "g7-crossing",
+          "at": 0,
+          "detail": {
+            "layoutVariant": 0
+          }
+        },
+        {
+          "type": "level-start",
+          "level": "g7-crossing",
+          "at": 14,
+          "detail": {
+            "layoutVariant": 0
+          }
+        },
+        {
+          "type": "guided-model-shown",
+          "level": "g7-crossing",
+          "at": 14.5,
+          "detail": {
+            "phrase": "a plank"
+          }
+        },
+        {
+          "type": "phrase-attempt",
+          "level": "g7-crossing",
+          "at": 26.2,
+          "detail": {
+            "raw": "a plank",
+            "number": 1,
+            "unaided": false,
+            "result": "accepted",
+            "assisted": true
+          }
+        },
+        {
+          "type": "create-place",
+          "level": "g7-crossing",
+          "at": 35.7,
+          "detail": {
+            "id": "created-1",
+            "phrase": "a plank",
+            "x": 0,
+            "z": 0,
+            "rot": 0,
+            "evidence": {
+              "article": false,
+              "count": false,
+              "spelling": false,
+              "modifiers": false,
+              "order": false,
+              "family": false,
+              "assisted": true,
+              "shorthand": false
+            }
+          }
+        },
+        {
+          "type": "world-solved",
+          "level": "g7-crossing",
+          "at": 35.7,
+          "detail": {
+            "kind": "bridge"
+          }
+        },
+        {
+          "type": "context-action",
+          "level": "g7-crossing",
+          "at": 46.8,
+          "detail": {
+            "kind": "travel"
+          }
+        },
+        {
+          "type": "walk-request",
+          "level": "g7-crossing",
+          "at": 46.8,
+          "detail": {
+            "to": {
+              "x": 6.7,
+              "z": 0.5
+            },
+            "tryGoal": true
+          }
+        },
+        {
+          "type": "completion",
+          "level": "g7-crossing",
+          "at": 50.2,
+          "detail": {
+            "evidence": {
+              "article": false,
+              "count": false,
+              "spelling": false,
+              "modifiers": false,
+              "order": false,
+              "family": false
+            },
+            "unaidedSolution": false,
+            "singlePhraseFirstAttemptUnaided": false,
+            "assisted": true,
+            "hints": 0,
+            "retries": 0,
+            "attempts": 1,
+            "rejectedPhrases": 0
+          }
+        }
+      ]
+    },
+    "completed": [
+      "g7-crossing"
+    ],
+    "audio": {
+      "state": "running",
+      "sampleRate": 22050,
+      "requested": true,
+      "paused": false,
+      "hidden": false,
+      "loaded": 17,
+      "loops": 3,
+      "oneShots": 0,
+      "cueTotal": 5,
+      "lastCue": "success",
+      "solved": true,
+      "ducked": false,
+      "gains": {
+        "music": 0.48,
+        "sfx": 0.58,
+        "voice": 0.85,
+        "master": 0.75
+      },
+      "rms": 0.02531,
+      "loadError": ""
+    },
+    "models": {
+      "loaded": [
+        "courier",
+        "boat",
+        "balloon",
+        "lamp",
+        "crate"
+      ],
+      "errors": []
+    }
+  }
+]

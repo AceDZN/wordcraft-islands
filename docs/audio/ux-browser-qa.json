@@ -1,0 +1,2669 @@
+{
+  "passed": true,
+  "deterministicTravel": true,
+  "browser": "156.0.8078.4",
+  "headed": false,
+  "startAutomationRoundTripMs": 935,
+  "errors": [],
+  "limitations": [
+    "Travel uses160ms deterministic game-time steps; audio flourish ends using real elapsed time. No win or position state is injected.",
+    "No human audition or subjective engagement claim.",
+    "No native OS/tab-hide claim; previous harness limitation remains.",
+    "Platform speech pronunciation and real utterance ducking not auditioned.",
+    "Material impact and short ready confirmation remain synchronous in current integration."
+  ],
+  "records": [
+    {
+      "label": "before Start",
+      "pageFocus": {
+        "focused": true,
+        "hidden": false
+      },
+      "mode": "welcome",
+      "level": "g7-crossing",
+      "player": {
+        "x": -3.7,
+        "z": 0,
+        "jump": 0,
+        "vx": 0,
+        "vz": 0,
+        "facing": 1.5707963267948966
+      },
+      "motion": {
+        "moving": false,
+        "blockedAtEdge": false,
+        "carried": false,
+        "onVessel": false,
+        "vesselX": 0,
+        "route": [],
+        "activeTravel": false,
+        "clip": "idle",
+        "facing": 1.5707963267671992,
+        "speed": 0
+      },
+      "world": {
+        "ready": false,
+        "reason": "צריך לכסות את המרווח ועוד 0.3 מ׳ בכל קצה. סובבו את החפץ לאורך ציר המעבר.",
+        "traversable": false,
+        "force": 0
+      },
+      "preview": null,
+      "audio": {
+        "state": "locked",
+        "sampleRate": 0,
+        "requested": false,
+        "paused": true,
+        "hidden": false,
+        "loaded": 0,
+        "loops": 0,
+        "oneShots": 0,
+        "cueTotal": 0,
+        "lastCue": "",
+        "solved": false,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0,
+        "loadError": ""
+      },
+      "primaryAction": "פתחו מחברת וצרו פתרון",
+      "instruction": "איזה חפץ יעזור כאן? כתבו אותו במחברת.",
+      "feedback": "",
+      "phraseFeedback": ""
+    },
+    {
+      "label": "Start returns before audio assets finish",
+      "pageFocus": {
+        "focused": true,
+        "hidden": false
+      },
+      "mode": "explore",
+      "level": "g7-crossing",
+      "player": {
+        "x": -3.7,
+        "z": 0,
+        "jump": 0,
+        "vx": 0,
+        "vz": 0,
+        "facing": 1.5707963267948966
+      },
+      "motion": {
+        "moving": false,
+        "blockedAtEdge": false,
+        "carried": false,
+        "onVessel": false,
+        "vesselX": 0,
+        "route": [],
+        "activeTravel": false,
+        "clip": "idle",
+        "facing": 1.5707963267948966,
+        "speed": 0
+      },
+      "world": {
+        "ready": false,
+        "reason": "צריך לכסות את המרווח ועוד 0.3 מ׳ בכל קצה. סובבו את החפץ לאורך ציר המעבר.",
+        "traversable": false,
+        "force": 0
+      },
+      "preview": null,
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 14,
+        "loops": 0,
+        "oneShots": 0,
+        "cueTotal": 0,
+        "lastCue": "",
+        "solved": false,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0,
+        "loadError": ""
+      },
+      "primaryAction": "פתחו מחברת וצרו פתרון",
+      "instruction": "איזה חפץ יעזור כאן? כתבו אותו במחברת.",
+      "feedback": "",
+      "phraseFeedback": ""
+    },
+    {
+      "label": "Start click-event microtask observation",
+      "eventTurnMs": 321.30000001192093,
+      "overlayHidden": true,
+      "mode": "explore",
+      "loaded": 0,
+      "automationRoundTripMs": 935
+    },
+    {
+      "label": "first guide opens the creation notebook",
+      "pageFocus": {
+        "focused": true,
+        "hidden": false
+      },
+      "mode": "notebook",
+      "level": "g7-crossing",
+      "player": {
+        "x": -3.7,
+        "z": 0,
+        "jump": 0,
+        "vx": 0,
+        "vz": 0,
+        "facing": 1.5707963267948966
+      },
+      "motion": {
+        "moving": false,
+        "blockedAtEdge": false,
+        "carried": false,
+        "onVessel": false,
+        "vesselX": 0,
+        "route": [],
+        "activeTravel": false,
+        "clip": "idle",
+        "facing": 1.5707963267948966,
+        "speed": 0
+      },
+      "world": {
+        "ready": false,
+        "reason": "צריך לכסות את המרווח ועוד 0.3 מ׳ בכל קצה. סובבו את החפץ לאורך ציר המעבר.",
+        "traversable": false,
+        "force": 0
+      },
+      "preview": null,
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 1,
+        "cueTotal": 1,
+        "lastCue": "notebook",
+        "solved": false,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0.02532,
+        "loadError": ""
+      },
+      "primaryAction": "פתחו מחברת וצרו פתרון",
+      "instruction": "איזה חפץ יעזור כאן? כתבו אותו במחברת.",
+      "feedback": "",
+      "phraseFeedback": ""
+    },
+    {
+      "label": "creation produces tangible preview",
+      "pageFocus": {
+        "focused": true,
+        "hidden": false
+      },
+      "mode": "placement",
+      "level": "g7-crossing",
+      "player": {
+        "x": -3.7,
+        "z": 0,
+        "jump": 0,
+        "vx": 0,
+        "vz": 0,
+        "facing": 1.5707963267948966
+      },
+      "motion": {
+        "moving": false,
+        "blockedAtEdge": false,
+        "carried": false,
+        "onVessel": false,
+        "vesselX": 0,
+        "route": [],
+        "activeTravel": false,
+        "clip": "idle",
+        "facing": 1.5707963267948966,
+        "speed": 0
+      },
+      "world": {
+        "ready": false,
+        "reason": "צריך לכסות את המרווח ועוד 0.3 מ׳ בכל קצה. סובבו את החפץ לאורך ציר המעבר.",
+        "traversable": false,
+        "force": 0
+      },
+      "preview": {
+        "phrase": "a plank",
+        "x": 0,
+        "z": 0,
+        "rot": 0,
+        "remaining": 1,
+        "snapped": true,
+        "zoneIndex": 0
+      },
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 1,
+        "cueTotal": 2,
+        "lastCue": "create",
+        "solved": false,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0.03258,
+        "loadError": ""
+      },
+      "primaryAction": "פתחו מחברת וצרו פתרון",
+      "instruction": "המקום מוכן. הניחו את החפץ.",
+      "feedback": "",
+      "phraseFeedback": ""
+    },
+    {
+      "label": "placed plank opens physical route",
+      "pageFocus": {
+        "focused": true,
+        "hidden": false
+      },
+      "mode": "explore",
+      "level": "g7-crossing",
+      "player": {
+        "x": -3.7,
+        "z": 0,
+        "jump": 0,
+        "vx": 0,
+        "vz": 0,
+        "facing": 1.5707963267948966
+      },
+      "motion": {
+        "moving": false,
+        "blockedAtEdge": false,
+        "carried": false,
+        "onVessel": false,
+        "vesselX": 0,
+        "route": [],
+        "activeTravel": false,
+        "clip": "idle",
+        "facing": 1.5707963267948966,
+        "speed": 0
+      },
+      "world": {
+        "ready": true,
+        "reason": "שני הקצוות נתמכים. אפשר לחצות.",
+        "traversable": true,
+        "force": 0
+      },
+      "preview": null,
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 2,
+        "cueTotal": 4,
+        "lastCue": "confirm",
+        "solved": true,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0.00885,
+        "loadError": ""
+      },
+      "primaryAction": "לכו למגדלור →",
+      "instruction": "הפתרון עובד! לחצו כדי לנסות אותו ולהגיע למגדלור.",
+      "feedback": "הרעיון עובד! עכשיו אפשר לנסות את הדרך למגדלור.",
+      "phraseFeedback": ""
+    },
+    {
+      "label": "ready waits for learner to Try",
+      "pageFocus": {
+        "focused": true,
+        "hidden": false
+      },
+      "mode": "explore",
+      "level": "g7-crossing",
+      "player": {
+        "x": -3.7,
+        "z": 0,
+        "jump": 0,
+        "vx": 0,
+        "vz": 0,
+        "facing": 1.5707963267948966
+      },
+      "motion": {
+        "moving": false,
+        "blockedAtEdge": false,
+        "carried": false,
+        "onVessel": false,
+        "vesselX": 0,
+        "route": [],
+        "activeTravel": false,
+        "clip": "idle",
+        "facing": 1.5707963267948966,
+        "speed": 0
+      },
+      "world": {
+        "ready": true,
+        "reason": "שני הקצוות נתמכים. אפשר לחצות.",
+        "traversable": true,
+        "force": 0
+      },
+      "preview": null,
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 0,
+        "cueTotal": 4,
+        "lastCue": "confirm",
+        "solved": true,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0.00332,
+        "loadError": ""
+      },
+      "primaryAction": "לכו למגדלור →",
+      "instruction": "הפתרון עובד! לחצו כדי לנסות אותו ולהגיע למגדלור.",
+      "feedback": "הרעיון עובד! עכשיו אפשר לנסות את הדרך למגדלור.",
+      "phraseFeedback": ""
+    },
+    {
+      "label": "first crossing: movement begins",
+      "pageFocus": {
+        "focused": true,
+        "hidden": false
+      },
+      "mode": "explore",
+      "level": "g7-crossing",
+      "player": {
+        "x": -3.7,
+        "z": 0,
+        "jump": 0,
+        "vx": 0,
+        "vz": 0,
+        "facing": 1.5707963267948966
+      },
+      "motion": {
+        "moving": false,
+        "blockedAtEdge": false,
+        "carried": false,
+        "onVessel": false,
+        "vesselX": 0,
+        "route": [
+          {
+            "x": -1.52,
+            "z": 0
+          },
+          {
+            "x": 1.52,
+            "z": 0
+          },
+          {
+            "x": 6.7,
+            "z": 0.5
+          }
+        ],
+        "activeTravel": true,
+        "clip": "idle",
+        "facing": 1.5707963267948966,
+        "speed": 0
+      },
+      "world": {
+        "ready": true,
+        "reason": "שני הקצוות נתמכים. אפשר לחצות.",
+        "traversable": true,
+        "force": 0
+      },
+      "preview": null,
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 0,
+        "cueTotal": 4,
+        "lastCue": "confirm",
+        "solved": true,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0.01301,
+        "loadError": ""
+      },
+      "primaryAction": "הדוור בדרך למגדלור…",
+      "instruction": "הפתרון עובד! לחצו כדי לנסות אותו ולהגיע למגדלור.",
+      "feedback": "בואו נבדוק את הדרך שיצרתם.",
+      "phraseFeedback": ""
+    },
+    {
+      "label": "first crossing: physical route samples",
+      "deterministicTravel": true,
+      "positions": [
+        {
+          "atMs": 1069,
+          "x": -1.8768335039555448,
+          "z": 0,
+          "mode": "explore",
+          "carried": false,
+          "route": [
+            {
+              "x": -1.52,
+              "z": 0
+            },
+            {
+              "x": 1.52,
+              "z": 0
+            },
+            {
+              "x": 6.7,
+              "z": 0.5
+            }
+          ],
+          "pageFocus": {
+            "focused": true,
+            "hidden": false
+          },
+          "audioState": "running"
+        },
+        {
+          "atMs": 1120,
+          "x": -1.2807146365078692,
+          "z": 0,
+          "mode": "explore",
+          "carried": false,
+          "route": [
+            {
+              "x": 1.52,
+              "z": 0
+            },
+            {
+              "x": 6.7,
+              "z": 0.5
+            }
+          ],
+          "pageFocus": {
+            "focused": true,
+            "hidden": false
+          },
+          "audioState": "running"
+        },
+        {
+          "atMs": 1171,
+          "x": -0.8246895521048002,
+          "z": 0,
+          "mode": "explore",
+          "carried": false,
+          "route": [
+            {
+              "x": 1.52,
+              "z": 0
+            },
+            {
+              "x": 6.7,
+              "z": 0.5
+            }
+          ],
+          "pageFocus": {
+            "focused": true,
+            "hidden": false
+          },
+          "audioState": "running"
+        },
+        {
+          "atMs": 1221,
+          "x": -0.36113722210045573,
+          "z": 0,
+          "mode": "explore",
+          "carried": false,
+          "route": [
+            {
+              "x": 1.52,
+              "z": 0
+            },
+            {
+              "x": 6.7,
+              "z": 0.5
+            }
+          ],
+          "pageFocus": {
+            "focused": true,
+            "hidden": false
+          },
+          "audioState": "running"
+        },
+        {
+          "atMs": 1275,
+          "x": 0.10283764805051021,
+          "z": 0,
+          "mode": "explore",
+          "carried": false,
+          "route": [
+            {
+              "x": 1.52,
+              "z": 0
+            },
+            {
+              "x": 6.7,
+              "z": 0.5
+            }
+          ],
+          "pageFocus": {
+            "focused": true,
+            "hidden": false
+          },
+          "audioState": "running"
+        },
+        {
+          "atMs": 1329,
+          "x": 0.5668362373923949,
+          "z": 0,
+          "mode": "explore",
+          "carried": false,
+          "route": [
+            {
+              "x": 1.52,
+              "z": 0
+            },
+            {
+              "x": 6.7,
+              "z": 0.5
+            }
+          ],
+          "pageFocus": {
+            "focused": true,
+            "hidden": false
+          },
+          "audioState": "running"
+        },
+        {
+          "atMs": 1380,
+          "x": 1.0308361582054364,
+          "z": 0,
+          "mode": "explore",
+          "carried": false,
+          "route": [
+            {
+              "x": 1.52,
+              "z": 0
+            },
+            {
+              "x": 6.7,
+              "z": 0.5
+            }
+          ],
+          "pageFocus": {
+            "focused": true,
+            "hidden": false
+          },
+          "audioState": "running"
+        },
+        {
+          "atMs": 1435,
+          "x": 2.2197603227816343,
+          "z": 0.0600032730741858,
+          "mode": "explore",
+          "carried": false,
+          "route": [
+            {
+              "x": 6.7,
+              "z": 0.5
+            }
+          ],
+          "pageFocus": {
+            "focused": true,
+            "hidden": false
+          },
+          "audioState": "running"
+        },
+        {
+          "atMs": 1487,
+          "x": 2.6810891737604146,
+          "z": 0.10522843051822181,
+          "mode": "explore",
+          "carried": false,
+          "route": [
+            {
+              "x": 6.7,
+              "z": 0.5
+            }
+          ],
+          "pageFocus": {
+            "focused": true,
+            "hidden": false
+          },
+          "audioState": "running"
+        },
+        {
+          "atMs": 1537,
+          "x": 3.4793606941624113,
+          "z": 0.18363659150985778,
+          "mode": "explore",
+          "carried": false,
+          "route": [
+            {
+              "x": 6.7,
+              "z": 0.5
+            }
+          ],
+          "pageFocus": {
+            "focused": true,
+            "hidden": false
+          },
+          "audioState": "running"
+        },
+        {
+          "atMs": 1588,
+          "x": 3.9411379938395057,
+          "z": 0.228996934245304,
+          "mode": "explore",
+          "carried": false,
+          "route": [
+            {
+              "x": 6.7,
+              "z": 0.5
+            }
+          ],
+          "pageFocus": {
+            "focused": true,
+            "hidden": false
+          },
+          "audioState": "running"
+        },
+        {
+          "atMs": 1642,
+          "x": 4.739435787619484,
+          "z": 0.3074137387133249,
+          "mode": "explore",
+          "carried": false,
+          "route": [
+            {
+              "x": 6.7,
+              "z": 0.5
+            }
+          ],
+          "pageFocus": {
+            "focused": true,
+            "hidden": false
+          },
+          "audioState": "running"
+        },
+        {
+          "atMs": 1695,
+          "x": 5.249411282647215,
+          "z": 0.3575086416315593,
+          "mode": "explore",
+          "carried": false,
+          "route": [
+            {
+              "x": 6.7,
+              "z": 0.5
+            }
+          ],
+          "pageFocus": {
+            "focused": true,
+            "hidden": false
+          },
+          "audioState": "running"
+        },
+        {
+          "atMs": 1746,
+          "x": 5.7111887541510535,
+          "z": 0.40286905178048277,
+          "mode": "explore",
+          "carried": false,
+          "route": [
+            {
+              "x": 6.7,
+              "z": 0.5
+            }
+          ],
+          "pageFocus": {
+            "focused": true,
+            "hidden": false
+          },
+          "audioState": "running"
+        },
+        {
+          "atMs": 1805,
+          "x": 5.855494213996736,
+          "z": 0.41704417995264426,
+          "mode": "complete",
+          "carried": false,
+          "route": [],
+          "pageFocus": {
+            "focused": true,
+            "hidden": false
+          },
+          "audioState": "running"
+        }
+      ],
+      "sawCarried": false,
+      "finalMode": "complete"
+    },
+    {
+      "label": "first crossing: completion flourish",
+      "pageFocus": {
+        "focused": true,
+        "hidden": false
+      },
+      "mode": "complete",
+      "level": "g7-crossing",
+      "player": {
+        "x": 5.855494213996736,
+        "z": 0.41704417995264426,
+        "jump": 0,
+        "vx": 0,
+        "vz": 0,
+        "facing": 1.4728804353554166
+      },
+      "motion": {
+        "moving": false,
+        "blockedAtEdge": false,
+        "carried": false,
+        "onVessel": false,
+        "vesselX": 0,
+        "route": [],
+        "activeTravel": false,
+        "clip": "idle",
+        "facing": 1.4728804353554539,
+        "speed": 0
+      },
+      "world": {
+        "ready": true,
+        "reason": "שני הקצוות נתמכים. אפשר לחצות.",
+        "traversable": true,
+        "force": 0
+      },
+      "preview": null,
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 1,
+        "cueTotal": 5,
+        "lastCue": "success",
+        "solved": true,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0.03217,
+        "loadError": ""
+      },
+      "primaryAction": "לכו למגדלור →",
+      "instruction": "הפתרון עובד! לחצו כדי לנסות אותו ולהגיע למגדלור.",
+      "feedback": "בואו נבדוק את הדרך שיצרתם.",
+      "phraseFeedback": ""
+    },
+    {
+      "label": "first crossing: flourish ends naturally",
+      "pageFocus": {
+        "focused": true,
+        "hidden": false
+      },
+      "mode": "complete",
+      "level": "g7-crossing",
+      "player": {
+        "x": 5.855494213996736,
+        "z": 0.41704417995264426,
+        "jump": 0,
+        "vx": 0,
+        "vz": 0,
+        "facing": 1.4728804353554166
+      },
+      "motion": {
+        "moving": false,
+        "blockedAtEdge": false,
+        "carried": false,
+        "onVessel": false,
+        "vesselX": 0,
+        "route": [],
+        "activeTravel": false,
+        "clip": "idle",
+        "facing": 1.4728804353554166,
+        "speed": 0
+      },
+      "world": {
+        "ready": true,
+        "reason": "שני הקצוות נתמכים. אפשר לחצות.",
+        "traversable": true,
+        "force": 0
+      },
+      "preview": null,
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 0,
+        "cueTotal": 5,
+        "lastCue": "success",
+        "solved": true,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0.01446,
+        "loadError": ""
+      },
+      "primaryAction": "לכו למגדלור →",
+      "instruction": "הפתרון עובד! לחצו כדי לנסות אותו ולהגיע למגדלור.",
+      "feedback": "בואו נבדוק את הדרך שיצרתם.",
+      "phraseFeedback": ""
+    },
+    {
+      "label": "Continue resets lift without reward replay",
+      "pageFocus": {
+        "focused": true,
+        "hidden": false
+      },
+      "mode": "explore",
+      "level": "g7-rain",
+      "player": {
+        "x": -3.7,
+        "z": 0,
+        "jump": 0,
+        "vx": 0,
+        "vz": 0,
+        "facing": 1.5707963267948966
+      },
+      "motion": {
+        "moving": false,
+        "blockedAtEdge": false,
+        "carried": false,
+        "onVessel": false,
+        "vesselX": 0,
+        "route": [],
+        "activeTravel": false,
+        "clip": "idle",
+        "facing": 1.4728804353554166,
+        "speed": 0
+      },
+      "world": {
+        "ready": false,
+        "reason": "0/2 חבילות נשארות יבשות. לכל חפץ אזור כיסוי אמיתי.",
+        "traversable": false,
+        "force": 0
+      },
+      "preview": null,
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 0,
+        "cueTotal": 5,
+        "lastCue": "success",
+        "solved": false,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0.00926,
+        "loadError": ""
+      },
+      "primaryAction": "פתחו מחברת וצרו פתרון",
+      "instruction": "איזה חפץ יעזור כאן? כתבו אותו במחברת.",
+      "feedback": "בואו נבדוק את הדרך שיצרתם.",
+      "phraseFeedback": ""
+    },
+    {
+      "label": "grade 8 guide",
+      "pageFocus": {
+        "focused": true,
+        "hidden": false
+      },
+      "mode": "notebook",
+      "level": "g8-length",
+      "player": {
+        "x": -3.7,
+        "z": 0,
+        "jump": 0,
+        "vx": 0,
+        "vz": 0,
+        "facing": 1.5707963267948966
+      },
+      "motion": {
+        "moving": false,
+        "blockedAtEdge": false,
+        "carried": false,
+        "onVessel": false,
+        "vesselX": 0,
+        "route": [],
+        "activeTravel": false,
+        "clip": "idle",
+        "facing": 1.570784243013917,
+        "speed": 0
+      },
+      "world": {
+        "ready": false,
+        "reason": "צריך לכסות את המרווח ועוד 0.3 מ׳ בכל קצה. סובבו את החפץ לאורך ציר המעבר.",
+        "traversable": false,
+        "force": 0
+      },
+      "preview": null,
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 1,
+        "cueTotal": 6,
+        "lastCue": "notebook",
+        "solved": false,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0.02811,
+        "loadError": ""
+      },
+      "primaryAction": "פתחו מחברת וצרו פתרון",
+      "instruction": "איזה חפץ יעזור כאן? כתבו אותו במחברת.",
+      "feedback": "בואו נבדוק את הדרך שיצרתם.",
+      "phraseFeedback": ""
+    },
+    {
+      "label": "unsupported real noun uses neutral paper cue",
+      "pageFocus": {
+        "focused": true,
+        "hidden": false
+      },
+      "mode": "notebook",
+      "level": "g8-length",
+      "player": {
+        "x": -3.7,
+        "z": 0,
+        "jump": 0,
+        "vx": 0,
+        "vz": 0,
+        "facing": 1.5707963267948966
+      },
+      "motion": {
+        "moving": false,
+        "blockedAtEdge": false,
+        "carried": false,
+        "onVessel": false,
+        "vesselX": 0,
+        "route": [],
+        "activeTravel": false,
+        "clip": "idle",
+        "facing": 1.5707963253036394,
+        "speed": 0
+      },
+      "world": {
+        "ready": false,
+        "reason": "צריך לכסות את המרווח ועוד 0.3 מ׳ בכל קצה. סובבו את החפץ לאורך ציר המעבר.",
+        "traversable": false,
+        "force": 0
+      },
+      "preview": null,
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 1,
+        "cueTotal": 7,
+        "lastCue": "page",
+        "solved": false,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0.01943,
+        "loadError": ""
+      },
+      "primaryAction": "פתחו מחברת וצרו פתרון",
+      "instruction": "איזה חפץ יעזור כאן? כתבו אותו במחברת.",
+      "feedback": "בואו נבדוק את הדרך שיצרתם.",
+      "phraseFeedback": "המילה אינה בסדנה המצומצמת עדיין. זה לא אומר שהיא אנגלית שגויה. פתחו מילון ל־12 השמות הנתמכים."
+    },
+    {
+      "label": "article sound conflict has specific form feedback",
+      "pageFocus": {
+        "focused": true,
+        "hidden": false
+      },
+      "mode": "notebook",
+      "level": "g8-length",
+      "player": {
+        "x": -3.7,
+        "z": 0,
+        "jump": 0,
+        "vx": 0,
+        "vz": 0,
+        "facing": 1.5707963267948966
+      },
+      "motion": {
+        "moving": false,
+        "blockedAtEdge": false,
+        "carried": false,
+        "onVessel": false,
+        "vesselX": 0,
+        "route": [],
+        "activeTravel": false,
+        "clip": "idle",
+        "facing": 1.5707963267947125,
+        "speed": 0
+      },
+      "world": {
+        "ready": false,
+        "reason": "צריך לכסות את המרווח ועוד 0.3 מ׳ בכל קצה. סובבו את החפץ לאורך ציר המעבר.",
+        "traversable": false,
+        "force": 0
+      },
+      "preview": null,
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 1,
+        "cueTotal": 8,
+        "lastCue": "mistake",
+        "solved": false,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0.04046,
+        "loadError": ""
+      },
+      "primaryAction": "פתחו מחברת וצרו פתרון",
+      "instruction": "איזה חפץ יעזור כאן? כתבו אותו במחברת.",
+      "feedback": "בואו נבדוק את הדרך שיצרתם.",
+      "phraseFeedback": "a/an נקבעות לפי הצליל של המילה הבאה: an umbrella, אבל a large umbrella."
+    },
+    {
+      "label": "short span produces a recoverable physical consequence",
+      "pageFocus": {
+        "focused": true,
+        "hidden": false
+      },
+      "mode": "explore",
+      "level": "g8-length",
+      "player": {
+        "x": -3.7,
+        "z": 0,
+        "jump": 0,
+        "vx": 0,
+        "vz": 0,
+        "facing": 1.5707963267948966
+      },
+      "motion": {
+        "moving": false,
+        "blockedAtEdge": false,
+        "carried": false,
+        "onVessel": false,
+        "vesselX": 0,
+        "route": [],
+        "activeTravel": false,
+        "clip": "idle",
+        "facing": 1.5707963267948966,
+        "speed": 0
+      },
+      "world": {
+        "ready": false,
+        "reason": "צריך לכסות את המרווח ועוד 0.3 מ׳ בכל קצה. סובבו את החפץ לאורך ציר המעבר.",
+        "traversable": false,
+        "force": 0
+      },
+      "preview": null,
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 1,
+        "cueTotal": 10,
+        "lastCue": "wood",
+        "solved": false,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0.00959,
+        "loadError": ""
+      },
+      "primaryAction": "שנו את המילים ונסו שוב",
+      "instruction": "עוד לא הסתדר? שנו תכונה בחפץ, או צרו רעיון אחר במחברת.",
+      "feedback": "האורך 1.8 מ׳ לא נתמך בשני הקצוות. אפשר לשנות את המילים ולנסות שוב.",
+      "phraseFeedback": "a/an נקבעות לפי הצליל של המילה הבאה: an umbrella, אבל a large umbrella."
+    },
+    {
+      "label": "revision opens longer crossing",
+      "pageFocus": {
+        "focused": true,
+        "hidden": false
+      },
+      "mode": "explore",
+      "level": "g8-length",
+      "player": {
+        "x": -3.7,
+        "z": 0,
+        "jump": 0,
+        "vx": 0,
+        "vz": 0,
+        "facing": 1.5707963267948966
+      },
+      "motion": {
+        "moving": false,
+        "blockedAtEdge": false,
+        "carried": false,
+        "onVessel": false,
+        "vesselX": 0,
+        "route": [],
+        "activeTravel": false,
+        "clip": "idle",
+        "facing": 1.5707963267948966,
+        "speed": 0
+      },
+      "world": {
+        "ready": true,
+        "reason": "שני הקצוות נתמכים. אפשר לחצות.",
+        "traversable": true,
+        "force": 0
+      },
+      "preview": null,
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 3,
+        "cueTotal": 14,
+        "lastCue": "confirm",
+        "solved": true,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0.06779,
+        "loadError": ""
+      },
+      "primaryAction": "לכו למגדלור →",
+      "instruction": "הפתרון עובד! לחצו כדי לנסות אותו ולהגיע למגדלור.",
+      "feedback": "הרעיון עובד! עכשיו אפשר לנסות את הדרך למגדלור.",
+      "phraseFeedback": ""
+    },
+    {
+      "label": "undo clears readiness without a false reward",
+      "pageFocus": {
+        "focused": true,
+        "hidden": false
+      },
+      "mode": "explore",
+      "level": "g8-length",
+      "player": {
+        "x": -3.7,
+        "z": 0,
+        "jump": 0,
+        "vx": 0,
+        "vz": 0,
+        "facing": 1.5707963267948966
+      },
+      "motion": {
+        "moving": false,
+        "blockedAtEdge": false,
+        "carried": false,
+        "onVessel": false,
+        "vesselX": 0,
+        "route": [],
+        "activeTravel": false,
+        "clip": "idle",
+        "facing": 1.5707963267948966,
+        "speed": 0
+      },
+      "world": {
+        "ready": false,
+        "reason": "צריך לכסות את המרווח ועוד 0.3 מ׳ בכל קצה. סובבו את החפץ לאורך ציר המעבר.",
+        "traversable": false,
+        "force": 0
+      },
+      "preview": null,
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 2,
+        "cueTotal": 15,
+        "lastCue": "undo",
+        "solved": false,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0.03512,
+        "loadError": ""
+      },
+      "primaryAction": "שנו את המילים ונסו שוב",
+      "instruction": "עוד לא הסתדר? שנו תכונה בחפץ, או צרו רעיון אחר במחברת.",
+      "feedback": "צריך לכסות את המרווח ועוד 0.3 מ׳ בכל קצה. סובבו את החפץ לאורך ציר המעבר.",
+      "phraseFeedback": ""
+    },
+    {
+      "label": "pause suspends",
+      "pageFocus": {
+        "focused": true,
+        "hidden": false
+      },
+      "mode": "paused",
+      "level": "g8-length",
+      "player": {
+        "x": -3.7,
+        "z": 0,
+        "jump": 0,
+        "vx": 0,
+        "vz": 0,
+        "facing": 1.5707963267948966
+      },
+      "motion": {
+        "moving": false,
+        "blockedAtEdge": false,
+        "carried": false,
+        "onVessel": false,
+        "vesselX": 0,
+        "route": [],
+        "activeTravel": false,
+        "clip": "idle",
+        "facing": 1.5707963267948966,
+        "speed": 0
+      },
+      "world": {
+        "ready": false,
+        "reason": "צריך לכסות את המרווח ועוד 0.3 מ׳ בכל קצה. סובבו את החפץ לאורך ציר המעבר.",
+        "traversable": false,
+        "force": 0
+      },
+      "preview": null,
+      "audio": {
+        "state": "suspended",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": true,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 0,
+        "cueTotal": 15,
+        "lastCue": "undo",
+        "solved": false,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0,
+        "loadError": ""
+      },
+      "primaryAction": "שנו את המילים ונסו שוב",
+      "instruction": "עוד לא הסתדר? שנו תכונה בחפץ, או צרו רעיון אחר במחברת.",
+      "feedback": "צריך לכסות את המרווח ועוד 0.3 מ׳ בכל קצה. סובבו את החפץ לאורך ציר המעבר.",
+      "phraseFeedback": ""
+    },
+    {
+      "label": "resume plays same loops",
+      "pageFocus": {
+        "focused": true,
+        "hidden": false
+      },
+      "mode": "explore",
+      "level": "g8-length",
+      "player": {
+        "x": -3.7,
+        "z": 0,
+        "jump": 0,
+        "vx": 0,
+        "vz": 0,
+        "facing": 1.5707963267948966
+      },
+      "motion": {
+        "moving": false,
+        "blockedAtEdge": false,
+        "carried": false,
+        "onVessel": false,
+        "vesselX": 0,
+        "route": [],
+        "activeTravel": false,
+        "clip": "idle",
+        "facing": 1.5707963267948966,
+        "speed": 0
+      },
+      "world": {
+        "ready": false,
+        "reason": "צריך לכסות את המרווח ועוד 0.3 מ׳ בכל קצה. סובבו את החפץ לאורך ציר המעבר.",
+        "traversable": false,
+        "force": 0
+      },
+      "preview": null,
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 0,
+        "cueTotal": 15,
+        "lastCue": "undo",
+        "solved": false,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0.01926,
+        "loadError": ""
+      },
+      "primaryAction": "שנו את המילים ונסו שוב",
+      "instruction": "עוד לא הסתדר? שנו תכונה בחפץ, או צרו רעיון אחר במחברת.",
+      "feedback": "צריך לכסות את המרווח ועוד 0.3 מ׳ בכל קצה. סובבו את החפץ לאורך ציר המעבר.",
+      "phraseFeedback": ""
+    },
+    {
+      "label": "restart 1",
+      "pageFocus": {
+        "focused": true,
+        "hidden": false
+      },
+      "mode": "explore",
+      "level": "g8-length",
+      "player": {
+        "x": -3.7,
+        "z": 0,
+        "jump": 0,
+        "vx": 0,
+        "vz": 0,
+        "facing": 1.5707963267948966
+      },
+      "motion": {
+        "moving": false,
+        "blockedAtEdge": false,
+        "carried": false,
+        "onVessel": false,
+        "vesselX": 0,
+        "route": [],
+        "activeTravel": false,
+        "clip": "idle",
+        "facing": 1.5707963267948966,
+        "speed": 0
+      },
+      "world": {
+        "ready": false,
+        "reason": "צריך לכסות את המרווח ועוד 0.3 מ׳ בכל קצה. סובבו את החפץ לאורך ציר המעבר.",
+        "traversable": false,
+        "force": 0
+      },
+      "preview": null,
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 0,
+        "cueTotal": 15,
+        "lastCue": "undo",
+        "solved": false,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0.02419,
+        "loadError": ""
+      },
+      "primaryAction": "פתחו מחברת וצרו פתרון",
+      "instruction": "איזה חפץ יעזור כאן? כתבו אותו במחברת.",
+      "feedback": "צריך לכסות את המרווח ועוד 0.3 מ׳ בכל קצה. סובבו את החפץ לאורך ציר המעבר.",
+      "phraseFeedback": ""
+    },
+    {
+      "label": "restart 2",
+      "pageFocus": {
+        "focused": true,
+        "hidden": false
+      },
+      "mode": "explore",
+      "level": "g8-length",
+      "player": {
+        "x": -3.7,
+        "z": 0,
+        "jump": 0,
+        "vx": 0,
+        "vz": 0,
+        "facing": 1.5707963267948966
+      },
+      "motion": {
+        "moving": false,
+        "blockedAtEdge": false,
+        "carried": false,
+        "onVessel": false,
+        "vesselX": 0,
+        "route": [],
+        "activeTravel": false,
+        "clip": "idle",
+        "facing": 1.5707963267948966,
+        "speed": 0
+      },
+      "world": {
+        "ready": false,
+        "reason": "צריך לכסות את המרווח ועוד 0.3 מ׳ בכל קצה. סובבו את החפץ לאורך ציר המעבר.",
+        "traversable": false,
+        "force": 0
+      },
+      "preview": null,
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 0,
+        "cueTotal": 15,
+        "lastCue": "undo",
+        "solved": false,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0.00268,
+        "loadError": ""
+      },
+      "primaryAction": "פתחו מחברת וצרו פתרון",
+      "instruction": "איזה חפץ יעזור כאן? כתבו אותו במחברת.",
+      "feedback": "צריך לכסות את המרווח ועוד 0.3 מ׳ בכל קצה. סובבו את החפץ לאורך ציר המעבר.",
+      "phraseFeedback": ""
+    },
+    {
+      "label": "restart 3",
+      "pageFocus": {
+        "focused": true,
+        "hidden": false
+      },
+      "mode": "explore",
+      "level": "g8-length",
+      "player": {
+        "x": -3.7,
+        "z": 0,
+        "jump": 0,
+        "vx": 0,
+        "vz": 0,
+        "facing": 1.5707963267948966
+      },
+      "motion": {
+        "moving": false,
+        "blockedAtEdge": false,
+        "carried": false,
+        "onVessel": false,
+        "vesselX": 0,
+        "route": [],
+        "activeTravel": false,
+        "clip": "idle",
+        "facing": 1.5707963267948966,
+        "speed": 0
+      },
+      "world": {
+        "ready": false,
+        "reason": "צריך לכסות את המרווח ועוד 0.3 מ׳ בכל קצה. סובבו את החפץ לאורך ציר המעבר.",
+        "traversable": false,
+        "force": 0
+      },
+      "preview": null,
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 0,
+        "cueTotal": 15,
+        "lastCue": "undo",
+        "solved": false,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0.00829,
+        "loadError": ""
+      },
+      "primaryAction": "פתחו מחברת וצרו פתרון",
+      "instruction": "איזה חפץ יעזור כאן? כתבו אותו במחברת.",
+      "feedback": "צריך לכסות את המרווח ועוד 0.3 מ׳ בכל קצה. סובבו את החפץ לאורך ציר המעבר.",
+      "phraseFeedback": ""
+    },
+    {
+      "label": "independent gain controls",
+      "pageFocus": {
+        "focused": true,
+        "hidden": false
+      },
+      "mode": "explore",
+      "level": "g8-length",
+      "player": {
+        "x": -3.7,
+        "z": 0,
+        "jump": 0,
+        "vx": 0,
+        "vz": 0,
+        "facing": 1.5707963267948966
+      },
+      "motion": {
+        "moving": false,
+        "blockedAtEdge": false,
+        "carried": false,
+        "onVessel": false,
+        "vesselX": 0,
+        "route": [],
+        "activeTravel": false,
+        "clip": "idle",
+        "facing": 1.5707963267948966,
+        "speed": 0
+      },
+      "world": {
+        "ready": false,
+        "reason": "צריך לכסות את המרווח ועוד 0.3 מ׳ בכל קצה. סובבו את החפץ לאורך ציר המעבר.",
+        "traversable": false,
+        "force": 0
+      },
+      "preview": null,
+      "audio": {
+        "state": "suspended",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": true,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 0,
+        "cueTotal": 15,
+        "lastCue": "undo",
+        "solved": false,
+        "ducked": false,
+        "gains": {
+          "music": 0,
+          "sfx": 0,
+          "voice": 0.23,
+          "master": 0.61
+        },
+        "rms": 0,
+        "loadError": ""
+      },
+      "primaryAction": "פתחו מחברת וצרו פתרון",
+      "instruction": "איזה חפץ יעזור כאן? כתבו אותו במחברת.",
+      "feedback": "צריך לכסות את המרווח ועוד 0.3 מ׳ בכל קצה. סובבו את החפץ לאורך ציר המעבר.",
+      "phraseFeedback": ""
+    },
+    {
+      "label": "music and effects muted",
+      "pageFocus": {
+        "focused": true,
+        "hidden": false
+      },
+      "mode": "explore",
+      "level": "g8-length",
+      "player": {
+        "x": -3.7,
+        "z": 0,
+        "jump": 0,
+        "vx": 0,
+        "vz": 0,
+        "facing": 1.5707963267948966
+      },
+      "motion": {
+        "moving": false,
+        "blockedAtEdge": false,
+        "carried": false,
+        "onVessel": false,
+        "vesselX": 0,
+        "route": [],
+        "activeTravel": false,
+        "clip": "idle",
+        "facing": 1.5707963267948966,
+        "speed": 0
+      },
+      "world": {
+        "ready": false,
+        "reason": "צריך לכסות את המרווח ועוד 0.3 מ׳ בכל קצה. סובבו את החפץ לאורך ציר המעבר.",
+        "traversable": false,
+        "force": 0
+      },
+      "preview": null,
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 0,
+        "cueTotal": 15,
+        "lastCue": "undo",
+        "solved": false,
+        "ducked": false,
+        "gains": {
+          "music": 0,
+          "sfx": 0,
+          "voice": 0.23,
+          "master": 0.61
+        },
+        "rms": 0,
+        "loadError": ""
+      },
+      "primaryAction": "פתחו מחברת וצרו פתרון",
+      "instruction": "איזה חפץ יעזור כאן? כתבו אותו במחברת.",
+      "feedback": "צריך לכסות את המרווח ועוד 0.3 מ׳ בכל קצה. סובבו את החפץ לאורך ציר המעבר.",
+      "phraseFeedback": ""
+    },
+    {
+      "label": "master mute",
+      "pageFocus": {
+        "focused": true,
+        "hidden": false
+      },
+      "mode": "explore",
+      "level": "g8-length",
+      "player": {
+        "x": -3.7,
+        "z": 0,
+        "jump": 0,
+        "vx": 0,
+        "vz": 0,
+        "facing": 1.5707963267948966
+      },
+      "motion": {
+        "moving": false,
+        "blockedAtEdge": false,
+        "carried": false,
+        "onVessel": false,
+        "vesselX": 0,
+        "route": [],
+        "activeTravel": false,
+        "clip": "idle",
+        "facing": 1.5707963267948966,
+        "speed": 0
+      },
+      "world": {
+        "ready": false,
+        "reason": "צריך לכסות את המרווח ועוד 0.3 מ׳ בכל קצה. סובבו את החפץ לאורך ציר המעבר.",
+        "traversable": false,
+        "force": 0
+      },
+      "preview": null,
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 0,
+        "cueTotal": 15,
+        "lastCue": "undo",
+        "solved": false,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0
+        },
+        "rms": 0,
+        "loadError": ""
+      },
+      "primaryAction": "פתחו מחברת וצרו פתרון",
+      "instruction": "איזה חפץ יעזור כאן? כתבו אותו במחברת.",
+      "feedback": "צריך לכסות את המרווח ועוד 0.3 מ׳ בכל קצה. סובבו את החפץ לאורך ציר המעבר.",
+      "phraseFeedback": ""
+    },
+    {
+      "label": "identified fan context",
+      "pageFocus": {
+        "focused": true,
+        "hidden": false
+      },
+      "mode": "explore",
+      "level": "g9-power",
+      "player": {
+        "x": -3.7,
+        "z": 0,
+        "jump": 0,
+        "vx": 0,
+        "vz": 0,
+        "facing": 1.5707963267948966
+      },
+      "motion": {
+        "moving": false,
+        "blockedAtEdge": false,
+        "carried": false,
+        "onVessel": false,
+        "vesselX": 0,
+        "route": [],
+        "activeTravel": false,
+        "clip": "idle",
+        "facing": 1.5707963267948966,
+        "speed": 0
+      },
+      "world": {
+        "ready": false,
+        "reason": "המפרש צריך לפחות 8 N בכיוון החץ. powerful דוחף; powerless לא.",
+        "traversable": false,
+        "force": 0
+      },
+      "preview": null,
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 0,
+        "cueTotal": 16,
+        "lastCue": "notebook",
+        "solved": false,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0.01784,
+        "loadError": ""
+      },
+      "primaryAction": "בחרו מאוורר לבדיקה",
+      "instruction": "הקישו על חפץ כדי לקרוא את הסיפור שלו ולבחור איזה מהם לשנות.",
+      "feedback": "צריך לכסות את המרווח ועוד 0.3 מ׳ בכל קצה. סובבו את החפץ לאורך ציר המעבר.",
+      "phraseFeedback": ""
+    },
+    {
+      "label": "fan force opens sail route",
+      "pageFocus": {
+        "focused": true,
+        "hidden": false
+      },
+      "mode": "explore",
+      "level": "g9-power",
+      "player": {
+        "x": -3.7,
+        "z": 0,
+        "jump": 0,
+        "vx": 0,
+        "vz": 0,
+        "facing": 1.5707963267948966
+      },
+      "motion": {
+        "moving": false,
+        "blockedAtEdge": false,
+        "carried": false,
+        "onVessel": false,
+        "vesselX": 0,
+        "route": [],
+        "activeTravel": false,
+        "clip": "idle",
+        "facing": 1.5707963267948966,
+        "speed": 0
+      },
+      "world": {
+        "ready": true,
+        "reason": "12 N מניעים את המפרש. E להפלגה.",
+        "traversable": false,
+        "force": 12
+      },
+      "preview": null,
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 3,
+        "cueTotal": 20,
+        "lastCue": "confirm",
+        "solved": true,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0.06381,
+        "loadError": ""
+      },
+      "primaryAction": "עלו למעבורת →",
+      "instruction": "הפתרון עובד! לחצו כדי לנסות אותו ולהגיע למגדלור.",
+      "feedback": "הרעיון עובד! עכשיו אפשר לנסות את הדרך למגדלור.",
+      "phraseFeedback": ""
+    },
+    {
+      "label": "identified-fan sail: movement begins",
+      "pageFocus": {
+        "focused": true,
+        "hidden": false
+      },
+      "mode": "explore",
+      "level": "g9-power",
+      "player": {
+        "x": -3.7,
+        "z": 0,
+        "jump": 0,
+        "vx": 0,
+        "vz": 0,
+        "facing": 1.5707963267948966
+      },
+      "motion": {
+        "moving": false,
+        "blockedAtEdge": false,
+        "carried": false,
+        "onVessel": false,
+        "vesselX": 0,
+        "route": [
+          {
+            "x": -2.85,
+            "z": 0
+          }
+        ],
+        "activeTravel": true,
+        "clip": "idle",
+        "facing": 1.5707963267948966,
+        "speed": 0
+      },
+      "world": {
+        "ready": true,
+        "reason": "12 N מניעים את המפרש. E להפלגה.",
+        "traversable": false,
+        "force": 12
+      },
+      "preview": null,
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 0,
+        "cueTotal": 20,
+        "lastCue": "confirm",
+        "solved": true,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0.01355,
+        "loadError": ""
+      },
+      "primaryAction": "הדוור בדרך למגדלור…",
+      "instruction": "הפתרון עובד! לחצו כדי לנסות אותו ולהגיע למגדלור.",
+      "feedback": "הדוור ייגש לרציף ויעלה למעבורת.",
+      "phraseFeedback": ""
+    },
+    {
+      "label": "identified-fan sail: physical route samples",
+      "deterministicTravel": true,
+      "positions": [
+        {
+          "atMs": 744,
+          "x": -3.3672191417638775,
+          "z": 0,
+          "mode": "explore",
+          "carried": false,
+          "route": [
+            {
+              "x": -2.85,
+              "z": 0
+            }
+          ],
+          "pageFocus": {
+            "focused": true,
+            "hidden": false
+          },
+          "audioState": "running"
+        },
+        {
+          "atMs": 801,
+          "x": -2.9593541162799744,
+          "z": 0,
+          "mode": "explore",
+          "carried": false,
+          "route": [
+            {
+              "x": -2.85,
+              "z": 0
+            }
+          ],
+          "pageFocus": {
+            "focused": true,
+            "hidden": false
+          },
+          "audioState": "running"
+        },
+        {
+          "atMs": 859,
+          "x": -2.3699999999999997,
+          "z": 0,
+          "mode": "explore",
+          "carried": true,
+          "route": [],
+          "pageFocus": {
+            "focused": true,
+            "hidden": false
+          },
+          "audioState": "running"
+        },
+        {
+          "atMs": 915,
+          "x": -1.843833333333333,
+          "z": 0,
+          "mode": "explore",
+          "carried": true,
+          "route": [],
+          "pageFocus": {
+            "focused": true,
+            "hidden": false
+          },
+          "audioState": "running"
+        },
+        {
+          "atMs": 968,
+          "x": -1.597166666666666,
+          "z": 0,
+          "mode": "explore",
+          "carried": true,
+          "route": [],
+          "pageFocus": {
+            "focused": true,
+            "hidden": false
+          },
+          "audioState": "running"
+        },
+        {
+          "atMs": 1021,
+          "x": -1.3504999999999991,
+          "z": 0,
+          "mode": "explore",
+          "carried": true,
+          "route": [],
+          "pageFocus": {
+            "focused": true,
+            "hidden": false
+          },
+          "audioState": "running"
+        },
+        {
+          "atMs": 1076,
+          "x": -1.1038333333333323,
+          "z": 0,
+          "mode": "explore",
+          "carried": true,
+          "route": [],
+          "pageFocus": {
+            "focused": true,
+            "hidden": false
+          },
+          "audioState": "running"
+        },
+        {
+          "atMs": 1134,
+          "x": -0.4717500000000001,
+          "z": 0,
+          "mode": "explore",
+          "carried": true,
+          "route": [],
+          "pageFocus": {
+            "focused": true,
+            "hidden": false
+          },
+          "audioState": "running"
+        },
+        {
+          "atMs": 1203,
+          "x": -0.2250833333333333,
+          "z": 0,
+          "mode": "explore",
+          "carried": true,
+          "route": [],
+          "pageFocus": {
+            "focused": true,
+            "hidden": false
+          },
+          "audioState": "running"
+        },
+        {
+          "atMs": 1267,
+          "x": 0.021583333333333732,
+          "z": 0,
+          "mode": "explore",
+          "carried": true,
+          "route": [],
+          "pageFocus": {
+            "focused": true,
+            "hidden": false
+          },
+          "audioState": "running"
+        },
+        {
+          "atMs": 1328,
+          "x": 0.26825000000000054,
+          "z": 0,
+          "mode": "explore",
+          "carried": true,
+          "route": [],
+          "pageFocus": {
+            "focused": true,
+            "hidden": false
+          },
+          "audioState": "running"
+        },
+        {
+          "atMs": 1381,
+          "x": 0.5149166666666676,
+          "z": 0,
+          "mode": "explore",
+          "carried": true,
+          "route": [],
+          "pageFocus": {
+            "focused": true,
+            "hidden": false
+          },
+          "audioState": "running"
+        },
+        {
+          "atMs": 1443,
+          "x": 1.1470000000000025,
+          "z": 0,
+          "mode": "explore",
+          "carried": true,
+          "route": [],
+          "pageFocus": {
+            "focused": true,
+            "hidden": false
+          },
+          "audioState": "running"
+        },
+        {
+          "atMs": 1498,
+          "x": 1.39366666666667,
+          "z": 0,
+          "mode": "explore",
+          "carried": true,
+          "route": [],
+          "pageFocus": {
+            "focused": true,
+            "hidden": false
+          },
+          "audioState": "running"
+        },
+        {
+          "atMs": 1577,
+          "x": 1.640333333333337,
+          "z": 0,
+          "mode": "explore",
+          "carried": true,
+          "route": [],
+          "pageFocus": {
+            "focused": true,
+            "hidden": false
+          },
+          "audioState": "running"
+        },
+        {
+          "atMs": 1671,
+          "x": 1.9300000000000062,
+          "z": 0,
+          "mode": "explore",
+          "carried": true,
+          "route": [],
+          "pageFocus": {
+            "focused": true,
+            "hidden": false
+          },
+          "audioState": "running"
+        },
+        {
+          "atMs": 1725,
+          "x": 3.094010320879685,
+          "z": 0.03168965206229691,
+          "mode": "explore",
+          "carried": false,
+          "route": [
+            {
+              "x": 6.7,
+              "z": 0.5
+            }
+          ],
+          "pageFocus": {
+            "focused": true,
+            "hidden": false
+          },
+          "audioState": "running"
+        },
+        {
+          "atMs": 1784,
+          "x": 3.5411519258058366,
+          "z": 0.08975999036439433,
+          "mode": "explore",
+          "carried": false,
+          "route": [
+            {
+              "x": 6.7,
+              "z": 0.5
+            }
+          ],
+          "pageFocus": {
+            "focused": true,
+            "hidden": false
+          },
+          "audioState": "running"
+        },
+        {
+          "atMs": 1845,
+          "x": 4.000558339498702,
+          "z": 0.14942316097385738,
+          "mode": "explore",
+          "carried": false,
+          "route": [
+            {
+              "x": 6.7,
+              "z": 0.5
+            }
+          ],
+          "pageFocus": {
+            "focused": true,
+            "hidden": false
+          },
+          "audioState": "running"
+        },
+        {
+          "atMs": 1901,
+          "x": 4.460653235322891,
+          "z": 0.20917574484712895,
+          "mode": "explore",
+          "carried": false,
+          "route": [
+            {
+              "x": 6.7,
+              "z": 0.5
+            }
+          ],
+          "pageFocus": {
+            "focused": true,
+            "hidden": false
+          },
+          "audioState": "running"
+        },
+        {
+          "atMs": 1959,
+          "x": 5.495668878387971,
+          "z": 0.3435933608296071,
+          "mode": "explore",
+          "carried": false,
+          "route": [
+            {
+              "x": 6.7,
+              "z": 0.5
+            }
+          ],
+          "pageFocus": {
+            "focused": true,
+            "hidden": false
+          },
+          "audioState": "running"
+        },
+        {
+          "atMs": 2024,
+          "x": 5.86377754871232,
+          "z": 0.391399681650951,
+          "mode": "complete",
+          "carried": false,
+          "route": [],
+          "pageFocus": {
+            "focused": true,
+            "hidden": false
+          },
+          "audioState": "running"
+        }
+      ],
+      "sawCarried": true,
+      "finalMode": "complete"
+    },
+    {
+      "label": "identified-fan sail: completion flourish",
+      "pageFocus": {
+        "focused": true,
+        "hidden": false
+      },
+      "mode": "complete",
+      "level": "g9-power",
+      "player": {
+        "x": 5.86377754871232,
+        "z": 0.391399681650951,
+        "jump": 0,
+        "vx": 0,
+        "vz": 0,
+        "facing": 1.4416490366668773
+      },
+      "motion": {
+        "moving": false,
+        "blockedAtEdge": false,
+        "carried": false,
+        "onVessel": false,
+        "vesselX": 1.85,
+        "route": [],
+        "activeTravel": false,
+        "clip": "idle",
+        "facing": 1.4416490367774881,
+        "speed": 0
+      },
+      "world": {
+        "ready": true,
+        "reason": "12 N מניעים את המפרש. E להפלגה.",
+        "traversable": false,
+        "force": 12
+      },
+      "preview": null,
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 1,
+        "cueTotal": 22,
+        "lastCue": "success",
+        "solved": true,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0.0134,
+        "loadError": ""
+      },
+      "primaryAction": "עלו למעבורת →",
+      "instruction": "הפתרון עובד! לחצו כדי לנסות אותו ולהגיע למגדלור.",
+      "feedback": "צפים אל הגדה השנייה.",
+      "phraseFeedback": ""
+    },
+    {
+      "label": "identified-fan sail: flourish ends naturally",
+      "pageFocus": {
+        "focused": true,
+        "hidden": false
+      },
+      "mode": "complete",
+      "level": "g9-power",
+      "player": {
+        "x": 5.86377754871232,
+        "z": 0.391399681650951,
+        "jump": 0,
+        "vx": 0,
+        "vz": 0,
+        "facing": 1.4416490366668773
+      },
+      "motion": {
+        "moving": false,
+        "blockedAtEdge": false,
+        "carried": false,
+        "onVessel": false,
+        "vesselX": 1.85,
+        "route": [],
+        "activeTravel": false,
+        "clip": "idle",
+        "facing": 1.441649036668106,
+        "speed": 0
+      },
+      "world": {
+        "ready": true,
+        "reason": "12 N מניעים את המפרש. E להפלגה.",
+        "traversable": false,
+        "force": 12
+      },
+      "preview": null,
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 0,
+        "cueTotal": 22,
+        "lastCue": "success",
+        "solved": true,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0.01081,
+        "loadError": ""
+      },
+      "primaryAction": "עלו למעבורת →",
+      "instruction": "הפתרון עובד! לחצו כדי לנסות אותו ולהגיע למגדלור.",
+      "feedback": "צפים אל הגדה השנייה.",
+      "phraseFeedback": ""
+    },
+    {
+      "label": "next complex island resets hopeful layer",
+      "pageFocus": {
+        "focused": true,
+        "hidden": false
+      },
+      "mode": "explore",
+      "level": "g9-storm",
+      "player": {
+        "x": -3.7,
+        "z": 0,
+        "jump": 0,
+        "vx": 0,
+        "vz": 0,
+        "facing": 1.5707963267948966
+      },
+      "motion": {
+        "moving": false,
+        "blockedAtEdge": false,
+        "carried": false,
+        "onVessel": false,
+        "vesselX": 1.85,
+        "route": [],
+        "activeTravel": false,
+        "clip": "idle",
+        "facing": 1.4416490366668775,
+        "speed": 0
+      },
+      "world": {
+        "ready": false,
+        "reason": "מטען צף: לא. המאוורר המתואר דוחף: לא. שני התנאים נחוצים.",
+        "traversable": false,
+        "force": 0
+      },
+      "preview": null,
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 0,
+        "cueTotal": 22,
+        "lastCue": "success",
+        "solved": false,
+        "ducked": false,
+        "gains": {
+          "music": 0.48,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0.00763,
+        "loadError": ""
+      },
+      "primaryAction": "פתחו מחברת וצרו פתרון",
+      "instruction": "התחילו בכלי שיישא את המטען. אחר כך בחרו מאוורר.",
+      "feedback": "צפים אל הגדה השנייה.",
+      "phraseFeedback": ""
+    },
+    {
+      "label": "revised-flow settings survive reload",
+      "pageFocus": {
+        "focused": true,
+        "hidden": false
+      },
+      "mode": "welcome",
+      "level": "g7-crossing",
+      "player": {
+        "x": -3.7,
+        "z": 0,
+        "jump": 0,
+        "vx": 0,
+        "vz": 0,
+        "facing": 1.5707963267948966
+      },
+      "motion": {
+        "moving": false,
+        "blockedAtEdge": false,
+        "carried": false,
+        "onVessel": false,
+        "vesselX": 0,
+        "route": [],
+        "activeTravel": false,
+        "clip": "idle",
+        "facing": 1.5707963177870454,
+        "speed": 0
+      },
+      "world": {
+        "ready": false,
+        "reason": "צריך לכסות את המרווח ועוד 0.3 מ׳ בכל קצה. סובבו את החפץ לאורך ציר המעבר.",
+        "traversable": false,
+        "force": 0
+      },
+      "preview": null,
+      "audio": {
+        "state": "locked",
+        "sampleRate": 0,
+        "requested": false,
+        "paused": true,
+        "hidden": false,
+        "loaded": 0,
+        "loops": 0,
+        "oneShots": 0,
+        "cueTotal": 0,
+        "lastCue": "",
+        "solved": false,
+        "ducked": false,
+        "gains": {
+          "music": 0.37,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0,
+        "loadError": ""
+      },
+      "primaryAction": "פתחו מחברת וצרו פתרון",
+      "instruction": "איזה חפץ יעזור כאן? כתבו אותו במחברת.",
+      "feedback": "",
+      "phraseFeedback": ""
+    },
+    {
+      "label": "fresh Start still has three loops",
+      "pageFocus": {
+        "focused": true,
+        "hidden": false
+      },
+      "mode": "notebook",
+      "level": "g7-crossing",
+      "player": {
+        "x": -3.7,
+        "z": 0,
+        "jump": 0,
+        "vx": 0,
+        "vz": 0,
+        "facing": 1.5707963267948966
+      },
+      "motion": {
+        "moving": false,
+        "blockedAtEdge": false,
+        "carried": false,
+        "onVessel": false,
+        "vesselX": 0,
+        "route": [],
+        "activeTravel": false,
+        "clip": "idle",
+        "facing": 1.5707963267948966,
+        "speed": 0
+      },
+      "world": {
+        "ready": false,
+        "reason": "צריך לכסות את המרווח ועוד 0.3 מ׳ בכל קצה. סובבו את החפץ לאורך ציר המעבר.",
+        "traversable": false,
+        "force": 0
+      },
+      "preview": null,
+      "audio": {
+        "state": "running",
+        "sampleRate": 22050,
+        "requested": true,
+        "paused": false,
+        "hidden": false,
+        "loaded": 17,
+        "loops": 3,
+        "oneShots": 0,
+        "cueTotal": 1,
+        "lastCue": "notebook",
+        "solved": false,
+        "ducked": false,
+        "gains": {
+          "music": 0.37,
+          "sfx": 0.58,
+          "voice": 0.85,
+          "master": 0.75
+        },
+        "rms": 0.00723,
+        "loadError": ""
+      },
+      "primaryAction": "פתחו מחברת וצרו פתרון",
+      "instruction": "איזה חפץ יעזור כאן? כתבו אותו במחברת.",
+      "feedback": "",
+      "phraseFeedback": ""
+    }
+  ]
+}

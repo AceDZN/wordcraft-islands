@@ -60,7 +60,7 @@ export function evaluatePlacement(level:Level,objects:Item[]){
  if(level.kind==='bridge'){ready=!!span;reason=ready?'שני הקצוות נתמכים. אפשר לחצות.':'צריך לכסות את המרווח ועוד 0.3 מ׳ בכל קצה. סובבו את החפץ לאורך ציר המעבר.';}
  if(level.kind==='shelter'){ready=covered===level.zones.length;reason=`${covered}/${level.zones.length} חבילות נשארות יבשות. לכל חפץ אזור כיסוי אמיתי.`;}
  if(level.kind==='ferry'){ready=!!afloat||!!span;reason=ready?'המעבורת צפה — E ליד הרציף, או חצו על הגשר.':'חפץ צף עם מקום לנוסע ליד מצוף הרציף, או גשר ארוך מספיק.';}
- if(level.kind==='weight'){ready=mass>(level.reference??6)&&correctLoad;reason=!correctLoad&&mass>6?'הגשר עלה, אבל זו לא חבילת התרופות שתוארה. ההיסטוריה מזהה את הארגז הדרוש.':`משקל על הלוח: ${mass.toFixed(1)} ק״ג. נדרש יותר מ־${level.reference??6}, וגם הארגז המזוהה כשיש תיאור.`;}
+ if(level.kind==='weight'){ready=mass>(level.reference??6)&&correctLoad;reason=!correctLoad&&mass>6?'המשקל מספיק, אבל זו לא חבילת התרופות שתוארה. קראו את ההיסטוריה כדי לזהות את הארגז הדרוש.':`משקל על הלוח: ${mass.toFixed(1)} ק״ג. נדרש יותר מ־${level.reference??6}, וגם הארגז המזוהה כשיש תיאור.`;}
  if(level.kind==='cargo'){ready=!!cargo;reason=ready?'המטען צף בכלי שמכיל לפחות 8 חבילות. E להפלגה.':'צריך כושר ציפה ומקום ל־8 חבילות. ארגז מתכת שוקע בדגם הזה; קטן מדי מכיל רק 4.';}
  if(level.kind==='wind'){ready=correctFan;reason=ready?'12 N מניעים את המפרש. E להפלגה.':windItems.length?'המאוורר עובד, אבל צריך לשקם את Fan A שכבר זוהה בשם.':'המפרש צריך לפחות 8 N בכיוון החץ. powerful דוחף; powerless לא.';}
  if(level.kind==='storm'){ready=!!cargo&&correctFan;reason=`מטען צף: ${cargo?'כן':'לא'}. המאוורר המתואר דוחף: ${correctFan?'כן':'לא'}. שני התנאים נחוצים.`;}

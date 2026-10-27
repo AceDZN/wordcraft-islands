@@ -32,7 +32,7 @@ Bare nouns are editor shorthand. Inferred articles/counts, dictionary/translatio
 - `docs/qa-browser.mjs`: historical first-release campaign test. The play-feel revision is reviewed in docs/UX_REVIEW.md with revised tests under tests/ux*. Earlier captures predate this rewrite.
 - `window.render_game_to_text()` exposes visible objectives, quantities, item histories, assistance and audio state. `advanceTime(ms)` steps the same simulation without injecting a win.
 - [PLAYTEST.md](PLAYTEST.md), [CURRICULUM.md](CURRICULUM.md), [coverage.json](coverage.json), [VISUAL_REVIEW.md](VISUAL_REVIEW.md).
-- [Generated design target](docs/visual-targets/gameplay-target.png) is a mockup. Actual gameplay is under docs/qa-captures, docs/art and docs/playable-loop.
+- [Generated design target](docs/visual-targets/gameplay-target.png) is a mockup. Current gameplay is in docs/ux/revised-flow.mp4 and tests/ux-captures; docs/qa-captures, docs/art and docs/playable-loop retain historical first-release evidence.
 - [Audio preview](docs/audio/mixed-preview.wav), [AUDIO.md](AUDIO.md), [model sources](ASSETS.md), [Tripo search log](ASSET_SEARCH.md).
 
 ## Boundaries

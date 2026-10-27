@@ -1,0 +1,251 @@
+{
+  "mode": "complete",
+  "coordinateSystem": "x east, z south, y up; keyboard directions relative to camera screen. Click ground to walk.",
+  "level": "g7-inlet",
+  "grade": 7,
+  "stage": "transfer",
+  "layoutVariant": 1,
+  "objective": "Reach the far dock. The inlet is wider than the old crossing. What can carry you on water?",
+  "nextAction": {
+    "kind": "travel",
+    "label": "עלו למעבורת →",
+    "instruction": "הפתרון עובד! לחצו כדי לנסות אותו ולהגיע למגדלור."
+  },
+  "player": {
+    "x": 5.887625978774075,
+    "z": 0.382264634604938,
+    "jump": 0,
+    "vx": 0,
+    "vz": 0,
+    "facing": 1.4268708774066798
+  },
+  "motion": {
+    "moving": false,
+    "blockedAtEdge": false,
+    "carried": false,
+    "onVessel": false,
+    "vesselX": 2.25,
+    "transport": {
+      "id": "created-4",
+      "kind": "boat",
+      "x": -2.25,
+      "z": 0,
+      "deckY": -0.14,
+      "active": false
+    },
+    "route": [],
+    "activeTravel": false,
+    "clip": "idle",
+    "facing": 1.4268708774066798,
+    "speed": 0
+  },
+  "world": {
+    "ready": true,
+    "contributors": [
+      "created-4"
+    ],
+    "traversable": false,
+    "mass": 5,
+    "covered": 0,
+    "capacity": 12,
+    "force": 0,
+    "reason": "המעבורת צפה — E ליד הרציף, או חצו על הגשר.",
+    "extras": {
+      "unlocked": false,
+      "illuminated": false
+    }
+  },
+  "zones": [
+    {
+      "id": "ferry",
+      "x": 0,
+      "z": 0,
+      "label": "Mooring buoy"
+    }
+  ],
+  "selected": "created-4",
+  "items": [
+    {
+      "id": "created-4",
+      "phrase": "a boat",
+      "x": 0,
+      "z": 0,
+      "visualX": -2.25,
+      "visualZ": 0,
+      "rot": 0,
+      "mass": 5,
+      "length": 3,
+      "capacity": 12,
+      "float": true,
+      "force": 0,
+      "evidence": {
+        "article": true,
+        "count": false,
+        "spelling": true,
+        "modifiers": false,
+        "order": false,
+        "family": false,
+        "assisted": false,
+        "shorthand": false
+      }
+    }
+  ],
+  "preview": null,
+  "learning": {
+    "attempts": 1,
+    "hints": 0,
+    "retries": 0,
+    "rejectedPhrases": 0,
+    "assisted": false,
+    "events": [
+      {
+        "type": "level-start",
+        "level": "g7-inlet",
+        "at": 26.7,
+        "detail": {
+          "layoutVariant": 0
+        }
+      },
+      {
+        "type": "level-start",
+        "level": "g7-inlet",
+        "at": 27.1,
+        "detail": {
+          "layoutVariant": 1
+        }
+      },
+      {
+        "type": "phrase-attempt",
+        "level": "g7-inlet",
+        "at": 28.5,
+        "detail": {
+          "raw": "a boat",
+          "number": 1,
+          "unaided": true,
+          "result": "accepted",
+          "assisted": false
+        }
+      },
+      {
+        "type": "create-place",
+        "level": "g7-inlet",
+        "at": 29,
+        "detail": {
+          "id": "created-4",
+          "phrase": "a boat",
+          "x": 0,
+          "z": 0,
+          "rot": 0,
+          "evidence": {
+            "article": true,
+            "count": false,
+            "spelling": true,
+            "modifiers": false,
+            "order": false,
+            "family": false,
+            "assisted": false,
+            "shorthand": false
+          }
+        }
+      },
+      {
+        "type": "world-solved",
+        "level": "g7-inlet",
+        "at": 29,
+        "detail": {
+          "kind": "ferry"
+        }
+      },
+      {
+        "type": "context-action",
+        "level": "g7-inlet",
+        "at": 29.3,
+        "detail": {
+          "kind": "travel"
+        }
+      },
+      {
+        "type": "walk-request",
+        "level": "g7-inlet",
+        "at": 29.3,
+        "detail": {
+          "to": {
+            "x": 6.7,
+            "z": 0.5
+          },
+          "tryGoal": true
+        }
+      },
+      {
+        "type": "board-ferry",
+        "level": "g7-inlet",
+        "at": 29.5,
+        "detail": {}
+      },
+      {
+        "type": "completion",
+        "level": "g7-inlet",
+        "at": 33.5,
+        "detail": {
+          "evidence": {
+            "article": true,
+            "count": false,
+            "spelling": true,
+            "modifiers": false,
+            "order": false,
+            "family": false
+          },
+          "unaidedSolution": true,
+          "singlePhraseFirstAttemptUnaided": true,
+          "assisted": false,
+          "hints": 0,
+          "retries": 0,
+          "attempts": 1,
+          "rejectedPhrases": 0
+        }
+      }
+    ]
+  },
+  "completed": [
+    "g7-crossing",
+    "g7-rain",
+    "g7-inlet"
+  ],
+  "audio": {
+    "state": "running",
+    "sampleRate": 22050,
+    "requested": true,
+    "paused": false,
+    "hidden": false,
+    "loaded": 17,
+    "loops": 3,
+    "oneShots": 2,
+    "cueTotal": 17,
+    "lastCue": "success",
+    "solved": true,
+    "ducked": false,
+    "gains": {
+      "music": 0.48,
+      "sfx": 0.58,
+      "voice": 0.85,
+      "master": 0.75
+    },
+    "rms": 0.01014,
+    "loadError": ""
+  },
+  "models": {
+    "loaded": [
+      "courier",
+      "boat",
+      "balloon",
+      "lamp",
+      "crate"
+    ],
+    "errors": []
+  },
+  "renderStats": {
+    "calls": 38,
+    "triangles": 43114,
+    "geometries": 344
+  }
+}
