@@ -1,0 +1,58 @@
+import {chromium} from 'playwright';
+import {OrthographicCamera,Vector3} from 'three';
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+const baseline=process.argv.includes('--baseline');
+if(!baseline)await fs.mkdir('work/recovery',{recursive:true});
+const browser=await chromium.launch({headless:false});
+const context=await browser.newContext({viewport:{width:1200,height:826}}),page=await context.newPage();
+const errors=[],records=[];page.on('pageerror',e=>errors.push(String(e)));page.on('console',m=>{if(m.type()==='error')errors.push(m.text())});
+page.setDefaultTimeout(60000);
+const state=()=>page.evaluate(()=>JSON.parse(window.render_game_to_text()));
+const stableItem=({screen,...item})=>item;
+const capture=async name=>{if(!baseline)await page.screenshot({path:`work/recovery/${name}.png`});};
+const snapshot=async(name)=>{const s=await state();records.push({name,level:s.level,number:s.campaign?.number,mode:s.mode,player:s.player,selected:s.selected,items:s.items.map(i=>({id:i.id,phrase:i.phrase,origin:i.origin})),world:{ready:s.world.ready,covered:s.world.covered},action:s.nextAction,feedback:await page.locator('#phrase-feedback').innerText()});console.log(name,JSON.stringify(records.at(-1)));return s;};
+const camera=new OrthographicCamera(-7.9*1200/826,7.9*1200/826,7.9,-7.9,.1,130);camera.position.set(Math.sin(.55)*24,22,Math.cos(.55)*24);camera.lookAt(0,-.2,0);camera.updateMatrixWorld();
+function screen(x,y,z){const p=new Vector3(x,y,z).project(camera);return {x:(p.x+1)*600,y:(1-p.y)*413};}
+async function ground(x,z){await page.locator('#world').click({position:screen(x,0,z)});await page.evaluate(()=>window.advanceTime(7000));}
+async function editToUmbrella(){await page.click(baseline?'#use-btn':'#edit-selected');assert.equal(await page.locator('#phrase').inputValue(),'a ladder');await page.fill('#phrase','an umbrella');await capture('editor-layout');await page.click('#create');}
+async function closeBook(){if(await page.locator('#notebook').isVisible())await page.click('#close-book');}
+async function selectKeyboard(id){await closeBook();await page.locator('#inspect-btn').focus();await page.keyboard.press('Enter');await page.locator(`[data-item-id="${id}"]`).focus();await page.keyboard.press('Space');assert.equal(await page.locator('#inspect').isVisible(),true,'Space must activate the focused object button without triggering movement');await page.locator('#modify').focus();await page.keyboard.press('Enter');assert.equal(await page.locator('#notebook').isVisible(),true,'Enter must activate the focused modify button');}
+async function travel(){await page.click('#use-btn');for(let i=0;i<100;i++){await page.evaluate(()=>window.advanceTime(160));if((await state()).mode==='complete')return;}assert.fail(`travel did not complete ${(await state()).level}`);}
+async function next(){await page.click('#next');await page.waitForTimeout(420);}
+async function witness(steps){for(const step of steps){await closeBook();if(step.modifyId){await page.click('#inspect-btn');await page.click(`[data-item-id="${step.modifyId}"]`);await page.click('#modify');}else await page.click('#book-btn');await page.fill('#phrase',step.phrase);await page.click('#create');for(const zone of step.zones){await page.locator('#target-choices > button').nth(zone).click();await page.click('#place');}}assert.equal((await state()).world.ready,true);await travel();}
+try{
+ await page.goto('http://127.0.0.1:5263',{waitUntil:'commit'});await page.click('#start');await page.waitForSelector('#notebook',{state:'visible'});await page.fill('#phrase','a plank');await page.click('#create');await page.click('#place');await page.click('#use-btn');await page.evaluate(()=>window.advanceTime(7000));assert.equal((await state()).mode,'complete');await page.click('#next');await page.waitForSelector('#notebook',{state:'visible'});
+ if(!baseline)await page.evaluate(()=>{const host=document.createElement('div');host.id='qa-host-composer';host.textContent='QA: simulated host composer';host.style.cssText='position:fixed;right:0;bottom:0;width:640px;height:150px;z-index:10000;background:#252528;border:1px solid #48484b;border-radius:20px 0 0 0;color:#ccc;padding:20px;box-sizing:border-box;font:14px system-ui;';document.body.append(host);});
+ await page.fill('#phrase','a ladder');await page.click('#create');await page.click('#place');let s=await snapshot('wrong-ladder');const originalId=s.selected;assert.equal(s.campaign.number,2);assert.equal(s.world.ready,false);assert.equal(s.world.covered,0);await capture('wrong-ladder');
+ if(!baseline)for(const id of ['edit-selected','move-selected','remove-selected'])assert.equal(await page.locator(`#${id}`).evaluate(el=>{const r=el.getBoundingClientRect();return r.right<=window.innerWidth-640&&document.elementFromPoint(r.x+r.width/2,r.y+r.height/2)?.closest('button')===el;}),true,`${id} must remain reachable beside host composer`);
+ await ground(6.7,.5);s=await snapshot('at-lighthouse-unsolved');assert.ok(s.player.x>5.5);assert.equal(s.world.ready,false);assert.notEqual(s.mode,'complete');await ground(-3.7,0);
+ await page.locator('#world').click({position:screen(1,.22,.5)});assert.equal((await state()).selected,originalId);assert.equal(await page.locator('#inspect').isVisible(),true);await page.click('#close-inspect');
+ await editToUmbrella();s=await snapshot('noun-change-attempt');
+ if(baseline){assert.equal(s.mode,'notebook');assert.match(await page.locator('#phrase-feedback').innerText(),/סגרו|אחר|אותו/);assert.equal(s.items[0].phrase,'a ladder');}
+ else{
+  assert.equal(s.mode,'placement','a player-created wrong noun should be replaceable directly');assert.equal(s.items.length,1,'original remains live until replacement is placed');assert.equal(s.items[0].phrase,'a ladder');await capture('replacement-preview');await page.click('#cancel-place');s=await snapshot('replacement-cancel');assert.equal(s.items.length,1);assert.equal(s.items[0].phrase,'a ladder');assert.equal(s.world.ready,false);
+  const original=stableItem((await state()).items[0]);await page.click('#move-selected');assert.equal((await state()).items[0].phrase,'a ladder');await page.locator('#world').focus();await page.keyboard.press('ArrowRight');await page.keyboard.press('Escape');s=await snapshot('move-cancel');assert.deepEqual(stableItem(s.items[0]),original,'cancel restores full movement transaction');
+  await page.click('#edit-selected');await page.click('#book-new');assert.equal(await page.locator('#phrase').inputValue(),'');assert.equal((await state()).items.length,1);await closeBook();
+  await page.locator('#world').focus();await page.keyboard.press('Delete');assert.equal((await state()).items.length,0);await page.click('#undo-btn');s=await snapshot('remove-undo');assert.deepEqual(stableItem(s.items[0]),original);
+  await selectKeyboard(originalId);await page.fill('#phrase','an umbrella');await page.click('#create');await page.click('#place');s=await snapshot('replacement-placed');assert.equal(s.items.length,1);assert.equal(s.items[0].id,originalId);assert.equal(s.items[0].phrase,'an umbrella');assert.equal(s.world.ready,true);assert.equal(s.world.covered,1);
+  await page.locator('#world').focus();await page.keyboard.press('Control+z');s=await snapshot('replacement-undo');assert.equal(s.items.length,1);assert.equal(s.items[0].phrase,'a ladder');assert.equal(s.world.ready,false);
+  await ground(6.7,.5);assert.notEqual((await state()).mode,'complete');await editToUmbrella();await page.click('#place');s=await snapshot('corrected-while-at-lighthouse');assert.equal(s.world.ready,true);assert.equal(s.mode,'explore','placing a correct object must leave the editing controls available');await capture('corrected-at-lighthouse');await travel();s=await snapshot('recovered-without-restart');assert.equal(s.mode,'complete');assert.equal(s.campaign.number,2);
+  const fixtures=await page.evaluate(async()=>{const m=await import('/src/campaign-levels.ts');return m.levels.slice(2,12).map(l=>({number:l.number,id:l.id,steps:m.solutionActions[l.id]}));});
+  await next();
+  // The authored witnesses below only navigate to the earliest protected story
+  // object. They are not an independent campaign-solvability oracle.
+  for(const fixture of fixtures){assert.equal((await state()).campaign.number,fixture.number);if(fixture.number===3){
+   await closeBook();await page.click('#book-btn');await page.fill('#phrase','two umbrellas');await page.click('#create');for(const zone of [0,1]){await page.locator('#target-choices > button').nth(zone).click();await page.click('#place');}
+   const batch=(await state()).items.map(stableItem);assert.equal(batch.length,2);await page.click('#edit-selected');assert.equal(await page.locator('#phrase').inputValue(),'an umbrella','editing one instance must not repeat its original plural phrase');await page.fill('#phrase','a large umbrella');await page.click('#create');assert.equal((await state()).preview.remaining,1);assert.equal((await state()).items.length,2);await page.click('#cancel-place');assert.deepEqual((await state()).items.map(stableItem),batch);await snapshot('plural-instance-edit-cancel');await travel();
+  }else await witness(fixture.steps);await next();}
+  s=await state();assert.equal(s.campaign.number,13);await closeBook();if(await page.locator('#inspect').isVisible())await page.click('#close-inspect');await selectKeyboard('dock-crate');const story=stableItem((await state()).items.find(i=>i.id==='dock-crate'));assert.equal(story.phrase,'a heavy crate');
+  await page.fill('#phrase','a light bucket');await page.click('#create');assert.equal((await state()).mode,'notebook');assert.match(await page.locator('#phrase-feedback').innerText(),/סיפור|מסוים/);assert.deepEqual(stableItem((await state()).items.find(i=>i.id==='dock-crate')),story);
+  await page.fill('#phrase','two light crates');await page.click('#create');assert.equal((await state()).mode,'notebook');assert.deepEqual(stableItem((await state()).items.find(i=>i.id==='dock-crate')),story);await closeBook();await snapshot('story-noun-count-protected');await page.locator('#world').focus();await page.keyboard.press('Delete');assert.equal((await state()).items.length,0);await page.click('#undo-btn');assert.deepEqual(stableItem((await state()).items.find(i=>i.id==='dock-crate')),story);await snapshot('story-remove-undo');
+  await page.click('#edit-selected');await page.click('#book-new');await page.fill('#phrase','a light bucket');await page.click('#create');assert.equal((await state()).mode,'placement');await page.click('#cancel-place');assert.deepEqual(stableItem((await state()).items.find(i=>i.id==='dock-crate')),story);
+  await page.click('#edit-selected');await page.fill('#phrase','a light crate');await page.click('#create');assert.deepEqual(stableItem((await state()).items.find(i=>i.id==='dock-crate')),story);await page.click('#place');s=await snapshot('story-property-placed');assert.equal(s.items.length,1);assert.equal(s.items[0].id,'dock-crate');assert.equal(s.items[0].origin,story.origin);assert.equal(s.items[0].phrase,'a light crate');assert.equal(s.world.ready,true);
+  await page.click('#undo-btn');assert.deepEqual(stableItem((await state()).items[0]),story);await page.click('#edit-selected');await page.fill('#phrase','a light crate');await page.click('#create');await page.click('#place');await travel();await snapshot('story-property-recovered');
+  assert.equal(errors.length,0,JSON.stringify(errors));
+ }
+}catch(e){console.error(e);await snapshot('failure').catch(()=>{});process.exitCode=1;}
+finally{console.log(JSON.stringify({baseline,checkpoints:records.map(r=>r.name),errors}));await browser.close();}

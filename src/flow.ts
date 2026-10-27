@@ -1,15 +1,43 @@
 import { catalog, evaluatePlacement, type Item, type Level, type Spec } from './rules';
 export type Point = {x:number;z:number};
-export type NextAction = {kind:'create'|'select'|'revise'|'move'|'travel';label:string;instruction:string};
+export type NextAction = {kind:'create'|'select'|'revise'|'replace'|'move'|'travel';label:string;instruction:string};
 /** Project keyboard intent onto the camera's ground plane. */
 export function screenDirection(right:number,down:number,angle:number):Point {
  const length=Math.hypot(right,down)||1;
  return {x:(right*Math.cos(angle)+down*Math.sin(angle))/length,z:(-right*Math.sin(angle)+down*Math.cos(angle))/length};
 }
+/** A wrong category needs replacement; changing length cannot make a ladder shelter rain. */
+export function usefulObjectKind(level:Level,spec:Spec):boolean {
+ const g=level.goals??{};
+ if(g.unlock&&spec.noun==='key'||g.illuminate&&spec.noun==='lamp'||g.minAbsorb!==undefined&&spec.noun==='sponge')return true;
+ if(level.kind==='shelter')return spec.rain>0;
+ if(level.kind==='bridge')return spec.span;
+ if(level.kind==='weight')return true;
+ if(level.kind==='wind')return spec.noun==='fan';
+ if(level.kind==='workshop')return false;
+ if(level.kind==='storm'&&spec.noun==='fan')return true;
+ return ['crate','boat','balloon'].includes(spec.noun)||(level.kind==='ferry'&&spec.span&&!g.minCapacity);
+}
+export function objectiveStatus(level:Level,items:Item[]):string {
+ const state=evaluatePlacement(level,items);
+ if(level.kind==='shelter')return `חבילות מוגנות מהגשם: ${state.covered} מתוך ${level.zones.filter(z=>!['chest','cave'].includes(z.id)).length}`;
+ if(state.ready)return 'הפתרון עובד. עכשיו אפשר להשלים את האי.';
+ if(level.kind==='bridge')return 'המעבר עדיין לא נתמך בשתי הגדות.';
+ if(level.kind==='weight')return `משקל על הלוח: ${state.mass.toFixed(1)} ק״ג`;
+ if(level.kind==='wind')return `כוח בתחנה: ${state.force} N`;
+ if(level.kind==='workshop')return `תחנות מוכנות: ${state.checks.filter(check=>check.ready).length} מתוך ${state.checks.length}`;
+ return state.primaryReady?'הכלי מוכן. נשאר להשלים את התחנות הנוספות.':'עדיין צריך כלי מתאים למשלוח.';
+}
 export function nextAction(level:Level,items:Item[],selected=''):NextAction {
  const state=evaluatePlacement(level,items);
  if(state.ready)return {kind:'travel',label:state.traversable||level.kind==='shelter'?'לכו למגדלור →':'עלו למעבורת →',instruction:'הפתרון עובד! לחצו כדי לנסות אותו ולהגיע למגדלור.'};
  const chosen=items.find(o=>o.id===selected);
+ if(chosen?.id.startsWith('created-')&&!usefulObjectKind(level,chosen.spec)){
+  const reason=level.kind==='shelter'?'החפץ הזה לא מגן מגשם. החבילה עדיין נרטבת.':level.kind==='bridge'?'החפץ הזה לא יכול ליצור מעבר.':'החפץ הזה לא ממלא את התפקיד שנדרש במשימה.';
+  return {kind:'replace',label:'החליפו את החפץ',instruction:reason+' אפשר לכתוב חפץ אחר במקומו, או להסיר אותו.'};
+ }
+ if(chosen&&state.contributors.includes(chosen.id)&&state.checks.some(check=>check.ready&&((check.id==='unlock'&&chosen.spec.noun==='key')||(check.id==='illuminate'&&chosen.spec.noun==='lamp')||(check.id==='absorb'&&chosen.spec.noun==='sponge'))))
+  return {kind:'create',label:'הוסיפו את החלק החסר',instruction:state.reason};
  if(state.primaryReady&&state.checks.some(check=>!check.ready)){
   const remaining=state.checks.find(check=>!check.ready)!;
   return {kind:'create',label:remaining.id==='unlock'?'השלימו את תחנת המנעול':remaining.id==='illuminate'?'השלימו את תחנת האור':'השלימו את הספיגה',instruction:remaining.reason+' פתחו את המחברת כדי להוסיף את החלק החסר.'};

@@ -1,0 +1,8 @@
+{
+  "checks": [
+    "Inventory switches out of the open editor; replacement cancel keeps ladder",
+    "Portrait touch editor and landscape object controls remain reachable without overlap",
+    "Touch ladder replacement and completion pass"
+  ],
+  "errors": []
+}

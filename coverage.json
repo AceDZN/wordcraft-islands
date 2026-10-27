@@ -273,16 +273,23 @@
     "buildCommand": "npm run build",
     "browserCommand": "npx tsx tests/campaign-browser.mjs",
     "campaign": "All 50 authored levels completed through real UI actions: fresh 1–28, then 29–50 resumed from the exact earned checkpoint after fixing adjacent-pad placement. No player position or win state was injected. Final Next opens the map without wrapping.",
-    "semanticTestsPassed": 69,
+    "semanticTestsPassed": 80,
     "limitations": "Automated mechanical/semantic/browser evidence only. No retained mastery, subjective fun, native handheld or human musical-audition claim.",
     "browserEvidence": "docs/CAMPAIGN_PLAYTEST.md",
     "visualEvidence": "docs/CAMPAIGN_VISUAL.md",
     "observedControls": "Fresh desktop/phone map and locked nodes; keyboard/focus/Escape/touch; earned replay and reload at 10 wins; plural creation; wrong-property and wrong-identity recovery; original audio retained 17 decoded buffers and 3 loops throughout all 50.",
     "finalVisual": "docs/campaign/pad-visibility.json and PNGs: separate restored-profile visual/control fixture against final static build; two actual fans 8 N and three sponges 12; 0 page errors.",
     "remainingLimits": "Final extra post-campaign gain/mute/restart/migration/touch repetition hit startup/actionability timeouts; unobserved checks are not passed. Earlier current map QA, 15 pure progression checks and earlier audio evidence remain separate. No human enjoyment, retained mastery, native device or musical-audition claim.",
-    "finalBuiltSmoke": "Final existing skill client, headed at http://127.0.0.1:4263, passed; screenshot inspected; models5/noerrors,17 decoded audio buffers/3loops, campaign50/frontier1."
+    "finalBuiltSmoke": "Final existing skill client, headed at http://127.0.0.1:4263, passed; screenshot inspected; models5/noerrors,17 decoded audio buffers/3loops, campaign50/frontier1.",
+    "wrongObjectRecovery": {
+      "report": "docs/RECOVERY_QA.md",
+      "browserCommand": "node tests/recovery-browser.mjs",
+      "result": "15 independent checkpoints through earned1–13: wrong ladder→umbrella, cancel/move/delete/Undo, keyboard, composer overlap and story identity;0 errors.",
+      "layout": "docs/recovery/layout-results.json — desktop/portrait/landscape and touch completion passed; captures inspected."
+    },
+    "latestBuild": "Recovery update: npm run build passed; no new assets or services."
   },
-  "runtimeInitialPayloadBytes": 8189058,
+  "runtimeInitialPayloadBytes": 8198586,
   "campaign": {
     "total": 50,
     "chapters": [
@@ -890,5 +897,5 @@
       }
     ]
   },
-  "staticDistributionBytes": 10487035
+  "staticDistributionBytes": 10496563
 }

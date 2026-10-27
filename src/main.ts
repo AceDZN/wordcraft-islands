@@ -4,8 +4,9 @@ import { levels, chapters } from './campaign-levels';
 import { createProgress, unlockedThrough, canPlay, enterLevel, completeLevel, resumeLevel, campaignFinished } from './campaign';
 import { mountCampaignMap } from './campaign-map';
 import { catalog, parsePhrase, makeItem, evaluatePlacement, supportsPoint, modeledPhrase, type Item, type Spec, type Evidence } from './rules';
-import { nextAction, screenDirection, walkingRoute, placementPoint, type Point } from './flow';
+import { nextAction, screenDirection, walkingRoute, placementPoint, objectiveStatus, type Point } from './flow';
 import { audio } from './audio';
+import { prepareObjectEdit } from './editing';
 
 declare global { interface Window { render_game_to_text:()=>string; advanceTime:(ms:number)=>void; } }
 const $ = <T extends HTMLElement=HTMLElement>(selector:string)=>document.querySelector<T>(selector)!;
@@ -14,14 +15,14 @@ $('#app').innerHTML = `
 <header><div class="brand"><span class="brand-mark">W</span><div>WORDCRAFT<small>איים של מילים</small></div></div><nav>
 <button id="levels-btn" aria-label="מפת 50 האיים"><span id="level-badge" dir="rtl">שלב 1 מתוך 50</span> ◉</button>
 <button id="settings-btn" aria-label="הגדרות ושמע">♫</button><button id="pause-btn" aria-label="השהיה">Ⅱ</button></nav></header>
-<section id="objective"><div class="eyebrow"><span id="stage"></span><span id="counter"></span></div><h1 id="title" dir="ltr"></h1><p id="mission" dir="ltr"></p><div id="next-instruction" dir="rtl"></div><div class="step-track" aria-label="שלבי הפתרון"><span data-step="write">1 · כותבים</span><i></i><span data-step="place">2 · מניחים</span><i></i><span data-step="try">3 · מנסים</span></div><details id="help-details"><summary>עזרה והמשימה בעברית</summary><p id="mission-he" dir="rtl"></p><div class="row"><button id="teach-btn">הסבר קצר</button><button id="hint-btn">רמז לרעיון</button><button id="read-btn">Read aloud</button></div><p id="teaching" dir="rtl" hidden></p></details></section>
+<section id="objective"><div class="eyebrow"><span id="stage"></span><span id="counter"></span></div><h1 id="title" dir="ltr"></h1><p id="mission" dir="ltr"></p><div id="world-status" dir="rtl" role="status" aria-live="polite"></div><div id="next-instruction" dir="rtl"></div><div class="step-track" aria-label="שלבי הפתרון"><span data-step="write">1 · כותבים</span><i></i><span data-step="place">2 · מניחים</span><i></i><span data-step="try">3 · מנסים</span></div><details id="help-details"><summary>עזרה והמשימה בעברית</summary><p id="mission-he" dir="rtl"></p><div class="row"><button id="teach-btn">הסבר קצר</button><button id="hint-btn">רמז לרעיון</button><button id="read-btn">Read aloud</button></div><p id="teaching" dir="rtl" hidden></p></details></section>
 <div id="feedback" role="status" aria-live="polite" hidden></div>
-<aside id="inspect" hidden><button id="close-inspect" class="close" aria-label="חזרה לאי">×</button><span class="eyebrow">בחרו חפץ וקראו את הסיפור שלו</span><div id="object-choices"></div><select id="object-list" aria-label="בחירת חפץ" hidden></select><div id="object-info" dir="rtl"></div><div class="row"><button id="modify" class="primary">✎ שינוי מילים</button><button id="carry">העברה למקום אחר</button></div><p class="panel-note">לחיצה על הקרקע חוזרת לטיול באי.</p></aside>
-<aside id="notebook" hidden><button id="close-book" class="close" aria-label="סגירת המחברת">×</button><span class="eyebrow">מחברת היצירה</span><h2 id="book-title">מה ניצור?</h2><p id="book-mode" dir="rtl"></p><div id="guided-example" hidden></div><form id="create-form"><label for="phrase">כתבו באנגלית</label><input id="phrase" dir="ltr" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Your idea…" maxlength="85"><div id="phrase-feedback" role="alert" dir="rtl"></div><button id="suggestion" type="button" hidden></button><button id="create" type="submit" class="primary">צרו את החפץ ✦</button></form><details id="dictionary"><summary>מילון הסדנה · 12 חפצים ותכונות</summary><p>בסדנה יש 12 שמות עצם ותכונות מסוימות. מילים אחרות אינן בהכרח שגויות.</p><div id="words"></div><p class="property-words" dir="ltr">long / short · large / small · heavy / light<br>wooden / metal · bright / unlit<br>powerful / powerless</p></details></aside>
+<aside id="inspect" hidden><button id="close-inspect" class="close" aria-label="חזרה לאי">×</button><span class="eyebrow">בחרו חפץ וקראו את הסיפור שלו</span><div id="object-choices"></div><select id="object-list" aria-label="בחירת חפץ" hidden></select><div id="object-info" dir="rtl"></div><div class="row"><button id="modify" class="primary">✎ שינוי מילים</button><button id="carry">העברה למקום אחר</button><button id="remove-object">הסרת החפץ</button></div><p class="panel-note">לחיצה על הקרקע חוזרת לטיול באי.</p></aside>
+<aside id="notebook" hidden><button id="close-book" class="close" aria-label="סגירת המחברת">×</button><span class="eyebrow">מחברת היצירה</span><h2 id="book-title">מה ניצור?</h2><p id="book-mode" dir="rtl"></p><div id="guided-example" hidden></div><form id="create-form"><label for="phrase">כתבו באנגלית</label><input id="phrase" dir="ltr" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Your idea…" maxlength="85"><div id="phrase-feedback" role="alert" dir="rtl"></div><button id="suggestion" type="button" hidden></button><button id="create" type="submit" class="primary">צרו את החפץ ✦</button></form><button id="book-new" type="button" hidden>יצירה חדשה במקום עריכת החפץ</button><details id="dictionary"><summary>מילון הסדנה · 12 חפצים ותכונות</summary><p>בסדנה יש 12 שמות עצם ותכונות מסוימות. מילים אחרות אינן בהכרח שגויות.</p><div id="words"></div><p class="property-words" dir="ltr">long / short · large / small · heavy / light<br>wooden / metal · bright / unlit<br>powerful / powerless</p></details></aside>
 <section id="placement" hidden><div class="eyebrow">בחרו מקום לחפץ</div><h2 id="preview-label" dir="ltr"></h2><p id="placement-help" dir="rtl"></p><div id="target-choices" class="target-choices"></div><button id="place" class="primary">הניחו כאן ↓</button><div class="placement-secondary"><button id="cancel-place">ביטול</button><details id="placement-tools"><summary>סיבוב ומיקום חופשי</summary><div class="row"><button id="rotate">↻ סיבוב</button><button id="free-place">מיקום חופשי</button></div><small>אפשר גם להזיז בחצים. Enter מניח, Esc מבטל.</small></details></div><button id="target-prev" hidden>מצוף קודם</button><button id="target-next" hidden>מצוף הבא</button></section>
-<footer><div class="primary-dock"><button id="use-btn" class="primary"></button><span id="walk-help">הקישו על הקרקע כדי ללכת · אפשר גם בחצים</span></div><div class="tools"><button id="book-btn" aria-label="פתיחת מחברת">▤ <span>מחברת</span></button><button id="inspect-btn">⌕ <span>חפצים</span></button><button id="undo-btn">↶ <span>ביטול פעולה</span></button><button id="controls-btn">? <span>תנועה</span></button></div></footer>
+<footer><div class="primary-dock"><section id="object-actions" dir="rtl" hidden><span>החפץ שנבחר</span><strong id="selected-phrase" dir="ltr"></strong><div class="row"><button id="edit-selected">עריכה / החלפה</button><button id="move-selected">הזזה</button><button id="remove-selected">הסרה</button></div></section><button id="use-btn" class="primary"></button><span id="walk-help">הקישו על הקרקע כדי ללכת · אפשר גם בחצים</span></div><div class="tools"><button id="book-btn" aria-label="פתיחת מחברת">▤ <span>מחברת</span></button><button id="inspect-btn">⌕ <span>חפצים</span></button><button id="undo-btn">↶ <span>ביטול פעולה</span></button><button id="controls-btn">? <span>תנועה</span></button></div></footer>
 <div id="touch"><div class="touch-pad"><button data-key="arrowup" aria-label="למעלה">↑</button><div><button data-key="arrowleft" aria-label="שמאלה">←</button><button data-key="arrowdown" aria-label="למטה">↓</button><button data-key="arrowright" aria-label="ימינה">→</button></div></div></div>
-<div id="overlay" class="veil"><section id="welcome" class="modal"><span class="eyebrow">איים של מילים</span><h2>דרך חדשה מתחילה במילה.</h2><p>הדוור צריך להגיע למגדלור.<br>כתבו חפץ במחברת, צרו אותו ונסו את הרעיון שלכם.<br><span class="campaign-intro">50 איים. מתחילים בקטן, ומגלים רעיונות גדולים יותר.</span></p><button id="start" class="primary">בואו ניצור דרך →</button><small>לחיצה על הקרקע מזיזה את הדוור. השאר נלמד תוך כדי.</small></section>
+<div id="overlay" class="veil"><section id="welcome" class="modal"><span class="eyebrow">איים של מילים</span><h2>דרך חדשה מתחילה במילה.</h2><p>בכל אי יש בעיה אחרת לפתור.<br>יוצרים חפץ, בודקים מה הוא עושה, ומשנים את הרעיון אם צריך.<br><span class="campaign-intro">50 איים. מתחילים בקטן, ומגלים רעיונות גדולים יותר.</span></p><button id="start" class="primary">בואו ניצור דרך →</button><small>לחצו על הקרקע כדי ללכת. לחצו על חפץ כדי לערוך, להחליף או להסיר אותו.</small></section>
 <section id="pause" class="modal" hidden><span class="eyebrow">הפסקה קטנה</span><h2>האי מחכה לכם.</h2><button id="resume" class="primary">חזרה למשחק</button><button id="restart">התחלת האי מחדש</button><button id="pause-map">מפת האיים</button><button id="pause-close" hidden>סגירה</button></section>
 <section id="settings" class="modal" hidden><button id="settings-close" class="close" aria-label="סגירת הגדרות">×</button><h2>צלילי האי</h2><div id="gains"></div><a href="./audio/mixed-preview.wav" target="_blank">האזנה לדוגמה ↗</a></section>
 <section id="controls" class="modal" hidden><button id="controls-close" class="close" aria-label="סגירת עזרה">×</button><h2>בוחרים דרך.</h2><p>לחצו או הקישו על הקרקע כדי ללכת.<br>חצים או WASD מזיזים לפי הכיוון על המסך.</p><p>לחצו על חפץ כדי לשנות או להעביר אותו.<br>במחברת כותבים; בתצוגה המקדימה בוחרים מקום ומניחים.</p><p class="panel-note">N מחברת · E פעולה נוכחית · Space קפיצה<br>F מסך מלא · Esc חזרה</p><div class="row"><button id="jump-btn">קפיצה ↟</button><button id="orbit-left">סיבוב מצלמה ↶</button><button id="orbit-right">↷ סיבוב מצלמה</button></div></section>
@@ -35,7 +36,7 @@ let progress=createProgress(levels,readSaved('wordcraft-campaign-v2'),readSaved(
 let index=levels.findIndex(l=>l.id===resumeLevel(levels,progress).id), level=levels[index], items:Item[]=[], selected='';
 let campaignMapOpen=false;
 function saveProgress(){try{localStorage.setItem('wordcraft-campaign-v2',JSON.stringify(progress));}catch{/* optional local persistence */}}
-let started=false, paused=false, book=false, edit=false, won=false;
+let started=false, paused=false, book=false, edit=false, won=false, completionArmed=false;
 let assisted=false, attempts=0, hints=0, retries=0, rejectedPhrases=0;
 let pending:Spec|undefined, pendingCount=0, pendingId='', zoneIndex=0, freePlacement=false;
 let placement={x:0,z:0,rot:0}, ferry=0, clock=0, jumpT=0, serial=0, layoutVariant=0;
@@ -49,7 +50,7 @@ const visits=new Map<string,number>(), guidedShown=new Set<string>();
 let completions=new Set(progress.completedIds);
 const clone=<T>(value:T):T=>JSON.parse(JSON.stringify(value));
 const event=(type:string,detail:unknown)=>events.push({type,level:level.id,at:Math.round(clock*10)/10,detail});
-function stopMotion(){keys.clear();route=[];player.vx=player.vz=0;moving=false;activeTravel=false;travelAfterApproach=false;world.clearDestination();}
+function stopMotion(){completionArmed=false;keys.clear();route=[];player.vx=player.vz=0;moving=false;activeTravel=false;travelAfterApproach=false;world.clearDestination();}
 function feedback(text:string,tone='',seconds=5){$('#feedback').textContent=text;$('#feedback').dataset.tone=tone;$('#feedback').hidden=false;feedbackUntil=clock+seconds;}
 function modalOpen(){return campaignMapOpen||!$('#overlay').hidden;}
 function isBlocked(){return !started||paused||book||won||modalOpen()||!$('#inspect').hidden||$<HTMLDetailsElement>('#help-details').open||document.hidden;}
@@ -75,7 +76,7 @@ function loadLevel(i:number){
  progress=enterLevel(levels,progress,level.id);if(started)saveProgress();
  const visit=visits.get(level.id)??0;layoutVariant=visit%2;if(started)visits.set(level.id,visit+1);
  items=(level.seeds??[]).map(s=>makeItem(s.phrase,s.id,s.x,s.z*(layoutVariant?-1:1),s.origin));
- selected='';pending=undefined;pendingCount=0;history=[];won=false;paused=false;book=false;edit=false;
+ selected='';pending=undefined;pendingCount=0;history=[];won=false;completionArmed=false;paused=false;book=false;edit=false;
  assisted=false;attempts=0;hints=0;retries=0;rejectedPhrases=0;ferry=0;onVessel=false;jumpT=0;zoneIndex=0;lastReady=false;uiSignature='';
  stopMotion();player.x=-Math.max(3.7,level.gap/2+1.2);player.z=0;player.jump=0;player.facing=Math.PI/2;
  world.build(level,layoutVariant);world.setItems(items);world.setPreview();world.showBridge(false);audio.setSolved(false);
@@ -97,15 +98,16 @@ function openBook(modify=false,guided=false){
  if(!started||won||paused)return;
  if(modify&&level.guide&&!completions.has(level.id))guided=true;
  if(pending)cancelPlacement();
- stopMotion();$('#inspect').hidden=true;$<HTMLDetailsElement>('#help-details').open=false;$('#teaching').hidden=true;book=true;edit=modify&&!!selected;
+ stopMotion();$('#feedback').hidden=true;$('#inspect').hidden=true;$<HTMLDetailsElement>('#help-details').open=false;$('#teaching').hidden=true;book=true;edit=modify&&!!selected;
  const old=items.find(o=>o.id===selected);
- $('#book-title').textContent=edit?'איזו מילה תשנה את החפץ?':'מה ניצור?';
- $('#book-mode').textContent=edit?'שנו תיאור בצירוף. אותו חפץ יקבל תכונות חדשות.':level.stage==='transfer'?'איזה חפץ יתאים כאן? נסו רעיון מהזיכרון.':'כתבו חפץ שיעזור לפתור את הבעיה באי.';
+ $('#book-title').textContent=edit&&old?.id.startsWith('created-')?'ערכו או החליפו את החפץ':edit?'שנו את תכונות החפץ':'מה ניצור?';
+ $('#book-mode').textContent=edit?old?.id.startsWith('created-')?'אפשר לשנות תכונות או לכתוב חפץ אחר במקומו. המקור נשמר עד שמאשרים הנחה.':'זה חפץ מתוך הסיפור. שנו את תכונותיו או בחרו יצירה חדשה.':level.stage==='transfer'?'איזה חפץ יתאים כאן? נסו רעיון מהזיכרון.':'כתבו חפץ שיעזור לפתור את הבעיה באי.';
  $('#guided-example').hidden=!guided;
  if(guided){assisted=true;event('guided-model-shown',{phrase:guidePhrase()});$('#guided-example').innerHTML=`<span>${level.teach}</span><code dir="ltr">${guidePhrase()}</code>`;}
  $('#phrase-feedback').textContent='';$('#suggestion').hidden=true;
- const input=$<HTMLInputElement>('#phrase');input.value=edit&&old?old.spec.phrase:'';
- $('#create').textContent=edit?'שנו את החפץ ✦':'צרו את החפץ ✦';
+ const input=$<HTMLInputElement>('#phrase');input.value=edit&&old?modeledPhrase({...old.spec,count:1}):'';
+ $('#book-new').hidden=!edit;
+ $('#create').textContent=edit?'הציגו את השינוי ✦':'צרו את החפץ ✦';
  $('#notebook').hidden=false;audio.cue('notebook');updateFlow();
  setTimeout(()=>{input.focus();if(edit)input.select();},30);
 }
@@ -134,10 +136,10 @@ function renderInventory(){
   const stat=properties.join(' · ');
   $('#object-info').innerHTML=`<h3 dir="ltr">${item.spec.phrase}</h3><p class="object-stat">${stat}</p><p dir="ltr">${item.origin??'Created in your notebook.'}</p>`;
  }
- $('#modify').toggleAttribute('disabled',!item);$('#carry').toggleAttribute('disabled',!item);
+ $('#modify').toggleAttribute('disabled',!item);$('#carry').toggleAttribute('disabled',!item);$('#remove-object').toggleAttribute('disabled',!item);
 }
-function select(id:string){if(!items.some(o=>o.id===id))return;stopMotion();selected=id;$('#inspect').hidden=false;renderInventory();event('inspect',{id});updateFlow();}
-function showInventory(){stopMotion();$('#inspect').hidden=false;renderInventory();updateFlow();}
+function select(id:string){if(pending||book||!items.some(o=>o.id===id))return;stopMotion();selected=id;$('#inspect').hidden=false;renderInventory();event('inspect',{id});updateFlow();}
+function showInventory(){if(book)closeBook();if(pending)cancelPlacement();stopMotion();$('#feedback').hidden=true;$('#inspect').hidden=false;renderInventory();updateFlow();}
 function hideInspector(){$('#inspect').hidden=true;keys.clear();$('#world').focus();updateFlow();}
 function zoneName(i:number){const zone=level.zones[i];return zone.id==='chest'?'ליד המנעול':zone.id==='cave'?'ליד הסמן החשוך':['spill','puddle'].includes(zone.id)?'על השלולית':zone.label;}
 function updatePreview(){if(pending){world.setPreview(pending,placement.x,placement.z,placement.rot);renderTargets();}}
@@ -149,16 +151,17 @@ function renderTargets(){
 }
 function previewLabel(spec:Spec){return spec.phrase+(spec.evidence.shorthand?` · דוגמה מלאה: ${modeledPhrase(spec)}`:'');}
 function recommendedZone(spec:Spec){
+ const placementItems=items.filter(item=>item.id!==pendingId);
  const special=spec.noun==='key'?'chest':spec.noun==='lamp'?'cave':spec.noun==='fan'?'wind':spec.noun==='sponge'&&level.goals?.minAbsorb!==undefined?'spill':level.kind==='weight'?level.zones[0].id:'';
  const candidates=level.zones.map((z,i)=>({z,i})).filter(({z})=>z.id===special||z.id.startsWith(special+'-')||(special==='spill'&&z.id==='puddle'));
- const index=(candidates.find(({z})=>!items.some(o=>o.spec.noun===spec.noun&&Math.hypot(o.x-z.x,o.z-z.z)<.5))??candidates[0])?.i??-1;
+ const index=(candidates.find(({z})=>!placementItems.some(o=>o.spec.noun===spec.noun&&Math.hypot(o.x-z.x,o.z-z.z)<.5))??candidates[0])?.i??-1;
  if(index>=0)return index;
- if(level.kind==='shelter'){const firstUncovered=level.zones.findIndex(z=>!['chest','cave'].includes(z.id)&&!items.some(o=>o.spec.rain>0&&Math.hypot(o.x-z.x,o.z-z.z)<o.spec.rain));if(firstUncovered>=0)return firstUncovered;}
+ if(level.kind==='shelter'){const firstUncovered=level.zones.findIndex(z=>!['chest','cave'].includes(z.id)&&!placementItems.some(o=>o.spec.rain>0&&Math.hypot(o.x-z.x,o.z-z.z)<o.spec.rain));if(firstUncovered>=0)return firstUncovered;}
  return 0;
 }
 function beginPlacement(spec:Spec,count:number,id=''){
  stopMotion();$('#inspect').hidden=true;pending=spec;pendingCount=count;pendingId=id;freePlacement=false;
- zoneIndex=recommendedZone(spec);placement=placementPoint(level,items,zoneIndex,spec);
+ zoneIndex=recommendedZone(spec);placement=placementPoint(level,items.filter(item=>item.id!==pendingId),zoneIndex,spec);
  $('#preview-label').textContent=previewLabel(spec);$('#placement').hidden=false;
  $<HTMLDetailsElement>('#placement-tools').open=false;
  if(spec.evidence.shorthand){assisted=true;event('shorthand-model-shown',{model:modeledPhrase(spec),articleEvidence:false});}
@@ -173,10 +176,9 @@ function create(){
   if(result.suggestion){assisted=true;event('spelling-help-shown',{suggestion:result.suggestion});const b=$('#suggestion');b.hidden=false;b.textContent=`אולי התכוונתם ל־${result.suggestion}?`;b.onclick=()=>{event('spelling-help',{from:raw,to:result.suggestion});$<HTMLInputElement>('#phrase').value=result.suggestion!;b.hidden=true;$<HTMLInputElement>('#phrase').focus();};}return;
  }
  const old=items.find(o=>o.id===selected);
- if(edit&&old?.spec.noun!==result.spec.noun){$('#phrase-feedback').textContent='כאן משנים את החפץ שנבחר. לחפץ אחר, סגרו ופתחו מחברת חדשה.';return;}
- if(items.length+result.spec.count>18&&!edit){$('#phrase-feedback').textContent='האי מלא. אפשר לבטל פעולה או להתחיל את האי מחדש.';return;}
+ if(edit&&old){const change=prepareObjectEdit(old,result.spec);if(!change.ok){$('#phrase-feedback').textContent=change.message;audio.cue('page');return;}result.spec=change.spec;}
+ if(items.length+result.spec.count-(edit&&old?1:0)>18){$('#phrase-feedback').textContent='האי מלא. אפשר לבטל פעולה או להתחיל את האי מחדש.';return;}
  snapshot();
- if(edit&&old){items=items.filter(o=>o.id!==old.id);result.spec.count=1;result.spec.evidence.article=false;result.spec.evidence.count=false;result.spec.evidence.spelling=false;}
  closeBook();audio.cue('create');beginPlacement(result.spec,result.spec.count,edit?selected:'');world.setItems(items);
  if(result.warning){assisted=true;event('order-help-shown',{feedback:result.warning});feedback(result.warning,'',9);}
 }
@@ -184,26 +186,41 @@ function place(){
  if(!pending||paused||modalOpen())return;
  const old=history.at(-1)?.items.find(o=>o.id===pendingId),id=pendingId||`created-${++serial}`;
  const spec=clone(pending);spec.count=1;
+ if(pendingId)items=items.filter(item=>item.id!==pendingId);
  const item:Item={id,spec,x:placement.x,z:placement.z,rot:placement.rot,placed:true,origin:old?.origin};items.push(item);selected=id;
  event(pendingId?'modify-place':'create-place',{id,phrase:spec.phrase,x:item.x,z:item.z,rot:item.rot,evidence:spec.evidence});
  world.setItems(items);world.popItem(id);audio.cue(spec.noun==='umbrella'?'umbrella':spec.noun==='fan'?'fan':spec.material==='metal'?'metal':'wood');
  pendingCount--;
- if(pendingCount>0){pendingId='';zoneIndex=recommendedZone(pending);placement=placementPoint(level,items,zoneIndex,pending);$('#preview-label').textContent=`${pending.phrase} · עוד ${pendingCount} להנחה`;updatePreview();}
+ if(pendingCount>0){pendingId='';zoneIndex=recommendedZone(pending);placement=placementPoint(level,items.filter(item=>item.id!==pendingId),zoneIndex,pending);$('#preview-label').textContent=`${pending.phrase} · עוד ${pendingCount} להנחה`;updatePreview();}
  else{pending=undefined;pendingId='';world.setPreview();$('#placement').hidden=true;}
- const outcome=updateOutcome(true);
+ const outcome=updateOutcome(true);recoverUnsupported();
  if(!outcome.ready&&!pending){world.reactToPlacement(item);if(level.kind==='bridge'&&spec.span)feedback(`האורך ${spec.length.toFixed(1)} מ׳ לא נתמך בשני הקצוות. אפשר לשנות את המילים ולנסות שוב.`,'try');else if(spec.material==='metal'&&['cargo','ferry','storm'].includes(level.kind))audio.cue('splash');}
  renderInventory();updateFlow();$('#world').focus();
 }
 function cancelPlacement(){
  if(pending){const previous=history.pop();if(previous){items=previous.items;selected=previous.selected;world.setItems(items);}}
- pending=undefined;pendingId='';pendingCount=0;world.setPreview();$('#placement').hidden=true;updateOutcome();updateFlow();
+ pending=undefined;pendingId='';pendingCount=0;world.setPreview();$('#placement').hidden=true;updateOutcome();recoverUnsupported();updateFlow();
 }
 function undo(){
  if(book)closeBook();stopMotion();hideInspector();
  if(pending)cancelPlacement();else{const previous=history.pop();if(!previous){feedback('עוד אין פעולה לביטול.');return;}items=previous.items;selected=previous.selected;world.setItems(items);}
- retries++;won=false;event('undo',{});audio.cue('undo');updateOutcome(true);updateFlow();
+ retries++;won=false;event('undo',{});audio.cue('undo');updateOutcome(true);recoverUnsupported();updateFlow();
 }
-function setTarget(i:number){if(!pending)return;zoneIndex=(i+level.zones.length)%level.zones.length;freePlacement=false;placement=placementPoint(level,items,zoneIndex,pending);updatePreview();}
+function removeSelected(){
+ const item=items.find(object=>object.id===selected);if(!item||pending||book||won)return;
+ snapshot();stopMotion();items=items.filter(object=>object.id!==item.id);selected='';hideInspector();world.setItems(items);completionArmed=false;
+ event('remove-object',{id:item.id,phrase:item.spec.phrase});audio.cue('undo');updateOutcome();recoverUnsupported();feedback('החפץ הוסר. אפשר ליצור רעיון אחר או לבטל את ההסרה.');updateFlow();
+}
+function moveSelected(){const item=items.find(object=>object.id===selected);if(!item||pending||book||won)return;snapshot();beginPlacement({...item.spec,count:1},1,item.id);}
+function recoverUnsupported(){
+ const state=evaluatePlacement(level,items);
+ if(ferry>0&&!state.ready){ferry=0;onVessel=false;player.jump=0;world.resetVoyage();}
+ if(level.gap>0&&ferry===0&&Math.abs(player.x)<level.gap/2&&!(state.traversable&&supportsPoint(level,items,player.x,player.z))){
+  const from={x:player.x,z:player.z};stopMotion();completionArmed=false;player.x=(player.x>0?1:-1)*(level.gap/2+.6);player.z=0;player.jump=0;jumpT=0;
+  world.burst(from.x,-.2,from.z,0x9bdfd7,16);audio.cue('splash');feedback('הדרך השתנתה — חזרתם לגדה. אפשר להמשיך לערוך את הרעיון.');event('support-lost-recovery',{from,to:{x:player.x,z:player.z}});
+ }
+}
+function setTarget(i:number){if(!pending)return;zoneIndex=(i+level.zones.length)%level.zones.length;freePlacement=false;placement=placementPoint(level,items.filter(item=>item.id!==pendingId),zoneIndex,pending);updatePreview();}
 function rotate(){if(pending){placement.rot=(placement.rot+Math.PI/2)%(Math.PI*2);updatePreview();audio.cue('rotate');}}
 function updateOutcome(announce=false){
  const state=evaluatePlacement(level,items);if(level.kind==='weight')world.showBridge(state.traversable);
@@ -213,12 +230,15 @@ function updateOutcome(announce=false){
 }
 function updateFlow(){
  const state=evaluatePlacement(level,items),action=nextAction(level,items,selected);
- const phase=pending?'place':state.ready?'try':'write';
+ const phase=pending?'place':state.ready?'try':'write',readyAtGoal=state.ready&&Math.hypot(player.x-6.7,player.z-.5)<.85;
  document.body.dataset.mode=!started?'welcome':won?'complete':book?'notebook':pending?'placement':!$('#inspect').hidden?'inspect':'explore';
- const signature=`${phase}/${action.kind}/${action.label}/${items.length}/${selected}/${pendingCount}/${book}/${won}/${$('#inspect').hidden}/${activeTravel}/${ferry>0}`;
+ const signature=`${readyAtGoal}/${state.reason}/${phase}/${action.kind}/${action.label}/${items.length}/${selected}/${pendingCount}/${book}/${won}/${$('#inspect').hidden}/${activeTravel}/${ferry>0}`;
  if(signature===uiSignature)return;uiSignature=signature;
- $('#next-instruction').textContent=pending?pendingCount>1?`עוד ${pendingCount} חפצים להנחה. בחרו מקום והניחו.`:'המקום מוכן. הניחו את החפץ.':action.instruction;
- $('#use-btn').textContent=(activeTravel||ferry>0)?(ferry>0?'מפליגים למגדלור…':'הדוור בדרך למגדלור…'):action.label;$('#use-btn').toggleAttribute('disabled',activeTravel||ferry>0);$('#use-btn').dataset.action=action.kind;
+ $('#world-status').textContent=objectiveStatus(level,items);
+ const chosen=items.find(item=>item.id===selected);$('#object-actions').hidden=!chosen||!!pending||book||won;$('#selected-phrase').textContent=chosen?.spec.phrase??'';
+ $('#edit-selected').textContent=chosen?.id.startsWith('created-')?'עריכה / החלפה':'עריכת תכונות';
+ $('#next-instruction').textContent=pending?pendingCount>1?`עוד ${pendingCount} חפצים להנחה. בחרו מקום והניחו.`:'המקום מוכן. הניחו את החפץ.':readyAtGoal?'הפתרון עובד. לחצו כדי להשלים את האי.':action.instruction;
+ $('#use-btn').textContent=(activeTravel||ferry>0)?(ferry>0?'מפליגים למגדלור…':'הדוור בדרך למגדלור…'):readyAtGoal?'השלימו את האי →':action.label;$('#use-btn').toggleAttribute('disabled',activeTravel||ferry>0);$('#use-btn').dataset.action=action.kind;
  for(const step of document.querySelectorAll<HTMLElement>('[data-step]'))step.dataset.active=String(step.dataset.step===phase);
  $('#inspect-btn').hidden=items.length===0;$('#undo-btn').hidden=history.length===0&&!pending;
  $('#walk-help').textContent=activeTravel?'הדוור בדרך… לחצו על הקרקע או על חץ כדי לשנות כיוון.':'הקישו על הקרקע כדי ללכת · אפשר גם בחצים';
@@ -229,7 +249,8 @@ function prepareMovement(){
 }
 function walkTo(to:Point,tryGoal=false){
  if(!prepareMovement())return;
- const state=evaluatePlacement(level,items);travelAfterApproach=false;activeTravel=tryGoal;
+ const state=evaluatePlacement(level,items);travelAfterApproach=false;activeTravel=tryGoal&&state.ready;completionArmed=tryGoal&&state.ready;
+ if(tryGoal&&!state.ready)feedback('אפשר להגיע לכאן, אבל המשימה עוד לא הושלמה. '+state.reason,'try',8);
  if(tryGoal&&state.ready&&!state.traversable&&['ferry','cargo','wind','storm'].includes(level.kind)&&player.x<0){route=[{x:-level.gap/2-.65,z:0}];travelAfterApproach=true;}
  else route=walkingRoute(level,items,player,to);
  if(!state.ready&&level.gap>0&&player.x*to.x<0)feedback('הדרך עוד לא פתוחה. איזה חפץ יוכל לעזור?');
@@ -238,6 +259,7 @@ function walkTo(to:Point,tryGoal=false){
 function trySolution(){
  const state=evaluatePlacement(level,items);
  if(!state.ready){feedback(state.reason,'try');return;}
+ if(Math.hypot(player.x-6.7,player.z-.5)<.85){win();return;}
  if(!state.traversable&&level.gap>0){const carrier=items.find(o=>state.contributors.includes(o.id)&&o.spec.float&&o.spec.capacity>=1);carrierDeckY=world.beginVoyage(carrier);}
  hideInspector();walkTo({x:6.7,z:.5},true);feedback(level.kind==='shelter'?'החבילות מוגנות! הדוור ממשיך למגדלור.':state.traversable?'בואו נבדוק את הדרך שיצרתם.':'הדוור ייגש לרציף ויעלה למעבורת.','good');
 }
@@ -245,7 +267,7 @@ function use(){
  if(!started||paused||won||book||pending||modalOpen()||activeTravel||ferry>0)return;
  const action=nextAction(level,items,selected);
  event('context-action',{kind:action.kind});
- if(action.kind==='travel')trySolution();else if(action.kind==='select')showInventory();else if(action.kind==='revise')openBook(true);else if(action.kind==='move')$('#carry').click();else openBook();
+ if(action.kind==='travel')trySolution();else if(action.kind==='select')showInventory();else if((action.kind==='revise'||action.kind==='replace'))openBook(true);else if(action.kind==='move')$('#carry').click();else openBook();
 }
 function startFerry(){ferry=3;ferryOriginX=player.x;vesselX=-level.gap/2+.35;player.jump=0;player.z=0;player.vx=player.vz=0;route=[];travelAfterApproach=false;audio.cue('splash');feedback('צפים אל הגדה השנייה.','good');event('board-ferry',{});}
 function win(){
@@ -281,8 +303,8 @@ $('#teach-btn').onclick=()=>{const el=$('#teaching');el.hidden=!el.hidden;if(!el
 $('#read-btn').onclick=()=>{assisted=true;event('voice-help',{});audio.speak?.(level.mission);};
 $('#close-inspect').onclick=hideInspector;$('#inspect-btn').onclick=()=>$('#inspect').hidden?showInventory():hideInspector();
 $('#object-list').onchange=()=>select($<HTMLSelectElement>('#object-list').value);
-$('#modify').onclick=()=>openBook(true);
-$('#carry').onclick=()=>{const item=items.find(o=>o.id===selected);if(!item)return;snapshot();items=items.filter(o=>o.id!==item.id);world.setItems(items);beginPlacement(item.spec,1,item.id);};
+$('#modify').onclick=()=>openBook(true);$('#edit-selected').onclick=()=>openBook(true);$('#move-selected').onclick=moveSelected;$('#remove-selected').onclick=removeSelected;$('#remove-object').onclick=removeSelected;$('#book-new').onclick=()=>openBook();
+$('#carry').onclick=moveSelected;
 $('#place').onclick=place;$('#cancel-place').onclick=cancelPlacement;
 $('#target-prev').onclick=()=>setTarget(zoneIndex-1);$('#target-next').onclick=()=>setTarget(zoneIndex+1);
 $('#rotate').onclick=rotate;$('#free-place').onclick=()=>{freePlacement=!freePlacement;renderTargets();};
@@ -317,13 +339,15 @@ canvas.addEventListener('pointerup',e=>{
   else {const nearest=level.zones.map((z,i)=>({i,d:Math.hypot(z.x-point.x,z.z-point.z)})).sort((a,b)=>a.d-b.d)[0];if(nearest.d<2)setTarget(nearest.i);}
   return;
  }
- const id=world.pick(e.clientX,e.clientY);if(id)select(id);else walkTo({x:Math.max(-8.2,Math.min(8.2,point.x)),z:Math.max(-3.3,Math.min(3.3,point.z))},point.x>5.3&&Math.abs(point.z)<1.6);
+ const id=world.pick(e.clientX,e.clientY,e.pointerType==='touch'?24:14);if(id)select(id);else walkTo({x:Math.max(-8.2,Math.min(8.2,point.x)),z:Math.max(-3.3,Math.min(3.3,point.z))},point.x>5.3&&Math.abs(point.z)<1.6);
 });
 canvas.addEventListener('pointercancel',()=>{down=undefined;});
 const physicalKeys:Record<string,string>={KeyW:'w',KeyA:'a',KeyS:'s',KeyD:'d',KeyN:'n',KeyE:'e',KeyR:'r',KeyF:'f',KeyZ:'z',Space:' '};
 function typing(){return document.activeElement instanceof HTMLInputElement||document.activeElement instanceof HTMLTextAreaElement||document.activeElement instanceof HTMLSelectElement;}
 document.addEventListener('keydown',e=>{
  let key=e.key.toLowerCase();
+ // Let focused controls activate normally; Space must not turn an object-button click into a jump.
+ if((key==='enter'||key===' ')&&e.target instanceof Element&&e.target.closest('button,a,summary,[role=button]'))return;
  if(key==='escape'&&document.fullscreenElement){e.preventDefault();void document.exitFullscreen();return;}
  if(key==='escape'&&modalOpen()&&started&&!won){e.preventDefault();resume();return;}
  if(!started&&(key==='enter'||key===' ')){e.preventDefault();$('#start').click();return;}
@@ -337,12 +361,13 @@ document.addEventListener('keydown',e=>{
   if(key==='enter')place();if(key==='r')rotate();return;
  }
  if(key==='n'){e.preventDefault();openBook();}
+ else if(key==='delete'||key==='backspace'){e.preventDefault();removeSelected();}
  else if(key==='e'){e.preventDefault();use();}
  else if(key==='f'){void document.documentElement.requestFullscreen?.();}
  else if(key==='z'&&(e.ctrlKey||e.metaKey)){e.preventDefault();undo();}
  else if(['w','a','s','d','arrowleft','arrowright','arrowup','arrowdown',' '].includes(key)){
   e.preventDefault();if(!$('#inspect').hidden)hideInspector();$<HTMLDetailsElement>('#help-details').open=false;$('#teaching').hidden=true;
-  route=[];activeTravel=false;travelAfterApproach=false;world.clearDestination();keys.add(key);
+  route=[];activeTravel=false;completionArmed=false;travelAfterApproach=false;world.clearDestination();keys.add(key);
  }
 });
 document.addEventListener('keyup',e=>keys.delete(physicalKeys[e.code]??e.key.toLowerCase()));
@@ -356,13 +381,9 @@ document.addEventListener('visibilitychange',()=>{stopMotion();audio.pause(docum
 
 function simulate(dt:number){
  clock+=dt;motionDt+=dt;
- const state=updateOutcome();const blocked=isBlocked();moving=false;blockedAtEdge=false;
+ const state=updateOutcome();const blocked=isBlocked();const wasAtGoal=Math.hypot(player.x-6.7,player.z-.5)<.85;moving=false;blockedAtEdge=false;
  if(!blocked&&!pending){
-  if(ferry>0&&!state.ready){ferry=0;onVessel=false;player.jump=0;world.resetVoyage();}
-  if(level.gap>0&&ferry===0&&Math.abs(player.x)<level.gap/2&&!(state.traversable&&supportsPoint(level,items,player.x,player.z))){
-   const from={x:player.x,z:player.z};stopMotion();player.x=(player.x>0?1:-1)*(level.gap/2+.6);player.z=0;player.jump=0;jumpT=0;
-   world.burst(from.x,-.2,from.z,0x9bdfd7,16);audio.cue('splash');feedback('הדרך נעלמה — חזרתם לגדה. אפשר לשנות את הרעיון ולנסות שוב.');event('support-lost-recovery',{from,to:{x:player.x,z:player.z}});
-  }
+  recoverUnsupported();
   if(ferry>0){
    const before=ferry;ferry=Math.max(0,ferry-dt);const elapsed=3-ferry,left=-level.gap/2+.35,right=level.gap/2-.35;onVessel=elapsed>=.3&&elapsed<=2.7;vesselX=left+(right-left)*Math.max(0,Math.min(1,(elapsed-.3)/2.4));player.x=elapsed<.3?ferryOriginX+(left-ferryOriginX)*(elapsed/.3):elapsed>2.7?right+(level.gap/2+.65-right)*((elapsed-2.7)/.3):vesselX;player.jump=elapsed<.3?carrierDeckY*elapsed/.3:elapsed>2.7?carrierDeckY*(1-(elapsed-2.7)/.3):carrierDeckY;player.z=0;player.vx=player.vz=0;player.facing=Math.PI/2;
    if(before>0&&ferry===0){onVessel=false;player.jump=0;route=[{x:6.7,z:.5}];world.markDestination(route[0]);} // stand still aboard; walk after disembarking
@@ -389,13 +410,15 @@ function simulate(dt:number){
     if(jumpT>0){jumpT=Math.max(0,jumpT-dt);player.jump=Math.sin((.65-jumpT)/.65*Math.PI)*.65;}else player.jump=0;
    }
   }
-  if(state.ready&&Math.hypot(player.x-6.7,player.z-.5)<.85)win();
+  const atGoal=Math.hypot(player.x-6.7,player.z-.5)<.85;
+  if(atGoal&&!wasAtGoal&&!state.ready)feedback('כאן מסיימים אחרי שפותרים את המשימה. '+state.reason,'try',8);
+  if(state.ready&&atGoal&&(completionArmed||!wasAtGoal))win();
  }
  if(blocked||pending){player.vx=player.vz=0;moving=false;}
  if(!$('#feedback').hidden&&clock>feedbackUntil)$('#feedback').hidden=true;
  updateFlow();
 }
-function draw(){const dt=motionDt;motionDt=0;const state=evaluatePlacement(level,items);world.setExtras({...state.extras,absorbed:state.absorbed});world.setNavigating(activeTravel||ferry>0,pending?zoneIndex:undefined);world.sailProgress(ferry>0?vesselX:undefined,lastReady);world.render(dt,player,moving,lastReady,isBlocked()&&!won,ferry>0);}
+function draw(){const dt=motionDt;motionDt=0;const state=evaluatePlacement(level,items);world.setSelected(won?'':selected);world.setExtras({...state.extras,absorbed:state.absorbed});world.setNavigating(activeTravel||ferry>0,pending?zoneIndex:undefined);world.sailProgress(ferry>0?vesselX:undefined,lastReady);world.render(dt,player,moving,lastReady,isBlocked()&&!won,ferry>0);}
 let last=performance.now();
 function frame(now:number){const dt=Math.min(.25,(now-last)/1000);last=now;const steps=Math.max(1,Math.ceil(dt/(1/60)));for(let i=0;i<steps;i++)simulate(dt/steps);draw();requestAnimationFrame(frame);}
 requestAnimationFrame(frame);
@@ -406,7 +429,7 @@ window.render_game_to_text=()=>JSON.stringify({
  level:level.id,campaign:{number:level.number,total:levels.length,chapter:level.chapter,unlockedThrough:unlockedThrough(levels,progress),currentId:progress.currentId,finished:campaignFinished(levels,progress),mapOpen:campaignMapOpen},stage:level.stage,layoutVariant,objective:level.mission,nextAction:nextAction(level,items,selected),player,
  motion:{moving,blockedAtEdge,carried:ferry>0,onVessel,vesselX,transport:world.transport,route,activeTravel,clip:world.anim,facing:world.player.rotation.y,speed:Math.hypot(player.vx,player.vz)},
  world:evaluatePlacement(level,items),zones:level.zones,selected,
- items:items.map(o=>({id:o.id,phrase:o.spec.phrase,x:o.x,z:o.z,visualX:world.transport?.id===o.id?world.transport.x:o.x,visualZ:world.transport?.id===o.id?(o.spec.noun==='boat'||o.spec.noun==='balloon'?world.transport.z:-1.05):o.z,rot:o.rot,origin:o.origin,mass:o.spec.mass,length:o.spec.length,capacity:o.spec.capacity,float:o.spec.float,force:o.spec.force,width:o.spec.width,material:o.spec.material,light:o.spec.light,absorb:o.spec.absorb,rain:o.spec.rain,evidence:o.spec.evidence})),
+ items:items.map(o=>({id:o.id,screen:world.itemScreenBounds(o.id),phrase:o.spec.phrase,x:o.x,z:o.z,visualX:world.transport?.id===o.id?world.transport.x:o.x,visualZ:world.transport?.id===o.id?(o.spec.noun==='boat'||o.spec.noun==='balloon'?world.transport.z:-1.05):o.z,rot:o.rot,origin:o.origin,mass:o.spec.mass,length:o.spec.length,capacity:o.spec.capacity,float:o.spec.float,force:o.spec.force,width:o.spec.width,material:o.spec.material,light:o.spec.light,absorb:o.spec.absorb,rain:o.spec.rain,evidence:o.spec.evidence})),
  preview:pending?{phrase:pending.phrase,...placement,remaining:pendingCount,snapped:!freePlacement,zoneIndex}:null,
  learning:{attempts,hints,retries,rejectedPhrases,assisted,events:events.filter(e=>e.level===level.id).slice(-14)},
  completed:[...completions],audio:audio.getState(),models:{loaded:world.loaded,errors:world.errors},renderStats:{calls:world.renderer.info.render.calls,triangles:world.renderer.info.render.triangles,geometries:world.renderer.info.memory.geometries}

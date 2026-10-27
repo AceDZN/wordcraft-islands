@@ -10,14 +10,14 @@ const C={grass:0x90ad55,stone:0xccaa77,water:0x49bfca,wood:0xa46c38,cream:0xf3e4
 export class World {
  sharedGeometry=new WeakSet<THREE.BufferGeometry>();sharedMaterial=new WeakSet<THREE.Material>();sharedTexture=new WeakSet<THREE.Texture>();spill?:THREE.Mesh;
  scene=new THREE.Scene();camera:THREE.OrthographicCamera;renderer:THREE.WebGLRenderer;root=new THREE.Group();items=new THREE.Group();preview=new THREE.Group();player=new THREE.Group();bridge=new THREE.Group();star=new THREE.Group();water:THREE.Mesh;
- itemMeshes=new Map<string,THREE.Group>();models=new Map<string,THREE.Object3D>();clips:THREE.AnimationClip[]=[];mixer?:THREE.AnimationMixer;actions:Record<string,THREE.AnimationAction>={};anim='';loaded:string[]=[];errors:string[]=[];ray=new THREE.Raycaster();pointer=new THREE.Vector2();angle=.55;time=0;voyage=new THREE.Group();voyageSail?:THREE.Mesh;voyageDone=false;chestLid?:THREE.Mesh;caveGlow?:THREE.Mesh;rain=new THREE.Group();level?:Level;zoneMeshes:THREE.Object3D[]=[];locationLabels:THREE.Sprite[]=[];previewSpec?:Spec;bridgeShown?:boolean;transport?:{id:string;kind:string;x:number;z:number;deckY:number;active:boolean};destination=new THREE.Group();particles=new THREE.Group();goalIsReady=false;popTimes=new Map<string,number>();
+ itemMeshes=new Map<string,THREE.Group>();models=new Map<string,THREE.Object3D>();clips:THREE.AnimationClip[]=[];mixer?:THREE.AnimationMixer;actions:Record<string,THREE.AnimationAction>={};anim='';loaded:string[]=[];errors:string[]=[];ray=new THREE.Raycaster();pointer=new THREE.Vector2();angle=.55;time=0;voyage=new THREE.Group();voyageSail?:THREE.Mesh;voyageDone=false;chestLid?:THREE.Mesh;caveGlow?:THREE.Mesh;rain=new THREE.Group();level?:Level;zoneMeshes:THREE.Object3D[]=[];locationLabels:THREE.Sprite[]=[];previewSpec?:Spec;bridgeShown?:boolean;transport?:{id:string;kind:string;x:number;z:number;deckY:number;active:boolean};destination=new THREE.Group();selection=new THREE.Group();selectedId='';selectionLine?:THREE.Line;particles=new THREE.Group();goalIsReady=false;popTimes=new Map<string,number>();
  constructor(public canvas:HTMLCanvasElement){
  this.scene.background=new THREE.Color(0xc6e4dd);this.scene.fog=new THREE.Fog(0xc6e4dd,35,75);
  this.camera=new THREE.OrthographicCamera(-14,14,9,-9,.1,130);
  this.renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:false,preserveDrawingBuffer:true});this.renderer.setPixelRatio(Math.min(devicePixelRatio,1.25));this.renderer.shadowMap.enabled=true;this.renderer.shadowMap.type=THREE.PCFSoftShadowMap;this.renderer.outputColorSpace=THREE.SRGBColorSpace;this.renderer.toneMapping=THREE.ACESFilmicToneMapping;this.renderer.toneMappingExposure=1.0;
  this.scene.add(new THREE.HemisphereLight(0xf9f5d9,0x5f9c9b,1.8));const sun=new THREE.DirectionalLight(0xffe4b1,2.8);sun.position.set(-9,20,10);sun.castShadow=true;sun.shadow.mapSize.set(1024,1024);Object.assign(sun.shadow.camera,{left:-18,right:18,top:14,bottom:-14,near:.5,far:60});sun.shadow.normalBias=.03;this.scene.add(sun);
  this.water=new THREE.Mesh(new THREE.PlaneGeometry(180,180),new THREE.MeshStandardMaterial({color:C.water,roughness:.25,metalness:.2,transparent:true,opacity:.94}));this.water.rotation.x=-Math.PI/2;this.water.position.y=-1.05;this.water.receiveShadow=true;this.scene.add(this.water);const sea=this.water.material as THREE.MeshStandardMaterial;const c=document.createElement('canvas');c.width=c.height=128;const cx=c.getContext('2d')!,data=cx.createImageData(128,128);for(let y=0;y<128;y++)for(let x=0;x<128;x++){const i=(y*128+x)*4;data.data[i]=128+Math.sin(x*.4+y*.19)*24;data.data[i+1]=128+Math.cos(y*.35+x*.15)*24;data.data[i+2]=250;data.data[i+3]=255;}cx.putImageData(data,0,0);const normal=new THREE.CanvasTexture(c);normal.wrapS=normal.wrapT=THREE.RepeatWrapping;normal.repeat.set(36,36);sea.normalMap=normal;sea.normalScale=new THREE.Vector2(.22,.22);sea.color.set(0x31acb6);sea.roughness=.32;
- this.scene.add(this.root,this.items,this.preview,this.player,this.bridge,this.star,this.voyage,this.rain,this.destination,this.particles);this.resize();window.addEventListener('resize',()=>this.resize());
+ this.scene.add(this.root,this.items,this.preview,this.player,this.bridge,this.star,this.voyage,this.rain,this.destination,this.selection,this.particles);this.resize();window.addEventListener('resize',()=>this.resize());
  this.loadModels();
  }
  mat(color:number,roughness=.8){return new THREE.MeshStandardMaterial({color,roughness});}
@@ -36,7 +36,7 @@ export class World {
  }
  build(level:Level,variant=0){this.level=level;this.transport=undefined;this.voyage.visible=true;this.bridgeShown=undefined;this.goalIsReady=false;this.clearDestination();this.disposeGroup(this.particles);this.popTimes.clear();this.disposeGroup(this.voyage);this.voyageSail=undefined;this.voyageDone=false;this.disposeGroup(this.root);this.disposeGroup(this.rain);this.disposeGroup(this.bridge);this.disposeGroup(this.star);this.spill=undefined;this.zoneMeshes=[];this.locationLabels=[];const g=level.gap;const palette=CAMPAIGN_WORLD_PALETTES[(level.chapter??1)-1];(this.water.material as THREE.MeshStandardMaterial).color.set(palette.water);
  // Layered sandstone banks with clipped corners, cobbles, grasses and shoreline foam.
- for(const side of [-1,1]){const min=side<0?-9:g/2,max=side<0?-g/2:9;const len=max-min,mid=(min+max)/2;
+ for(const side of (g===0?[0]:[-1,1])){const min=side<=0?-9:g/2,max=side>=0?9:-g/2;const len=max-min,mid=(min+max)/2;
  this.island(min,max,8,2.6,palette.stone,-2.7);this.island(min+.07,max-.07,7.9,.22,variant?new THREE.Color(palette.grass).offsetHSL(0,0,.025).getHex():palette.grass,-.3);this.island(min+.18,max-.18,7.7,.17,0xd8bc84,-.47);
  for(let i=0;i<18;i++){const x=min+.3+((i*1.37)%(len-.6)),z=-3.7+(i*2.17)%7.4;const rock=this.mesh(new THREE.DodecahedronGeometry(.4+(i%3)*.09,0),i%2?0xb6986d:0xdac38e);rock.position.set(x,-1.3,z);rock.scale.set(1.3,2.4,1.2);}
  for(let i=0;i<30;i++){const x=min+.3+((i*1.2)%(len-.6)),z=(i%2?1:-1)*(2.4+(i*.29)%1.25);this.cylinder(.14,.18,.12,0xf5dc8d,x,.1,z,undefined,6);for(let j=0;j<3;j++){const blade=this.mesh(new THREE.ConeGeometry(.065,.5,3),0x6a9549);blade.position.set(x+j*.1,.24,z);blade.rotation.z=(j-1)*.3;}}
@@ -45,12 +45,11 @@ export class World {
  }
  for(const [x,z,r] of [[-13,-10,2.5],[10,-11,2],[15,7,1.8],[-14,8,1.4]]){const rock=this.mesh(new THREE.CylinderGeometry(r*.8,r,2.5,7),0xc5a773);rock.position.set(x,-1.5,z);const turf=this.mesh(new THREE.CylinderGeometry(r*.8,r*.82,.2,7),0x80a36a);turf.position.set(x,-.2,z);if(r>2)this.tree(x,z);}
  for(let i=0;i<24;i++){const x=-8.6+(i*2.7)%17,z=(i%2?-1:1)*(3.6+(i%3)*.12);const r=this.mesh(new THREE.DodecahedronGeometry(.25+(i%4)*.12,0),i%2?0xd3b27f:0xa88c63);r.position.set(x,-.25,z);r.scale.set(1.3,1,.9);}
- if(g===0)this.box(1,1.8,8,C.stone,0,-1.05,0);
- for(const x of [-g/2-.35,g/2+.35])for(const z of [-.8,.8]){this.cylinder(.12,.15,.8,C.wood,x,.3,z);this.cylinder(.16,.16,.1,0xe1c78b,x,.7,z);}
+ if(g>0)for(const x of [-g/2-.35,g/2+.35])for(const z of [-.8,.8]){this.cylinder(.12,.15,.8,C.wood,x,.3,z);this.cylinder(.16,.16,.1,0xe1c78b,x,.7,z);}
  for(const [x,z] of [[-8,2.8],[-7.9,-3],[7.8,3],[8,-2.8]]) this.tree(x,z);
  this.lighthouse(6.8,-2.3);for(const [x,z] of [[-4,2.7],[-3,-3.1],[4,2.7],[3.5,-2.5]]){for(let i=0;i<5;i++){const bush=this.mesh(new THREE.IcosahedronGeometry(.22,0),0x55874a);bush.position.set(x+Math.sin(i*4)*.3,.18,z+Math.cos(i*4)*.3);const flower=this.mesh(new THREE.SphereGeometry(.055,5,4),i%2?0xf2ce65:0xef997b);flower.position.set(bush.position.x,.4,bush.position.z);}}
  this.cylinder(.5,.65,.2,0xcda35d,6.7,.1,.5);const starGeo=new THREE.OctahedronGeometry(.42);this.star.add(new THREE.Mesh(starGeo,new THREE.MeshStandardMaterial({color:0xffd76a,emissive:0xa0670e,emissiveIntensity:.5,metalness:.3,roughness:.3})));this.star.position.set(6.7,1.15,.5);
- this.label('המגדלור',6.7,2.1,.6,.65);
+ this.label('מסיימים כאן',6.7,2.1,.6,.65);
  for(const zone of level.zones){const isWater=zone.x>-g/2&&zone.x<g/2;const ring=this.mesh(new THREE.TorusGeometry(.8,.06,8,48),0xf7d28b);ring.rotation.x=-Math.PI/2;ring.position.set(zone.x,isWater?-.7:.12,zone.z);this.zoneMeshes.push(ring);this.locationLabels.push(this.label(zone.label,zone.x,1.3,zone.z,.65));
  if(level.kind==='shelter'&&!['chest','cave'].includes(zone.id)){this.box(.9,.35,.8,0xa26b45,zone.x,.2,zone.z);this.box(.95,.04,.85,0xe9c997,zone.x,.4,zone.z);for(let i=0;i<4;i++)this.box(.14,.13,.16,0x72964a,zone.x-.3+i*.18,.5,zone.z);}
  if((level.kind==='weight'&&zone===level.zones[0]||zone.id==='wind')&&!isWater){this.cylinder(.9,1,.13,0xb89b59,zone.x,.1,zone.z);const text=level.kind==='weight'?`> ${level.reference??6}${level.goals?.maxMass!==undefined?` / ≤${level.goals.maxMass}`:''} kg`:`→ ${level.goals?.minForce??8}${level.goals?.maxForce!==undefined?`–${level.goals.maxForce}`:'+'} N`;this.label(text,zone.x,.35,zone.z+1,.55);}
@@ -111,7 +110,30 @@ export class World {
  refreshItems(){this.disposeGroup(this.items);this.itemMeshes.clear();for(const o of this.current){const m=this.prop(o.spec);m.position.set(o.x,0,o.z);m.rotation.y=o.rot;m.userData.itemId=o.id;m.traverse(n=>n.userData.itemId=o.id);this.items.add(m);this.itemMeshes.set(o.id,m);}}
  setPreview(spec?:Spec,x=0,z=0,rot=0){if(spec&&this.previewSpec===spec&&this.preview.children[0]){const mesh=this.preview.children[0];mesh.position.set(x,.12,z);mesh.rotation.y=rot;return;}this.disposeGroup(this.preview);this.previewSpec=spec;if(!spec)return;const m=this.prop(spec);m.traverse(o=>{if(o instanceof THREE.Mesh){const mats=(Array.isArray(o.material)?o.material:[o.material]).map(a=>{const b=a.clone();b.transparent=true;b.opacity=.5;b.depthWrite=false;return b;});o.material=mats.length===1?mats[0]:mats;}});m.position.set(x,.12,z);m.rotation.y=rot;this.preview.add(m);}
  groundPoint(clientX:number,clientY:number){const r=this.canvas.getBoundingClientRect();this.pointer.set(((clientX-r.left)/r.width)*2-1,-((clientY-r.top)/r.height)*2+1);this.ray.setFromCamera(this.pointer,this.camera);const p=new THREE.Vector3();this.ray.ray.intersectPlane(new THREE.Plane(new THREE.Vector3(0,1,0),0),p);return p;}
- pick(clientX:number,clientY:number){const r=this.canvas.getBoundingClientRect();this.pointer.set(((clientX-r.left)/r.width)*2-1,-((clientY-r.top)/r.height)*2+1);this.ray.setFromCamera(this.pointer,this.camera);return this.ray.intersectObjects(this.items.children,true).find(h=>h.object.userData.itemId)?.object.userData.itemId as string|undefined;}
+ screenPoint(point:THREE.Vector3){const rect=this.canvas.getBoundingClientRect(),p=point.clone().project(this.camera);return {x:rect.left+(p.x+1)*rect.width/2,y:rect.top+(1-p.y)*rect.height/2};}
+ itemScreenBounds(id:string){
+ const mesh=this.itemMeshes.get(id);if(!mesh)return undefined;mesh.updateWorldMatrix(true,true);const box=new THREE.Box3().setFromObject(mesh);const points=[];
+ for(const x of [box.min.x,box.max.x])for(const y of [box.min.y,box.max.y])for(const z of [box.min.z,box.max.z])points.push(this.screenPoint(new THREE.Vector3(x,y,z)));
+ const xs=points.map(p=>p.x),ys=points.map(p=>p.y);return {x:Math.min(...xs),y:Math.min(...ys),width:Math.max(...xs)-Math.min(...xs),height:Math.max(...ys)-Math.min(...ys)};
+ }
+ pick(clientX:number,clientY:number,tolerance=14){
+ const rect=this.canvas.getBoundingClientRect();this.pointer.set(((clientX-rect.left)/rect.width)*2-1,-((clientY-rect.top)/rect.height)*2+1);this.ray.setFromCamera(this.pointer,this.camera);
+ const direct=this.ray.intersectObjects(this.items.children,true).find(hit=>hit.object.userData.itemId)?.object.userData.itemId as string|undefined;if(direct)return direct;
+ // A ladder's empty rungs and a narrow rope are still part of its selectable footprint.
+ let nearest:{id:string;distance:number}|undefined;
+ for(const item of this.current){if(!item.spec.span)continue;const mesh=this.itemMeshes.get(item.id);if(!mesh)continue;mesh.updateWorldMatrix(true,true);
+  const project=(x:number,z:number)=>this.screenPoint(mesh.localToWorld(new THREE.Vector3(x,.2,z)));
+  const a=project(-item.spec.length/2,0),b=project(item.spec.length/2,0),center=project(0,0),edge=project(0,item.spec.width/2);
+  const dx=b.x-a.x,dy=b.y-a.y,t=Math.max(0,Math.min(1,((clientX-a.x)*dx+(clientY-a.y)*dy)/(dx*dx+dy*dy||1)));
+  const distance=Math.hypot(clientX-a.x-t*dx,clientY-a.y-t*dy),radius=Math.max(tolerance,Math.hypot(edge.x-center.x,edge.y-center.y)+6);
+  if(distance<=radius&&(!nearest||distance<nearest.distance))nearest={id:item.id,distance};
+ }
+ return nearest?.id;
+ }
+ setSelected(id:string){
+ this.selectedId=id;
+ if(!this.selectionLine){const geometry=new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(-.5,0,-.5),new THREE.Vector3(.5,0,-.5),new THREE.Vector3(.5,0,.5),new THREE.Vector3(-.5,0,.5),new THREE.Vector3(-.5,0,-.5)]);this.selectionLine=new THREE.Line(geometry,new THREE.LineBasicMaterial({color:0xffd879,depthTest:false,transparent:true,opacity:.9}));this.selectionLine.renderOrder=8;this.selection.add(this.selectionLine);}
+ }
  showBridge(show:boolean){if(this.bridgeShown===show)return;this.bridgeShown=show;this.disposeGroup(this.bridge);for(const mesh of this.zoneMeshes)if(this.level?.kind==='weight')mesh.position.y=show?.03:.12;if(!show||!this.level?.gap)return;const l=this.level.gap+1;this.box(l,.15,1.4,0xaa824f,0,.08,0,this.bridge);for(let x=-l/2;x<l/2;x+=.3)this.box(.02,.02,1.35,0x79582f,x,.17,0,this.bridge);}
  setExtras(state:{unlocked:boolean;illuminated:boolean;absorbed?:number}){if(this.chestLid)this.chestLid.rotation.x=state.unlocked?-.8:0;if(this.caveGlow)this.caveGlow.visible=state.illuminated;if(this.spill)this.spill.scale.setScalar(Math.max(.05,1-(state.absorbed??0)/Math.max(1,this.level?.goals?.minAbsorb??4)));}
  beginVoyage(item?:Item){
@@ -140,7 +162,7 @@ export class World {
  this.player.position.set(player.x,player.jump,player.z);
  const turn=Math.atan2(Math.sin(player.facing-this.player.rotation.y),Math.cos(player.facing-this.player.rotation.y));this.player.rotation.y+=turn*(1-Math.exp(-dt*18));
  this.animatePlayer(moving&&!carried,player.jump>.01&&!carried,Math.hypot(player.vx,player.vz));this.mixer?.update(paused?0:dt);
- this.star.rotation.y=this.time;this.star.position.y=1.2+Math.sin(this.time*2)*.15;this.star.scale.setScalar(ready?1.25+Math.sin(this.time*3)*.05:1);
+ this.star.visible=ready;this.star.rotation.y=this.time;this.star.position.y=1.2+Math.sin(this.time*2)*.15;this.star.scale.setScalar(ready?1.25+Math.sin(this.time*3)*.05:1);
  for(const object of this.current){const mesh=this.itemMeshes.get(object.id);if(!mesh)continue;
   const riding=this.transport?.id===object.id?this.transport:undefined;mesh.position.x=riding?riding.x:object.x;mesh.position.z=riding?(riding.kind==='boat'||riding.kind==='balloon'?riding.z:-1.05):object.z;
   const overWater=this.level&&(!!riding||Math.abs(object.x)<this.level.gap/2),supported=!!this.level&&supportsBothBanks(this.level,object),sinks=overWater&&!object.spec.float&&!supported;
@@ -148,6 +170,8 @@ export class World {
   const age=this.time-(this.popTimes.get(object.id)??-100);mesh.scale.setScalar(age<.35?.3+.7*(1-Math.pow(1-Math.min(1,age/.35),3)):1);
   const blades=mesh.getObjectByName('blades');if(blades&&object.spec.force&&!paused)blades.rotation.x+=dt*object.spec.force;
  }
+ const selected=this.current.find(item=>item.id===this.selectedId),selectedMesh=selected&&this.itemMeshes.get(selected.id);this.selection.visible=!!selectedMesh;
+ if(selected&&selectedMesh){this.selection.position.set(selectedMesh.position.x,selectedMesh.position.y+.08,selectedMesh.position.z);this.selection.rotation.y=selected.rot;this.selection.scale.set(selected.spec.length+.35,1,selected.spec.width+.35);}
  for(const p of [...this.particles.children]){const age=this.time-p.userData.born;if(age>1.2){this.particles.remove(p);(p as THREE.Mesh).geometry.dispose();((p as THREE.Mesh).material as THREE.Material).dispose();continue;}if(!paused){p.position.x+=p.userData.vx*dt;p.position.z+=p.userData.vz*dt;p.position.y+=p.userData.vy*dt;p.userData.vy-=dt*2.8;(p as THREE.Mesh).scale.setScalar(1-age/1.2);}}
  const wm=this.water.material as THREE.MeshStandardMaterial;if(wm.normalMap)wm.normalMap.offset.set(this.time*.008,this.time*.004);
  this.renderer.render(this.scene,this.camera);
