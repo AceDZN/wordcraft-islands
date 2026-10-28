@@ -7,6 +7,13 @@ import { catalog, parsePhrase, makeItem, evaluatePlacement, supportsPoint, suppo
 import { nextAction, screenDirection, walkingRoute, placementPoint, objectiveStatus, type Point } from './flow';
 import { audio } from './audio';
 import { prepareObjectEdit } from './editing';
+import { initHost,postToHost,parseLevelParam,WorkbookSession } from './host';
+
+initHost('wordcraft-islands');
+const requestedIndex=parseLevelParam(location.search,levels.length);
+const linkedAccess=new Set(requestedIndex===null?[]:[levels[requestedIndex].id]);
+const hostSession=new WorkbookSession(postToHost,levels.length);
+let hostReady=false,hostError=false,activeSeconds=0,audioRequested=false;
 
 declare global { interface Window { render_game_to_text:()=>string; advanceTime:(ms:number)=>void; } }
 const $ = <T extends HTMLElement=HTMLElement>(selector:string)=>document.querySelector<T>(selector)!;
@@ -34,7 +41,7 @@ const keys = new Set<string>();
 const player = { x:-3.7, z:0, jump:0, vx:0, vz:0, facing:Math.PI/2 };
 function readSaved(key:string):unknown{try{return JSON.parse(localStorage.getItem(key)??'null');}catch{return undefined;}}
 let progress=createProgress(levels,readSaved('wordcraft-campaign-v2'),readSaved('wordcraft-completed'));
-let index=levels.findIndex(l=>l.id===resumeLevel(levels,progress).id), level=levels[index], items:Item[]=[], selected='';
+let index=requestedIndex??levels.findIndex(l=>l.id===resumeLevel(levels,progress).id), level=levels[index], items:Item[]=[], selected='';
 let campaignMapOpen=false;
 function saveProgress(){try{localStorage.setItem('wordcraft-campaign-v2',JSON.stringify(progress));}catch{/* optional local persistence */}}
 let started=false, paused=false, book=false, edit=false, won=false, completionArmed=false;
@@ -66,13 +73,13 @@ function closeCampaign(){campaignMapOpen=false;$('#campaign-host').hidden=true;$
 function openCampaign(){
  if(!started)return;
  stopMotion();if(book)closeBook();hideInspector();campaignMapOpen=true;$('#campaign-host').hidden=false;audio.pause(true);
- mountCampaignMap($('#campaign-host'),{levels:levels.map(l=>({...l,chapter:chapters[l.chapter-1]})),completed:completions,currentId:progress.currentId,unlockedThrough:unlockedThrough(levels,progress),
-  onChoose:id=>{if(!canPlay(levels,progress,id))return;closeCampaign();loadLevel(levels.findIndex(l=>l.id===id));},onClose:closeCampaign});
+ mountCampaignMap($('#campaign-host'),{levels:levels.map(l=>({...l,chapter:chapters[l.chapter-1]})),completed:completions,currentId:level.id,unlockedThrough:unlockedThrough(levels,progress),availableIds:linkedAccess,
+  onChoose:id=>{if(!canPlay(levels,progress,id)&&!linkedAccess.has(id))return;closeCampaign();loadLevel(levels.findIndex(l=>l.id===id));},onClose:closeCampaign});
 }
 function showOverlay(id:string){if($('#overlay').hidden)overlayFocus=document.activeElement instanceof HTMLElement?document.activeElement:undefined;if(['settings','controls'].includes(id)&&!$('#overlay').hidden){const parent=[...document.querySelectorAll<HTMLElement>('#overlay > section')].find(el=>!el.hidden)?.id;if(parent&&parent!==id)overlayReturn=parent;}stopMotion();$('#overlay').hidden=false;for(const el of document.querySelectorAll<HTMLElement>('#overlay > section'))el.hidden=el.id!==id;if(id!=='complete')audio.pause(true);queueMicrotask(()=>{$<HTMLElement>(`#${id} button`)?.focus();});}
 function hideOverlay(){if(overlayReturn){const parent=overlayReturn;overlayReturn='';showOverlay(parent);return;}$('#overlay').hidden=true;for(const el of document.querySelectorAll<HTMLElement>('#overlay > section'))el.hidden=true;if(started&&!paused)audio.pause(false);if(overlayFocus?.isConnected&&!overlayFocus.closest('[hidden]'))overlayFocus.focus();else $('#world').focus();}
 function loadLevel(i:number){
- if(!levels[i]||!canPlay(levels,progress,levels[i].id))return;
+ if(!levels[i]||!canPlay(levels,progress,levels[i].id)&&!linkedAccess.has(levels[i].id))return;
  index=i;level={...levels[i],zones:[...levels[i].zones]};
  if(level.goals?.unlock&&!level.zones.some(z=>z.id==='chest'))level.zones.push({id:'chest',x:4.5,z:2.6,label:'Treasure lock'});
  if(level.goals?.illuminate&&!level.zones.some(z=>z.id==='cave'))level.zones.push({id:'cave',x:7,z:2.5,label:'Dark marker'});
@@ -82,6 +89,7 @@ function loadLevel(i:number){
  selected='';pending=undefined;pendingCount=0;history=[];won=false;completionArmed=false;paused=false;book=false;edit=false;overlayReturn='';
  assisted=false;attempts=0;hints=0;retries=0;rejectedPhrases=0;ferry=0;onVessel=false;jumpT=0;zoneIndex=0;lastReady=false;uiSignature='';
  stopMotion();player.x=-Math.max(3.7,level.gap/2+1.2);player.z=0;player.jump=0;player.facing=Math.PI/2;
+ activeSeconds=0;if(started){hostSession.restart();hostSession.startLevel(level.number);}
  world.build(level,layoutVariant);world.setItems(items);world.setPreview();world.showBridge(false);audio.setSolved(false);audio.stopVoice();
  $('#title').textContent=level.title;$('#mission').textContent=level.mission;$('#mission-he').textContent=level.he;
  for(const text of document.querySelectorAll('.task-reference p'))text.textContent=level.mission;
@@ -286,7 +294,8 @@ function use(){
 }
 function startFerry(){ferry=3;ferryOriginX=player.x;vesselX=-level.gap/2+.35;player.jump=0;player.z=0;player.vx=player.vz=0;route=[];travelAfterApproach=false;audio.cue('splash');feedback('צפים אל הגדה השנייה.','good');event('board-ferry',{});}
 function win(){
- if(won)return;won=true;stopMotion();world.celebrate();progress=completeLevel(levels,progress,level.id);completions=new Set(progress.completedIds);saveProgress();
+ if(won)return;won=true;stopMotion();world.celebrate();progress=completeLevel(levels,progress,level.id,linkedAccess.has(level.id)?level.id:undefined);completions=new Set(progress.completedIds);saveProgress();
+ hostSession.completeLevel(level.number,activeSeconds*1000);if(linkedAccess.has(level.id)&&levels[index+1])linkedAccess.add(levels[index+1].id);
  audio.cue('success');
  const contributors=evaluatePlacement(level,items).contributors;
  const relevant=items.filter(o=>contributors.includes(o.id)&&(o.id.startsWith('created')||events.some(e=>e.level===level.id&&e.type==='modify-place'&&(e.detail as {id:string}).id===o.id)));
@@ -309,7 +318,10 @@ function win(){
 $('#words').innerHTML=catalog.map(c=>`<div class="dictionary-entry"><span class="word-icon">${nounIcon[c.noun]}</span><strong dir="ltr">${c.noun}</strong><span>${c.he}</span><small dir="ltr">${c.use}</small></div>`).join('');
 function assistanceDetails(selector:string,type:string){const details=$<HTMLDetailsElement>(selector);let captured=false;const record=()=>{assisted=true;event(type,{});if(type==='translation-help')stopMotion();};details.querySelector('summary')!.addEventListener('click',()=>{if(!details.open){captured=true;record();}});details.addEventListener('toggle',()=>{if(details.open&&!captured)record();captured=false;});}
 assistanceDetails('#help-details','translation-help');assistanceDetails('#dictionary','dictionary-help');
-$('#start').onclick=()=>{if(started)return;started=true;void audio.start().then(()=>audio.pause(paused||modalOpen()));hideOverlay();loadLevel(index);};
+function unlockAudio(){if(audioRequested)return;audioRequested=true;void audio.start().then(()=>audio.pause(paused||campaignMapOpen||!$('#overlay').hidden&&!won));}
+function start(gesture=true){if(started)return;started=true;if(gesture)unlockAudio();hideOverlay();loadLevel(index);}
+$('#start').onclick=()=>start();
+for(const type of ['pointerdown','keydown'])document.addEventListener(type,()=>{if(started)unlockAudio();},{capture:true});
 $('#book-btn').onclick=()=>book?closeBook():openBook();$('#close-book').onclick=closeBook;
 $('#create-form').onsubmit=e=>{e.preventDefault();create();};
 $('#levels-btn').onclick=openCampaign;$('#pause-map').onclick=openCampaign;
@@ -326,7 +338,7 @@ $('#rotate').onclick=rotate;$('#free-place').onclick=()=>{if(freePlacement)setTa
 $('#undo-btn').onclick=undo;$('#use-btn').onclick=use;
 function pauseGame(){if(!started||won)return;paused=true;showOverlay('pause');event('pause',{});}function resume(){paused=false;overlayReturn='';hideOverlay();event('resume',{});updateFlow();}
 $('#pause-btn').onclick=pauseGame;$('#resume').onclick=resume;$('#pause-close').onclick=resume;
-$('#restart').onclick=()=>{event('restart',{});loadLevel(index);};$('#next').onclick=()=>{if(campaignFinished(levels,progress)){openCampaign();return;}const next=levels[index+1];loadLevel(next&&canPlay(levels,progress,next.id)?index+1:levels.findIndex(l=>l.id===progress.currentId));};$('#replay').onclick=()=>loadLevel(index);
+$('#restart').onclick=()=>{event('restart',{});loadLevel(index);};$('#next').onclick=()=>{if(campaignFinished(levels,progress)){openCampaign();return;}const next=levels[index+1];loadLevel(next&&(canPlay(levels,progress,next.id)||linkedAccess.has(next.id))?index+1:levels.findIndex(l=>l.id===progress.currentId));};$('#replay').onclick=()=>loadLevel(index);
 $('#settings-btn').onclick=()=>{if(started)showOverlay('settings');};$('#settings-close').onclick=hideOverlay;
 $('#controls-btn').onclick=()=>{if(started)showOverlay('controls');};$('#controls-close').onclick=hideOverlay;
 $('#jump-btn').onclick=()=>{hideOverlay();keys.add(' ');$('#world').focus();};
@@ -398,6 +410,7 @@ document.addEventListener('visibilitychange',()=>{stopMotion();audio.pause(docum
 function simulate(dt:number){
  clock+=dt;motionDt+=dt;
  const state=updateOutcome();const blocked=isBlocked();const wasAtGoal=Math.hypot(player.x-6.7,player.z-.5)<.85;moving=false;blockedAtEdge=false;
+ if(!blocked&&!pending&&document.hasFocus())activeSeconds+=dt;
  if(!blocked&&!pending){
   recoverUnsupported();
   if(ferry>0){
@@ -434,7 +447,7 @@ function simulate(dt:number){
  if(!$('#feedback').hidden&&clock>feedbackUntil)$('#feedback').hidden=true;
  updateFlow();
 }
-function draw(){const dt=motionDt;motionDt=0;const state=evaluatePlacement(level,items);world.setSelected(won?'':selected);world.setExtras({...state.extras,absorbed:state.absorbed});world.setNavigating(activeTravel||ferry>0,pending?zoneIndex:undefined);world.sailProgress(ferry>0?vesselX:undefined,lastReady);world.render(dt,player,moving,lastReady,isBlocked()&&!won,ferry>0);}
+function draw(){const dt=motionDt;motionDt=0;const state=evaluatePlacement(level,items);world.setSelected(won?'':selected);world.setExtras({...state.extras,absorbed:state.absorbed});world.setNavigating(activeTravel||ferry>0,pending?zoneIndex:undefined);world.sailProgress(ferry>0?vesselX:undefined,lastReady);world.render(dt,player,moving,lastReady,isBlocked()&&!won,ferry>0);if(!hostReady&&world.loaded.length===5&&!world.errors.length){hostReady=true;hostSession.markReady();}if(!hostError&&world.errors.length){hostError=true;postToHost({type:'error',message:'Wordcraft Islands could not load its models. Reload the game to try again.'});}}
 let last=performance.now();
 function frame(now:number){const dt=Math.min(.25,(now-last)/1000);last=now;const steps=Math.max(1,Math.ceil(dt/(1/60)));for(let i=0;i<steps;i++)simulate(dt/steps);draw();requestAnimationFrame(frame);}
 requestAnimationFrame(frame);
@@ -442,7 +455,7 @@ window.advanceTime=(ms:number)=>{const steps=Math.max(1,Math.round(ms/16.667));f
 window.render_game_to_text=()=>JSON.stringify({
  mode:campaignMapOpen?'map':!started?'welcome':won?'complete':paused?'paused':book?'notebook':pending?'placement':!$('#inspect').hidden?'inspect':'explore',
  coordinateSystem:'x east, z south, y up; keyboard directions relative to camera screen. Click ground to walk.',
- level:level.id,campaign:{number:level.number,total:levels.length,chapter:level.chapter,unlockedThrough:unlockedThrough(levels,progress),currentId:progress.currentId,finished:campaignFinished(levels,progress),mapOpen:campaignMapOpen},stage:level.stage,layoutVariant,objective:level.mission,nextAction:nextAction(level,items,selected),player,
+ level:level.id,workbook:{ready:hostReady,requestedLevel:requestedIndex===null?null:requestedIndex+1,activeSeconds},campaign:{number:level.number,total:levels.length,chapter:level.chapter,unlockedThrough:unlockedThrough(levels,progress),currentId:progress.currentId,finished:campaignFinished(levels,progress),mapOpen:campaignMapOpen},stage:level.stage,layoutVariant,objective:level.mission,nextAction:nextAction(level,items,selected),player,
  motion:{moving,blockedAtEdge,carried:ferry>0,onVessel,vesselX,transport:world.transport,route,activeTravel,clip:world.anim,facing:world.player.rotation.y,speed:Math.hypot(player.vx,player.vz)},
  world:evaluatePlacement(level,items),zones:level.zones,selected,
  items:items.map(o=>({id:o.id,screen:world.itemScreenBounds(o.id),phrase:o.spec.phrase,x:o.x,z:o.z,visualX:world.transport?.id===o.id?world.transport.x:o.x,visualZ:world.transport?.id===o.id?(o.spec.noun==='boat'||o.spec.noun==='balloon'?world.transport.z:-1.05):o.z,rot:o.rot,origin:o.origin,mass:o.spec.mass,length:o.spec.length,capacity:o.spec.capacity,float:o.spec.float,force:o.spec.force,width:o.spec.width,material:o.spec.material,light:o.spec.light,absorb:o.spec.absorb,rain:o.spec.rain,evidence:o.spec.evidence})),
@@ -450,4 +463,4 @@ window.render_game_to_text=()=>JSON.stringify({
  learning:{attempts,hints,retries,rejectedPhrases,assisted,events:events.filter(e=>e.level===level.id).slice(-14)},
  completed:[...completions],audio:audio.getState(),models:{loaded:world.loaded,errors:world.errors},renderStats:{calls:world.renderer.info.render.calls,triangles:world.renderer.info.render.triangles,geometries:world.renderer.info.memory.geometries}
 });
-loadLevel(index);$('#start').textContent=progress.completedIds.length||index>0?`ממשיכים לאי ${level.number} →`:'מתחילים באי 1 →';showOverlay('welcome');
+loadLevel(index);$('#start').textContent=progress.completedIds.length||index>0?`ממשיכים לאי ${level.number} →`:'מתחילים באי 1 →';if(requestedIndex!==null)start(false);else showOverlay('welcome');

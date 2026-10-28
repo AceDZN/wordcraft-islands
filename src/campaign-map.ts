@@ -11,6 +11,8 @@ export type CampaignMapOptions = {
   completed: Set<string>;
   currentId: string;
   unlockedThrough: number;
+  /** Explicit lesson entry/earned continuation; never unlocks the preceding prefix. */
+  availableIds?: ReadonlySet<string>;
   onChoose: (id: string) => void;
   onClose: () => void;
 };
@@ -44,7 +46,7 @@ export function mountCampaignMap(container: HTMLElement, options: CampaignMapOpt
   const levels = [...options.levels].sort((a, b) => a.number - b.number);
   const previousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : undefined;
   const token = `campaign-map-${++mapSequence}`;
-  const canChoose = (level: CampaignMapLevel) => level.number <= options.unlockedThrough || options.completed.has(level.id);
+  const canChoose = (level: CampaignMapLevel) => level.number <= options.unlockedThrough || options.completed.has(level.id) || !!options.availableIds?.has(level.id);
   const current = levels.find(level => level.id === options.currentId && canChoose(level));
   const available = levels.filter(canChoose);
   const resume = current ?? available.at(-1);
@@ -88,7 +90,7 @@ export function mountCampaignMap(container: HTMLElement, options: CampaignMapOpt
     chapterHeading.append(chapterNumber, chapterName, chapterProgress);
     const grid = element('div', 'campaign-map__grid'); grid.setAttribute('role', 'group'); grid.setAttribute('aria-labelledby', chapterName.id);
     for (const level of chapterLevels) {
-      const complete = options.completed.has(level.id), locked = level.number > options.unlockedThrough && !complete, isCurrent = level.id === options.currentId;
+      const complete = options.completed.has(level.id), locked = !canChoose(level), isCurrent = level.id === options.currentId;
       const state = locked ? 'locked' : isCurrent ? 'current' : complete ? 'completed' : 'available';
       const node = element('button', 'campaign-map__node'); node.type = 'button'; node.disabled = locked; node.tabIndex = -1;
       node.dataset.state = state; node.dataset.number = String(level.number); node.dataset.levelId = level.id;

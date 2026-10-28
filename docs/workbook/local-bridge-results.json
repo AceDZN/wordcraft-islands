@@ -1,0 +1,1062 @@
+{
+  "released": false,
+  "rows": [
+    {
+      "number": 1,
+      "completed": 0,
+      "frontier": 1,
+      "models": 5,
+      "events": [
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "ready"
+        },
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "level-start",
+          "level": 1
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "completed": 0,
+      "frontier": 1,
+      "models": 5,
+      "events": [
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "ready"
+        },
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "level-start",
+          "level": 2
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "completed": 0,
+      "frontier": 1,
+      "models": 5,
+      "events": [
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "ready"
+        },
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "level-start",
+          "level": 3
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "completed": 0,
+      "frontier": 1,
+      "models": 5,
+      "events": [
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "ready"
+        },
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "level-start",
+          "level": 4
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "completed": 0,
+      "frontier": 1,
+      "models": 5,
+      "events": [
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "ready"
+        },
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "level-start",
+          "level": 5
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "completed": 0,
+      "frontier": 1,
+      "models": 5,
+      "events": [
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "ready"
+        },
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "level-start",
+          "level": 6
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "completed": 0,
+      "frontier": 1,
+      "models": 5,
+      "events": [
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "ready"
+        },
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "level-start",
+          "level": 7
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "completed": 0,
+      "frontier": 1,
+      "models": 5,
+      "events": [
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "ready"
+        },
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "level-start",
+          "level": 8
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "completed": 0,
+      "frontier": 1,
+      "models": 5,
+      "events": [
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "ready"
+        },
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "level-start",
+          "level": 9
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "completed": 0,
+      "frontier": 1,
+      "models": 5,
+      "events": [
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "ready"
+        },
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "level-start",
+          "level": 10
+        }
+      ]
+    },
+    {
+      "number": 11,
+      "completed": 0,
+      "frontier": 1,
+      "models": 5,
+      "events": [
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "ready"
+        },
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "level-start",
+          "level": 11
+        }
+      ]
+    },
+    {
+      "number": 12,
+      "completed": 0,
+      "frontier": 1,
+      "models": 5,
+      "events": [
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "ready"
+        },
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "level-start",
+          "level": 12
+        }
+      ]
+    },
+    {
+      "number": 13,
+      "completed": 0,
+      "frontier": 1,
+      "models": 5,
+      "events": [
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "ready"
+        },
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "level-start",
+          "level": 13
+        }
+      ]
+    },
+    {
+      "number": 14,
+      "completed": 0,
+      "frontier": 1,
+      "models": 5,
+      "events": [
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "ready"
+        },
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "level-start",
+          "level": 14
+        }
+      ]
+    },
+    {
+      "number": 15,
+      "completed": 0,
+      "frontier": 1,
+      "models": 5,
+      "events": [
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "ready"
+        },
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "level-start",
+          "level": 15
+        }
+      ]
+    },
+    {
+      "number": 16,
+      "completed": 0,
+      "frontier": 1,
+      "models": 5,
+      "events": [
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "ready"
+        },
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "level-start",
+          "level": 16
+        }
+      ]
+    },
+    {
+      "number": 17,
+      "completed": 0,
+      "frontier": 1,
+      "models": 5,
+      "events": [
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "ready"
+        },
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "level-start",
+          "level": 17
+        }
+      ]
+    },
+    {
+      "number": 18,
+      "completed": 0,
+      "frontier": 1,
+      "models": 5,
+      "events": [
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "ready"
+        },
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "level-start",
+          "level": 18
+        }
+      ]
+    },
+    {
+      "number": 19,
+      "completed": 0,
+      "frontier": 1,
+      "models": 5,
+      "events": [
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "ready"
+        },
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "level-start",
+          "level": 19
+        }
+      ]
+    },
+    {
+      "number": 20,
+      "completed": 0,
+      "frontier": 1,
+      "models": 5,
+      "events": [
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "ready"
+        },
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "level-start",
+          "level": 20
+        }
+      ]
+    },
+    {
+      "number": 21,
+      "completed": 0,
+      "frontier": 1,
+      "models": 5,
+      "events": [
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "ready"
+        },
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "level-start",
+          "level": 21
+        }
+      ]
+    },
+    {
+      "number": 22,
+      "completed": 0,
+      "frontier": 1,
+      "models": 5,
+      "events": [
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "ready"
+        },
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "level-start",
+          "level": 22
+        }
+      ]
+    },
+    {
+      "number": 23,
+      "completed": 0,
+      "frontier": 1,
+      "models": 5,
+      "events": [
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "ready"
+        },
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "level-start",
+          "level": 23
+        }
+      ]
+    },
+    {
+      "number": 24,
+      "completed": 0,
+      "frontier": 1,
+      "models": 5,
+      "events": [
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "ready"
+        },
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "level-start",
+          "level": 24
+        }
+      ]
+    },
+    {
+      "number": 25,
+      "completed": 0,
+      "frontier": 1,
+      "models": 5,
+      "events": [
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "ready"
+        },
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "level-start",
+          "level": 25
+        }
+      ]
+    },
+    {
+      "number": 26,
+      "completed": 0,
+      "frontier": 1,
+      "models": 5,
+      "events": [
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "ready"
+        },
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "level-start",
+          "level": 26
+        }
+      ]
+    },
+    {
+      "number": 27,
+      "completed": 0,
+      "frontier": 1,
+      "models": 5,
+      "events": [
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "ready"
+        },
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "level-start",
+          "level": 27
+        }
+      ]
+    },
+    {
+      "number": 28,
+      "completed": 0,
+      "frontier": 1,
+      "models": 5,
+      "events": [
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "ready"
+        },
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "level-start",
+          "level": 28
+        }
+      ]
+    },
+    {
+      "number": 29,
+      "completed": 0,
+      "frontier": 1,
+      "models": 5,
+      "events": [
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "ready"
+        },
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "level-start",
+          "level": 29
+        }
+      ]
+    },
+    {
+      "number": 30,
+      "completed": 0,
+      "frontier": 1,
+      "models": 5,
+      "events": [
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "ready"
+        },
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "level-start",
+          "level": 30
+        }
+      ]
+    },
+    {
+      "number": 31,
+      "completed": 0,
+      "frontier": 1,
+      "models": 5,
+      "events": [
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "ready"
+        },
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "level-start",
+          "level": 31
+        }
+      ]
+    },
+    {
+      "number": 32,
+      "completed": 0,
+      "frontier": 1,
+      "models": 5,
+      "events": [
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "ready"
+        },
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "level-start",
+          "level": 32
+        }
+      ]
+    },
+    {
+      "number": 33,
+      "completed": 0,
+      "frontier": 1,
+      "models": 5,
+      "events": [
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "ready"
+        },
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "level-start",
+          "level": 33
+        }
+      ]
+    },
+    {
+      "number": 34,
+      "completed": 0,
+      "frontier": 1,
+      "models": 5,
+      "events": [
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "ready"
+        },
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "level-start",
+          "level": 34
+        }
+      ]
+    },
+    {
+      "number": 35,
+      "completed": 0,
+      "frontier": 1,
+      "models": 5,
+      "events": [
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "ready"
+        },
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "level-start",
+          "level": 35
+        }
+      ]
+    },
+    {
+      "number": 36,
+      "completed": 0,
+      "frontier": 1,
+      "models": 5,
+      "events": [
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "ready"
+        },
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "level-start",
+          "level": 36
+        }
+      ]
+    },
+    {
+      "number": 37,
+      "completed": 0,
+      "frontier": 1,
+      "models": 5,
+      "events": [
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "ready"
+        },
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "level-start",
+          "level": 37
+        }
+      ]
+    },
+    {
+      "number": 38,
+      "completed": 0,
+      "frontier": 1,
+      "models": 5,
+      "events": [
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "ready"
+        },
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "level-start",
+          "level": 38
+        }
+      ]
+    },
+    {
+      "number": 39,
+      "completed": 0,
+      "frontier": 1,
+      "models": 5,
+      "events": [
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "ready"
+        },
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "level-start",
+          "level": 39
+        }
+      ]
+    },
+    {
+      "number": 40,
+      "completed": 0,
+      "frontier": 1,
+      "models": 5,
+      "events": [
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "ready"
+        },
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "level-start",
+          "level": 40
+        }
+      ]
+    },
+    {
+      "number": 41,
+      "completed": 0,
+      "frontier": 1,
+      "models": 5,
+      "events": [
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "ready"
+        },
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "level-start",
+          "level": 41
+        }
+      ]
+    },
+    {
+      "number": 42,
+      "completed": 0,
+      "frontier": 1,
+      "models": 5,
+      "events": [
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "ready"
+        },
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "level-start",
+          "level": 42
+        }
+      ]
+    },
+    {
+      "number": 43,
+      "completed": 0,
+      "frontier": 1,
+      "models": 5,
+      "events": [
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "ready"
+        },
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "level-start",
+          "level": 43
+        }
+      ]
+    },
+    {
+      "number": 44,
+      "completed": 0,
+      "frontier": 1,
+      "models": 5,
+      "events": [
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "ready"
+        },
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "level-start",
+          "level": 44
+        }
+      ]
+    },
+    {
+      "number": 45,
+      "completed": 0,
+      "frontier": 1,
+      "models": 5,
+      "events": [
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "ready"
+        },
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "level-start",
+          "level": 45
+        }
+      ]
+    },
+    {
+      "number": 46,
+      "completed": 0,
+      "frontier": 1,
+      "models": 5,
+      "events": [
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "ready"
+        },
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "level-start",
+          "level": 46
+        }
+      ]
+    },
+    {
+      "number": 47,
+      "completed": 0,
+      "frontier": 1,
+      "models": 5,
+      "events": [
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "ready"
+        },
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "level-start",
+          "level": 47
+        }
+      ]
+    },
+    {
+      "number": 48,
+      "completed": 0,
+      "frontier": 1,
+      "models": 5,
+      "events": [
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "ready"
+        },
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "level-start",
+          "level": 48
+        }
+      ]
+    },
+    {
+      "number": 49,
+      "completed": 0,
+      "frontier": 1,
+      "models": 5,
+      "events": [
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "ready"
+        },
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "level-start",
+          "level": 49
+        }
+      ]
+    },
+    {
+      "number": 50,
+      "completed": 0,
+      "frontier": 1,
+      "models": 5,
+      "events": [
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "ready"
+        },
+        {
+          "source": "workbook-game",
+          "version": 1,
+          "slug": "wordcraft-islands",
+          "type": "level-start",
+          "level": 50
+        }
+      ]
+    }
+  ],
+  "checks": [
+    "actual wrong/replacement/Undo/real crossing; restart+Next event ordering without duplicate ready",
+    "saved-progress override, no invented predecessor wins, actual linked50 success and excluded editor time",
+    "ambiguous link preserves earned resume and does not invent a start"
+  ],
+  "errors": [],
+  "passed": true
+}

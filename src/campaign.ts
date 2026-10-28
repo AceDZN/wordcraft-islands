@@ -27,8 +27,9 @@ export function createProgress(levels:readonly Entry[],raw?:unknown,legacyIds?:u
 export function enterLevel(levels:readonly Entry[],progress:CampaignProgress,id:string):CampaignProgress {
  return canPlay(levels,progress,id)?{...progress,completedIds:[...progress.completedIds],currentId:id}:progress;
 }
-export function completeLevel(levels:readonly Entry[],progress:CampaignProgress,id:string):CampaignProgress {
- if(!canPlay(levels,progress,id))return progress;
+/** A validated lesson entry may earn that island without inventing earlier wins. */
+export function completeLevel(levels:readonly Entry[],progress:CampaignProgress,id:string,linkedId?:string):CampaignProgress {
+ if(!levels.some(level=>level.id===id)||!canPlay(levels,progress,id)&&linkedId!==id)return progress;
  const completed=new Set([...progress.completedIds,id]);
  const completedIds=levels.filter(level=>completed.has(level.id)).map(level=>level.id);
  const next=levels.find(level=>!completed.has(level.id))??levels.at(-1)!;
