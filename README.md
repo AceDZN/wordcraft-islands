@@ -25,6 +25,8 @@ Bare nouns are editor shorthand. Inferred articles/counts, dictionary/translatio
 
 ## Verification and evidence
 
+Latest: [fresh full-campaign recovery audit](docs/FULL_CAMPAIGN_PLAYTEST.md), with all50 UI wins, wrong/replacement/Undo on every island, all50 Move/Undo replays,98 passing pure tests and final touch/keyboard checks. Deleted story objects can be recovered from the current-action button. Task details remain available inside each editor.
+
 The reported wrong-ladder recovery is reviewed in [RECOVERY_QA.md](docs/RECOVERY_QA.md). `node tests/recovery-browser.mjs` exercises replacement/cancel/move/remove/Undo and native keyboard controls through earned levels1–13, with a simulated host composer. `node docs/recovery/layout-check.mjs` checks portrait touch and landscape controls, including switching from an editor to inventory.
 
 - `npm test`: pure semantic fixtures, alternatives and property predicates.

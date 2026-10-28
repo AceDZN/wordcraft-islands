@@ -43,7 +43,9 @@ test('referent tasks ask for inspection, then property revision without revealin
 
 test('two-condition transfer shows the remaining task after valid cargo',()=>{
  const l=level('g9-storm'),cargo=at(l,'a large wooden crate');
- assert.equal(nextAction(l,[cargo]).kind,'select');
+ const seeds=l.seeds!.map(s=>makeItem(s.phrase,s.id,s.x,s.z,s.origin));
+ assert.equal(nextAction(l,[cargo,...seeds]).kind,'select');
+ assert.equal(nextAction(l,[cargo]).kind,'recover');
  const fan=at(l,'a powerful fan','tree-fan',1);assert.equal(nextAction(l,[cargo,fan],fan.id).kind,'travel');
  assert.equal(nextAction(l,[fan],fan.id).kind,'create');
 });

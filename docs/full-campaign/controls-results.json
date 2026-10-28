@@ -1,0 +1,524 @@
+{
+  "moves": [
+    {
+      "number": 1,
+      "id": "created-1",
+      "wrongPoint": {
+        "x": 4.43312751470943,
+        "z": -2.7179735904394273
+      },
+      "action": "move",
+      "readyAfterUndo": true
+    },
+    {
+      "number": 2,
+      "id": "created-2",
+      "wrongPoint": {
+        "x": 5.43312751470943,
+        "z": -2.7179735904394273
+      },
+      "action": "move",
+      "readyAfterUndo": true
+    },
+    {
+      "number": 3,
+      "id": "created-4",
+      "wrongPoint": {
+        "x": 5.43312751470943,
+        "z": -1.0679735904394287
+      },
+      "action": "move",
+      "readyAfterUndo": true
+    },
+    {
+      "number": 4,
+      "id": "created-5",
+      "wrongPoint": {
+        "x": 4.43312751470943,
+        "z": -2.7179735904394273
+      },
+      "action": "move",
+      "readyAfterUndo": true
+    },
+    {
+      "number": 5,
+      "id": "created-8",
+      "wrongPoint": {
+        "x": 5.43312751470943,
+        "z": 0.08202640956057249
+      },
+      "action": "move",
+      "readyAfterUndo": true
+    },
+    {
+      "number": 6,
+      "id": "created-9",
+      "wrongPoint": {
+        "x": 4.43312751470943,
+        "z": -2.7179735904394273
+      },
+      "action": "move",
+      "readyAfterUndo": true
+    },
+    {
+      "number": 7,
+      "id": "created-10",
+      "wrongPoint": {
+        "x": 0.43312751470942956,
+        "z": -3.5
+      },
+      "action": "move",
+      "readyAfterUndo": true
+    },
+    {
+      "number": 8,
+      "id": "created-11",
+      "wrongPoint": {
+        "x": 4.43312751470943,
+        "z": -2.7179735904394273
+      },
+      "action": "move",
+      "readyAfterUndo": true
+    },
+    {
+      "number": 9,
+      "id": "created-12",
+      "wrongPoint": {
+        "x": 8.3,
+        "z": -0.11797359043942761
+      },
+      "action": "move",
+      "readyAfterUndo": true
+    },
+    {
+      "number": 10,
+      "id": "created-14",
+      "wrongPoint": {
+        "x": 4.43312751470943,
+        "z": -2.7179735904394273
+      },
+      "action": "move",
+      "readyAfterUndo": true
+    },
+    {
+      "number": 11,
+      "id": "created-15",
+      "wrongPoint": {
+        "x": 4.43312751470943,
+        "z": -2.7179735904394273
+      },
+      "action": "move",
+      "readyAfterUndo": true
+    },
+    {
+      "number": 12,
+      "id": "created-16",
+      "wrongPoint": {
+        "x": 5.43312751470943,
+        "z": -2.7179735904394273
+      },
+      "action": "move",
+      "readyAfterUndo": true
+    },
+    {
+      "number": 13,
+      "id": "dock-crate",
+      "wrongPoint": {
+        "x": 0.43312751470942956,
+        "z": -3.5
+      },
+      "action": "move",
+      "readyAfterUndo": true
+    },
+    {
+      "number": 14,
+      "id": "created-17",
+      "wrongPoint": {
+        "x": 0.43312751470942956,
+        "z": -3.5
+      },
+      "action": "move",
+      "readyAfterUndo": true
+    },
+    {
+      "number": 15,
+      "id": "created-18",
+      "wrongPoint": {
+        "x": 4.43312751470943,
+        "z": -2.7179735904394273
+      },
+      "action": "move",
+      "readyAfterUndo": true
+    },
+    {
+      "number": 16,
+      "id": "created-19",
+      "wrongPoint": {
+        "x": 4.43312751470943,
+        "z": -2.7179735904394273
+      },
+      "action": "move",
+      "readyAfterUndo": true
+    },
+    {
+      "number": 17,
+      "id": "created-20",
+      "wrongPoint": {
+        "x": 8.3,
+        "z": -0.21797359043942788
+      },
+      "action": "move",
+      "readyAfterUndo": true
+    },
+    {
+      "number": 18,
+      "id": "created-21",
+      "wrongPoint": {
+        "x": 4.43312751470943,
+        "z": -2.7179735904394273
+      },
+      "action": "move",
+      "readyAfterUndo": true
+    },
+    {
+      "number": 19,
+      "id": "created-22",
+      "wrongPoint": {
+        "x": 4.43312751470943,
+        "z": -2.7179735904394273
+      },
+      "action": "move",
+      "readyAfterUndo": true
+    },
+    {
+      "number": 20,
+      "id": "created-25",
+      "wrongPoint": {
+        "x": 8.3,
+        "z": -0.21797359043942788
+      },
+      "action": "move",
+      "readyAfterUndo": true
+    },
+    {
+      "number": 21,
+      "id": "created-26",
+      "wrongPoint": {
+        "x": 0.43312751470942956,
+        "z": -3.5
+      },
+      "action": "move",
+      "readyAfterUndo": true
+    },
+    {
+      "number": 22,
+      "id": "created-28",
+      "wrongPoint": {
+        "x": -0.7668724852905706,
+        "z": -3.5
+      },
+      "action": "move",
+      "readyAfterUndo": true
+    },
+    {
+      "number": 23,
+      "id": "created-29",
+      "wrongPoint": {
+        "x": 4.43312751470943,
+        "z": -2.7179735904394273
+      },
+      "action": "move",
+      "readyAfterUndo": true
+    },
+    {
+      "number": 24,
+      "id": "created-30",
+      "wrongPoint": {
+        "x": 4.43312751470943,
+        "z": -2.7179735904394273
+      },
+      "action": "move",
+      "readyAfterUndo": true
+    },
+    {
+      "number": 25,
+      "id": "created-31",
+      "wrongPoint": {
+        "x": 0.6331275147094297,
+        "z": -3.5
+      },
+      "action": "move",
+      "readyAfterUndo": true
+    },
+    {
+      "number": 26,
+      "id": "gardener-load",
+      "wrongPoint": {
+        "x": 0.43312751470942956,
+        "z": -3.5
+      },
+      "action": "move",
+      "readyAfterUndo": true
+    },
+    {
+      "number": 27,
+      "id": "medicine",
+      "wrongPoint": {
+        "x": 0.43312751470942956,
+        "z": -3.5
+      },
+      "action": "move",
+      "readyAfterUndo": true
+    },
+    {
+      "number": 28,
+      "id": "created-32",
+      "wrongPoint": {
+        "x": 4.43312751470943,
+        "z": -2.7179735904394273
+      },
+      "action": "move",
+      "readyAfterUndo": true
+    },
+    {
+      "number": 29,
+      "id": "created-34",
+      "wrongPoint": {
+        "x": 0.6331275147094297,
+        "z": -2.967973590439427
+      },
+      "action": "move",
+      "readyAfterUndo": true
+    },
+    {
+      "number": 30,
+      "id": "created-37",
+      "wrongPoint": {
+        "x": 4.43312751470943,
+        "z": -2.317973590439428
+      },
+      "action": "move",
+      "readyAfterUndo": true
+    },
+    {
+      "number": 31,
+      "id": "created-38",
+      "wrongPoint": {
+        "x": 4.43312751470943,
+        "z": -2.7179735904394273
+      },
+      "action": "move",
+      "readyAfterUndo": true
+    },
+    {
+      "number": 32,
+      "id": "created-39",
+      "wrongPoint": {
+        "x": 4.43312751470943,
+        "z": -2.7179735904394273
+      },
+      "action": "move",
+      "readyAfterUndo": true
+    },
+    {
+      "number": 33,
+      "id": "created-40",
+      "wrongPoint": {
+        "x": 4.43312751470943,
+        "z": -2.7179735904394273
+      },
+      "action": "move",
+      "readyAfterUndo": true
+    },
+    {
+      "number": 34,
+      "id": "created-41",
+      "wrongPoint": {
+        "x": 4.43312751470943,
+        "z": -2.7179735904394273
+      },
+      "action": "move",
+      "readyAfterUndo": true
+    },
+    {
+      "number": 35,
+      "id": "created-42",
+      "wrongPoint": {
+        "x": 0.6331275147094297,
+        "z": -3.5
+      },
+      "action": "move",
+      "readyAfterUndo": true
+    },
+    {
+      "number": 36,
+      "id": "fan-a",
+      "wrongPoint": {
+        "x": 1.0331275147094297,
+        "z": -3.5
+      },
+      "action": "move",
+      "readyAfterUndo": true
+    },
+    {
+      "number": 37,
+      "id": "nest-fan",
+      "wrongPoint": {
+        "x": 0.6331275147094297,
+        "z": -3.5
+      },
+      "action": "move",
+      "readyAfterUndo": true
+    },
+    {
+      "number": 38,
+      "id": "created-45",
+      "wrongPoint": {
+        "x": 4.43312751470943,
+        "z": -1.6679735904394286
+      },
+      "action": "move",
+      "readyAfterUndo": true
+    },
+    {
+      "number": 39,
+      "id": "created-48",
+      "wrongPoint": {
+        "x": 8.3,
+        "z": -0.11797359043942761
+      },
+      "action": "move",
+      "readyAfterUndo": true
+    },
+    {
+      "number": 40,
+      "id": "clock-fan",
+      "wrongPoint": {
+        "x": 0.6331275147094297,
+        "z": -3.5
+      },
+      "action": "move",
+      "readyAfterUndo": true
+    },
+    {
+      "number": 41,
+      "id": "created-50",
+      "wrongPoint": {
+        "x": 4.43312751470943,
+        "z": -2.7179735904394273
+      },
+      "action": "move",
+      "readyAfterUndo": true
+    },
+    {
+      "number": 42,
+      "id": "borrowed-boat",
+      "wrongPoint": {
+        "x": 4.43312751470943,
+        "z": -2.7179735904394273
+      },
+      "action": "move",
+      "readyAfterUndo": true
+    },
+    {
+      "number": 43,
+      "id": "created-52",
+      "wrongPoint": {
+        "x": 0.6331275147094297,
+        "z": -2.967973590439427
+      },
+      "action": "move",
+      "readyAfterUndo": true
+    },
+    {
+      "number": 44,
+      "id": "created-53",
+      "wrongPoint": {
+        "x": 0.43312751470942956,
+        "z": -3.5
+      },
+      "action": "move",
+      "readyAfterUndo": true
+    },
+    {
+      "number": 45,
+      "id": "tree-fan",
+      "wrongPoint": {
+        "x": 0.6331275147094297,
+        "z": -3.5
+      },
+      "action": "move",
+      "readyAfterUndo": true
+    },
+    {
+      "number": 46,
+      "id": "created-57",
+      "wrongPoint": {
+        "x": 8.3,
+        "z": -0.21797359043942788
+      },
+      "action": "move",
+      "readyAfterUndo": true
+    },
+    {
+      "number": 47,
+      "id": "created-60",
+      "wrongPoint": {
+        "x": 0.6331275147094297,
+        "z": -2.967973590439427
+      },
+      "action": "move",
+      "readyAfterUndo": true
+    },
+    {
+      "number": 48,
+      "id": "rescue-rope",
+      "wrongPoint": {
+        "x": 4.43312751470943,
+        "z": -2.7179735904394273
+      },
+      "action": "move",
+      "readyAfterUndo": true
+    },
+    {
+      "number": 49,
+      "id": "created-63",
+      "wrongPoint": {
+        "x": 4.43312751470943,
+        "z": -2.7179735904394273
+      },
+      "action": "move",
+      "readyAfterUndo": true
+    },
+    {
+      "number": 50,
+      "id": "created-66",
+      "wrongPoint": {
+        "x": 8.3,
+        "z": -0.21797359043942788
+      },
+      "action": "move",
+      "readyAfterUndo": true
+    }
+  ],
+  "checks": [
+    "island23 wrong property rejected with visible reason and Undo recovery",
+    "island24 wrong property rejected with visible reason and Undo recovery",
+    "island25 wrong property rejected with visible reason and Undo recovery",
+    "island32 wrong property rejected with visible reason and Undo recovery",
+    "island41 wrong property rejected with visible reason and Undo recovery",
+    "island43 wrong property rejected with visible reason and Undo recovery",
+    "island44 wrong property rejected with visible reason and Undo recovery",
+    "island47 wrong property rejected with visible reason and Undo recovery",
+    "all50 misplaced correct objects offer Move, repair, Undo twice, resnap and bound clamp",
+    "remove support mid-walk explains shore recovery; Undo restores bridge",
+    "map Escape preserves placement; second Escape cancels it",
+    "typing shortcuts remain native and cannot move/delete objects/fullscreen",
+    "pause traps native Tab and Escape resumes with visible state",
+    "settings range, controls orbit and fullscreen round trips",
+    "actual focus return at completion resumes same3 loops without replaying success",
+    "portrait final task reference and touch move/cancel/remove/Undo; landscape controls remain reachable"
+  ],
+  "errors": [],
+  "passed": true
+}

@@ -3,7 +3,7 @@ import { World } from './world';
 import { levels, chapters } from './campaign-levels';
 import { createProgress, unlockedThrough, canPlay, enterLevel, completeLevel, resumeLevel, campaignFinished } from './campaign';
 import { mountCampaignMap } from './campaign-map';
-import { catalog, parsePhrase, makeItem, evaluatePlacement, supportsPoint, modeledPhrase, type Item, type Spec, type Evidence } from './rules';
+import { catalog, parsePhrase, makeItem, evaluatePlacement, supportsPoint, supportsBothBanks, modeledPhrase, type Item, type Spec, type Evidence } from './rules';
 import { nextAction, screenDirection, walkingRoute, placementPoint, objectiveStatus, type Point } from './flow';
 import { audio } from './audio';
 import { prepareObjectEdit } from './editing';
@@ -28,6 +28,7 @@ $('#app').innerHTML = `
 <section id="controls" class="modal" hidden><button id="controls-close" class="close" aria-label="סגירת עזרה">×</button><h2>בוחרים דרך.</h2><p>לחצו או הקישו על הקרקע כדי ללכת.<br>חצים או WASD מזיזים לפי הכיוון על המסך.</p><p>לחצו על חפץ כדי לשנות או להעביר אותו.<br>במחברת כותבים; בתצוגה המקדימה בוחרים מקום ומניחים.</p><p class="panel-note">N מחברת · E פעולה נוכחית · Space קפיצה<br>F מסך מלא · Esc חזרה</p><div class="row"><button id="jump-btn">קפיצה ↟</button><button id="orbit-left">סיבוב מצלמה ↶</button><button id="orbit-right">↷ סיבוב מצלמה</button></div></section>
 <section id="complete" class="modal" hidden><span class="eyebrow" id="completion-number">עוד דרך גיליתם</span><div class="win-star">✦</div><h2 id="win-title">הרעיון שלכם עבד!</h2><p id="win-story"></p><button id="next" class="primary">לאי הבא →</button><button id="replay">לנסות רעיון אחר</button><details id="learning-details"><summary>מה תרגלנו?</summary><p id="complete-detail"></p><div id="evidence"></div></details></section></div><div id="campaign-host" hidden></div>`;
 
+for(const panel of ['#notebook','#inspect','#placement']){const details=document.createElement('details');details.className='task-reference';details.innerHTML='<summary>המשימה באי</summary><p dir="ltr"></p>';$(panel).append(details);}
 const world = new World($('#world'));
 const keys = new Set<string>();
 const player = { x:-3.7, z:0, jump:0, vx:0, vz:0, facing:Math.PI/2 };
@@ -37,6 +38,8 @@ let index=levels.findIndex(l=>l.id===resumeLevel(levels,progress).id), level=lev
 let campaignMapOpen=false;
 function saveProgress(){try{localStorage.setItem('wordcraft-campaign-v2',JSON.stringify(progress));}catch{/* optional local persistence */}}
 let started=false, paused=false, book=false, edit=false, won=false, completionArmed=false;
+let overlayReturn='';
+let overlayFocus:HTMLElement|undefined;
 let assisted=false, attempts=0, hints=0, retries=0, rejectedPhrases=0;
 let pending:Spec|undefined, pendingCount=0, pendingId='', zoneIndex=0, freePlacement=false;
 let placement={x:0,z:0,rot:0}, ferry=0, clock=0, jumpT=0, serial=0, layoutVariant=0;
@@ -66,8 +69,8 @@ function openCampaign(){
  mountCampaignMap($('#campaign-host'),{levels:levels.map(l=>({...l,chapter:chapters[l.chapter-1]})),completed:completions,currentId:progress.currentId,unlockedThrough:unlockedThrough(levels,progress),
   onChoose:id=>{if(!canPlay(levels,progress,id))return;closeCampaign();loadLevel(levels.findIndex(l=>l.id===id));},onClose:closeCampaign});
 }
-function showOverlay(id:string){stopMotion();$('#overlay').hidden=false;for(const el of document.querySelectorAll<HTMLElement>('#overlay > section'))el.hidden=el.id!==id;if(id!=='complete')audio.pause(true);}
-function hideOverlay(){ $('#overlay').hidden=true;for(const el of document.querySelectorAll<HTMLElement>('#overlay > section'))el.hidden=true;if(started&&!paused)audio.pause(false); }
+function showOverlay(id:string){if($('#overlay').hidden)overlayFocus=document.activeElement instanceof HTMLElement?document.activeElement:undefined;if(['settings','controls'].includes(id)&&!$('#overlay').hidden){const parent=[...document.querySelectorAll<HTMLElement>('#overlay > section')].find(el=>!el.hidden)?.id;if(parent&&parent!==id)overlayReturn=parent;}stopMotion();$('#overlay').hidden=false;for(const el of document.querySelectorAll<HTMLElement>('#overlay > section'))el.hidden=el.id!==id;if(id!=='complete')audio.pause(true);queueMicrotask(()=>{$<HTMLElement>(`#${id} button`)?.focus();});}
+function hideOverlay(){if(overlayReturn){const parent=overlayReturn;overlayReturn='';showOverlay(parent);return;}$('#overlay').hidden=true;for(const el of document.querySelectorAll<HTMLElement>('#overlay > section'))el.hidden=true;if(started&&!paused)audio.pause(false);if(overlayFocus?.isConnected&&!overlayFocus.closest('[hidden]'))overlayFocus.focus();else $('#world').focus();}
 function loadLevel(i:number){
  if(!levels[i]||!canPlay(levels,progress,levels[i].id))return;
  index=i;level={...levels[i],zones:[...levels[i].zones]};
@@ -76,11 +79,13 @@ function loadLevel(i:number){
  progress=enterLevel(levels,progress,level.id);if(started)saveProgress();
  const visit=visits.get(level.id)??0;layoutVariant=visit%2;if(started)visits.set(level.id,visit+1);
  items=(level.seeds??[]).map(s=>makeItem(s.phrase,s.id,s.x,s.z*(layoutVariant?-1:1),s.origin));
- selected='';pending=undefined;pendingCount=0;history=[];won=false;completionArmed=false;paused=false;book=false;edit=false;
+ selected='';pending=undefined;pendingCount=0;history=[];won=false;completionArmed=false;paused=false;book=false;edit=false;overlayReturn='';
  assisted=false;attempts=0;hints=0;retries=0;rejectedPhrases=0;ferry=0;onVessel=false;jumpT=0;zoneIndex=0;lastReady=false;uiSignature='';
  stopMotion();player.x=-Math.max(3.7,level.gap/2+1.2);player.z=0;player.jump=0;player.facing=Math.PI/2;
- world.build(level,layoutVariant);world.setItems(items);world.setPreview();world.showBridge(false);audio.setSolved(false);
+ world.build(level,layoutVariant);world.setItems(items);world.setPreview();world.showBridge(false);audio.setSolved(false);audio.stopVoice();
  $('#title').textContent=level.title;$('#mission').textContent=level.mission;$('#mission-he').textContent=level.he;
+ for(const text of document.querySelectorAll('.task-reference p'))text.textContent=level.mission;
+ for(const details of document.querySelectorAll<HTMLDetailsElement>('.task-reference'))details.open=false;
  $('#stage').textContent=`פרק ${level.chapter} · ${chapters[level.chapter-1]}`;
  $('#counter').textContent=`${level.number} / ${levels.length}`;
  $('#teaching').textContent=level.teach;$('#teaching').hidden=true;
@@ -128,10 +133,10 @@ function renderInventory(){
  else {
   const properties=[`משקל ${item.spec.mass.toFixed(1)} ק״ג`,`רוחב ${item.spec.width.toFixed(2)} מ׳`];
   if(item.spec.span)properties.push(`אורך ${item.spec.length.toFixed(1)} מ׳`);
-  if(item.spec.capacity>0)properties.push(`מקום ל־${item.spec.capacity} חבילות`,item.spec.float?'צף':'לא צף');
+  if(item.spec.capacity>0)properties.push(`מקום ל־${Number(item.spec.capacity.toFixed(1))} חבילות`,item.spec.float?'צף':'לא צף');
   if(item.spec.noun==='fan')properties.push(`כוח ${item.spec.force} N`);
   if(item.spec.noun==='lamp')properties.push(item.spec.light>0?'מאיר':'כבוי');
-  if(item.spec.absorb>0)properties.push(`סופג ${item.spec.absorb} יחידות מים`);
+  if(item.spec.absorb>0)properties.push(`סופג ${Number(item.spec.absorb.toFixed(1))} ליטרים`);
   if(item.spec.rain>0)properties.push(`טווח כיסוי ${item.spec.rain.toFixed(1)} מ׳`);
   const stat=properties.join(' · ');
   $('#object-info').innerHTML=`<h3 dir="ltr">${item.spec.phrase}</h3><p class="object-stat">${stat}</p><p dir="ltr">${item.origin??'Created in your notebook.'}</p>`;
@@ -145,7 +150,7 @@ function zoneName(i:number){const zone=level.zones[i];return zone.id==='chest'?'
 function updatePreview(){if(pending){world.setPreview(pending,placement.x,placement.z,placement.rot);renderTargets();}}
 function renderTargets(){
  const choices=$('#target-choices');choices.innerHTML='';
- level.zones.forEach((z,i)=>{const b=document.createElement('button');b.textContent=zoneName(i);b.dataset.active=String(i===zoneIndex&&!freePlacement);b.onclick=()=>setTarget(i);choices.append(b);});
+ level.zones.forEach((z,i)=>{const b=document.createElement('button');b.textContent=zoneName(i);b.dataset.active=String(i===zoneIndex&&!freePlacement);b.setAttribute('aria-pressed',String(i===zoneIndex&&!freePlacement));b.onclick=()=>{setTarget(i);(choices.children[i] as HTMLElement).focus();};choices.append(b);});
  $('#free-place').textContent=freePlacement?'חזרה להצמדה למצוף':'מיקום חופשי';
  $('#placement-help').textContent=freePlacement?'הקישו בעולם למיקום, או גררו את התצוגה המקדימה.':'התצוגה נשארת במקום שבחרתם. לחצו ״הניחו כאן״ כדי לאשר.';
 }
@@ -185,16 +190,16 @@ function create(){
 function place(){
  if(!pending||paused||modalOpen())return;
  const old=history.at(-1)?.items.find(o=>o.id===pendingId),id=pendingId||`created-${++serial}`;
- const spec=clone(pending);spec.count=1;
+ const spec=clone(pending);spec.count=1;if(pending.count>1)spec.phrase=modeledPhrase(spec);
  if(pendingId)items=items.filter(item=>item.id!==pendingId);
  const item:Item={id,spec,x:placement.x,z:placement.z,rot:placement.rot,placed:true,origin:old?.origin};items.push(item);selected=id;
  event(pendingId?'modify-place':'create-place',{id,phrase:spec.phrase,x:item.x,z:item.z,rot:item.rot,evidence:spec.evidence});
- world.setItems(items);world.popItem(id);audio.cue(spec.noun==='umbrella'?'umbrella':spec.noun==='fan'?'fan':spec.material==='metal'?'metal':'wood');
+ world.setItems(items);world.popItem(id);audio.cue(spec.noun==='umbrella'?'umbrella':spec.noun==='fan'&&spec.force>0?'fan':spec.material==='metal'?'metal':'wood');
  pendingCount--;
  if(pendingCount>0){pendingId='';zoneIndex=recommendedZone(pending);placement=placementPoint(level,items.filter(item=>item.id!==pendingId),zoneIndex,pending);$('#preview-label').textContent=`${pending.phrase} · עוד ${pendingCount} להנחה`;updatePreview();}
  else{pending=undefined;pendingId='';world.setPreview();$('#placement').hidden=true;}
- const outcome=updateOutcome(true);recoverUnsupported();
- if(!outcome.ready&&!pending){world.reactToPlacement(item);if(level.kind==='bridge'&&spec.span)feedback(`האורך ${spec.length.toFixed(1)} מ׳ לא נתמך בשני הקצוות. אפשר לשנות את המילים ולנסות שוב.`,'try');else if(spec.material==='metal'&&['cargo','ferry','storm'].includes(level.kind))audio.cue('splash');}
+ const outcome=updateOutcome(true),recovered=recoverUnsupported();
+ if(!outcome.ready&&!pending){world.reactToPlacement(item);if(!recovered&&level.kind==='bridge'&&spec.span&&!supportsBothBanks(level,item))feedback(`האורך ${spec.length.toFixed(1)} מ׳ לא נתמך בשני הקצוות. ${outcome.reason}`,'try');else if(spec.material==='metal'&&['cargo','ferry','storm'].includes(level.kind))audio.cue('splash');}
  renderInventory();updateFlow();$('#world').focus();
 }
 function cancelPlacement(){
@@ -209,23 +214,33 @@ function undo(){
 function removeSelected(){
  const item=items.find(object=>object.id===selected);if(!item||pending||book||won)return;
  snapshot();stopMotion();items=items.filter(object=>object.id!==item.id);selected='';hideInspector();world.setItems(items);completionArmed=false;
- event('remove-object',{id:item.id,phrase:item.spec.phrase});audio.cue('undo');updateOutcome();recoverUnsupported();feedback('החפץ הוסר. אפשר ליצור רעיון אחר או לבטל את ההסרה.');updateFlow();
+ event('remove-object',{id:item.id,phrase:item.spec.phrase});audio.cue('undo');updateOutcome();if(!recoverUnsupported())feedback('החפץ הוסר. אפשר ליצור רעיון אחר או לבטל את ההסרה.');updateFlow();
 }
 function moveSelected(){const item=items.find(object=>object.id===selected);if(!item||pending||book||won)return;snapshot();beginPlacement({...item.spec,count:1},1,item.id);}
+function restoreStoryObject(){
+ if(!level.targetId||items.some(item=>item.id===level.targetId))return;
+ const previous=[...history].reverse().flatMap(entry=>entry.items).find(item=>item.id===level.targetId);
+ const seed=level.seeds?.find(item=>item.id===level.targetId);
+ if(!previous&&!seed)return;
+ snapshot();stopMotion();const restored=previous?clone(previous):makeItem(seed!.phrase,seed!.id,seed!.x,seed!.z*(layoutVariant?-1:1),seed!.origin);
+ items.push(restored);selected=restored.id;world.setItems(items);audio.cue('undo');event('restore-story-object',{id:restored.id});updateOutcome();showInventory();feedback('חפץ הסיפור חזר. אפשר לקרוא את ההיסטוריה ולערוך אותו.');
+}
 function recoverUnsupported(){
  const state=evaluatePlacement(level,items);
  if(ferry>0&&!state.ready){ferry=0;onVessel=false;player.jump=0;world.resetVoyage();}
  if(level.gap>0&&ferry===0&&Math.abs(player.x)<level.gap/2&&!(state.traversable&&supportsPoint(level,items,player.x,player.z))){
   const from={x:player.x,z:player.z};stopMotion();completionArmed=false;player.x=(player.x>0?1:-1)*(level.gap/2+.6);player.z=0;player.jump=0;jumpT=0;
   world.burst(from.x,-.2,from.z,0x9bdfd7,16);audio.cue('splash');feedback('הדרך השתנתה — חזרתם לגדה. אפשר להמשיך לערוך את הרעיון.');event('support-lost-recovery',{from,to:{x:player.x,z:player.z}});
+  return true;
  }
+ return false;
 }
 function setTarget(i:number){if(!pending)return;zoneIndex=(i+level.zones.length)%level.zones.length;freePlacement=false;placement=placementPoint(level,items.filter(item=>item.id!==pendingId),zoneIndex,pending);updatePreview();}
 function rotate(){if(pending){placement.rot=(placement.rot+Math.PI/2)%(Math.PI*2);updatePreview();audio.cue('rotate');}}
 function updateOutcome(announce=false){
  const state=evaluatePlacement(level,items);if(level.kind==='weight')world.showBridge(state.traversable);
  if(announce)feedback(state.reason,state.ready?'good':'try');
- if(state.ready&&!lastReady){audio.setSolved(true);audio.cue('confirm');world.goalReady(true);feedback('הרעיון עובד! עכשיו אפשר לנסות את הדרך למגדלור.','good');event('world-solved',{kind:level.kind});}
+ if(state.ready&&!lastReady){audio.setSolved(true);audio.cue('confirm');world.goalReady(true);feedback(pending?'הפתרון כבר עובד. סיימו להניח את החפצים או בטלו את הקבוצה כדי לשנות רעיון.':'הרעיון עובד! עכשיו אפשר לנסות את הדרך למגדלור.','good');event('world-solved',{kind:level.kind});}
  if(!state.ready&&lastReady){audio.setSolved(false);world.goalReady(false);}lastReady=state.ready;return state;
 }
 function updateFlow(){
@@ -267,7 +282,7 @@ function use(){
  if(!started||paused||won||book||pending||modalOpen()||activeTravel||ferry>0)return;
  const action=nextAction(level,items,selected);
  event('context-action',{kind:action.kind});
- if(action.kind==='travel')trySolution();else if(action.kind==='select')showInventory();else if((action.kind==='revise'||action.kind==='replace'))openBook(true);else if(action.kind==='move')$('#carry').click();else openBook();
+ if(action.kind==='travel')trySolution();else if(action.kind==='recover')restoreStoryObject();else if(action.kind==='select')showInventory();else if((action.kind==='revise'||action.kind==='replace'))openBook(true);else if(action.kind==='move')$('#carry').click();else openBook();
 }
 function startFerry(){ferry=3;ferryOriginX=player.x;vesselX=-level.gap/2+.35;player.jump=0;player.z=0;player.vx=player.vz=0;route=[];travelAfterApproach=false;audio.cue('splash');feedback('צפים אל הגדה השנייה.','good');event('board-ferry',{});}
 function win(){
@@ -307,9 +322,9 @@ $('#modify').onclick=()=>openBook(true);$('#edit-selected').onclick=()=>openBook
 $('#carry').onclick=moveSelected;
 $('#place').onclick=place;$('#cancel-place').onclick=cancelPlacement;
 $('#target-prev').onclick=()=>setTarget(zoneIndex-1);$('#target-next').onclick=()=>setTarget(zoneIndex+1);
-$('#rotate').onclick=rotate;$('#free-place').onclick=()=>{freePlacement=!freePlacement;renderTargets();};
+$('#rotate').onclick=rotate;$('#free-place').onclick=()=>{if(freePlacement)setTarget(zoneIndex);else{freePlacement=true;renderTargets();}};
 $('#undo-btn').onclick=undo;$('#use-btn').onclick=use;
-function pauseGame(){if(!started||won)return;paused=true;showOverlay('pause');event('pause',{});}function resume(){paused=false;hideOverlay();event('resume',{});updateFlow();}
+function pauseGame(){if(!started||won)return;paused=true;showOverlay('pause');event('pause',{});}function resume(){paused=false;overlayReturn='';hideOverlay();event('resume',{});updateFlow();}
 $('#pause-btn').onclick=pauseGame;$('#resume').onclick=resume;$('#pause-close').onclick=resume;
 $('#restart').onclick=()=>{event('restart',{});loadLevel(index);};$('#next').onclick=()=>{if(campaignFinished(levels,progress)){openCampaign();return;}const next=levels[index+1];loadLevel(next&&canPlay(levels,progress,next.id)?index+1:levels.findIndex(l=>l.id===progress.currentId));};$('#replay').onclick=()=>loadLevel(index);
 $('#settings-btn').onclick=()=>{if(started)showOverlay('settings');};$('#settings-close').onclick=hideOverlay;
@@ -345,26 +360,27 @@ canvas.addEventListener('pointercancel',()=>{down=undefined;});
 const physicalKeys:Record<string,string>={KeyW:'w',KeyA:'a',KeyS:'s',KeyD:'d',KeyN:'n',KeyE:'e',KeyR:'r',KeyF:'f',KeyZ:'z',Space:' '};
 function typing(){return document.activeElement instanceof HTMLInputElement||document.activeElement instanceof HTMLTextAreaElement||document.activeElement instanceof HTMLSelectElement;}
 document.addEventListener('keydown',e=>{
+ if(e.key==='Tab'&&!$('#overlay').hidden){const panel=[...document.querySelectorAll<HTMLElement>('#overlay > section')].find(el=>!el.hidden);const controls=panel?[...panel.querySelectorAll<HTMLElement>('button:not(:disabled),input,a,summary')].filter(el=>el.getClientRects().length):[];const first=controls[0],last=controls.at(-1);if(e.shiftKey&&document.activeElement===first){e.preventDefault();last?.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first?.focus();}return;}
  let key=e.key.toLowerCase();
  // Let focused controls activate normally; Space must not turn an object-button click into a jump.
  if((key==='enter'||key===' ')&&e.target instanceof Element&&e.target.closest('button,a,summary,[role=button]'))return;
  if(key==='escape'&&document.fullscreenElement){e.preventDefault();void document.exitFullscreen();return;}
- if(key==='escape'&&modalOpen()&&started&&!won){e.preventDefault();resume();return;}
+ if(key==='escape'&&modalOpen()&&started){e.preventDefault();if(campaignMapOpen)closeCampaign();else if(!$('#settings').hidden||!$('#controls').hidden)hideOverlay();else if(!won)resume();return;}
  if(!started&&(key==='enter'||key===' ')){e.preventDefault();$('#start').click();return;}
  if(won&&key==='enter'&&!$('#complete').hidden){e.preventDefault();$('#next').click();return;}
  if(typing()){if(key==='escape'&&book){e.preventDefault();closeBook();}return;}
  key=physicalKeys[e.code]??key;
  if(key==='escape'){if(book)closeBook();else if(pending)cancelPlacement();else if(!$('#inspect').hidden)hideInspector();else if(route.length)stopMotion();else pauseGame();return;}
  if(!started||paused||won||modalOpen())return;
+ if(key==='z'&&(e.ctrlKey||e.metaKey)){e.preventDefault();undo();return;}
  if(pending){
-  if(['arrowleft','arrowright','arrowup','arrowdown'].includes(key)){e.preventDefault();freePlacement=true;const right=Number(key==='arrowright')-Number(key==='arrowleft'),down=Number(key==='arrowdown')-Number(key==='arrowup');const delta=screenDirection(right,down,world.angle);placement.x+=delta.x*.2;placement.z+=delta.z*.2;updatePreview();}
+  if(['arrowleft','arrowright','arrowup','arrowdown'].includes(key)){e.preventDefault();freePlacement=true;const right=Number(key==='arrowright')-Number(key==='arrowleft'),down=Number(key==='arrowdown')-Number(key==='arrowup');const delta=screenDirection(right,down,world.angle);placement.x=Math.max(-8.3,Math.min(8.3,placement.x+delta.x*.2));placement.z=Math.max(-3.5,Math.min(3.5,placement.z+delta.z*.2));updatePreview();}
   if(key==='enter')place();if(key==='r')rotate();return;
  }
  if(key==='n'){e.preventDefault();openBook();}
  else if(key==='delete'||key==='backspace'){e.preventDefault();removeSelected();}
  else if(key==='e'){e.preventDefault();use();}
  else if(key==='f'){void document.documentElement.requestFullscreen?.();}
- else if(key==='z'&&(e.ctrlKey||e.metaKey)){e.preventDefault();undo();}
  else if(['w','a','s','d','arrowleft','arrowright','arrowup','arrowdown',' '].includes(key)){
   e.preventDefault();if(!$('#inspect').hidden)hideInspector();$<HTMLDetailsElement>('#help-details').open=false;$('#teaching').hidden=true;
   route=[];activeTravel=false;completionArmed=false;travelAfterApproach=false;world.clearDestination();keys.add(key);
@@ -376,8 +392,8 @@ for(const button of document.querySelectorAll<HTMLElement>('[data-key]')){
  for(const type of ['pointerup','pointercancel','lostpointercapture'])button.addEventListener(type,()=>keys.delete(button.dataset.key!));
 }
 window.addEventListener('blur',()=>{stopMotion();audio.pause(true);});
-window.addEventListener('focus',()=>{if(started&&!paused&&!modalOpen())audio.pause(false);});
-document.addEventListener('visibilitychange',()=>{stopMotion();audio.pause(document.hidden||paused||modalOpen());});
+window.addEventListener('focus',()=>{if(started)audio.pause(paused||campaignMapOpen||!$('#overlay').hidden&&!won);});
+document.addEventListener('visibilitychange',()=>{stopMotion();audio.pause(document.hidden||paused||campaignMapOpen||!$('#overlay').hidden&&!won);});
 
 function simulate(dt:number){
  clock+=dt;motionDt+=dt;

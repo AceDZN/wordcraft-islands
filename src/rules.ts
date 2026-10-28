@@ -40,7 +40,7 @@ export function parsePhrase(input:string,assisted=false):ParseResult {
  if(tokens.includes('metal')){s.material='metal';s.mass*=3;s.float=false;}
  if(tokens.includes('wooden')){s.material='wooden';if(['crate','boat'].includes(noun))s.float=true;}
  if(tokens.includes('heavy'))s.mass=12;
- if(tokens.includes('light'))s.mass=1;
+ if(tokens.includes('light'))s.mass=Math.min(s.mass,1);
  if(tokens.includes('powerful'))s.force=12;
  if(tokens.includes('powerless'))s.force=0;
  if(tokens.includes('bright'))s.light=5;
@@ -72,9 +72,12 @@ export function evaluatePlacement(level:Level,objects:Item[]){
  const covered=rainZones.filter(z=>covers.some(o=>Math.hypot(o.x-z.x,o.z-z.z)<o.spec.rain)).length;
  const contributors:string[]=[];let ready=false,reason='';
  const range=(min?:number,max?:number,unit='')=>max===undefined?`לפחות ${min??0}${unit}`:min===undefined?`לכל היותר ${max}${unit}`:`${min}–${max}${unit}`;
+ const material=goals.requiredMaterial?` חומר נדרש: ${{wooden:'עץ',metal:'מתכת',woven:'אריג',cloth:'בד',soft:'חומר רך'}[goals.requiredMaterial]}.`:'';
+ const limits=`${goals.minMass!==undefined||goals.maxMass!==undefined?` משקל: ${range(goals.minMass,goals.maxMass,' ק״ג')}.`:''}${goals.minWidth!==undefined||goals.maxWidth!==undefined?` רוחב: ${range(goals.minWidth,goals.maxWidth,' מ׳')}.`:''}${material}`;
  if(level.kind==='bridge'){
   ready=!!span;if(span)contributors.push(span.id);
-  reason=ready?'שני הקצוות נתמכים. אפשר לחצות.':`צריך לכסות ${level.gap} מ׳ ועוד 0.3 מ׳ בכל קצה, בתכונות המתוארות. סובבו לאורך המעבר.`;
+  const supported=placed.find(o=>supportsBothBanks(level,o));
+  reason=ready?'שני הקצוות נתמכים. אפשר לחצות.':supported?`הקצוות נתמכים, אך צריך לבדוק את התכונות${level.targetId?' ואת זהות חפץ הסיפור':''}.${limits}`:`צריך לכסות ${level.gap} מ׳ ועוד 0.3 מ׳ בכל קצה. סובבו לאורך המעבר.${limits}`;
  }
  if(level.kind==='shelter'){
   ready=covered===rainZones.length;contributors.push(...covers.filter(o=>rainZones.some(z=>Math.hypot(o.x-z.x,o.z-z.z)<o.spec.rain)).map(o=>o.id));
@@ -83,21 +86,21 @@ export function evaluatePlacement(level:Level,objects:Item[]){
  if(level.kind==='ferry'){
   // A real bridge remains a valid alternate route when no cargo limit was stated.
   ready=!!vessel||(allowAlternateBridge&&!!span);contributors.push(...(span&&allowAlternateBridge?[span.id]:vessel?[vessel.id]:[]));
-  reason=ready?'הדרך מוכנה — אפשר להגיע לגדה השנייה.':`צריך חפץ צף ליד המצוף, עם ${range(minCapacity,goals.maxCapacity)} מקומות, בתכונות המתוארות.`;
+  reason=ready?'הדרך מוכנה — אפשר להגיע לגדה השנייה.':`צריך חפץ צף ליד המצוף, עם ${range(minCapacity,goals.maxCapacity)} מקומות.${limits}`;
  }
  if(level.kind==='weight'){
   ready=mass>(level.reference??6)&&within(mass,goals.minMass,goals.maxMass)&&correctLoad&&loads.length>0&&loads.every(shape);
   contributors.push(...loads.map(o=>o.id));
-  reason=!correctLoad&&mass>(level.reference??6)?'המשקל מספיק, אבל זה לא החפץ שתואר. קראו את ההיסטוריה כדי לזהות את החפץ הדרוש.':`משקל על הלוח: ${mass.toFixed(1)} ק״ג. נדרש יותר מ־${level.reference??6}${goals.maxMass!==undefined?`, ולא יותר מ־${goals.maxMass}`:''}, וגם החפץ המזוהה כשיש תיאור.`;
+  reason=`משקל על הלוח: ${mass.toFixed(1)} ק״ג. נדרש יותר מ־${level.reference??6} ק״ג.${limits}${level.targetId&&!correctLoad?' צריך את חפץ הסיפור המזוהה. קראו את ההיסטוריה שלו.':''}${loads.some(o=>!shape(o))?' על הלוח יש חפץ שאינו עומד בדרישות החומר או הרוחב.':''}`;
  }
  if(level.kind==='cargo'||level.kind==='storm'){
   ready=!!vessel;if(vessel)contributors.push(vessel.id);
-  reason=ready?'המטען צף בכלי מתאים.':`צריך כלי צף עם ${range(minCapacity,goals.maxCapacity)} מקומות${goals.maxMass!==undefined?`, משקל עד ${goals.maxMass} ק״ג`:''}${goals.maxWidth!==undefined?`, רוחב עד ${goals.maxWidth} מ׳`:''}. בדקו גודל, חומר ומשקל.`;
+  reason=ready?'המטען צף בכלי מתאים.':`צריך כלי צף עם ${range(minCapacity,goals.maxCapacity)} מקומות.${limits} בדקו גודל, חומר ומשקל.`;
  }
  if(level.kind==='wind'||level.kind==='storm'){
   ready=level.kind==='storm'?ready&&windReady:windReady;contributors.push(...windItems.map(o=>o.id));
   const windReason=`כוח בכיוון החץ: ${force} N. צריך ${range(goals.minForce??8,goals.maxForce,' N')}${level.targetId?' מהמאוורר המזוהה':''}.`;
-  reason=level.kind==='storm'?`${reason} ${windReason}`:windReason;
+  reason=level.kind==='storm'?`${reason} ${windReason}`:`${windReason}${limits}`;
  }
  if(level.kind==='workshop'){ready=true;reason='בדקו את תחנות העבודה המתוארות.';}
  const primaryReady=ready;const extras=evaluateExtras(placed);
@@ -114,7 +117,7 @@ export function evaluatePlacement(level:Level,objects:Item[]){
  if(goals.minAbsorb!==undefined){
   const puddle=level.zones.find(z=>['puddle','spill'].includes(z.id))??zone;
   const sponges=placed.filter(o=>o.spec.absorb>0&&at(o,puddle)&&(level.kind!=='workshop'||loadBounds(o)));absorbed=sponges.reduce((n,o)=>n+o.spec.absorb,0);
-  checks.push({id:'absorb',ready:absorbed>=goals.minAbsorb,reason:`נספגו ${absorbed.toFixed(1)} מתוך ${goals.minAbsorb} יחידות מים.`});contributors.push(...sponges.map(o=>o.id));
+  checks.push({id:'absorb',ready:absorbed>=goals.minAbsorb,reason:`נספגו ${absorbed.toFixed(1)} מתוך ${goals.minAbsorb} ליטרים.`});contributors.push(...sponges.map(o=>o.id));
  }
  if(checks.length){ready=ready&&checks.every(check=>check.ready);reason=[reason,...checks.map(check=>check.reason)].join(' ');}
  if(level.kind==='workshop'&&!checks.length)ready=false;

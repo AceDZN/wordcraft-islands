@@ -1,3 +1,5 @@
+> Latest28 October: [full50 fresh-profile recovery audit](docs/FULL_CAMPAIGN_PLAYTEST.md), all50 Move/Undo replays and98 pure regressions. This supersedes earlier verification counts; historical evidence follows.
+
 > The current50-level campaign is reviewed in docs/CAMPAIGN_PLAYTEST.md. This file preserves earlier nine-puzzle implementation and play-feel evidence; its grade-selector steps are historical.
 
 # First-release QA log (historical)

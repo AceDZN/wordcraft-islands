@@ -5,10 +5,11 @@ import {mergeGeometries} from 'three/addons/utils/BufferGeometryUtils.js';
 import {clone} from 'three/addons/utils/SkeletonUtils.js';
 import {prepareCourierClips,COURIER_WALK_REFERENCE_SPEED} from './character';
 import {CAMPAIGN_WORLD_PALETTES} from './campaign-map';
-import {supportsBothBanks,type Item,type Level,type Spec} from './rules';
+import {supportsBothBanks,evaluatePlacement,type Item,type Level,type Spec} from './rules';
 const C={grass:0x90ad55,stone:0xccaa77,water:0x49bfca,wood:0xa46c38,cream:0xf3e4bf,coral:0xcb614a,teal:0x246f77};
 export class World {
  sharedGeometry=new WeakSet<THREE.BufferGeometry>();sharedMaterial=new WeakSet<THREE.Material>();sharedTexture=new WeakSet<THREE.Texture>();spill?:THREE.Mesh;
+ dryParcels=new Set<string>();
  scene=new THREE.Scene();camera:THREE.OrthographicCamera;renderer:THREE.WebGLRenderer;root=new THREE.Group();items=new THREE.Group();preview=new THREE.Group();player=new THREE.Group();bridge=new THREE.Group();star=new THREE.Group();water:THREE.Mesh;
  itemMeshes=new Map<string,THREE.Group>();models=new Map<string,THREE.Object3D>();clips:THREE.AnimationClip[]=[];mixer?:THREE.AnimationMixer;actions:Record<string,THREE.AnimationAction>={};anim='';loaded:string[]=[];errors:string[]=[];ray=new THREE.Raycaster();pointer=new THREE.Vector2();angle=.55;time=0;voyage=new THREE.Group();voyageSail?:THREE.Mesh;voyageDone=false;chestLid?:THREE.Mesh;caveGlow?:THREE.Mesh;rain=new THREE.Group();level?:Level;zoneMeshes:THREE.Object3D[]=[];locationLabels:THREE.Sprite[]=[];previewSpec?:Spec;bridgeShown?:boolean;transport?:{id:string;kind:string;x:number;z:number;deckY:number;active:boolean};destination=new THREE.Group();selection=new THREE.Group();selectedId='';selectionLine?:THREE.Line;particles=new THREE.Group();goalIsReady=false;popTimes=new Map<string,number>();
  constructor(public canvas:HTMLCanvasElement){
@@ -46,7 +47,7 @@ export class World {
  for(const [x,z,r] of [[-13,-10,2.5],[10,-11,2],[15,7,1.8],[-14,8,1.4]]){const rock=this.mesh(new THREE.CylinderGeometry(r*.8,r,2.5,7),0xc5a773);rock.position.set(x,-1.5,z);const turf=this.mesh(new THREE.CylinderGeometry(r*.8,r*.82,.2,7),0x80a36a);turf.position.set(x,-.2,z);if(r>2)this.tree(x,z);}
  for(let i=0;i<24;i++){const x=-8.6+(i*2.7)%17,z=(i%2?-1:1)*(3.6+(i%3)*.12);const r=this.mesh(new THREE.DodecahedronGeometry(.25+(i%4)*.12,0),i%2?0xd3b27f:0xa88c63);r.position.set(x,-.25,z);r.scale.set(1.3,1,.9);}
  if(g>0)for(const x of [-g/2-.35,g/2+.35])for(const z of [-.8,.8]){this.cylinder(.12,.15,.8,C.wood,x,.3,z);this.cylinder(.16,.16,.1,0xe1c78b,x,.7,z);}
- for(const [x,z] of [[-8,2.8],[-7.9,-3],[7.8,3],[8,-2.8]]) this.tree(x,z);
+ for(const [x,z] of [[-8,2.8],[-7.9,-3],[7.8,3],[8,-2.8]])if(!(level.goals?.illuminate&&x>7&&z>2))this.tree(x,z);
  this.lighthouse(6.8,-2.3);for(const [x,z] of [[-4,2.7],[-3,-3.1],[4,2.7],[3.5,-2.5]]){for(let i=0;i<5;i++){const bush=this.mesh(new THREE.IcosahedronGeometry(.22,0),0x55874a);bush.position.set(x+Math.sin(i*4)*.3,.18,z+Math.cos(i*4)*.3);const flower=this.mesh(new THREE.SphereGeometry(.055,5,4),i%2?0xf2ce65:0xef997b);flower.position.set(bush.position.x,.4,bush.position.z);}}
  this.cylinder(.5,.65,.2,0xcda35d,6.7,.1,.5);const starGeo=new THREE.OctahedronGeometry(.42);this.star.add(new THREE.Mesh(starGeo,new THREE.MeshStandardMaterial({color:0xffd76a,emissive:0xa0670e,emissiveIntensity:.5,metalness:.3,roughness:.3})));this.star.position.set(6.7,1.15,.5);
  this.label('מסיימים כאן',6.7,2.1,.6,.65);
@@ -106,7 +107,7 @@ export class World {
  }
  woodMaterial(){const can=document.createElement('canvas');can.width=128;can.height=128;const ctx=can.getContext('2d')!;ctx.fillStyle='#bc8a50';ctx.fillRect(0,0,128,128);for(let i=0;i<50;i++){ctx.strokeStyle=i%2?'#c89a60':'#9d6f3a';ctx.lineWidth=.6;ctx.beginPath();ctx.moveTo(0,i*2.6);ctx.bezierCurveTo(40,i*2.6+4,85,i*2.6-4,128,i*2.6);ctx.stroke();}const map=new THREE.CanvasTexture(can);return new THREE.MeshStandardMaterial({map,roughness:.85});}
  current:Item[]=[];
- setItems(items:Item[]){this.current=items;this.refreshItems();}
+ setItems(items:Item[]){this.current=items;this.dryParcels.clear();if(this.level?.kind==='shelter'){const contributors=evaluatePlacement(this.level,items).contributors;for(const zone of this.level.zones)if(items.some(item=>contributors.includes(item.id)&&item.spec.rain>0&&Math.hypot(item.x-zone.x,item.z-zone.z)<item.spec.rain))this.dryParcels.add(zone.id);}this.refreshItems();}
  refreshItems(){this.disposeGroup(this.items);this.itemMeshes.clear();for(const o of this.current){const m=this.prop(o.spec);m.position.set(o.x,0,o.z);m.rotation.y=o.rot;m.userData.itemId=o.id;m.traverse(n=>n.userData.itemId=o.id);this.items.add(m);this.itemMeshes.set(o.id,m);}}
  setPreview(spec?:Spec,x=0,z=0,rot=0){if(spec&&this.previewSpec===spec&&this.preview.children[0]){const mesh=this.preview.children[0];mesh.position.set(x,.12,z);mesh.rotation.y=rot;return;}this.disposeGroup(this.preview);this.previewSpec=spec;if(!spec)return;const m=this.prop(spec);m.traverse(o=>{if(o instanceof THREE.Mesh){const mats=(Array.isArray(o.material)?o.material:[o.material]).map(a=>{const b=a.clone();b.transparent=true;b.opacity=.5;b.depthWrite=false;return b;});o.material=mats.length===1?mats[0]:mats;}});m.position.set(x,.12,z);m.rotation.y=rot;this.preview.add(m);}
  groundPoint(clientX:number,clientY:number){const r=this.canvas.getBoundingClientRect();this.pointer.set(((clientX-r.left)/r.width)*2-1,-((clientY-r.top)/r.height)*2+1);this.ray.setFromCamera(this.pointer,this.camera);const p=new THREE.Vector3();this.ray.ray.intersectPlane(new THREE.Plane(new THREE.Vector3(0,1,0),0),p);return p;}
@@ -158,7 +159,8 @@ export class World {
  render(dt:number,player:{x:number;z:number;jump:number;facing:number;vx:number;vz:number},moving:boolean,ready:boolean,paused=false,carried=false){
  this.time+=paused?0:dt;
  if(this.transport&&!this.transport.active&&!paused&&this.level){const dock=-this.level.gap/2+.35;this.transport.x+=(dock-this.transport.x)*(1-Math.exp(-dt*6));this.transport.z*=Math.exp(-dt*6);}
- for(let i=0;i<this.rain.children.length;i++)this.rain.children[i].position.y=.7+((i*.37+3.5-this.time*2)%3.5+3.5)%3.5;
+ const parcels=this.level?.zones.filter(zone=>!['chest','cave'].includes(zone.id))??[];
+ for(let i=0;i<this.rain.children.length;i++){const drop=this.rain.children[i];drop.position.y=.7+((i*.37+3.5-this.time*2)%3.5+3.5)%3.5;drop.visible=drop.position.y>2.2||!this.dryParcels.has(parcels[Math.floor(i/18)]?.id);}
  this.player.position.set(player.x,player.jump,player.z);
  const turn=Math.atan2(Math.sin(player.facing-this.player.rotation.y),Math.cos(player.facing-this.player.rotation.y));this.player.rotation.y+=turn*(1-Math.exp(-dt*18));
  this.animatePlayer(moving&&!carried,player.jump>.01&&!carried,Math.hypot(player.vx,player.vz));this.mixer?.update(paused?0:dt);

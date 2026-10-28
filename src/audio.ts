@@ -119,6 +119,7 @@ class IslandAudio {
     update(this.music, this.settings.music * (this.ducked ? .26 : 1)); update(this.effects, this.settings.sfx); update(this.hope, this.solved ? .42 : 0);
   }
   /** Optional platform read-aloud. Browser voices vary; visible mission text is its subtitle. */
+  stopVoice() { if ('speechSynthesis' in window) speechSynthesis.cancel(); this.ducked = false; this.applyGains(); }
   speak(text: string) {
     if (!('speechSynthesis' in window) || !this.requested || this.paused || this.hidden || this.settings.voice === 0 || this.settings.master === 0) return false;
     speechSynthesis.cancel(); const utterance = new SpeechSynthesisUtterance(text);
