@@ -58,3 +58,34 @@ Lead rechecked the current official Tripo terms on 27 October 2026: §5.2.2 list
 ## Play-feel revision
 
 The source courier GLB is unchanged. `src/character.ts` derives aligned idle/upright jog/single-hop skeletal clips, correcting a measured ~0.93m idle/run root-origin mismatch and the earlier jump_down selection. All motion remains on the original65-joint skin. Offline audit and browser-check boundaries are in docs/art/MOTION_REVIEW.md. No additional models, generations, credits or rig jobs were used.
+
+
+## Dynamic vocabulary release — 11 November 2026
+
+This release adds three rigid Tripo props, **1,454,480 bytes** combined (about 1.39 MiB). The October release's zero-new-generation totals above remain historical. All three are paid-user commissioned outputs; no public-gallery creator model is redistributed. Account **Pro** was confirmed through Chrome's visible account menu, and [official terms §5.2.2](https://www.tripo3d.ai/terms) were rechecked on 11 November. Search and decisions are in [ASSET_SEARCH.md](ASSET_SEARCH.md). Exact new prompts are in [dynamic-prompts.md](docs/art/dynamic-prompts.md).
+
+| Runtime file | Tripo own task | Original export → runtime bytes | Runtime triangles | Runtime SHA256 |
+|---|---|---|---|---|
+| `models/tarp.glb` | [8eeb723f](https://studio.tripo3d.ai/workspace/generate/8eeb723f-9da0-4c01-97bb-3a22c8ab41a8) | 1,037,884 → 472,276 | 18,832 | `f2a36f7a233f942f950a5ffcdc6ea23ab171899fefd6fb32dfb26ec8876224d7` |
+| `models/canoe.glb` | [f61c3af1](https://studio.tripo3d.ai/workspace/generate/f61c3af1-d75f-4670-8851-455ac55e9401) | 1,205,620 → 536,872 | 18,778 | `90d3ffd81133ee19f9802c0a5a18ec2a22a4ada733b982bb28917c1f111a41de` |
+| `models/tent.glb` | [8a43d20c](https://studio.tripo3d.ai/workspace/generate/8a43d20c-6265-4303-be2f-c6a4b4b37d57), reused own Clumpus output | 923,176 inherited UI export → 445,332 | 19,009 | `6f606c51302aaaeada6eb832c5ef85b1c1810cfd7795443231b084ac9a8ee8f9` |
+
+New model generation: HD Model, H3.1 text-to-3D, geometry/texture with the saved ~20k geometry setting, 2K source texture. The Generate button displayed **30 credits** each. Two jobs used **60 existing credits**, balance **1585 → 1525**. No purchase, upgrade or rig job. Both exported normally with **GLB / 1k textures**, no export charge. Source UI downloads remain in Downloads; copies are not committed as extra runtime payloads.
+
+Original new export hashes:
+
+- Tarp `cf63d8a36dbcfb8403c9eb7b95524f7a0a12cada926ec92f1f484f3eaf7656c2`.
+- Canoe `0e10ec599e75165b48b4647dacddd207fdcdcf9bf0bbd38984e4a29c2348207e`.
+- Tent inherited original `5b53c756946d5584364a26bd2f0a4cfbca149fa1a234e68433984c248d0f8f0d`; current local copy byte-identical to the Clumpus optimized file.
+
+New files were processed using pinned glTF Transform CLI 4.5.1 `optimize --compress quantize --texture-compress webp --texture-size 1024 --simplify false`: dedup/weld/prune, quantized attributes and WebP maps. No intentional mesh simplification, skeleton edit or image-content edit. Tiny triangle-count changes (canoe 18,780→18,778; tarp 18,836→18,832) come from pruning/welding degenerates. Tent bytes were copied unchanged from the read-only prior repo after inspecting its own Tripo workspace.
+
+All three use **Y-up**, embedded PBR maps, `EXT_texture_webp` and `KHR_mesh_quantization`, no external decoder, no skin and no animation clips. They are intentionally rigid props. Loaded world bounds, including node transforms (quantized integer accessor values are not meters):
+
+- **Canoe:** X≈±0.1957, Y≈0..0.3165, Z≈±0.5. Longest axis **Z**; rotate Y by π/2 to align with an X-axis crossing. Empty narrow timber hull, teal band, bench seats and rope trim. Side-view screenshot inspected.
+- **Tarp:** X≈±0.5, Y≈0..0.8049, Z≈±0.2603. Wide blue overhead canvas on four timber poles, open underside. Generation also added a hanging cloth sling below the roof; this is retained rather than claiming exact prompt fidelity.
+- **Tent:** X≈±0.5, Y≈0..0.9047, Z≈±0.4039, front +Z. Round yellow/white carnival pavilion with open arched front/table and benches inside, rather than an empty four-pole camping tent. Scale to its actual cover footprint.
+
+`gltf-transform validate` returned **zero errors** on all three. Each retains the common normal-map warning `MESH_PRIMITIVE_GENERATED_TANGENT_SPACE` because Tripo's mesh has no authored tangents; Three.js generates tangent space at runtime. No unsupported-extension error. Detailed original/runtime hashes/counts/node transforms: [dynamic-model-inspection.json](docs/art/dynamic-model-inspection.json).
+
+Actual Chrome workspace evidence: [canoe](docs/art/dynamic-tripo-canoe.png), [tarp](docs/art/dynamic-tripo-tarp.png). These are genuine Tripo model screenshots, not gameplay or design mockups. Final integrated camera/scale/coverage checks belong to the lead's gameplay validation.

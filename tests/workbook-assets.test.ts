@@ -11,7 +11,7 @@ const dist = resolve(process.env.WORKBOOK_ASSET_DIST || fileURLToPath(new URL('.
 const mount = '/play/wordcraft-islands/version/';
 const audioFiles = ['island-score.ogg', 'hopeful-stem.ogg', 'water-breeze.ogg',
   ...['notebook', 'page', 'confirm', 'create', 'wood', 'metal', 'rotate', 'bounce', 'splash', 'umbrella', 'fan', 'undo', 'success', 'mistake'].map(name => `${name}.wav`)];
-const models = ['courier', 'boat', 'balloon', 'lamp', 'crate'];
+const models = ['courier', 'boat', 'balloon', 'lamp', 'crate', 'tent', 'tarp', 'canoe'];
 const mime: Record<string, string> = {'.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.ttf': 'font/ttf', '.ogg': 'audio/ogg', '.wav': 'audio/wav', '.glb': 'model/gltf-binary'};
 
 test('release assets work from the nested Workbook mount', {skip: !existsSync(resolve(dist, 'index.html')) && 'Run npm run build before release-asset QA'}, async t => {
@@ -90,7 +90,7 @@ test('release assets work from the nested Workbook mount', {skip: !existsSync(re
       }
     });
 
-    await t.test('all five GLBs resolve locally, including any texture or buffer sidecars', async () => {
+    await t.test('all eight GLBs resolve locally, including any texture or buffer sidecars', async () => {
       for (const template of loaderTemplate('loadAsync', 'models')) {
         assert(/\$\{[^}]+\}/.test(template), 'model loader must expose its name substitution');
         for (const model of models) {

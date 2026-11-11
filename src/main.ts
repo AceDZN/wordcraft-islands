@@ -1,5 +1,5 @@
 import './style.css';
-import { World } from './world';
+import { World, REQUIRED_MODELS } from './world';
 import { levels, chapters } from './campaign-levels';
 import { createProgress, unlockedThrough, canPlay, enterLevel, completeLevel, resumeLevel, campaignFinished } from './campaign';
 import { mountCampaignMap } from './campaign-map';
@@ -441,7 +441,7 @@ function simulate(dt:number){
  if(!$('#feedback').hidden&&clock>feedbackUntil)$('#feedback').hidden=true;
  updateFlow();
 }
-function draw(){const dt=motionDt;motionDt=0;const state=evaluatePlacement(level,items);world.setSelected(won?'':selected);world.setExtras({...state.extras,absorbed:state.absorbed});world.setNavigating(activeTravel||ferry>0,pending?zoneIndex:undefined);world.sailProgress(ferry>0?vesselX:undefined,lastReady);world.render(dt,player,moving,lastReady,isBlocked()&&!won,ferry>0);if(!hostReady&&world.loaded.length===5&&!world.errors.length){hostReady=true;hostSession.markReady();}if(!hostError&&world.errors.length){hostError=true;postToHost({type:'error',message:'Wordcraft Islands could not load its models. Reload the game to try again.'});}}
+function draw(){const dt=motionDt;motionDt=0;const state=evaluatePlacement(level,items);world.setSelected(won?'':selected);world.setExtras({...state.extras,absorbed:state.absorbed});world.setNavigating(activeTravel||ferry>0,pending?zoneIndex:undefined);world.sailProgress(ferry>0?vesselX:undefined,lastReady);world.render(dt,player,moving,lastReady,isBlocked()&&!won,ferry>0);if(!hostReady&&world.loaded.length===REQUIRED_MODELS.length&&!world.errors.length){hostReady=true;hostSession.markReady();}if(!hostError&&world.errors.length){hostError=true;postToHost({type:'error',message:'Wordcraft Islands could not load its models. Reload the game to try again.'});}}
 let last=performance.now();
 function frame(now:number){const dt=Math.min(.25,(now-last)/1000);last=now;const steps=Math.max(1,Math.ceil(dt/(1/60)));for(let i=0;i<steps;i++)simulate(dt/steps);draw();requestAnimationFrame(frame);}
 requestAnimationFrame(frame);

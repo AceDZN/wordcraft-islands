@@ -27,7 +27,7 @@ try{
  // Every public island can be opened from a fresh profile without prefix wins.
  for(let n=1;n<=50;n++){
   const a=await fixture(`?level=${n}`);await ready(a);const s=await state(a.f),events=await messages(a.page);
-  assert.equal(s.campaign.number,n);assert.equal(s.completed.length,0);assert.equal(s.campaign.unlockedThrough,1);assert.equal(s.models.loaded.length,5);assert.equal(s.models.errors.length,0);assert.notEqual(s.mode,'welcome');
+  assert.equal(s.campaign.number,n);assert.equal(s.completed.length,0);assert.equal(s.campaign.unlockedThrough,1);assert.equal(s.models.loaded.length,8);assert.equal(s.models.errors.length,0);assert.notEqual(s.mode,'welcome');
   assert.deepEqual(events.map(m=>m.type),['ready','level-start']);assert.equal(events[1].level,n);assert.ok(events.every(m=>m.source==='workbook-game'&&m.version===1&&m.slug==='wordcraft-islands'));
   if([1,11,27,38,50].includes(n))await a.page.screenshot({path:`${out}/deep-link-${n}.png`});
   rows.push({number:n,completed:s.completed.length,frontier:s.campaign.unlockedThrough,models:s.models.loaded.length,events});console.log(`LINK ${n}/50 PASS`);await a.context.close();

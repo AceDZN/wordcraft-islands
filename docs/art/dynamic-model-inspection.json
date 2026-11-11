@@ -1,0 +1,131 @@
+{
+  "canoe": {
+    "bytes": 536872,
+    "sha256": "90d3ffd81133ee19f9802c0a5a18ec2a22a4ada733b982bb28917c1f111a41de",
+    "sourceBytes": 1205620,
+    "sourceSha256": "0e10ec599e75165b48b4647dacddd207fdcdcf9bf0bbd38984e4a29c2348207e",
+    "nodes": [
+      {
+        "name": "tripo_node_ba42b147-edbd-41bc-81a7-25969407b1bc",
+        "translation": [
+          0,
+          0.158233642578125,
+          0
+        ],
+        "scale": [
+          0.5000000596046448,
+          0.5000000596046448,
+          0.5000000596046448
+        ],
+        "mesh": 0
+      }
+    ],
+    "positionAccessors": [
+      [
+        [
+          -12825,
+          -10369,
+          -32767
+        ],
+        [
+          12825,
+          10369,
+          32767
+        ]
+      ]
+    ],
+    "extensions": [
+      "EXT_texture_webp",
+      "KHR_mesh_quantization"
+    ],
+    "triangles": 18778,
+    "skins": 0,
+    "animations": 0
+  },
+  "tarp": {
+    "bytes": 472276,
+    "sha256": "f2a36f7a233f942f950a5ffcdc6ea23ab171899fefd6fb32dfb26ec8876224d7",
+    "sourceBytes": 1037884,
+    "sourceSha256": "cf63d8a36dbcfb8403c9eb7b95524f7a0a12cada926ec92f1f484f3eaf7656c2",
+    "nodes": [
+      {
+        "name": "tripo_node_c1b4499c-9ec2-4ccc-bdff-a2fafcf9c6e9",
+        "translation": [
+          0,
+          0.402435302734375,
+          0
+        ],
+        "scale": [
+          0.5000000596046448,
+          0.5000000596046448,
+          0.5000000596046448
+        ],
+        "mesh": 0
+      }
+    ],
+    "positionAccessors": [
+      [
+        [
+          -32767,
+          -26375,
+          -17058
+        ],
+        [
+          32767,
+          26375,
+          17058
+        ]
+      ]
+    ],
+    "extensions": [
+      "EXT_texture_webp",
+      "KHR_mesh_quantization"
+    ],
+    "triangles": 18832,
+    "skins": 0,
+    "animations": 0
+  },
+  "tent": {
+    "bytes": 445332,
+    "sha256": "6f606c51302aaaeada6eb832c5ef85b1c1810cfd7795443231b084ac9a8ee8f9",
+    "sourceBytes": 445332,
+    "sourceSha256": "6f606c51302aaaeada6eb832c5ef85b1c1810cfd7795443231b084ac9a8ee8f9",
+    "nodes": [
+      {
+        "name": "tripo_node_ab621187-d006-44db-8d14-ddf261c70146",
+        "translation": [
+          0,
+          0.452362060546875,
+          0
+        ],
+        "scale": [
+          0.5000000596046448,
+          0.5000000596046448,
+          0.5000000596046448
+        ],
+        "mesh": 0
+      }
+    ],
+    "positionAccessors": [
+      [
+        [
+          -32767,
+          -29647,
+          -26471
+        ],
+        [
+          32767,
+          29647,
+          26471
+        ]
+      ]
+    ],
+    "extensions": [
+      "EXT_texture_webp",
+      "KHR_mesh_quantization"
+    ],
+    "triangles": 19009,
+    "skins": 0,
+    "animations": 0
+  }
+}
