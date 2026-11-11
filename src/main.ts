@@ -61,7 +61,7 @@ let completions=new Set(progress.completedIds);
 const clone=<T>(value:T):T=>JSON.parse(JSON.stringify(value));
 const event=(type:string,detail:unknown)=>events.push({type,level:level.id,at:Math.round(clock*10)/10,detail});
 function stopMotion(){completionArmed=false;keys.clear();route=[];player.vx=player.vz=0;moving=false;activeTravel=false;travelAfterApproach=false;world.clearDestination();}
-function feedback(text:string,tone='',seconds=5){$('#feedback').textContent=text;$('#feedback').dataset.tone=tone;$('#feedback').hidden=false;feedbackUntil=clock+seconds;}
+function feedback(text:string,tone='',seconds=5){$('#feedback').textContent=text;$('#feedback').style.direction=/^[A-Za-z]/.test(text)?'ltr':'rtl';$('#feedback').dataset.tone=tone;$('#feedback').hidden=false;feedbackUntil=clock+seconds;}
 function modalOpen(){return campaignMapOpen||!$('#overlay').hidden;}
 function isBlocked(){return !started||paused||book||won||modalOpen()||!$('#inspect').hidden||$<HTMLDetailsElement>('#help-details').open||document.hidden;}
 function snapshot(){history.push({items:clone(items),selected});if(history.length>35)history.shift();}
@@ -268,7 +268,7 @@ function walkTo(to:Point,tryGoal=false){
  if(!prepareMovement())return;
  const state=evaluatePlacement(level,items);travelAfterApproach=false;activeTravel=tryGoal&&state.ready;completionArmed=tryGoal&&state.ready;
  if(tryGoal&&!state.ready)feedback('אפשר להגיע לכאן, אבל המשימה עוד לא הושלמה. '+state.reason,'try',8);
- if(tryGoal&&state.ready&&!state.traversable&&['ferry','cargo','wind','storm'].includes(level.kind)&&player.x<0){route=[{x:-level.gap/2-.65,z:0}];travelAfterApproach=true;}
+ if(tryGoal&&state.ready&&!state.traversable&&level.gap>0&&player.x<0){route=[{x:-level.gap/2-.65,z:0}];travelAfterApproach=true;}
  else route=walkingRoute(level,items,player,to);
  if(!state.ready&&level.gap>0&&player.x*to.x<0)feedback('הדרך עוד לא פתוחה. איזה חפץ יוכל לעזור?');
  world.markDestination(route.at(-1)!);event('walk-request',{to,tryGoal});updateFlow();

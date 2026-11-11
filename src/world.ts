@@ -57,13 +57,14 @@ export class World {
  if((level.kind==='weight'&&zone===level.zones[0]||zone.id==='wind')&&!isWater){this.cylinder(.9,1,.13,0xb89b59,zone.x,.1,zone.z);const text=level.kind==='weight'?`> ${level.reference??6}${level.goals?.maxMass!==undefined?` / ≤${level.goals.maxMass}`:''} kg`:`→ ${level.goals?.minForce??8}${level.goals?.maxForce!==undefined?`–${level.goals.maxForce}`:'+'} N`;this.label(text,zone.x,.35,zone.z+1,.55);}
  if(['spill','puddle'].includes(zone.id)){this.spill=this.mesh(new THREE.CircleGeometry(.95,30),0x3b9daa);this.spill.rotation.x=-Math.PI/2;this.spill.position.set(zone.x,.07,zone.z);}}
 
- if(['ferry','cargo','wind','storm'].includes(level.kind)){
+ if(level.gap>0&&level.kind!=='weight'){
  // A tangible raft and sail wait by the dock, then carry the explorer across.
  for(let i=0;i<5;i++)this.box(2.4,.16,.28,0xa97a48,0,-.05,(i-2)*.3,this.voyage);
  for(const z of [-.55,.55]){const barrel=this.cylinder(.22,.22,1.8,0x718783,0,-.3,z,this.voyage);barrel.rotation.z=Math.PI/2;}
  this.cylinder(.045,.055,2.7,0x8e693b,-.65,1.3,0,this.voyage).name='voyage-mast';
  const cloth=new THREE.BufferGeometry();cloth.setAttribute('position',new THREE.Float32BufferAttribute([-.6,.7,-.02,-.6,2.5,-.02,1,.7,-.02],3));cloth.computeVertexNormals();this.voyageSail=new THREE.Mesh(cloth,new THREE.MeshStandardMaterial({color:0xf5dfb2,side:THREE.DoubleSide,roughness:.9}));this.voyageSail.castShadow=true;this.voyage.add(this.voyageSail);this.voyage.position.set(-level.gap/2+.4,-.45,0);
  }
+ this.voyage.visible=level.kind!=='bridge';
  const sourceZ=variant?-1:1;if(level.seeds?.some(s=>s.origin.includes('tree')))this.tree(-5.5,2.8*sourceZ);if(level.seeds?.some(s=>s.origin.includes('fountain'))){this.cylinder(.65,.8,.35,0xd9d1b7,-7,.15,-2.8*sourceZ);this.cylinder(.45,.45,.15,0x59bcc2,-7,.4,-2.8*sourceZ);this.cylinder(.1,.18,.8,0xdbd4bd,-7,.65,-2.8*sourceZ);}
  // Optional material playground: lamp marker and key chest, both have real interactions.
  this.box(.9,.5,.65,0x825537,4.5,.28,2.6);this.chestLid=this.box(.95,.18,.7,0xb1854e,4.5,.64,2.6);this.box(.1,.2,.05,0xe4c063,4.5,.4,2.95);
@@ -109,8 +110,8 @@ export class World {
  else if(['tent','tarp','canoe'].includes(s.noun)&&this.models.has(s.noun)){
   const model=this.model(s.noun,1);if(s.noun==='canoe')model.rotation.y=Math.PI/2;
   model.updateMatrixWorld(true);const bounds=new THREE.Box3().setFromObject(model),size=bounds.getSize(new THREE.Vector3());
-  const canopy=s.noun!=='canoe';model.scale.multiply(new THREE.Vector3((canopy?s.rain*1.6:s.length)/Math.max(.01,size.x),(canopy?2.2:.65)/Math.max(.01,size.y),(canopy?s.rain*1.6:s.width)/Math.max(.01,size.z)));
-  group.add(model);
+  const canopy=s.noun!=='canoe',sized=new THREE.Group();sized.add(model);sized.scale.set((canopy?s.rain*1.6:s.length)/Math.max(.01,size.x),(canopy?2.2:.65)/Math.max(.01,size.y),(canopy?s.rain*1.6:s.width)/Math.max(.01,size.z));
+  group.add(sized);
  }
  else if(s.noun==='bridge'){
   for(let x=-s.length/2+.1;x<s.length/2;x+=.24)this.box(.22,.17,s.width,0xb88750,x,.13,0,group);
@@ -204,14 +205,14 @@ export class World {
  showBridge(show:boolean){if(this.bridgeShown===show)return;this.bridgeShown=show;this.disposeGroup(this.bridge);for(const mesh of this.zoneMeshes)if(this.level?.kind==='weight')mesh.position.y=show?.03:.12;if(!show||!this.level?.gap)return;const l=this.level.gap+1;this.box(l,.15,1.4,0xaa824f,0,.08,0,this.bridge);for(let x=-l/2;x<l/2;x+=.3)this.box(.02,.02,1.35,0x79582f,x,.17,0,this.bridge);}
  setExtras(state:{unlocked:boolean;illuminated:boolean;absorbed?:number}){if(this.chestLid)this.chestLid.rotation.x=state.unlocked?-.8:0;if(this.caveGlow)this.caveGlow.visible=state.illuminated;if(this.spill)this.spill.scale.setScalar(Math.max(.05,1-(state.absorbed??0)/Math.max(1,this.level?.goals?.minAbsorb??4)));}
  beginVoyage(item?:Item){
- const previous=this.transport;this.resetVoyage();if(!item)return -.34;
+ const previous=this.transport;this.resetVoyage();if(!item)return -.34;this.voyage.visible=true;
  const isVehicle=ownVehicle(item.spec);
  const deckY=item.spec.noun==='balloon'?.07:item.spec.noun==='raft'?-.12:item.spec.noun==='log'?-.1:isVehicle?-.3:-.34;
  this.transport={id:item.id,kind:item.spec.noun,x:previous?.id===item.id?previous.x:item.x,z:previous?.id===item.id?previous.z:item.z,deckY,active:false};
  if(isVehicle){const wind=this.level?.kind==='storm'||this.level?.kind==='wind';for(const child of this.voyage.children)child.visible=wind&&(child===this.voyageSail||child.name==='voyage-mast');}
  return deckY;
  }
- resetVoyage(){this.transport=undefined;this.voyageDone=false;this.voyage.visible=true;for(const child of this.voyage.children)child.visible=true;}
+ resetVoyage(){this.transport=undefined;this.voyageDone=false;this.voyage.visible=this.level?.kind!=='bridge';for(const child of this.voyage.children)child.visible=true;}
  sailProgress(x:number|undefined,ready:boolean){if(!this.level)return;if(x!==undefined){this.voyage.position.x=x;this.voyageDone=true;if(this.transport){this.transport.active=true;this.transport.x=x;this.transport.z=0;}}else if(!this.voyageDone)this.voyage.position.x=-this.level.gap/2+.35;this.voyage.position.y=-.38+Math.sin(this.time*2)*.012;if(this.voyageSail)this.voyageSail.rotation.y=ready?Math.sin(this.time*3)*.08:0;}
  markDestination(point:{x:number;z:number}){this.clearDestination();const m=new THREE.Mesh(new THREE.TorusGeometry(.25,.035,7,28),new THREE.MeshBasicMaterial({color:0xfff4b9,depthTest:false,transparent:true,opacity:.9}));m.rotation.x=-Math.PI/2;m.position.set(point.x,.15,point.z);this.destination.add(m);}
  clearDestination(){for(const o of this.destination.children){if(o instanceof THREE.Mesh){o.geometry.dispose();(o.material as THREE.Material).dispose();}}this.destination.clear();}

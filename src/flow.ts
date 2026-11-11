@@ -1,4 +1,4 @@
-import { catalog, evaluatePlacement, type Item, type Level, type Spec, windSource } from './rules';
+import { catalog, evaluatePlacement, type Item, type Level, type Spec, windSource, supportsBothBanks } from './rules';
 export type Point = {x:number;z:number};
 export type NextAction = {kind:'create'|'select'|'revise'|'replace'|'move'|'recover'|'travel';label:string;instruction:string};
 /** Project keyboard intent onto the camera's ground plane. */
@@ -86,7 +86,7 @@ export function nextAction(level:Level,items:Item[],selected=''):NextAction {
 export function walkingRoute(level:Level,items:Item[],from:Point,to:Point):Point[] {
  if(level.gap>0&&from.x*to.x<0){
   if(!evaluatePlacement(level,items).traversable)return [{x:Math.sign(from.x)*(level.gap/2+.65),z:0}];
-  const state=evaluatePlacement(level,items);const span=items.find(o=>state.contributors.includes(o.id)&&o.spec.span);
+  const state=evaluatePlacement(level,items);const span=items.find(o=>level.kind!=='weight'&&state.contributors.includes(o.id)&&supportsBothBanks(level,o));
   const lineZ=(x:number)=>span?span.z-(x-span.x)*Math.tan(span.rot):0;
   const entryX=Math.sign(from.x)*(level.gap/2+.32),exitX=Math.sign(to.x)*(level.gap/2+.32);
   return [{x:entryX,z:lineZ(entryX)},{x:exitX,z:lineZ(exitX)},to];

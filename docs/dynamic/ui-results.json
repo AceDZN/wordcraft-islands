@@ -1,0 +1,559 @@
+{
+  "passed": true,
+  "campaignFromPriorUiRun": true,
+  "rows": [
+    {
+      "number": 1,
+      "title": "The little crossing",
+      "phrases": [
+        "a plank"
+      ],
+      "assisted": false,
+      "realTime": true,
+      "completed": 1
+    },
+    {
+      "number": 2,
+      "title": "One parcel in the rain",
+      "phrases": [
+        "an umbrella"
+      ],
+      "assisted": false,
+      "realTime": true,
+      "completed": 2
+    },
+    {
+      "number": 3,
+      "title": "Rain on the post",
+      "phrases": [
+        "a large tarp"
+      ],
+      "assisted": false,
+      "realTime": false,
+      "completed": 3
+    },
+    {
+      "number": 4,
+      "title": "The driftwood narrows",
+      "phrases": [
+        "a log"
+      ],
+      "assisted": false,
+      "realTime": false,
+      "completed": 4
+    },
+    {
+      "number": 5,
+      "title": "The picnic post",
+      "phrases": [
+        "a raincoat",
+        "a raincoat",
+        "a raincoat"
+      ],
+      "assisted": false,
+      "realTime": false,
+      "completed": 5
+    },
+    {
+      "number": 6,
+      "title": "Across the inlet",
+      "phrases": [
+        "a canoe"
+      ],
+      "assisted": false,
+      "realTime": true,
+      "completed": 6
+    },
+    {
+      "number": 7,
+      "title": "The orchard gate",
+      "phrases": [
+        "a rock"
+      ],
+      "assisted": false,
+      "realTime": false,
+      "completed": 7
+    },
+    {
+      "number": 8,
+      "title": "A spill by the steps",
+      "phrases": [
+        "a sponge"
+      ],
+      "assisted": false,
+      "realTime": false,
+      "completed": 8
+    },
+    {
+      "number": 9,
+      "title": "The keeper's chest",
+      "phrases": [
+        "a key"
+      ],
+      "assisted": false,
+      "realTime": false,
+      "completed": 9
+    },
+    {
+      "number": 10,
+      "title": "The sealed ferry",
+      "phrases": [
+        "a barrel",
+        "a key"
+      ],
+      "assisted": false,
+      "realTime": false,
+      "completed": 10
+    },
+    {
+      "number": 11,
+      "title": "Longer than the gap",
+      "phrases": [
+        "a long bridge"
+      ],
+      "assisted": false,
+      "realTime": false,
+      "completed": 11
+    },
+    {
+      "number": 12,
+      "title": "A wider roof",
+      "phrases": [
+        "a tent"
+      ],
+      "assisted": false,
+      "realTime": false,
+      "completed": 12
+    },
+    {
+      "number": 13,
+      "title": "Too much for the dock",
+      "phrases": [
+        "a light crate"
+      ],
+      "assisted": false,
+      "realTime": false,
+      "completed": 13
+    },
+    {
+      "number": 14,
+      "title": "The counterweight dock",
+      "phrases": [
+        "a heavy bucket"
+      ],
+      "assisted": false,
+      "realTime": false,
+      "completed": 14
+    },
+    {
+      "number": 15,
+      "title": "Room for six",
+      "phrases": [
+        "a chest"
+      ],
+      "assisted": false,
+      "realTime": false,
+      "completed": 15
+    },
+    {
+      "number": 16,
+      "title": "Timber at the berth",
+      "phrases": [
+        "a large metal crate",
+        "a wooden raft"
+      ],
+      "assisted": false,
+      "realTime": false,
+      "completed": 16
+    },
+    {
+      "number": 17,
+      "title": "A light in the fog",
+      "phrases": [
+        "a torch"
+      ],
+      "assisted": false,
+      "realTime": true,
+      "completed": 17
+    },
+    {
+      "number": 18,
+      "title": "The narrow berth",
+      "phrases": [
+        "a canoe"
+      ],
+      "assisted": false,
+      "realTime": false,
+      "completed": 18
+    },
+    {
+      "number": 19,
+      "title": "Four letters, one trip",
+      "phrases": [
+        "a barrel"
+      ],
+      "assisted": false,
+      "realTime": false,
+      "completed": 19
+    },
+    {
+      "number": 20,
+      "title": "The rain beacon",
+      "phrases": [
+        "a tarp",
+        "a tarp",
+        "a candle"
+      ],
+      "assisted": false,
+      "realTime": false,
+      "completed": 20
+    },
+    {
+      "number": 21,
+      "title": "More than the sample",
+      "phrases": [
+        "a cart"
+      ],
+      "assisted": false,
+      "realTime": false,
+      "completed": 21
+    },
+    {
+      "number": 22,
+      "title": "Between two marks",
+      "phrases": [
+        "a bell",
+        "a bell",
+        "a bell"
+      ],
+      "assisted": false,
+      "realTime": false,
+      "completed": 22
+    },
+    {
+      "number": 23,
+      "title": "Light but long",
+      "phrases": [
+        "a long ladder"
+      ],
+      "assisted": false,
+      "realTime": false,
+      "completed": 23
+    },
+    {
+      "number": 24,
+      "title": "A deck for the cart",
+      "phrases": [
+        "a light bridge"
+      ],
+      "assisted": false,
+      "realTime": false,
+      "completed": 24
+    },
+    {
+      "number": 25,
+      "title": "A gentle breeze",
+      "phrases": [
+        "a blower"
+      ],
+      "assisted": false,
+      "realTime": false,
+      "completed": 25
+    },
+    {
+      "number": 26,
+      "title": "The gardener's crate",
+      "phrases": [
+        "a light cart",
+        "a cart"
+      ],
+      "assisted": false,
+      "realTime": false,
+      "completed": 26
+    },
+    {
+      "number": 27,
+      "title": "The medicine crate",
+      "phrases": [
+        "a crate",
+        "a heavy crate"
+      ],
+      "assisted": false,
+      "realTime": false,
+      "completed": 27
+    },
+    {
+      "number": 28,
+      "title": "Keep the lift light",
+      "phrases": [
+        "a boat"
+      ],
+      "assisted": false,
+      "realTime": false,
+      "completed": 28
+    },
+    {
+      "number": 29,
+      "title": "A team at the wind dock",
+      "phrases": [
+        "a fan",
+        "a blower"
+      ],
+      "assisted": false,
+      "realTime": false,
+      "completed": 29
+    },
+    {
+      "number": 30,
+      "title": "The narrow harbour express",
+      "phrases": [
+        "a small canoe",
+        "a fan",
+        "a fan"
+      ],
+      "assisted": false,
+      "realTime": false,
+      "completed": 30
+    },
+    {
+      "number": 31,
+      "title": "The floating store",
+      "phrases": [
+        "a large wooden chest"
+      ],
+      "assisted": false,
+      "realTime": false,
+      "completed": 31
+    },
+    {
+      "number": 32,
+      "title": "Timber for the bulk mail",
+      "phrases": [
+        "a raft"
+      ],
+      "assisted": false,
+      "realTime": false,
+      "completed": 32
+    },
+    {
+      "number": 33,
+      "title": "The narrow rescue line",
+      "phrases": [
+        "a long light log"
+      ],
+      "assisted": false,
+      "realTime": false,
+      "completed": 33
+    },
+    {
+      "number": 34,
+      "title": "Light timber, full carrier",
+      "phrases": [
+        "a light wooden canoe"
+      ],
+      "assisted": false,
+      "realTime": false,
+      "completed": 34
+    },
+    {
+      "number": 35,
+      "title": "Start the festival barge",
+      "phrases": [
+        "a windmill"
+      ],
+      "assisted": false,
+      "realTime": false,
+      "completed": 35
+    },
+    {
+      "number": 36,
+      "title": "Power for the sail",
+      "phrases": [
+        "a powerless fan",
+        "a powerful fan"
+      ],
+      "assisted": false,
+      "realTime": false,
+      "completed": 36
+    },
+    {
+      "number": 37,
+      "title": "Quiet by the nest",
+      "phrases": [
+        "a powerless blower"
+      ],
+      "assisted": false,
+      "realTime": true,
+      "completed": 37
+    },
+    {
+      "number": 38,
+      "title": "The soggy print shop",
+      "phrases": [
+        "a sponge",
+        "a sponge",
+        "a sponge"
+      ],
+      "assisted": false,
+      "realTime": false,
+      "completed": 38
+    },
+    {
+      "number": 39,
+      "title": "The wet lock",
+      "phrases": [
+        "a large towel",
+        "a large towel",
+        "a key"
+      ],
+      "assisted": false,
+      "realTime": false,
+      "completed": 39
+    },
+    {
+      "number": 40,
+      "title": "The quiet cargo departure",
+      "phrases": [
+        "a light wooden raft",
+        "a powerless fan"
+      ],
+      "assisted": false,
+      "realTime": false,
+      "completed": 40
+    },
+    {
+      "number": 41,
+      "title": "An air-mail invitation",
+      "phrases": [
+        "a balloon"
+      ],
+      "assisted": false,
+      "realTime": false,
+      "completed": 41
+    },
+    {
+      "number": 42,
+      "title": "The boat the helper borrowed",
+      "phrases": [
+        "a small boat",
+        "a large wooden boat"
+      ],
+      "assisted": false,
+      "realTime": false,
+      "completed": 42
+    },
+    {
+      "number": 43,
+      "title": "Leave the heavy fan behind",
+      "phrases": [
+        "a light windmill"
+      ],
+      "assisted": false,
+      "realTime": false,
+      "completed": 43
+    },
+    {
+      "number": 44,
+      "title": "Sort the metal returns",
+      "phrases": [
+        "a metal plank"
+      ],
+      "assisted": false,
+      "realTime": false,
+      "completed": 44
+    },
+    {
+      "number": 45,
+      "title": "The supply run",
+      "phrases": [
+        "a powerless fan",
+        "a large crate",
+        "a powerful fan"
+      ],
+      "assisted": false,
+      "realTime": false,
+      "completed": 45
+    },
+    {
+      "number": 46,
+      "title": "The flooded archive",
+      "phrases": [
+        "a large sponge",
+        "a large sponge",
+        "a bright lamp"
+      ],
+      "assisted": false,
+      "realTime": false,
+      "completed": 46
+    },
+    {
+      "number": 47,
+      "title": "The signaller's invitation",
+      "phrases": [
+        "a large light raft",
+        "a fan",
+        "a fan"
+      ],
+      "assisted": false,
+      "realTime": false,
+      "completed": 47
+    },
+    {
+      "number": 48,
+      "title": "The original rescue rope",
+      "phrases": [
+        "a short rope",
+        "a long rope"
+      ],
+      "assisted": false,
+      "realTime": false,
+      "completed": 48
+    },
+    {
+      "number": 49,
+      "title": "Prepare the night mail",
+      "phrases": [
+        "a large wooden boat",
+        "a key",
+        "a torch"
+      ],
+      "assisted": false,
+      "realTime": false,
+      "completed": 49
+    },
+    {
+      "number": 50,
+      "title": "Lights for every island",
+      "phrases": [
+        "a powerless fan",
+        "a large light wooden canoe",
+        "a powerful fan",
+        "a key",
+        "a candle"
+      ],
+      "assisted": false,
+      "realTime": true,
+      "completed": 50
+    }
+  ],
+  "checks": [
+    "earned Next1→2",
+    "wrong-item/Undo 2",
+    "wrong-item/Undo 12",
+    "wrong-item/Undo 25",
+    "wrong-item/Undo 38",
+    "wrong-item/Undo 50",
+    "final Next opens map",
+    "alternative 1: a bridge",
+    "alternative 1: a canoe",
+    "alternative 2: a tarp",
+    "alternative 2: a tent",
+    "alternative 2: a raincoat",
+    "alternative 6: a raft",
+    "alternative 17: a candle",
+    "opt-in spelling reveal",
+    "touch replace/Undo 390",
+    "touch replace/Undo 844"
+  ],
+  "errors": []
+}

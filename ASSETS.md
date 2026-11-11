@@ -89,3 +89,8 @@ All three use **Y-up**, embedded PBR maps, `EXT_texture_webp` and `KHR_mesh_quan
 `gltf-transform validate` returned **zero errors** on all three. Each retains the common normal-map warning `MESH_PRIMITIVE_GENERATED_TANGENT_SPACE` because Tripo's mesh has no authored tangents; Three.js generates tangent space at runtime. No unsupported-extension error. Detailed original/runtime hashes/counts/node transforms: [dynamic-model-inspection.json](docs/art/dynamic-model-inspection.json).
 
 Actual Chrome workspace evidence: [canoe](docs/art/dynamic-tripo-canoe.png), [tarp](docs/art/dynamic-tripo-tarp.png). These are genuine Tripo model screenshots, not gameplay or design mockups. Final integrated camera/scale/coverage checks belong to the lead's gameplay validation.
+
+
+### November integration inspection
+
+Independent frozen-build gameplay checks created/placed the new tarp and tent on level2, then boarded/crossed in the actual canoe on level6, with both islands completed through normal UI and real-time travel. All8 models loaded, no page/loader errors. Desktop and native touch390×844 tarp captures were visually inspected; remove/Undo restored the shelter. See [dynamic-gameplay-review.md](docs/art/dynamic-gameplay-review.md) for the exact scope and minor optional canoe scale refinement.

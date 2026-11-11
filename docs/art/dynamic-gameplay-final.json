@@ -1,0 +1,510 @@
+{
+  "testMethod": "Normal notebook/place/travel UI, no state injection, no advanceTime",
+  "errors": [],
+  "canopy": {
+    "mode": "explore",
+    "coordinateSystem": "x east, z south, y up; keyboard directions relative to camera screen. Click ground to walk.",
+    "level": "wc-02-first-cover",
+    "workbook": {
+      "ready": true,
+      "requestedLevel": 2,
+      "activeSeconds": 20.862800000047837
+    },
+    "campaign": {
+      "number": 2,
+      "total": 50,
+      "chapter": 1,
+      "unlockedThrough": 1,
+      "currentId": "g7-crossing",
+      "finished": false,
+      "mapOpen": false
+    },
+    "stage": "guided",
+    "atmosphere": "orchard",
+    "weather": "rain",
+    "layoutVariant": 0,
+    "objective": "A shower catches an uncollected letter. Keep it dry.",
+    "nextAction": {
+      "kind": "travel",
+      "label": "לכו למגדלור →",
+      "instruction": "הפתרון עובד! לחצו כדי לנסות אותו ולהגיע למגדלור."
+    },
+    "player": {
+      "x": -3.7,
+      "z": 0,
+      "jump": 0,
+      "vx": 0,
+      "vz": 0,
+      "facing": 1.5707963267948966
+    },
+    "motion": {
+      "moving": false,
+      "blockedAtEdge": false,
+      "carried": false,
+      "onVessel": false,
+      "vesselX": 0,
+      "route": [],
+      "activeTravel": false,
+      "clip": "idle",
+      "facing": 1.5707963267948963,
+      "speed": 0
+    },
+    "world": {
+      "ready": true,
+      "primaryReady": true,
+      "contributors": [
+        "created-1"
+      ],
+      "traversable": true,
+      "mass": 1,
+      "covered": 1,
+      "capacity": 0,
+      "force": 0,
+      "absorbed": 0,
+      "checks": [],
+      "extras": {
+        "unlocked": false,
+        "illuminated": false
+      },
+      "reason": "1/1 חבילות נשארות יבשות. לכל חפץ אזור כיסוי אמיתי."
+    },
+    "zones": [
+      {
+        "id": "parcel-1",
+        "x": 1,
+        "z": 0,
+        "label": "חבילה 1"
+      }
+    ],
+    "selected": "created-1",
+    "items": [
+      {
+        "id": "created-1",
+        "screen": {
+          "x": 698.1586179837058,
+          "y": 267.7295513519335,
+          "width": 300.80581084949426,
+          "height": 296.25451377881467
+        },
+        "phrase": "a tarp",
+        "x": 1,
+        "z": 0,
+        "visualX": 1,
+        "visualZ": 0,
+        "rot": 0,
+        "mass": 1,
+        "length": 3,
+        "capacity": 0,
+        "float": false,
+        "force": 0,
+        "width": 3,
+        "material": "cloth",
+        "light": 0,
+        "absorb": 0,
+        "rain": 2.4,
+        "evidence": {
+          "article": true,
+          "count": false,
+          "spelling": true,
+          "modifiers": false,
+          "order": false,
+          "family": false,
+          "assisted": false,
+          "shorthand": false
+        }
+      }
+    ],
+    "preview": null,
+    "learning": {
+      "attempts": 1,
+      "hints": 0,
+      "retries": 0,
+      "rejectedPhrases": 0,
+      "assisted": false,
+      "events": [
+        {
+          "type": "level-start",
+          "level": "wc-02-first-cover",
+          "at": 0,
+          "detail": {
+            "layoutVariant": 0
+          }
+        },
+        {
+          "type": "level-start",
+          "level": "wc-02-first-cover",
+          "at": 0,
+          "detail": {
+            "layoutVariant": 0
+          }
+        },
+        {
+          "type": "phrase-attempt",
+          "level": "wc-02-first-cover",
+          "at": 0.2,
+          "detail": {
+            "raw": "a tarp",
+            "number": 1,
+            "unaided": true,
+            "result": "accepted",
+            "assisted": false
+          }
+        },
+        {
+          "type": "create-place",
+          "level": "wc-02-first-cover",
+          "at": 0.3,
+          "detail": {
+            "id": "created-1",
+            "phrase": "a tarp",
+            "x": 1,
+            "z": 0,
+            "rot": 0,
+            "evidence": {
+              "article": true,
+              "count": false,
+              "spelling": true,
+              "modifiers": false,
+              "order": false,
+              "family": false,
+              "assisted": false,
+              "shorthand": false
+            }
+          }
+        },
+        {
+          "type": "world-solved",
+          "level": "wc-02-first-cover",
+          "at": 0.3,
+          "detail": {
+            "kind": "shelter"
+          }
+        }
+      ]
+    },
+    "completed": [
+      "g7-inlet"
+    ],
+    "audio": {
+      "state": "running",
+      "sampleRate": 22050,
+      "requested": true,
+      "paused": false,
+      "hidden": false,
+      "loaded": 17,
+      "loops": 3,
+      "oneShots": 0,
+      "cueTotal": 2,
+      "lastCue": "confirm",
+      "solved": true,
+      "ducked": false,
+      "gains": {
+        "music": 0.48,
+        "sfx": 0.58,
+        "voice": 0.85,
+        "master": 0.75
+      },
+      "rms": 0.00736,
+      "loadError": ""
+    },
+    "models": {
+      "loaded": [
+        "courier",
+        "boat",
+        "balloon",
+        "lamp",
+        "crate",
+        "tent",
+        "tarp",
+        "canoe"
+      ],
+      "errors": []
+    },
+    "renderStats": {
+      "calls": 57,
+      "triangles": 46809,
+      "geometries": 74
+    }
+  },
+  "completedCanoe": {
+    "mode": "complete",
+    "coordinateSystem": "x east, z south, y up; keyboard directions relative to camera screen. Click ground to walk.",
+    "level": "g7-inlet",
+    "workbook": {
+      "ready": true,
+      "requestedLevel": 6,
+      "activeSeconds": 18.603199999904668
+    },
+    "campaign": {
+      "number": 6,
+      "total": 50,
+      "chapter": 1,
+      "unlockedThrough": 1,
+      "currentId": "g7-crossing",
+      "finished": false,
+      "mapOpen": false
+    },
+    "stage": "independent",
+    "atmosphere": "harbour",
+    "weather": "clear",
+    "layoutVariant": 0,
+    "objective": "The footpath ends at an inlet. Find a way to carry the courier to the far dock.",
+    "nextAction": {
+      "kind": "travel",
+      "label": "עלו למעבורת →",
+      "instruction": "הפתרון עובד! לחצו כדי לנסות אותו ולהגיע למגדלור."
+    },
+    "player": {
+      "x": 5.8802709116372025,
+      "z": 0.3811986828459716,
+      "jump": 0,
+      "vx": 0,
+      "vz": 0,
+      "facing": 1.4268708774066827
+    },
+    "motion": {
+      "moving": false,
+      "blockedAtEdge": false,
+      "carried": false,
+      "onVessel": false,
+      "vesselX": 2.25,
+      "transport": {
+        "id": "created-1",
+        "kind": "canoe",
+        "x": 2.25,
+        "z": 0,
+        "deckY": -0.3,
+        "active": true
+      },
+      "route": [],
+      "activeTravel": false,
+      "clip": "idle",
+      "facing": 1.426870877406683,
+      "speed": 0
+    },
+    "world": {
+      "ready": true,
+      "primaryReady": true,
+      "contributors": [
+        "created-1"
+      ],
+      "traversable": false,
+      "mass": 3,
+      "covered": 0,
+      "capacity": 10,
+      "force": 0,
+      "absorbed": 0,
+      "checks": [],
+      "extras": {
+        "unlocked": false,
+        "illuminated": false
+      },
+      "reason": "הדרך מוכנה — אפשר להגיע לגדה השנייה."
+    },
+    "zones": [
+      {
+        "id": "ferry",
+        "x": 0,
+        "z": 0,
+        "label": "רציף הנוסעים"
+      }
+    ],
+    "selected": "created-1",
+    "items": [
+      {
+        "id": "created-1",
+        "screen": {
+          "x": 806.4167678040646,
+          "y": 425.0512605138443,
+          "width": 205.69331972990847,
+          "height": 137.5113170325438
+        },
+        "phrase": "a canoe",
+        "x": 0,
+        "z": 0,
+        "visualX": 2.25,
+        "visualZ": 0,
+        "rot": 0,
+        "mass": 3,
+        "length": 3.5,
+        "capacity": 10,
+        "float": true,
+        "force": 0,
+        "width": 1.2,
+        "material": "wooden",
+        "light": 0,
+        "absorb": 0,
+        "rain": 0,
+        "evidence": {
+          "article": true,
+          "count": false,
+          "spelling": true,
+          "modifiers": false,
+          "order": false,
+          "family": false,
+          "assisted": false,
+          "shorthand": false
+        }
+      }
+    ],
+    "preview": null,
+    "learning": {
+      "attempts": 1,
+      "hints": 0,
+      "retries": 0,
+      "rejectedPhrases": 0,
+      "assisted": false,
+      "events": [
+        {
+          "type": "level-start",
+          "level": "g7-inlet",
+          "at": 0,
+          "detail": {
+            "layoutVariant": 0
+          }
+        },
+        {
+          "type": "level-start",
+          "level": "g7-inlet",
+          "at": 0,
+          "detail": {
+            "layoutVariant": 0
+          }
+        },
+        {
+          "type": "phrase-attempt",
+          "level": "g7-inlet",
+          "at": 7.5,
+          "detail": {
+            "raw": "a canoe",
+            "number": 1,
+            "unaided": true,
+            "result": "accepted",
+            "assisted": false
+          }
+        },
+        {
+          "type": "create-place",
+          "level": "g7-inlet",
+          "at": 7.5,
+          "detail": {
+            "id": "created-1",
+            "phrase": "a canoe",
+            "x": 0,
+            "z": 0,
+            "rot": 0,
+            "evidence": {
+              "article": true,
+              "count": false,
+              "spelling": true,
+              "modifiers": false,
+              "order": false,
+              "family": false,
+              "assisted": false,
+              "shorthand": false
+            }
+          }
+        },
+        {
+          "type": "world-solved",
+          "level": "g7-inlet",
+          "at": 7.5,
+          "detail": {
+            "kind": "ferry"
+          }
+        },
+        {
+          "type": "context-action",
+          "level": "g7-inlet",
+          "at": 14.7,
+          "detail": {
+            "kind": "travel"
+          }
+        },
+        {
+          "type": "walk-request",
+          "level": "g7-inlet",
+          "at": 14.7,
+          "detail": {
+            "to": {
+              "x": 6.7,
+              "z": 0.5
+            },
+            "tryGoal": true
+          }
+        },
+        {
+          "type": "board-ferry",
+          "level": "g7-inlet",
+          "at": 14.9,
+          "detail": {}
+        },
+        {
+          "type": "completion",
+          "level": "g7-inlet",
+          "at": 18.9,
+          "detail": {
+            "evidence": {
+              "article": true,
+              "count": false,
+              "spelling": true,
+              "modifiers": false,
+              "order": false,
+              "family": false
+            },
+            "unaidedSolution": true,
+            "singlePhraseFirstAttemptUnaided": true,
+            "assisted": false,
+            "hints": 0,
+            "retries": 0,
+            "attempts": 1,
+            "rejectedPhrases": 0
+          }
+        }
+      ]
+    },
+    "completed": [
+      "g7-inlet"
+    ],
+    "audio": {
+      "state": "running",
+      "sampleRate": 22050,
+      "requested": true,
+      "paused": false,
+      "hidden": false,
+      "loaded": 17,
+      "loops": 3,
+      "oneShots": 0,
+      "cueTotal": 5,
+      "lastCue": "success",
+      "solved": true,
+      "ducked": false,
+      "gains": {
+        "music": 0.48,
+        "sfx": 0.58,
+        "voice": 0.85,
+        "master": 0.75
+      },
+      "rms": 0.01545,
+      "loadError": ""
+    },
+    "models": {
+      "loaded": [
+        "courier",
+        "boat",
+        "balloon",
+        "lamp",
+        "crate",
+        "tent",
+        "tarp",
+        "canoe"
+      ],
+      "errors": []
+    },
+    "renderStats": {
+      "calls": 45,
+      "triangles": 49047,
+      "geometries": 65
+    }
+  }
+}

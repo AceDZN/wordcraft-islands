@@ -1,12 +1,12 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {catalog,parsePhrase,makeItem,evaluatePlacement,modeledPhrase, type Level} from '../src/rules';
-import {nextAction,usefulObjectKind,placementPoint} from '../src/flow';
+import {catalog,parsePhrase,makeItem,evaluatePlacement,modeledPhrase, pluralNoun, type Level} from '../src/rules';
+import {nextAction,usefulObjectKind,placementPoint,walkingRoute} from '../src/flow';
 const base:Level={id:'open',grade:7,stage:'independent',title:'',mission:'',he:'',teach:'',hint:'',kind:'bridge',gap:2.4,zones:[{id:'crossing',x:0,z:0,label:'Crossing'}]};
 test('all dictionary nouns create a distinct physical object, with plurals and full phrase round trips',()=>{
  assert.ok(catalog.length>=28);assert.equal(new Set(catalog.map(c=>c.noun)).size,catalog.length);
  for(const {noun} of catalog){const result=parsePhrase(`${/^[aeiou]/.test(noun)?'an':'a'} ${noun}`);assert.ok(result.ok,noun);if(!result.ok)continue;
-  const plural=parsePhrase(`three ${noun}s`);assert.ok(plural.ok,noun);if(plural.ok){assert.equal(plural.spec.count,3);assert.ok(parsePhrase(modeledPhrase(plural.spec)).ok);}
+  const plural=parsePhrase(`three ${pluralNoun(noun)}`);assert.ok(plural.ok,noun);if(plural.ok){assert.equal(plural.spec.count,3);assert.ok(parsePhrase(modeledPhrase(plural.spec)).ok);}
  }
 });
 test('river accepts walkable crossings and actual floating routes without a word password',()=>{
@@ -52,4 +52,15 @@ test('aliases and larger batches are reviewed while unsupported English is descr
 });
 test('multiple new items get separate slots without blocking placement on adjacent pads',()=>{
  for(const phrase of ['a towel','a blower','a barrel']){const items=[];for(let i=0;i<3;i++){const spec=makeItem(phrase).spec,p=placementPoint(base,items,0,spec);items.push(makeItem(phrase,String(i),p.x,p.z));}assert.equal(new Set(items.map(o=>o.z)).size,3);}
+});
+
+test('a spanning noun used as a pressure-plate weight cannot redirect the raised bridge route',()=>{
+ const level:Level={...base,kind:'weight',gap:3.4,reference:0,goals:{minMass:7,maxMass:9,requiredMaterial:'metal'},zones:[{id:'plate',x:-4,z:-1.7,label:'Plate'}]};
+ const item=makeItem('a metal plank','load',-4,-1.7);assert.equal(evaluatePlacement(level,[item]).ready,true);
+ const route=walkingRoute(level,[item],{x:-3.7,z:0},{x:6.7,z:.5});assert.equal(route[0].z,0);assert.equal(route[1].z,0);
+});
+
+test('torch uses its real English plural in parsing and modeled single-object edits',()=>{
+ const r=parsePhrase('two torches');assert.ok(r.ok);if(r.ok){assert.equal(r.spec.count,2);assert.equal(modeledPhrase(r.spec),'two torches');}
+ assert.equal(parsePhrase('two torchs').ok,false);
 });
