@@ -84,6 +84,15 @@ class IslandAudio {
     source.connect(gain); gain.connect(this.effects); source.onended = () => { this.voices.delete(source); source.disconnect(); gain.disconnect(); };
     this.voices.add(source); source.start(); this.cueTotal++; this.lastCue = key;
   }
+  /** Choose feedback from what an object does, including alternative solutions. */
+  placement(spec: { force: number; rain: number; light: number; material: string }) {
+    if (spec.force > 0) this.cue('fan');
+    else if (spec.rain > 0 && spec.material === 'cloth') this.cue('umbrella');
+    else if (spec.material === 'metal') this.cue('metal');
+    else if (spec.material === 'stone') this.cue('bounce');
+    else if (spec.material === 'soft' || spec.material === 'cloth' || spec.material === 'wax') this.cue('page');
+    else this.cue('wood');
+  }
   pause(value: boolean) { this.paused = value; this.syncPause(); }
   private syncPause() {
     if (!this.context || !this.master) return;
