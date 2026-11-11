@@ -1,0 +1,14 @@
+{
+  "id": "dpl_FrresZ6hNj71Ykqi3Ldv72vNSXFB",
+  "url": "https://acedzn-workbook-english-games-cdy7prx5y-acedzns-projects.vercel.app",
+  "inspectorUrl": "https://vercel.com/acedzns-projects/acedzn-workbook-english-games/FrresZ6hNj71Ykqi3Ldv72vNSXFB",
+  "readyState": "READY",
+  "target": "production",
+  "deploymentApiUrl": "https://api.vercel.com/v13/deployments/dpl_FrresZ6hNj71Ykqi3Ldv72vNSXFB",
+  "promoted": true,
+  "gameSourceCommit": "bfc5a98",
+  "appSourceCommit": "03c5ce7374901818c967ac55d5af9839e4f10fd3",
+  "release": "2026-11-11",
+  "host": "https://english-games.workbook.co.il",
+  "catalogPullRequest": "https://github.com/AceDZN/acedzn-tools/pull/406"
+}
