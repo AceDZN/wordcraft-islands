@@ -1,0 +1,272 @@
+{
+  "version": "2026-11-11",
+  "base": "https://assets.acedzn.xyz/games/wordcraft-islands/2026-11-11/",
+  "bytes": 12454891,
+  "files": [
+    {
+      "key": "assets/index-D8D_n50k.css",
+      "bytes": 25613,
+      "sha256": "784ae90c9ae8920a5cefadeafb10dd33d4d775b7fd71aa61feca3b170870e7cb",
+      "status": 200,
+      "contentType": "text/css; charset=utf-8",
+      "cacheControl": "public, max-age=31536000, immutable"
+    },
+    {
+      "key": "assets/index-DD1BP7o5.js",
+      "bytes": 808588,
+      "sha256": "b9e766b0e7502116f5db78796b946bc8d51fedad8a53de666199f60634e1c9e6",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "cacheControl": "public, max-age=31536000, immutable"
+    },
+    {
+      "key": "audio/LICENSE.txt",
+      "bytes": 349,
+      "sha256": "9f163413a83adeb34420dcf8c6e90014589a5e85ee42269f5dc790a60e5c0b79",
+      "status": 200,
+      "contentType": "text/plain; charset=utf-8",
+      "cacheControl": "public, max-age=31536000, immutable"
+    },
+    {
+      "key": "audio/bounce.wav",
+      "bytes": 13274,
+      "sha256": "5cc7d81d9be5d2e8eb14c7a9c0bc4b020563216a4aecc61e13f8be98f47bf72b",
+      "status": 200,
+      "contentType": "audio/wav",
+      "cacheControl": "public, max-age=31536000, immutable"
+    },
+    {
+      "key": "audio/confirm.wav",
+      "bytes": 9746,
+      "sha256": "7d69b35b93327e8b7df09d8633608cc039755394544d1db0f5484444c2ecfa53",
+      "status": 200,
+      "contentType": "audio/wav",
+      "cacheControl": "public, max-age=31536000, immutable"
+    },
+    {
+      "key": "audio/create.wav",
+      "bytes": 44144,
+      "sha256": "03b389fcc8cb015f9fe9210dd843d1d50f914b4fce441e9e59e636081c9e59e1",
+      "status": 200,
+      "contentType": "audio/wav",
+      "cacheControl": "public, max-age=31536000, immutable"
+    },
+    {
+      "key": "audio/fan.wav",
+      "bytes": 39734,
+      "sha256": "f385833385c77f7e08358d4bcb67f2ceedf2032842452d81ae04ae7ea945759a",
+      "status": 200,
+      "contentType": "audio/wav",
+      "cacheControl": "public, max-age=31536000, immutable"
+    },
+    {
+      "key": "audio/hopeful-stem.ogg",
+      "bytes": 1460255,
+      "sha256": "9194d6db19b3c883f0953f14a1883edac00d0d69627d0d395804e386e1cead58",
+      "status": 200,
+      "contentType": "audio/ogg",
+      "cacheControl": "public, max-age=31536000, immutable"
+    },
+    {
+      "key": "audio/island-score.ogg",
+      "bytes": 1141053,
+      "sha256": "9b85580226a46fe6127f23043f7ccb3ae1eeec661eba185abb64192f1d007b08",
+      "status": 200,
+      "contentType": "audio/ogg",
+      "cacheControl": "public, max-age=31536000, immutable"
+    },
+    {
+      "key": "audio/metal.wav",
+      "bytes": 39734,
+      "sha256": "dd0ffca75f50415e7a8d1d749d6325ec28549a687751a02959dfde0e1a748583",
+      "status": 200,
+      "contentType": "audio/wav",
+      "cacheControl": "public, max-age=31536000, immutable"
+    },
+    {
+      "key": "audio/mistake.wav",
+      "bytes": 27386,
+      "sha256": "f4c625a796070a23a0057c9807ccc7d8485a48bfc246e13b1d98a5aa22ca2d99",
+      "status": 200,
+      "contentType": "audio/wav",
+      "cacheControl": "public, max-age=31536000, immutable"
+    },
+    {
+      "key": "audio/mixed-preview.wav",
+      "bytes": 2293244,
+      "sha256": "900807dd912e7644a2267973c82ce179e8e1435e8837f35823ee25b492f06086",
+      "status": 200,
+      "contentType": "audio/wav",
+      "cacheControl": "public, max-age=31536000, immutable"
+    },
+    {
+      "key": "audio/notebook.wav",
+      "bytes": 12392,
+      "sha256": "f843e5ad89b32c8ba22b90c198b84a6eb4f812731f98dbe9c7b69e42c4178d01",
+      "status": 200,
+      "contentType": "audio/wav",
+      "cacheControl": "public, max-age=31536000, immutable"
+    },
+    {
+      "key": "audio/page.wav",
+      "bytes": 9746,
+      "sha256": "c806ef7c823bc1be7c3a51d028bf97f8ea1b75f50235995f577a7da53beca890",
+      "status": 200,
+      "contentType": "audio/wav",
+      "cacheControl": "public, max-age=31536000, immutable"
+    },
+    {
+      "key": "audio/rotate.wav",
+      "bytes": 4454,
+      "sha256": "e3c4ba40f6593caf35f2ca30c43f5e42cf472c1a34a3a1309c7ea4b60a7fd928",
+      "status": 200,
+      "contentType": "audio/wav",
+      "cacheControl": "public, max-age=31536000, immutable"
+    },
+    {
+      "key": "audio/splash.wav",
+      "bytes": 31796,
+      "sha256": "8e6a74f842390b22b13066a1dbcaf209de7f217138ea3c147a36c76a6150a4bf",
+      "status": 200,
+      "contentType": "audio/wav",
+      "cacheControl": "public, max-age=31536000, immutable"
+    },
+    {
+      "key": "audio/success.wav",
+      "bytes": 79424,
+      "sha256": "cb8d1c8034ac6ff20c3d69b5f1ae714024eafaad0f9aaf292c3b93000bb31a80",
+      "status": 200,
+      "contentType": "audio/wav",
+      "cacheControl": "public, max-age=31536000, immutable"
+    },
+    {
+      "key": "audio/umbrella.wav",
+      "bytes": 22976,
+      "sha256": "d598657c9aac908f71861fe119dfe8a4f870766c5f1d99be3a5deeb9c70eb9da",
+      "status": 200,
+      "contentType": "audio/wav",
+      "cacheControl": "public, max-age=31536000, immutable"
+    },
+    {
+      "key": "audio/undo.wav",
+      "bytes": 21212,
+      "sha256": "a76240c5848759e4b6d84887d74bc52110e5df043f9183f980279557d54a1fc9",
+      "status": 200,
+      "contentType": "audio/wav",
+      "cacheControl": "public, max-age=31536000, immutable"
+    },
+    {
+      "key": "audio/water-breeze.ogg",
+      "bytes": 900735,
+      "sha256": "794b7ed98d51d3e51ae7ef8d9ebd72a560483e4912f5235b945fdf75da5be62d",
+      "status": 200,
+      "contentType": "audio/ogg",
+      "cacheControl": "public, max-age=31536000, immutable"
+    },
+    {
+      "key": "audio/wood.wav",
+      "bytes": 14156,
+      "sha256": "749e06197e26b398278605be2c02cd78198a778eb05b9129e8da90c427655738",
+      "status": 200,
+      "contentType": "audio/wav",
+      "cacheControl": "public, max-age=31536000, immutable"
+    },
+    {
+      "key": "fonts/OFL-Rubik.txt",
+      "bytes": 4384,
+      "sha256": "472cbe7c25441df63e9c7864b43eb3c0f4b3df950c66a76224e6cfe1eae843fb",
+      "status": 200,
+      "contentType": "text/plain; charset=utf-8",
+      "cacheControl": "public, max-age=31536000, immutable"
+    },
+    {
+      "key": "fonts/Rubik-Variable.ttf",
+      "bytes": 359804,
+      "sha256": "1b3a7437ba2af80e465e773ed60c5036d1ba6ace492d89046dbcf18fb31e4e88",
+      "status": 200,
+      "contentType": "font/ttf",
+      "cacheControl": "public, max-age=31536000, immutable"
+    },
+    {
+      "key": "index.html",
+      "bytes": 739,
+      "sha256": "39a4b111e51044dbdb1f8790882496e74ad7179e0c0a9dfe2f6c38746f5de6d8",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "cacheControl": "public, max-age=31536000, immutable"
+    },
+    {
+      "key": "models/balloon.glb",
+      "bytes": 819528,
+      "sha256": "87f0c8064f2d295bbc99bd30b2fbaa51433dde4e0880dd097c75c0bb89cd1d68",
+      "status": 200,
+      "contentType": "model/gltf-binary",
+      "cacheControl": "public, max-age=31536000, immutable"
+    },
+    {
+      "key": "models/boat.glb",
+      "bytes": 245256,
+      "sha256": "08ae2c1260638b41a90b9f2cee4c644c831f038c4c26b520d6628f850df80a5a",
+      "status": 200,
+      "contentType": "model/gltf-binary",
+      "cacheControl": "public, max-age=31536000, immutable"
+    },
+    {
+      "key": "models/canoe.glb",
+      "bytes": 536872,
+      "sha256": "90d3ffd81133ee19f9802c0a5a18ec2a22a4ada733b982bb28917c1f111a41de",
+      "status": 200,
+      "contentType": "model/gltf-binary",
+      "cacheControl": "public, max-age=31536000, immutable"
+    },
+    {
+      "key": "models/courier.glb",
+      "bytes": 1294924,
+      "sha256": "391f136e4e3dc638f93ba15a7e5cfaf2a0887592a0ab80c22ccdddcd2c505e95",
+      "status": 200,
+      "contentType": "model/gltf-binary",
+      "cacheControl": "public, max-age=31536000, immutable"
+    },
+    {
+      "key": "models/crate.glb",
+      "bytes": 206804,
+      "sha256": "318ceb8efe87339ea0b726061802eb19abc0416777386a24027c94dc974fb94a",
+      "status": 200,
+      "contentType": "model/gltf-binary",
+      "cacheControl": "public, max-age=31536000, immutable"
+    },
+    {
+      "key": "models/lamp.glb",
+      "bytes": 586004,
+      "sha256": "64d76119944d93d214640ad210e831459919834faecbb61e6265603769e186fa",
+      "status": 200,
+      "contentType": "model/gltf-binary",
+      "cacheControl": "public, max-age=31536000, immutable"
+    },
+    {
+      "key": "models/tarp.glb",
+      "bytes": 472276,
+      "sha256": "f2a36f7a233f942f950a5ffcdc6ea23ab171899fefd6fb32dfb26ec8876224d7",
+      "status": 200,
+      "contentType": "model/gltf-binary",
+      "cacheControl": "public, max-age=31536000, immutable"
+    },
+    {
+      "key": "models/tent.glb",
+      "bytes": 445332,
+      "sha256": "6f606c51302aaaeada6eb832c5ef85b1c1810cfd7795443231b084ac9a8ee8f9",
+      "status": 200,
+      "contentType": "model/gltf-binary",
+      "cacheControl": "public, max-age=31536000, immutable"
+    },
+    {
+      "key": "poster.png",
+      "bytes": 482957,
+      "sha256": "80c7ac165558a3a2392abb174d27cce0d1808e7b31f829d052397e0c3b5186e6",
+      "status": 200,
+      "contentType": "image/png",
+      "cacheControl": "public, max-age=31536000, immutable"
+    }
+  ],
+  "passed": true
+}
